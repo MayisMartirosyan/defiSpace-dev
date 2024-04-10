@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="main-content">
+                <h2>Tag Info: {{ tag.name }}</h2>
+                <h3>Guides with this tag:</h3>
+                {% for company in companies %}
+                    <p><a href="{% url 'company_detail' company.id %}">{{ company.name }}</a></p>
+                    <!-- Display other post information as needed -->
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,325 @@
+/* Slider and Project scoring */
+
+.slider_scoring_projects_article {
+    display: flex;
+    /* display: none; */
+    justify-content: center;
+}
+
+.slider_scoring_projects_div_flex {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+    width: 100%;
+}
+
+.slider_scoring_projects_div {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1440px;
+    padding: 32px 0px 60px 0px;
+}
+
+/* Slider */
+
+.slider_div_flex {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100% !important;
+    min-width: 260px;
+    max-width: 950px;
+    border-radius: 36px;
+    background: var(--Light-Grey, #F8F8F8);
+}
+
+.slider_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider_background_tags_date_div_link{
+    width: 100%;
+}
+
+.slider_background_tags_date_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    height: 480px;
+    border-radius: 36px 36px 0px 0px;
+    padding: 24px;
+    /* background: url('../../img/main/slide_image.png'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.slider_tags_date_div {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.slider_date_div {
+    display: flex;
+    padding: 5px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 24px;
+    background: var(--Grey-2, #9E9E9E);
+}
+
+.slider_date {
+    color: var(--White, #FFF);
+    font-family: Inter, serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.slider_description_buttons_div {
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+}
+
+.slider_description_div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+}
+
+.slider_description_title {
+    color: var(--Black, #141919);
+    font-family: Inter, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider_description_description {
+    color: var(--Dark-Grey, #3C3C3C);
+    font-family: Inter, serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+}
+
+.slider_buttons_share_div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.slider_buttons_div {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.slider_button {
+    width: 40px;
+    height: 8px;
+    border-radius: 30px;
+    background: var(--Grey, #C4C6CA);
+}
+
+/* Project scoring */
+
+.project_scoring_div_flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    min-width: 200px;
+    max-width: 450px;
+    padding: 24px 24px 32px 24px;
+    border-radius: 36px;
+    background: var(--Light-Blue, #EDF3FC);
+}
+
+.project_scoring_div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+}
+
+/* Title */
+
+.project_scoring_title {
+    color: #000;
+    font-family: Inter, serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+/* Projects */
+
+.project_scoring_items_div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+
+.project_scoring_item {
+    display: flex;
+    padding: 20px 40px 20px 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    border-radius: 20px;
+    background: var(--White, #FFF);
+    box-shadow: 0px 10px 20px 0px #BDD4FA;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+.project_scoring_item:hover {
+    background: var(--Light-Grey, #F8F8F8);
+    box-shadow: 0px 20px 20px 0px #BDD4FA;
+}
+
+.project_scoring_item_logo_name_points_div {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.project_scoring_item_logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.project_scoring_item_name_points_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.project_scoring_item_name_div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+}
+
+.project_scoring_item_fullname {
+    color: var(--Black, #141919);
+    font-family: Inter, serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.project_scoring_item_shortname {
+    color: var(--Grey-2, #9E9E9E);
+    font-family: Inter, serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.project_scoring_item_points_div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.project_scoring_item_points_number {
+    color: var(--Orange, #FE6A25);
+    font-family: Inter, serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.project_scoring_item_points_text {
+    color: var(--Black, #141919);
+    font-family: Inter, serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.project_scoring_item_triangle_top_text {
+    display: flex;
+    justify-content: center;
+}
+
+.project_scoring_item_triangle_bottom_text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.project_scoring_item_triangle_p_text {
+    color: var(--Black, #141919);
+    text-align: center;
+    font-family: Inter, serif;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* Button */
+
+.project_view_all_div {
+    width: 100%;
+}
+
+.project_view_all_button {
+    width: 100%;
+    padding: 12px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 24px;
+    border: none;
+    background: var(--Orange, #FE6A25);
+    color: var(--White, #FFF);
+    font-family: Inter, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.project_view_all_button:hover {
+    background: #FF580A;
+}

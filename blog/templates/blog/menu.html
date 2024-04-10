@@ -1,0 +1,69 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}"> 
+</head>
+
+<div class="header_div_flex">
+    <div class="header_div">
+       <header class="header" id="header">
+        
+                <a href="/">
+
+                    <div class="logo_flex">
+                        <img 
+                            src="{% static 'img/navbar/logo.svg' %}" 
+                            id="navbar_logo"
+                            alt="logo_vector_icon"
+                        />
+                    </div>
+
+                </a>
+               
+
+            <div class="marquee" id="ticker" >
+               
+                <marquee>
+                  {{latest_post.title}}
+                </marquee>
+            </div>
+
+            <nav>
+                <div class="navigation_bar" id="nav_routes">
+                    <li class="nav_item">
+                        <a href="{% url 'post_list' %}" id="nav_item_link">
+                            <span class="nav_item_text">
+                                News
+                            </span>
+                        </a>
+                    </li>
+                         
+                    <li class="nav_item">
+                        <a href="{% url 'company_ratings' %}" id="nav_item_link">
+                            <span class="nav_item_text">Invest</span>
+                        </a>
+                    </li>
+                
+                    <li class="nav_item">
+                        <a href="{% url 'about' %}" id="nav_item_link">
+                            <span class="nav_item_text">About</span>
+                        </a>
+                    </li>
+                </div>
+            </nav>
+        </header>
+       <div class="header_filter_btn_div" id="header_filter_btn_div">
+            <img 
+                src="{% static 'img/navbar/filter.png' %}" 
+                class="header_filter_btn"
+                id="header_filter_btn"
+                width="30px" 
+                height="30px" 
+                alt="filter_svg" 
+            />
+       </div>
+    </div>
+</div>
+
+<script src="{% static 'js/header/header.js' %}"></script>

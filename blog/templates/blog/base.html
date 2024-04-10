@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Title -->
+    <title>{% block title %}My Blog{% endblock %}</title>
+    <title>Company Detail</title>
+
+    <!-- Styles -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/news/slider.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/news/main.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/news/editorPick.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/news/timelineTagsComp.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/glider.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/news/filterPopup.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/post_detail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/related_projects.css' %}">
+
+    <!-- Media -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media/news/index.media.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media/news/header.media.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media/news/slider.media.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media/news/editor_pick.media.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media/news/timelineTagsComp.media.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media/postDetail/post_detail_media.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media/postDetail/related_projects_media.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media/footer/footer_media.css' %}">
+
+    <!-- For responsive -->
+
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+
+    <!-- Inter 400 -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    
+    <!-- Inter 700 -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    {% include 'blog/menu.html' %}
+
+    <div class="content" id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    {% include 'blog/footer.html' %}
+    
+    <script>
+
+         
+         function checkWindowWidth() {
+            let windowWidth = window.innerWidth || document.documentElement.clientWidth ||  document.body.clientWidth;
+            let content = document.getElementById('content');
+           
+
+            if (windowWidth > 991) {
+                content.setAttribute("data-device","desktop")
+            } else {
+                content.setAttribute("data-device","mobile")
+            }
+        }
+
+        // Call the function once the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', checkWindowWidth);
+
+        // Call the function whenever the window is resized
+        window.addEventListener('resize', checkWindowWidth);
+    </script>
+    <script src="{% static 'js/mainSlider.js' %}"></script>
+    <script src="{% static 'js/timeLineTags/timelineTags.js' %}"></script>
+    <script src="{% static 'js/timeLineTags/searchFocus.js' %}"></script>
+    <script src="{% static 'js/timeLineTags/filterResponsive.js' %}"></script>
+    <script src="{% static 'js/shareBtn.js' %}"></script>
+    <script src="{% static 'js/glider.min.js' %}"></script>
+    <script src="{% static 'js/glider_editor_pick.js' %}"></script>
+    <script src="{% static 'js/glider_main_slider.js' %}"></script>
+    <script src="{% static 'js/glider_post_detail.js' %}"></script>
+    <script src="{% static 'js/glider_post_detail_sidebar.js' %}"></script>
+    <script src="{% static 'js/searchAndFilter.js' %}"></script>
+
+</body>
+</html>

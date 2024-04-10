@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 40px 80px;
+  scroll-behavior: smooth;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: #141919;
+  text-decoration: none;
+}
+
+.href_tag {
+  color: #141919;
+}
+
+.big_tag_item {
+  position: relative;
+  padding: 9px 16px 9px 16px;
+  border-radius: 24px;
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  background: #ffffff;
+  color: #141919;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.sm_tag_item {
+  display: flex;
+  padding: 5px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 24px;
+  background: var(--White, #fff);
+  color: var(--Black, #141919);
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+
+
+.sm_tag_item:hover {
+  background: #bdd4fa;
+}
+
+.big_tag_item_active {
+  background: var(--Blue, #bdd4fa) !important;
+
+}
+
+.big_tag_item input{
+  cursor: pointer;
+}
+
+.share_icon_style {
+  width: 24px;
+  height: 24px;
+  background: url("../img/share.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.main_slider_icon {
+  position: relative;
+}
+
+.share_dropdown_div {
+  display: none;
+  padding: 4px;
+  width: max-content;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 20px;
+  background: var(--White, #fff);
+  box-shadow: 0px 5px 10px 0px #d8d8d8;
+  position: absolute;
+  bottom: -160px;
+  right: -10px;
+  z-index: 20;
+}
+
+.share_dropdown_div {
+  bottom: 30px;
+  right: -15px;
+  z-index: 20;
+}
+
+.share_dropdown_div.active {
+  display: flex;
+}
+
+.share_dropdown_item {
+  display: flex;
+  padding: 9px 20px 9px 16px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 24px;
+  cursor: pointer;
+}
+.share_dropdown_item a {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  align-items: center;
+  align-self: stretch;
+}
+
+.share_dropdown_item:hover {
+  background: var(--Light-Blue, #edf3fc);
+}
+
+.share_dropdown_item_text {
+  color: var(--Black, #141919);
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}

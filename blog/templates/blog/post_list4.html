@@ -1,0 +1,70 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+{% for post in posts %}
+{% endfor %}
+
+<div class="container"><br><br>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="main-content">
+                <h2 class="p-4 mb-3 bg-body-tertiary rounded">Crypto News</h2><br>
+                {% for post in posts %}
+                    <div class="post">
+    <div class="row">
+        <h4><a class="d-block link-offset-1" href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h4>
+        <div class="col-md-8">
+            {% if post.tag_posts %}
+                <div class="tags">
+                    {% for tag in post.tag_posts.all %}
+                        <div class="btn btn-light btn-sm mb-1">{{ tag }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-4 text-right">
+            <p class="btn btn-light btn-sm mb-1">{{ post.pub_date|date:"M j, Y" }}</p>
+        </div>
+    </div>
+    <p><a class="list-group-item rounded-3 py-3" href="{% url 'post_detail' post.id %}">{{ post.content|slice:":500" }}{% if post.content|length > 500 %}...{% endif %}</a></p>
+</div>
+
+                {% endfor %}
+                {% if not posts %}
+                    <p>No posts available.</p>
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="post-tags">
+    <div class="post">
+        <h5 class="p-4 mb-3 bg-body-tertiary rounded">Search</h5>
+        <div style="padding: 20px;">
+
+
+<form method="get" action="{% url 'post_list' %}">
+  {{ search_form.as_p }}
+  <button type="submit">Search</button>
+</form>
+
+        </div>
+    </div><br>
+        <div class="col-md-3">
+            <div class="post-tags">
+    <div class="post">
+        <h5 class="p-4 mb-3 bg-body-tertiary rounded">Tags Posts</h5>
+        <div style="padding: 20px;">
+        {% for tag in tags_posts %}
+            <a class="btn btn-light btn-sm mb-1" href="{% url 'tag_result' tag=tag %}">{{ tag }}</a><br>
+        {% endfor %}
+        </div>
+    </div><br>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

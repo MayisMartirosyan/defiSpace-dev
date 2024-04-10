@@ -1,0 +1,658 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% load social_share %}
+
+{% block content %}
+
+<div class="container">
+
+  <div>
+    <div class="filter_fixed_popup_div" id="filter_fixed_popup_div">
+      {% comment %} <div class="filter_fixed_popup"> {% endcomment %}
+        <div class="tags_filter_popup" id="tags_filter_popup">
+          <div class="timeline_tags_div_sticky">
+            <div class="timeline_tags_filter_div_flex">
+              <div class="timeline_tags_filter_div">
+                <div class="timeline_calendar_search_div">
+
+                  <div class="timeline_calendar_select_div">
+
+                    <div class="timeline_calendar_div" id="timeline_calendar_div_mobile" onclick="toggleOptionsMob()">
+                      <div class="timeline_current_calendar" id="timeline_calendar_mobile">
+                        <p class="timeline_calendar_current_option" id="timeline_calendar_selected_button_mobile">
+                          All
+                        </p>
+                        <img src="{% static 'img/timelineTags/dropdown_arrow.svg' %}" id="dropdown_arrow"
+                          alt="dropdown_arrow" />
+                      </div>
+                    </div>
+
+                    <div class="timeline_dropdown_div" id="timeline_dropdown_div_mobile">
+                    
+                      <div class="timeline_dropdown" id="timeline_dropdown">
+                        <div class="timeline_calendar_option" onclick="selectOptionMob(this)">All</div>
+                        <div class="timeline_calendar_option" onclick="selectOptionMob(this)">Today</div>
+                        <div class="timeline_calendar_option" onclick="selectOptionMob(this)">Yesterday</div>
+                        <div class="timeline_calendar_option" onclick="selectOptionMob(this)">Last Week</div>
+                        <div class="timeline_calendar_option" onclick="selectOptionMob(this)">Last Month</div>
+                        <div class="timeline_calendar_option" onclick="selectOptionMob(this)">Last Year</div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="timeline_search_input_div">
+                    <img src="{% static 'img/timelineTags/search.svg' %}" id="search_icon_mobile" alt="search_icon" />
+
+                    <div class="search_max_vector_div" id="search_max_vector_mobile_div">
+                      <img src="{% static 'img/timelineTags/search_max_vector.svg' %}" id="search_max_vector_mobile"
+                        alt="search_max_vector" />
+                    </div>
+                    <input type="text" class="timeline_search_input" id="timeline_search_input_mobile"
+                      placeholder="Search" />
+                  </div>
+                </div>
+
+               
+                  <div class="timeline_main_tags_div">
+
+                    <div class="timeline_categories_projects_tags_div">
+                      <h3 class="timeline_categories_projects_tags_title">Categories</h3>
+                      <div class="timeline_categories_projects_tags_div_flex">
+                        <div class="timeline_categories_projects_tags_flex" id="tag_post_list_mobile">
+                          {% for tag in tags_posts %}
+                          <div class="big_tag_item" onclick="handlerChooseCheckbox(`tag_post{{tag.id}}_mobile`)">
+                            <input type="checkbox" value="{{tag.id}}" id="tag_post{{tag.id}}_mobile">
+                            <a class="href_tag">{{ tag.name }}</a>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+
+
+                    </div>
+                    <div class="timeline_categories_projects_tags_div">
+                      <h3 class="timeline_categories_projects_tags_title">Projects</h3>
+
+                      <div class="timeline_categories_projects_tags_div_flex">
+                        <div class="timeline_categories_projects_tags_flex" id="tag_rating_list_mobile">
+                          {% for tag in tags_rating %}
+                          <div class="big_tag_item" onclick="handlerChooseCheckbox(`tag_rating{{tag.id}}_mobile`)">
+                            <input type="checkbox" value="{{tag.id}}" id="tag_rating{{tag.id}}_mobile">
+                            <a class="href_tag">{{ tag.name }}</a>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="timeline_tags_apply_button_div">
+
+                      <a href="#timeline_tags_article">
+                        <button class="timeline_tags_apply_button" id="timeline_tags_apply_button" onclick="handleSubmit()">Apply</button>
+                      </a>
+                    </div>
+                  </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+        {% comment %}
+      </div> {% endcomment %}
+    </div>
+  </div>
+
+  <article class="slider_scoring_projects_article">
+    <div class="slider_scoring_projects_div_flex">
+      <div class="slider_scoring_projects_div">
+        <div class="slider_div_flex">
+
+          <article>
+
+            <div class="glider-contain">
+              <div class="glider-main-slider">
+
+                {% for slide in latest_posts %}
+                  
+
+                <div class="slider_div">
+                  <a href="{% url 'post_detail' slide.id %}" class="slider_background_tags_date_div_link">
+                  
+                  
+                      <div class="slider_background_tags_date_div"style="background: url('{% if slide.image %}media/{{slide.image}}{% else %}{% static 'img/default_image.jpg' %}{% endif %}'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                      <div class="slider_tags_date_div">
+                        {% if slide.tag_posts %}
+
+                        {% for tag in slide.tag_posts.all %}
+                        <div class="sm_tag_item">{{ tag }}</div>
+                        {% endfor %}
+
+                        {% endif %}
+                      </div>
+                      <div class="slider_date_div">
+                        <p class="slider_date">{{ slide.pub_date|date:"M j, Y" }}</p>
+                        
+                      </div>
+                    </div>
+                  </a>
+
+                  <div class="slider_description_buttons_div">
+                    <div class="slider_description_div">
+                      <h2 class="slider_description_title"><a href="{% url 'post_detail' slide.id %}">
+                         
+
+                          {% if slide.title|length > 25 %}
+                          {{slide.title|slice:":25"}}...
+                          {% else %}
+                          {{slide.title}}
+                          {% endif %}
+                        </a>
+
+                        <div class="share_icon_style main_slider_icon" onclick="openShareDropdown('main_slider{{slide.id}}')" id="main_slider{{slide.id}}">
+                          <div class="share_dropdown_div" id="share_dropdown_div">
+                            <div class="share_dropdown_item" >
+                              <a href="{{ request.build_absolute_uri }}post/{{ slide.id }}" onclick="copyToClipboard(event, '{{ request.build_absolute_uri }}post/{{ slide.id }}')"> 
+
+                                <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                <p class="share_dropdown_item_text">Copy link</p>
+                              </a>
+                              
+                            </div>
+          
+                            <div class="share_dropdown_item">
+                              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}post/{{ slide.id }}" target="_blank">
+
+                                <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                <p class="share_dropdown_item_text">
+                                LinkedIn
+                              </p>
+                              </a>
+                              
+                            </div>
+          
+                            <div class="share_dropdown_item">
+                              <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}post/{{ slide.id }}" target="_blank">
+
+                              <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                              <p class="share_dropdown_item_text">
+                               Telegram
+                              </a>
+                             
+                            </p>
+                            
+                            </div>
+          
+                            <div class="share_dropdown_item">
+                              <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}post/{{ slide.id }}" target="_blank">
+                                <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                <p class="share_dropdown_item_text">
+                                  Twitter
+                                </p>  
+                              </a>
+                             
+                            </div>
+                          </div>
+                        </div>
+                      </h2>
+                      <p class="slider_description_description"><a href="{% url 'post_detail' slide.id %}">
+                          {% if slide.content|length > 150 %}
+                          {{slide.content|slice:":150"}}...
+                          {% else %}
+                          {{slide.content}}
+                          {% endif %}</a></p>
+                    </div>
+
+                   
+
+                  </div>
+                </div>
+                
+
+                {% endfor %}
+
+              </div>
+
+              <div class="slider_btns_share_btn_div" >
+                <div role="tablist" class="dots"></div>
+
+             
+
+                
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+        {% comment %}Project scoring{% endcomment %}
+
+        <div class="project_scoring_div_flex">
+          <div class="project_scoring_div">
+            <h2 class="project_scoring_title">Projects Scoring</h2>
+
+            <div class="project_scoring_items_div">
+
+              {% for company_item in company %}
+             
+
+              <div class="project_scoring_item">
+                <div class="project_scoring_item_logo_name_points_div">
+                  <div class="project_scoring_item_logo_div">
+                    <img src="{{company_item.image.url}}" class="project_scoring_item_logo" alt="star_icon" />
+                  </div>
+
+                  <div class="project_scoring_item_name_points_div">
+                    <div class="project_scoring_item_name_div">
+                      <h3 class="project_scoring_item_fullname">{{ company_item.name }}</h3>
+                      <p class="project_scoring_item_shortname">{{ company_item.ticker }}</p>
+                    </div>
+
+                    <div class="project_scoring_item_points_div">
+                      <img src="{% static 'img/main/star.svg' %}" class="project_scoring_item_points_star_icon"
+                        width="24px" height="24px" alt="star_icon" />
+
+                      <div class="project_scoring_item_points">
+                        <span class="project_scoring_item_points_number">{{ company_item.total_score_avg|floatformat:0|truncatechars:1  }}</span>
+                        <span class="project_scoring_item_points_text">TPS</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project_scoring_item_triangle_image_div">
+                  <div class="project_scoring_item_triangle_top_text">
+                    <p class="project_scoring_item_triangle_p_text">Product</p>
+                  </div>
+                  <img src="{% static 'img/main/project_params_triangle.svg' %}" class="project_params_triangle_icon"
+                    width="86px" height="86px" alt="triangle_icon" />
+                  <div class="project_scoring_item_triangle_bottom_text">
+                    <p class="project_scoring_item_triangle_p_text">Team</p>
+                    <p class="project_scoring_item_triangle_p_text">Security</p>
+                  </div>
+                </div>
+              </div>
+
+              {% endfor %}
+
+            </div>
+          </div>
+
+          <div class="project_view_all_div">
+            <a><button class="project_view_all_button">View all projects</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  {% comment %}Slider Editor Pick{% endcomment %}
+
+  <article class="editor_pick_article">
+    <section class="editor_pick_div">
+
+      <div class="editor_pick_title_buttons">
+        <h2 class="editor_pick_title">Editor Pick</h2>
+
+        <div class="editor_pick_buttons">
+          <div class="editor_pick_button glider-prev-edit" aria-label="Previous">
+            <img src="{% static 'img/editorPick/pick_slider_left_button.svg' %}" alt="editor_pick_left_button" />
+          </div>
+          <div class="editor_pick_button glider-next-edit" aria-label="Next">
+            <img src="{% static 'img/editorPick/pick_slider_right_button.svg' %}" alt="editor_pick_right_button" />
+          </div>
+        </div>
+      </div>
+
+      <div class="glider-contain">
+        <div class="glider">
+
+
+          {% for edit_pick_item in edit_pick %}
+
+          <div class="editor_pick_item" id="edit_slider{{ edit_pick_item.id }}">
+            <a href="{% url 'post_detail' edit_pick_item.id %}" class="editor_pick_item_image_link">
+              <div class="editor_pick_item_image" style="background: url(media/{{edit_pick_item.image}})">
+                <div class="editor_pick_item_date">
+              
+       
+                 {{ edit_pick_item.pub_date|date:"M j H:i" }}
+
+              </div>
+              </div>
+            </a>
+            <div class="editor_pick_item_description_div">
+              <div class="editor_pick_item_description_text"><a href="{% url 'post_detail' edit_pick_item.id %}"> {{edit_pick_item.content }}</a></div>
+              <div class="editor_pick_item_tags_div">
+                <div class="editor_pick_item_tags">
+
+                  <div class="news_project_tags_div">
+                    {% for tag in edit_pick_item.tag_posts.all %}
+                    <div class="sm_tag_item">
+                      <a class="href_tag">{{ tag }}</a>
+                    </div>
+                    {% endfor %}
+                  </div>
+
+                </div>
+
+                <div class="share_icon_style" onclick="openShareDropdown('edit_slider{{ edit_pick_item.id }}')">
+                
+                <div class="share_dropdown_div" id="share_dropdown_div">
+                  <div class="share_dropdown_item" >
+                    <a href="{{ request.build_absolute_uri }}post/{{ edit_pick_item.id }}" onclick="copyToClipboard(event, '{{ request.build_absolute_uri }}post/{{ edit_pick_item.id }}')"> 
+
+                      <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                      <p class="share_dropdown_item_text">Copy link</p>
+                    </a>
+                    
+                  </div>
+
+                  <div class="share_dropdown_item">
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}post/{{ edit_pick_item.id }}" target="_blank">
+
+                      <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                      <p class="share_dropdown_item_text">
+                      LinkedIn
+                    </p>
+                    </a>
+                    
+                  </div>
+
+                  <div class="share_dropdown_item">
+                    <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}post/{{ edit_pick_item.id }}" target="_blank">
+
+                    <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                    <p class="share_dropdown_item_text">
+                     Telegram
+                    </a>
+                   
+                  </p>
+                  
+                  </div>
+
+                  <div class="share_dropdown_item">
+                    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}post/{{ edit_pick_item.id }}" target="_blank">
+                      <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                      <p class="share_dropdown_item_text">
+                        Twitter
+                      </p>  
+                    </a>
+                   
+                  </div>
+                </div>
+                </div>  
+                
+
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+
+
+        </div>
+
+      </div>
+
+    </section>
+  </article>
+
+  <article class="timeline_tags_article" id="timeline_tags_article">
+    <div class="timeline_tags_div">
+      <aside class="tags_sidebar_aside" id="tags_sidebar_aside">
+        <div class="timeline_tags_div_sticky">
+
+          <div class="timeline_tags_div_flex">
+            <div class="timeline_tags_filter_div">
+              <div class="timeline_calendar_search_div">
+
+                <div class="timeline_calendar_select_div">
+
+                  <div class="timeline_calendar_div" id="timeline_calendar_div_desktop" onclick="toggleOptions()">
+                    <div class="timeline_current_calendar" id="timeline_calendar_desktop">
+                      <p class="timeline_calendar_current_option" id="timeline_calendar_selected_button_desktop">
+                        All
+                      </p>
+                      <img src="{% static 'img/timelineTags/dropdown_arrow.svg' %}" id="dropdown_arrow"
+                        alt="dropdown_arrow" />
+                    </div>
+                  </div>
+
+                  <div class="timeline_dropdown_div" id="timeline_dropdown_div_desktop">
+                    <div class="timeline_dropdown" id="timeline_dropdown">
+                      <div class="timeline_calendar_option" onclick="selectOption(this)">All</div>
+                      <div class="timeline_calendar_option" onclick="selectOption(this)">Today</div>
+                      <div class="timeline_calendar_option" onclick="selectOption(this)">Yesterday</div>
+                      <div class="timeline_calendar_option" onclick="selectOption(this)">Last Week</div>
+                      <div class="timeline_calendar_option" onclick="selectOption(this)">Last Month</div>
+                      <div class="timeline_calendar_option" onclick="selectOption(this)">Last Year</div>
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <div class="timeline_search_input_div">
+                  <img src="{% static 'img/timelineTags/search.svg' %}" id="search_icon_desktop" alt="search_icon" />
+
+                  <div class="search_max_vector_div" id="search_max_vector_desktop_div">
+                    <img src="{% static 'img/timelineTags/search_max_vector.svg' %}" id="search_max_vector_desktop"
+                      alt="search_max_vector" />
+                  </div>
+                  <input type="text" class="timeline_search_input" id="timeline_search_input_desktop"
+                    placeholder="Search" />
+                </div>
+              </div>
+
+              <div class="timeline_main_tags_div">
+
+                <div class="timeline_categories_projects_tags_div">
+                  <h3 class="timeline_categories_projects_tags_title">Categories</h3>
+
+                  <div class="timeline_categories_projects_tags_div_flex">
+                    <div class="timeline_categories_projects_tags_flex" id="tag_post_list_desktop">
+                      {% for tag in tags_posts %}
+                      <div class="big_tag_item" onclick="handlerChooseCheckbox(`tag_post{{tag.id}}_desktop`)">
+                        <input type="checkbox" value="{{tag.id}}" id="tag_post{{tag.id}}_desktop">
+                        <a class="href_tag">{{ tag.name }}</a>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="timeline_categories_projects_tags_div">
+                  <h3 class="timeline_categories_projects_tags_title">Projects</h3>
+
+                  <div class="timeline_categories_projects_tags_div_flex">
+                    <div class="timeline_categories_projects_tags_flex" id="tag_rating_list_desktop">
+                      {% for tag in tags_rating %}
+                      <div class="big_tag_item" onclick="handlerChooseCheckbox(`tag_rating{{tag.id}}_desktop`)">
+                        <input type="checkbox" value="{{tag.id}}" id="tag_rating{{tag.id}}_desktop">
+                        <a class="href_tag">{{ tag.name }}</a>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline_tags_apply_button_div">
+
+                  <button class="timeline_tags_apply_button" id="timeline_tags_apply_button"
+                    onclick="handleSubmit()">Apply</button>
+                </div>
+              </div>
+            </div>
+            <div class="timeline_tags_shevron_div" id="timeline_tags_shevron_div">
+              <img src="{% static 'img/timelineTags/shevron.svg' %}" class="shevron_icon_style" id="shevron_icon"
+                alt="shevron_icon" />
+            </div>
+
+          </div>
+        </div>
+      </aside>
+
+      <div class="timeline_div_flex" id="timeline_div_flex">
+        <div class="projects_section">
+          <article class="news_project_article_flex">
+
+           
+
+            <div class="timeline_title_div">
+              <h3 class="timeline_title">Timeline</h3>
+              <img src="{% static 'img/timelineTags/timeline_Divider.svg' %}" class="timeline_divider"
+                alt="timeline_divider_icon" />
+            </div>
+
+           
+
+            {% if not posts %}
+            <p>No posts available.</p>
+            {% endif %}
+
+
+           
+
+            <span aria-hidden="true" style="display: none;" id="all_posts_total">{{posts_by_date.totalCount}}</span>
+
+              {% for group in posts_by_date.posts %}
+
+             
+              <div class="news_projects_items_div">
+
+                <div class="news_project_items_div_decor_and_items">
+
+                  <div class="project_section_vertical_line_orange_circle_div">
+                    <div class="project_section_orange_circle_div">
+                      <img src="{% static 'img/timelineTags/orange_circle.svg' %}" alt="orange_circle_icon" />
+                    </div>
+                    <div class="project_section_vertical_line_div"></div>
+                  </div>
+
+                  <div class="news_project_section_date_items_div">
+                    <div class="news_project_section_date_m_d">{{ group.date|date:"F j" }}</div>
+
+                    <div class="news_timeline_items_div_flex">
+                      {% for post in group.posts %}
+
+
+                      <div class="news_project_div" id={{post.local_id}}>
+
+                        <div class="news_project_item_time">{{ post.time_published|date:"H:i" }}</div>
+
+
+                        <a href="{% url 'post_detail' post.id %}" class="news_project_image_link">
+                          <div class="news_project_image">
+                            {% if post.image %}
+                            <img src="media/{{ post.image }}">
+                            {% else %}
+                            <img src="{% static 'img/default_image.jpg' %}" width="50">
+                            {% endif %}
+                          </div>
+                        </a>
+                        <div class="news_project_description_tags_div">
+                          <div class="news_project_description">
+                            <div class="news_project_description_title">
+                              <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+                            </div>
+                            <div class="news_project_description_text"><a href="{% url 'post_detail' post.id %}">
+                                {% if post.content|length > 500 %}
+                                {{ post.content|slice:":500" }}...
+                                {% else %}
+                                {{post.content}}
+                                {% endif %}</a></div>
+                          </div>
+                          <div class="news_project_tags_share_div">
+
+                            {% if post.tags %}
+                            <div class="news_project_tags_div">
+                              {% for tag in post.tags %}
+                              <div class="sm_tag_item">{{ tag }}</div>
+                              {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            <div class="share_icon_style" onclick="openShareDropdown('{{ post.local_id }}')">
+                            
+                              <div class="share_dropdown_div" id="share_dropdown_div">
+                                <div class="share_dropdown_item" >
+                                  <a href="{{ request.build_absolute_uri }}post/{{ post.id }}" onclick="copyToClipboard(event, '{{ request.build_absolute_uri }}post/{{ post.id }}')"> 
+              
+                                    <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                    <p class="share_dropdown_item_text">Copy link</p>
+                                  </a>
+                                  
+                                </div>
+              
+                                <div class="share_dropdown_item">
+                                  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}post/{{ post.id }}" target="_blank">
+              
+                                    <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                    <p class="share_dropdown_item_text">
+                                    LinkedIn
+                                  </p>
+                                  </a>
+                                  
+                                </div>
+              
+                                <div class="share_dropdown_item">
+                                  <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}post/{{ post.id }}" target="_blank">
+              
+                                  <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                  <p class="share_dropdown_item_text">
+                                   Telegram
+                                  </a>
+                                 
+                                </p>
+                                
+                                </div>
+              
+                                <div class="share_dropdown_item">
+                                  <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}post/{{ post.id }}" target="_blank">
+                                    <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                    <p class="share_dropdown_item_text">
+                                      Twitter
+                                    </p>  
+                                  </a>
+                                 
+                                </div>
+                              </div>
+                            
+                            </div>
+
+                           
+
+                          </div>
+                        </div>
+
+                      </div>
+
+
+
+                      {% endfor %}
+                    </div>
+                  </div>
+
+                </div>
+                {% endfor %}
+
+              </div>
+
+          </article>
+        </div>
+      </div>
+
+      <div class="for_sidebar_sticky"></div>
+    </div>
+  </article>
+
+</div>
+
+{% endblock %}

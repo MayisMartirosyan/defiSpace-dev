@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container"><br><br>
+<h2 class="p-4 mb-3 bg-body-tertiary rounded">Guides</h2><br>
+{% for guide in guides %}
+<div style="padding: 7px;">
+  <h5 class="navbar bg-body-tertiary px-3">{{ guide.title }}</h5>
+  <div class="navbar bg-body-tertiary px-3">{{ guide.content|linebreaksbr }}</div>
+</div>
+{% endfor %}<br><br>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+<svg width="78" height="49" viewBox="0 0 78 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 2608526">
+<path id="Polygon 2" d="M44 0.999939L77.5 42.4999L1 48L44 0.999939Z" fill="#FE6A25"/>
+<path id="Polygon 4" d="M44 0.999939L77.5 42.4999L1 48L44 0.999939Z" fill="#FE6A25"/>
+<path id="Polygon 3" d="M44 0.999939L77.5 42.4999L1 48L44 0.999939Z" fill="#FE6A25"/>
+<path id="Star 1" d="M44.0433 1.5V22.975L77.5 42.5L44 23.05L1 48L43.9567 22.975L44.0433 1.5Z" stroke="white"/>
+<path id="Line 1" d="M44 23L44 1" stroke="white" stroke-linecap="round"/>
+<path id="Line 3" d="M1 48L44 23" stroke="white" stroke-linecap="round"/>
+<path id="Line 2" d="M43.9998 22.9998L77.5 42.4999" stroke="white" stroke-linecap="round"/>
+</g>
+</svg>

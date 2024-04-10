@@ -1,0 +1,121 @@
+/* Header */
+
+.header_div_flex {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 40px;
+  z-index: 10;
+}
+
+.header_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 48px;
+  background: rgba(244, 244, 244, 0.5);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 800px;
+  padding: 12px 12px 12px 40px;
+}
+
+/* Logo */
+
+#navbar_logo {
+  cursor: pointer;
+}
+
+/* Ticker */
+
+.ticker {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  color: var(--Dark-Grey, #3c3c3c);
+  text-overflow: ellipsis;
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  transition: all 0.5s ease-out;
+}
+
+/* Navbar */
+
+.navigation_bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav_item {
+  display: flex;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 24px;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.nav_item:hover {
+  background: #fff;
+}
+
+.nav_active,
+.nav_active:hover {
+  background: var(--Orange, #fe6a25);
+  color: #fff;
+}
+
+.nav_item_text {
+  color: var(--Black, #141919);
+  font-family: Inter, serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* Filter button */
+
+.header_filter_btn_div {
+  display: none;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 8px;
+  margin-left: 30px;
+  padding: 4px;
+}
+
+.header_filter_btn {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.marquee {
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    max-width: 180px;
+    width: 100%;
+    height: 20px;
+  }
+  
+
+  

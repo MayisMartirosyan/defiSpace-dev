@@ -1,0 +1,32 @@
+{% load static %}
+<style>
+/* CSS */
+.nav-menu {
+    color: black;
+}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"><br>
+            <a href="{% url 'post_list' %}"><img src="{% static 'img/default_image.jpg' %}" alt="Logo" width="111"></a>
+
+            <nav><br>
+
+                    <big>
+                        <div class="dropdown">
+                            <li><a href="{% url 'post_list' %}" {% if request.resolver_match.url_name != 'post_list' and request.resolver_match.url_name != 'post_detail' %}class="nav-menu"{% endif %}>News</a></li>
+                            <li class="spacer"></li>
+                            <li><a href="{% url 'company_ratings' %}" {% if request.resolver_match.url_name != 'company_ratings' and request.resolver_match.url_name != 'company_detail' %}class="nav-menu"{% endif %}>Invest</a></li>
+                            <li class="spacer"></li>
+                            <li><a href="{% url 'about' %}" {% if request.resolver_match.url_name != 'about' %}class="nav-menu"{% endif %}>About</a></li>
+
+                        </div>
+                    </big>
+
+            </nav>
+        </div>
+        <div class="col-md-3">
+            <!-- Add any additional content for the right side -->
+        </div>
+    </div>
+</div>
