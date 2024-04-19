@@ -12,7 +12,7 @@ filter_btn.addEventListener("click", () => {
     if(filter_bool){
         filter_fixed_popup_div.style.display = "none";
     }else{
-        filter_fixed_popup_div.style.display = "block";
+        filter_fixed_popup_div.style.display = "flex";
     }
 
     filter_bool = !filter_bool;
@@ -23,7 +23,7 @@ timeline_tags_apply_button.addEventListener("click", () => {
     if(filter_bool){
         filter_fixed_popup_div.style.display = "none";
     }else{
-        filter_fixed_popup_div.style.display = "block";
+        filter_fixed_popup_div.style.display = "flex";
     }
     filter_bool = !filter_bool;
 })

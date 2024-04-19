@@ -502,7 +502,6 @@
     border-radius: 20px;
     background: var(--Light-Grey, #F8F8F8);
     position: relative;
-    width: 100%;
 }
 
 .news_project_item_time {

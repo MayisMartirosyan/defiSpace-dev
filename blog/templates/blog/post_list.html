@@ -127,7 +127,7 @@
                         {% if slide.tag_posts %}
 
                         {% for tag in slide.tag_posts.all %}
-                        <div class="sm_tag_item">{{ tag }}</div>
+                        <div class="sm_tag_item">{{ tag.name }}</div>
                         {% endfor %}
 
                         {% endif %}
@@ -334,7 +334,7 @@
                   <div class="news_project_tags_div">
                     {% for tag in edit_pick_item.tag_posts.all %}
                     <div class="sm_tag_item">
-                      <a class="href_tag">{{ tag }}</a>
+                      <a class="href_tag">{{ tag.name }}</a>
                     </div>
                     {% endfor %}
                   </div>
