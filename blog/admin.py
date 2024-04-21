@@ -17,13 +17,13 @@ class SecurityScoreInline(admin.StackedInline):
     max_num = 1
     fields = ['asset_secured_score', 'emission_limit_score', 'liquidity_score']
 
-class TeamcoreInline(admin.TabularInline):
+class TeamcoreInline(admin.StackedInline):
     model = TeamScore
     extra = 1
     max_num = 1
     fields = ['decentralized_score', 'performace_score']
 
-class ProductcoreInline(admin.TabularInline):
+class ProductScoreInline(admin.StackedInline):
     model = ProductScore
     extra = 1
     max_num = 1
@@ -35,7 +35,7 @@ class AdvantageInline(admin.TabularInline):
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
-    inlines = [SecurityScoreInline, TeamcoreInline, ProductcoreInline, AdvantageInline]
+    inlines = [SecurityScoreInline, TeamcoreInline, ProductScoreInline, AdvantageInline]
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Review)

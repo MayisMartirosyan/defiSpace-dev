@@ -305,12 +305,12 @@
                               <h3
                                  class="post_detail_related_project_item_fullname"
                               >
-                                 Binance
+                                 {{post.company.name}}
                               </h3>
                               <p
                                  class="post_detail_related_project_item_shortname"
                               >
-                                 BSC
+                                 {{post.company.ticker}}
                               </p>
                            </div>
 
@@ -330,7 +330,7 @@
                               >
                                  <span
                                     class="post_detail_related_project_item_points_number"
-                                    >89</span
+                                    >{{post.company.average_score}}</span
                                  >
                                  <span
                                     class="post_detail_related_project_item_points_text"
@@ -385,7 +385,6 @@
             </div>
          </div>
 
-         
          
          {% if related_sidebar %}
          <div class="post_detail_related_news">
