@@ -1,0 +1,64 @@
+@media (max-width: 1100px) {
+   .post_detail_view_all_projects_btn_div {
+      width: 100%;
+   }
+   .post_detail_view_all_projects_btn {
+      width: 100%;
+   }
+}
+
+@media (max-width: 550px) {
+   .post_detail_news_about_slider_title {
+      font-size: 22px;
+   }
+
+   .post_detail_related_project {
+      padding: 20px 20px 28px 20px;
+   }
+
+   .post_detail_related_project_title {
+      font-size: 22px;
+   }
+
+   .post_detail_related_project_item {
+      padding: 16px 32px 16px 16px;
+   }
+   .post_detail_related_project_item_logo_name_points_div {
+      gap: 12px;
+   }
+
+   .post_detail_related_project_item_fullname{
+    font-size: 14px;
+   }
+
+   .post_detail_related_project_item_shortname{
+    font-size: 12px;
+   }
+
+   .post_detail_related_project_item_points_star_icon{
+    width: 18px;
+    height: 18px;
+   }
+
+   .post_detail_related_project_item_points_number{
+    font-size: 18px;
+   }
+
+   .post_detail_related_project_item_points_text{
+    font-size: 10px;
+   }
+
+   .post_detail_related_project{
+    border-radius: 24px;
+   }
+
+   .post_detail_related_news_slider_item_description_p{
+      font-size: 16px;
+   }
+}
+
+@media (max-width: 400px) {
+   .post_detail_related_news_slider_item_description_p{
+      font-size: 14px;
+   }
+}

@@ -1,0 +1,5 @@
+@media (max-width: 480px) {
+  .timeline_current_calendar{
+    width: 120px;
+  } 
+}

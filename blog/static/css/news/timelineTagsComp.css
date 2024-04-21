@@ -3,7 +3,6 @@
 .timeline_tags_article {
     display: flex;
     justify-content: center;
-    /* display: none; */
 }
 
 #timeline_tags_article{
@@ -15,13 +14,13 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* gap: 56px; */
     max-width: 1440px;
     width: 100%;
     position: relative;
 }
 
 .tags_sidebar_aside {
+    display: block;
     position: sticky;
     top: 150px;
     width: 400px;
@@ -369,27 +368,29 @@
 /* For sticky sidebar */
 
 .for_sidebar_sticky {
-    /* width: 1px;  */
+    width: 0px; 
     background: rgba(0, 0, 0, 0);
-    height: auto;
+    /* height: 2000px; */
 }
 
 /* Timeline title div */
 
 .timeline_div_flex {
     display: flex;
-    width: 100%;
+    width: calc(100% + 40px);
     flex-direction: column;
     align-items: flex-start;
     gap: 28px;
-    margin-left: 56px;
+    /* margin-left: 56px; */
 }
 
 .timeline_title_div {
     display: flex;
     align-items: center;
     gap: 40px;
-    align-self: stretch;
+    justify-content: flex-end;
+    width: calc(100% - 40px);
+    /* align-self: stretch;*/
 }
 
 .timeline_title {
@@ -437,8 +438,10 @@
 .news_project_article_flex {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    align-items: flex-end;
+    justify-content: flex-end;
     gap: 28px;
+    /* margin: 0px 20px;*/
 }
 
 .news_projects_items_div {
@@ -446,16 +449,17 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 28px;
-    flex: 1 0 0;
-    width: 100%;
+    /* flex: 1 0 0; */
+    /* width: 100%;*/
 }
 
 .news_project_items_div_decor_and_items {
     display: flex;
     align-items: flex-start;
+    justify-content: flex-end;
     gap: 20px;
     flex: 1 0 0;
-    width: 100%;
+    /* width: calc(100% + 40px);*/
 }
 
 .news_project_section_date_items_div {
@@ -464,7 +468,7 @@
     gap: 28px;
     justify-content: flex-start;
     align-items: flex-start;
-    width: 100%;
+    width: calc(100% - 80px);
 }
 
 .news_project_section_date_m_d {
@@ -482,7 +486,6 @@
     font-weight: 700;
     line-height: normal;
 }
-
 
 .news_timeline_items_div_flex {
     display: flex;
@@ -527,7 +530,7 @@
     height: 100%;
     min-width: 120px;
     max-width: 282px;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .news_project_image {
@@ -592,7 +595,7 @@
 
 .news_project_description_text {
     max-width: 510px;
-    width: 100%;
+    width: 90%;
     height: 66px;
     align-self: stretch;
     overflow: hidden;

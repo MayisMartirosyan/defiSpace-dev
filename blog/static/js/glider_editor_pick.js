@@ -2,6 +2,7 @@ new Glider(document.querySelector('.glider'), {
   // Mobile-first defaults
   slidesToShow: 3,
   slidesToScroll: 1,
+  scrollLock: true,
   dots: '#resp-dots',
   arrows: {
     prev: '.glider-prev-edit',

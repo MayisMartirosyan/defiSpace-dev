@@ -1,0 +1,84 @@
+@media (max-width: 1100px) {
+   .post_detail_flex {
+      flex-direction: column;
+   }
+
+   .post_detail_sidebar {
+      max-width: 900px;
+   }
+}
+
+@media (max-width: 800px) {
+   .glider-post-detail-slider > .glider-track {
+      gap: 0px;
+   }
+}
+
+@media (max-width: 550px) {
+   .post_detail_flex {
+      gap: 80px;
+   }
+
+   .post_detail_main {
+      gap: 40px;
+   }
+
+   .post_detail_title_p {
+      font-size: 20px;
+   }
+
+   .post_detail_story_highlights_li {
+      font-size: 14px;
+   }
+
+   .post_detail_description_title {
+      font-size: 14px;
+   }
+
+   .post_detail_description_text {
+      font-size: 12px;
+      padding-bottom: 12px;
+   }
+
+   .post_detail_pubdate_date_mm_dd_yyyy_span {
+      font-size: 8px;
+   }
+
+   .post_detail_pubdate_date_mm_hh_area {
+      font-size: 8px;
+   }
+
+   .post_detail_story_highlights_div {
+      border-radius: 16px;
+      padding: 14px;
+      gap: 12px;
+   }
+   .post_detail_story_highlights_title {
+      font-size: 14px;
+   }
+
+   .post_detail_main_image {
+      border-radius: 16px;
+   }
+
+   .post_detail_tags_div_title {
+      font-size: 16px;
+   }
+
+   .post_detail_tag_div_text {
+      font-size: 12px;
+   }
+
+   .post_detail_share_icon_img {
+      width: 10px;
+      height: 10px;
+   }
+
+   .post_detail_share_p {
+      font-size: 9px;
+   }
+
+   .post_detail_share_btn_div {
+      padding: 4px 8px;
+   }
+}
