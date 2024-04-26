@@ -3,12 +3,12 @@ from .models import Post, Company, Advantage, Review, Guides, About, TagRating, 
 from django.db.models import F, Sum,  Q
 from .forms import SearchForm
 from django import forms
-from .models import TagPosts, TagRating
 from django.db.models.functions import TruncDate
 from django.db.models import Count,OuterRef,Subquery
 from collections import defaultdict
 from datetime import datetime, timedelta
 from django.core.paginator import Paginator
+from .helpers import handle_add_company_fields
 
 
 
@@ -115,21 +115,7 @@ def post_list(request):
 
     
     for company in companies:
-        product_scores = company.product_scores.first() 
-        team_scores = company.team_scores.first()  
-        security_scores = company.security_scores.first() 
-        
-
-        product_score_total = product_scores.total_score if product_scores else 0
-        team_score_total = team_scores.total_score if team_scores else 0
-        security_score_total = security_scores.total_score if security_scores else 0
-
-        average_score = min((product_score_total + team_score_total + security_score_total) / 3,100)
-
-        company.product_score = product_score_total
-        company.team_score = team_score_total
-        company.security_score = security_score_total
-        company.average_score = average_score
+        handle_add_company_fields(company=company)
 
 
     return render(request, 'blog/post_list.html', {
@@ -160,29 +146,10 @@ def post_detail(request, pk):
     related_posts_queryset = related_posts.values('id','title', 'pub_date')
    
     sublists = []
-
     if post.company:
         company = post.company    
-        product_scores = company.product_scores.first() 
-        team_scores = company.team_scores.first()  
-        security_scores = company.security_scores.first() 
+        handle_add_company_fields(company=company)
 
-        product_score_total = product_scores.total_score if product_scores else 0
-        team_score_total = team_scores.total_score if team_scores else 0
-        security_score_total = security_scores.total_score if security_scores else 0
-
-        average_score = round(min((product_score_total + team_score_total + security_score_total) / 3,100))
-
-        company.product_score = product_score_total
-        company.team_score = team_score_total
-        company.security_score = security_score_total
-        company.average_score = average_score
-        
-        for field in company._meta.fields:
-            field_name = field.name
-            field_value = getattr(company, field_name)
-            print(f"{field_name}: {field_value}")
-   
     for sub_post in related_posts_queryset:
         sub_post_tags = TagPosts.objects.filter(post__id=sub_post['id']).values('id', 'name')
         sub_post['tag_posts'] = list(sub_post_tags)
@@ -259,15 +226,10 @@ def company_ratings(request):
         companies = companies.annotate(total_score_avg=(F('securityscore__total_score') + F(
             'teamscore__total_score') + F('productscore__total_score')) / 3)
         companies = companies.order_by('-total_score_avg' if sort_order == 'desc' else 'total_score_avg')
+
     for company in companies:
-        security_score = company.securityscore_set.first()
-        team_score = company.teamscore_set.first()
-        product_score = company.productscore_set.first()
-        company.security_score = security_score.total_score if security_score else 0
-        company.team_score = team_score.total_score if team_score else 0
-        company.product_score = product_score.total_score if product_score else 0
-        if not hasattr(company, 'total_score_avg'):
-            company.total_score_avg = (company.security_score + company.team_score + company.product_score) / 3
+        handle_add_company_fields(company=company)
+        
 
     return render(request, 'blog/companies.html', {'companies': companies})
 

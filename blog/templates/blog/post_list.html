@@ -258,7 +258,7 @@
                         width="24px" height="24px" alt="star_icon" />
 
                       <div class="project_scoring_item_points">
-                        <span class="project_scoring_item_points_number">{{ company_item.total_score_avg|floatformat:0|truncatechars:1  }}</span>
+                        <span class="project_scoring_item_points_number">{{ company_item.average_score  }}</span>
                         <span class="project_scoring_item_points_text">TPS</span>
                       </div>
                     </div>
@@ -512,9 +512,12 @@
             </div>
 
            
+
             {% if not posts %}
             <p>No posts available.</p>
             {% endif %}
+
+
            
 
             <span aria-hidden="true" style="display: none;" id="all_posts_total">{{posts_by_date.totalCount}}</span>
@@ -552,17 +555,14 @@
                             {% else %}
                             <img src="{% static 'img/default_image.jpg' %}" width="50">
                             {% endif %}
-                            <div class="news_project_item_time_in_image">{{ post.time_published|date:"H:i" }}</div>
                           </div>
                         </a>
                         <div class="news_project_description_tags_div">
                           <div class="news_project_description">
                             <div class="news_project_description_title">
-                              <a href="{% url 'post_detail' post.id %}">
-                                {{ post.title }}
-                              </a>
+                              <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
                             </div>
-                            <div class="news_project_description_text">
+                             <div class="news_project_description_text">
                               <a href="{% url 'post_detail' post.id %}">
                                 {% if post.content|length > 150 %}
                                 {{ post.content|slice:":150" }}...

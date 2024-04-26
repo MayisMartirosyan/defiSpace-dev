@@ -283,17 +283,28 @@
                <h3 class="post_detail_related_project_title">
                   Related Project
                </h3>
-               <div class="post_detail_related_project_items_div">
+
+               {% if post.company  %}
+               
+             <div class="post_detail_related_project_items_div">
                   <div class="post_detail_related_project_item">
                      <div
                         class="post_detail_related_project_item_logo_name_points_div"
                      >
                         <div class="post_detail_related_project_item_logo_div">
-                           <img
+                           
+
+                              {% if post.company.image %}
+                               <img src="/media/{{post.company.image}}" class="project_scoring_item_logo" alt="star_icon" />
+                              {% else %}
+                                 <img
                               src="{% static 'img/default_image.jpg' %}"
                               class="post_detail_related_project_item_logo"
                               alt="star_icon"
                            />
+                              {% endif %}
+
+                          
                         </div>
 
                         <div
@@ -377,6 +388,8 @@
                      </div>
                   </div>
                </div>
+               {% endif %}
+              
             </div>
             <div class="post_detail_view_all_projects_btn_div">
                <button class="post_detail_view_all_projects_btn">
