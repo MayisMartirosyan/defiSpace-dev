@@ -555,7 +555,9 @@
                             {% else %}
                             <img src="{% static 'img/default_image.jpg' %}" width="50">
                             {% endif %}
+                            <div class="news_project_item_time_in_image">{{ post.time_published|date:"H:i" }}</div>
                           </div>
+
                         </a>
                         <div class="news_project_description_tags_div">
                           <div class="news_project_description">
