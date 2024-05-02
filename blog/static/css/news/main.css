@@ -41,6 +41,10 @@
     align-items: center;
 }
 
+.slider_div::-webkit-scrollbar {
+    display: none;
+}
+
 .slider_background_tags_date_div_link{
     width: 100%;
 }
