@@ -69,6 +69,14 @@
         font-size: 20px;
     }
 
+    .slider_description_title{
+        font-size: 17px;
+    }
+
+    .slider_description_description{
+        font-size: 13px;
+    }
+
     .project_scoring_item {
         padding: 20px 16px 20px 12px;
     }

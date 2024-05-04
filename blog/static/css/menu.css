@@ -81,6 +81,10 @@
   color: #fff;
 }
 
+#nav_item_link_news{
+  border-radius: 24px;
+}
+
 .nav_item_text {
   color: var(--Black, #141919);
   font-family: Inter, serif;
@@ -88,6 +92,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  border-radius: 24px;
 }
 
 /* Filter button */

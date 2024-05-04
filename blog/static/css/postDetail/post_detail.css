@@ -148,8 +148,7 @@
 .post_detail_main_image {
    width: 100%;
    border-radius: 36px;
-
-
+   min-height: 300px;
 }
 
 /**/

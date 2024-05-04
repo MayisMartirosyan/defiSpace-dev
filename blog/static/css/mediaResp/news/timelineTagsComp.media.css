@@ -64,7 +64,7 @@
     min-width: 120px;
     width: 100%;
     max-height: 250px;
-    height: 100%;
+    height: 250px;
     max-width: none;
     position: relative;
   }
@@ -84,11 +84,11 @@
   }
 
   .news_project_description_title {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .news_project_description_text {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .timeline_title {
