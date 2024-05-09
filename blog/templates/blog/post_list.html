@@ -240,7 +240,7 @@
 
               {% for company_item in company %}
              
-
+            <a href="{% url 'company_detail' company.id %}">
               <div class="project_scoring_item">
                 <div class="project_scoring_item_logo_name_points_div">
                   <div class="project_scoring_item_logo_div">
@@ -277,6 +277,7 @@
                   </div>
                 </div>
               </div>
+            </a>
 
               {% endfor %}
 
@@ -284,7 +285,7 @@
           </div>
 
           <div class="project_view_all_div">
-            <a><button class="project_view_all_button">View all projects</button></a>
+            <a href="{% url 'company_ratings' %}"><button class="project_view_all_button">View all projects</button></a>
           </div>
         </div>
       </div>

@@ -288,8 +288,10 @@
                </h3>
 
                {% if post.company  %}
-               
-             <div class="post_detail_related_project_items_div">
+
+
+            <a href="{% url 'company_detail' post.company.id %}">
+               <div class="post_detail_related_project_items_div">
                   <div class="post_detail_related_project_item">
                      <div
                         class="post_detail_related_project_item_logo_name_points_div"
@@ -391,13 +393,16 @@
                      </div>
                   </div>
                </div>
+            </a>
                {% endif %}
               
             </div>
             <div class="post_detail_view_all_projects_btn_div">
-               <button class="post_detail_view_all_projects_btn">
-                  View all projects
-               </button>
+               <a href="{% url 'company_ratings' %}">
+                  <button class="post_detail_view_all_projects_btn">
+                     View all projects
+                  </button>
+               </a>
             </div>
          </div>
 
