@@ -1,5 +1,6 @@
 const post_detail_slider_buttons_div = document.getElementById("post_detail_slider_buttons_div");
 
+
 const openShareDropdown = (id) => {
 
     const sharedProject = document.getElementById(id);

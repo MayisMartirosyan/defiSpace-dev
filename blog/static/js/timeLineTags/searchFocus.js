@@ -1,5 +1,5 @@
 const search_input_desktop = document.getElementById("timeline_search_input_desktop");
-const timeline_calendar_div_desktop = document.getElementById("timeline_calendar_div_desktop");
+const timeline_calendar_div_desktop = document.getElementById("timeline_search_input_desktoptimeline_search_input_desktop");
 const timeline_calendar_desktop = document.getElementById("timeline_calendar_desktop");
 const search_icon_desktop = document.getElementById("search_icon_desktop");
 const search_max_vector_desktop = document.getElementById("search_max_vector_desktop");
@@ -16,18 +16,6 @@ function toggleOptions() {
     timeline_dropdown_div_desktop.style.display = (timeline_dropdown_div_desktop.style.display === 'block') ? 'none' : 'block';
     if (timeline_dropdown_div_desktop.style.display === 'block') {
         timeline_dropdown_div_desktop.style.padding = "4px";
-    }
-}
-
-function handlerChooseCheckbox(id){
-
-    const tag = document.getElementById(id).parentElement
-
-    console.log(tag,'tag');
-    if (tag.classList.contains("big_tag_item_active")){
-        tag.classList.remove("big_tag_item_active")
-    }else{
-        tag.classList.add("big_tag_item_active")
     }
 }
 

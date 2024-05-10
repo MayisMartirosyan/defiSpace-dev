@@ -1,0 +1,26 @@
+.tags_selector_div{
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+    color: #ffffff;
+    background: #141919;
+    transition: all 0.4s linear;
+    outline: none;
+    padding: 9px 20px 9px 20px;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+.tags_selector{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tags_selector_div:hover {
+  background: var(--Dark-Grey, #3c3c3c);
+}
+
+.companies_fixed_popup{
+    max-width: 100%;
+}

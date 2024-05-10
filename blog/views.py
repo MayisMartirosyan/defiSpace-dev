@@ -8,7 +8,7 @@ from django.db.models import Count,OuterRef,Subquery
 from collections import defaultdict
 from datetime import datetime, timedelta
 from django.core.paginator import Paginator
-from .helpers import handle_add_company_fields
+from .helpers import handle_add_company_fields,calculate_total_score_product,calculate_total_score_team,calculate_total_score_scurity
 
 
 
@@ -130,19 +130,12 @@ def post_list(request):
     })
 
 
-def post_detail(request, pk):
-     
-     
+def post_detail(request, pk):  
     post = get_object_or_404(Post, pk=pk)
-    
- 
     related_posts = Post.objects.filter(company=post.company).exclude(pk=pk)
-    
     tags_posts = TagPosts.objects.all()
     gmt_offset_hours = post.pub_date.utcoffset().total_seconds() / 3600
     gmt_offset = f'{"+" if gmt_offset_hours >= 0 else "-"}{abs(int(gmt_offset_hours)):02}:00'
-    
-
     related_posts_queryset = related_posts.values('id','title', 'pub_date')
    
     sublists = []
@@ -157,11 +150,59 @@ def post_detail(request, pk):
             sublists.append([sub_post])
         else:
             sublists[-1].append(sub_post)
-
-
+            
     return render(request, 'blog/post_detail.html', {'post': post,'related_posts': related_posts, 'tags_posts': tags_posts,'gmt':gmt_offset,'related_sidebar':sublists})
 
 
+def company_ratings(request):
+    
+    page_number = request.GET.get('page')
+    items_per_page = int(page_number) * 1 if page_number else 1
+    
+    companies = Company.objects.all()
+    top_companies = companies.filter(mark=True)[:3]
+    all_tag_ratings = TagRating.objects.all() 
+    
+    sort_by = request.GET.getlist('sort_by')
+    query_tag_rating = request.GET.getlist('tag_rating')
+ 
+    if 'launched' in sort_by:
+        companies = companies.order_by('-date_added')
+        
+    if 'security' in sort_by:
+        companies = companies.order_by('-security_scores__total_score')
+    if 'team' in sort_by:
+        companies = companies.order_by('-team_scores__total_score')
+        
+    if 'product' in sort_by:
+        companies = companies.order_by('-product_scores__total_score')
+        
+    if 'totalScore' in sort_by or not sort_by: 
+        companies = companies.annotate(average_score=(F('security_scores__total_score') + F(
+            'team_scores__total_score') + F('product_scores__total_score')) / 3)
+        companies = companies.order_by('-average_score')
+        
+    
+    if query_tag_rating:
+        companies = companies.filter(tag_rating__in=query_tag_rating)
+
+    for company in companies:
+        handle_add_company_fields(company=company)
+        
+    for top_cmp in top_companies:
+        handle_add_company_fields(company=top_cmp)
+    
+
+    total = companies.values().distinct().count()
+    
+    latest_paginated_companies = companies[:items_per_page]
+
+    return render(request, 'blog/companies.html', {'companies': latest_paginated_companies,"top_companies":top_companies,"all_tag_ratings": all_tag_ratings,"total":total})
+
+
+def about(request):
+    about = About.objects.first()
+    return render(request, 'blog/about.html', {'about': about, 'request': request})
 
 
 def tag_result(request, tag):
@@ -178,14 +219,8 @@ def guides(request):
     guides = Guides.objects.all()
     return render(request, 'blog/guides.html', {'guides': guides, 'request': request})
 
-def about(request):
-    about = About.objects.first()
-    return render(request, 'blog/about.html', {'about': about, 'request': request})
 
 
-def company_ratings(request):
-    companies = Company.objects.all()
-    return render(request, 'blog/companies.html', {'companies': companies, 'request': request})
 
 def post_create(request):
     if request.method == 'POST':
@@ -207,57 +242,6 @@ def add_comment(request, post_id):
             comment.save()
     return redirect('post_detail', pk=post_id)
 
-def company_ratings(request):
-    companies = Company.objects.all()
-    sort_by = request.GET.get('sort_by')
-    sort_order = request.GET.get('sort_order')
-    
-    if sort_by == 'date_added':
-        companies = companies.order_by('-date_added' if sort_order == 'desc' else 'date_added')
-    elif sort_by == 'security_score':
-        companies = companies.order_by(
-            '-securityscore__total_score' if sort_order == 'desc' else 'securityscore__total_score')
-    elif sort_by == 'team_score':
-        companies = companies.order_by('-teamscore__total_score' if sort_order == 'desc' else 'teamscore__total_score')
-    elif sort_by == 'product_score':
-        companies = companies.order_by(
-            '-productscore__total_score' if sort_order == 'desc' else 'productscore__total_score')
-    elif sort_by == 'total_score_avg':
-        companies = companies.annotate(total_score_avg=(F('securityscore__total_score') + F(
-            'teamscore__total_score') + F('productscore__total_score')) / 3)
-        companies = companies.order_by('-total_score_avg' if sort_order == 'desc' else 'total_score_avg')
-
-    for company in companies:
-        handle_add_company_fields(company=company)
-        
-
-    return render(request, 'blog/companies.html', {'companies': companies})
-
-def calculate_total_score_product(company):
-    product_scores = company.productscore_set.first()
-    performace_score = product_scores.performace_score
-    apy_1yr_score = product_scores.apy_1yr_score
-    apy_5yr_score = product_scores.apy_5yr_score
-    total_score = (performace_score + apy_1yr_score + apy_5yr_score) / 3
-    product_scores.total_score = total_score
-    product_scores.save()
-
-def calculate_total_score_team(company):
-    team_scores = company.teamscore_set.first()
-    decentralized_score = team_scores.decentralized_score
-    performace_score = team_scores.performace_score
-    total_score = (decentralized_score + performace_score) / 3
-    team_scores.total_score = total_score
-    team_scores.save()
-
-def calculate_total_score_scurity(company):
-    security_scores = company.securityscore_set.first()
-    asset_secured_score = security_scores.asset_secured_score
-    emission_limit_score = security_scores.emission_limit_score
-    liquidity_score = security_scores.liquidity_score
-    total_score = (asset_secured_score + emission_limit_score + liquidity_score) / 3
-    security_scores.total_score = total_score
-    security_scores.save()
 
 def company_detail(request, company_id):
     company = get_object_or_404(Company, pk=company_id)

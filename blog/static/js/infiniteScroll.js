@@ -49,19 +49,19 @@ window.addEventListener('scroll', () => {
     }
 });
 
-window.addEventListener('popstate', function(event) {
-    // Get the current URL
-    let currentUrl = window.location.href;
+// window.addEventListener('popstate', function(event) {
+//     // Get the current URL
+//     let currentUrl = window.location.href;
 
-    // Make an AJAX request to the server with the new URL
-    fetch(currentUrl)
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response data
-            console.log('Response:', data);
-            // You can update the page content based on the response
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-});
+//     // Make an AJAX request to the server with the new URL
+//     fetch(currentUrl)
+//         .then(response => response.json())
+//         .then(data => {
+//             // Handle the response data
+//             console.log('Response:', data);
+//             // You can update the page content based on the response
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//         });
+// });

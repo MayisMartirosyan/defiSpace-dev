@@ -1,87 +1,218 @@
-{% extends 'blog/base.html' %}
-{% load static %}
+{% extends 'blog/base.html' %} {% load static %} {% block content %}
+<h1>Рейтинг компаний</h1>
 
-{% block content %}
-    <h1>Рейтинг компаний</h1>
+<div>
+  <div class="filter_fixed_popup_div" id="comp_filter_fixed_popup_div">
+      <div class="tags_filter_popup companies_fixed_popup" id="tags_filter_popup">
+        <div class="timeline_tags_div_sticky">
+          <div class="timeline_tags_filter_div_flex">
+            <div class="timeline_tags_filter_div">
+              {% comment %} <div class="timeline_calendar_search_div">
+                <div class="timeline_search_input_div">
+                  <img
+                    src="{% static 'img/timelineTags/search.svg' %}"
+                    id="search_icon_mobile"
+                    alt="search_icon"
+                  />
 
-    <!-- Форма фильтров -->
-    <form method="GET">
-        <label for="sort_by">Сортировать по:</label>
-        <select name="sort_by" id="sort_by">
-            <option value="date_added">Дата добавления</option>
-            <option value="security_score">Оценка безопасности</option>
-            <option value="team_score">Оценка команды</option>
-            <option value="product_score">Оценка продукта</option>
-            <option value="total_score_avg">Средний балл</option>
-        </select>
+                  <div
+                    class="search_max_vector_div"
+                    id="search_max_vector_mobile_div"
+                  >
+                    <img
+                      src="{% static 'img/timelineTags/search_max_vector.svg' %}"
+                      id="search_max_vector_mobile"
+                      alt="search_max_vector"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    class="timeline_search_input"
+                    id="timeline_search_input_mobile"
+                    placeholder="Search"
+                  />
+                </div>
+              </div> {% endcomment %}
 
-        <label for="sort_order">Порядок сортировки:</label>
-        <select name="sort_order" id="sort_order">
-            <option value="asc">По возрастанию</option>
-            <option value="desc">По убыванию</option>
-        </select>
+              <div class="timeline_main_tags_div">
+                <div class="timeline_categories_projects_tags_div">
+                  <h3 class="timeline_categories_projects_tags_title">
+                    Projects
+                  </h3>
 
-        <input type="submit" value="Применить фильтры">
-    </form>
+                  <div class="timeline_categories_projects_tags_div_flex">
+                    <div
+                      class="timeline_categories_projects_tags_flex"
+                      id="tag_rating_list"
+                    >
+                      {% for tag in all_tag_ratings %}
+                      <div
+                        class="big_tag_item"
+                        onclick="handlerChooseCheckbox(`tag_rating{{tag.id}}`)"
+                      >
+                        <input
+                          type="checkbox"
+                          value="{{tag.id}}"
+                          id="tag_rating{{tag.id}}"
+                        />
+                        <a class="href_tag">{{ tag.name }}</a>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                <div class="timeline_tags_apply_button_div">
+                    <button
+                      class="timeline_tags_apply_button"
+                      id="comp_tr_apply_button"
+                      onclick="handleSubmit()"
+                    >
+                      Apply
+                    </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
 
-    <!-- Таблица рейтинга компаний -->
-    <table border="1">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Название</th>
-                <th>Тикер</th>
-                <th>Оценка безопасности</th>
-                <th>Оценка команды</th>
-                <th>Оценка продукта</th>
-                <th>Средний балл</th>
-                <th>Дата добавления</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for company in companies %}
-            <tr>
-                <td>
-                    {% if company.image %}
-                        <img src="{{ company.image.url }}" width="50">
-                    {% else %}
-                        <img src="{% static 'img/default_image.jpg' %}" width="50">
-                    {% endif %}</td>
-                <td><a class="icon-link" href="{% url 'company_detail' company.id %}">{{ company.name }}</a></td>
-                <td>{{ company.ticker }}</td>
-                <td>{{ company.security_score }}</td>
-                <td>{{ company.team_score }}</td>
-                <td>{{ company.product_score }}</td>
-                <td>{{ company.total_score_avg|default:"0"|floatformat:"0" }}</td>
-                <td>{{ company.date_added|date:"M Y" }}</td>
-            </tr>
-            <tr>
-                <td colspan="8">{{ company.description }}</td>
-            </tr>
-            <tr>
-                <td colspan="8">
-                    {% if company.link %}
-                        <a target="_blank" href="{{ company.link }}">{{ company.link }}</a></td>
-                    {% else %} 
-                    {% endif %}
-                </td>
-            </tr>
-            <tr>
-                <td colspan="8">
-                    {% if company.link %}
-                        <a target="_blank" href="{{ company.link }}">{{ company.github }}</a></td>
-                    {% else %}
-                    {% endif %}
-                </td>
-            </tr>
-            <tr>
-                <td colspan="8">
-                    {% for tag in company.tag_rating.all %}
-                        <a class="btn btn-light btn-sm mb-1" href="{% url 'tag_projects_result' tag=tag %}">{{ tag }}</a>
-                    {% endfor %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+<div
+  class="tags_selector_div"
+  id="tags_selector_div"
+>
+  <div class="tags_selector" id="tags_selector">
+    <p
+      class="tags_selector_p"
+      id="tags_selector_p"
+    >
+      All Projects
+    </p>
+    <img
+      src="{% static 'img/timelineTags/dropdown_arrow.svg' %}"
+      id="dropdown_arrow"
+      alt="dropdown_arrow"
+    />
+  </div>
+</div>
+
+<div style="display: flex; gap: 10px" id="sort_options">
+  <div>
+    <label for="launched">Launched:</label>
+    <input type="radio" id="launched" name="status" value="launched" />
+  </div>
+  <div>
+    <label for="team">Team:</label>
+    <input type="radio" id="team" name="status" value="team" />
+  </div>
+  <div>
+    <label for="product">Product:</label>
+    <input type="radio" id="product" name="status" value="product" />
+  </div>
+  <div>
+    <label for="security">Security:</label>
+    <input type="radio" id="security" name="status" value="security" />
+  </div>
+  <div>
+    <label for="total-score">Total Score:</label>
+    <input type="radio" id="totalScore" name="status" value="totalScore" />
+  </div>
+</div>
+
+<span aria-hidden="true" style="display: none" id="all_posts_total"
+  >{{total}}</span
+>
+<!-- Таблица рейтинга компаний -->
+
+<table border="1">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Название</th>
+      <th>Тикер</th>
+      <th>Оценка безопасности</th>
+      <th>Оценка команды</th>
+      <th>Оценка продукта</th>
+      <th>Средний балл</th>
+      <th>Дата добавления</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for company in companies %}
+
+    <div id="company_card_wrapper">
+      <tr>
+        <td>
+          {% if company.image %}
+          <img src="{{ company.image.url }}" width="50" />
+          {% else %}
+          <img src="{% static 'img/default_image.jpg' %}" width="50" />
+          {% endif %}
+        </td>
+        <td>
+          <a class="icon-link" href="{% url 'company_detail' company.id %}"
+            >{{ company.name }}</a
+          >
+        </td>
+        <td>{{ company.ticker }}</td>
+        <td>{{ company.security_score }}</td>
+        <td>{{ company.team_score }}</td>
+        <td>{{ company.product_score }}</td>
+        <td>{{ company.average_score|default:"0"|floatformat:"0" }}</td>
+        <td>{{ company.date_added|date:"M Y" }}</td>
+      </tr>
+      <tr>
+        <td colspan="8">{{ company.description }}</td>
+      </tr>
+      <tr>
+        <td colspan="8">
+          {% if company.link %}
+          <a target="_blank" href="{{ company.link }}">{{ company.link }}</a>
+          {% else %} {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="8">
+          {% if company.link %}
+          <a target="_blank" href="{{ company.link }}">{{ company.github }}</a>
+
+          {% endif %}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="8">
+          {% for tag in company.tag_rating.all %}
+          <a
+            class="btn btn-light btn-sm mb-1"
+            href="{% url 'tag_projects_result' tag=tag %}"
+            >{{ tag.name }}</a
+          >
+          {% endfor %}
+        </td>
+      </tr>
+    </div>
+
+    {% endfor %}
+  </tbody>
+</table>
+
+<div>
+  <button
+    type="text"
+    id="cmp-load-more-button"
+    class="btn btn-outline-secondary"
+    onclick="loadMore(this)"
+  >
+    load more
+  </button>
+</div>
+
+<script src="{% static 'js/companies/sortBy.js' %}"></script>
+<script src="{% static 'js/companies/loadMoreCompanies.js' %}"></script>
+<script src="{% static 'js/companies/tagFilterPopup.js' %}"></script>
+<script src="{% static 'js/companies/tagFilter.js' %}"></script>
+
+
 {% endblock %}

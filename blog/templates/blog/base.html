@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/news/filterPopup.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/post_detail.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/related_projects.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/companies/companies.css' %}">
 
     <!-- Media -->
 
@@ -86,18 +87,16 @@
         // Call the function whenever the window is resized
         window.addEventListener('resize', checkWindowWidth);
     </script>
-    <script src="{% static 'js/mainSlider.js' %}"></script>
-    <script src="{% static 'js/timeLineTags/timelineTags.js' %}"></script>
-    <script src="{% static 'js/timeLineTags/filterSidebarSticky.js' %}"></script>
-    <script src="{% static 'js/timeLineTags/searchFocus.js' %}"></script>
-    <script src="{% static 'js/timeLineTags/filterResponsive.js' %}"></script>
+
+    {% comment %} <script src="{% static 'js/mainSlider.js' %}"></script> {% endcomment %}
     <script src="{% static 'js/shareBtn.js' %}"></script>
     <script src="{% static 'js/glider.min.js' %}"></script>
     <script src="{% static 'js/glider_editor_pick.js' %}"></script>
-    <script src="{% static 'js/glider_main_slider.js' %}"></script>
+    <script src="{% static 'js/glider_main_slider.js' %}"></script> 
     <script src="{% static 'js/glider_post_detail.js' %}"></script>
     <script src="{% static 'js/glider_post_detail_sidebar.js' %}"></script>
-    <script src="{% static 'js/searchAndFilter.js' %}"></script>
+    <script src="{% static 'js/helpers.js' %}"></script>
+
 
 </body>
 </html>
