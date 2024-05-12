@@ -1,13 +1,111 @@
 {% extends 'blog/base.html' %} {% load static %} {% block content %}
-<h1>Рейтинг компаний</h1>
 
-<div>
-  <div class="filter_fixed_popup_div" id="comp_filter_fixed_popup_div">
-      <div class="tags_filter_popup companies_fixed_popup" id="tags_filter_popup">
+<article class="companies_article">
+  <div class="companeies_project_scoring_div_flex">
+    <div class="project_scoring_div">
+      <div class="project_scoring_title_text_div">
+        <h2 class="project_scoring_title">Projects Scoring</h2>
+        <p class="project_scoring_text">
+          Our experts have selected 3 projects that are worthy of your attention
+        </p>
+      </div>
+
+      <div class="companies_project_scoring_items_div">
+        {% for company_item in top_companies %}
+
+        <div class="project_scoring_item">
+          <div class="project_scoring_item_logo_name_points_div">
+            <div class="project_scoring_item_logo_div">
+              <img
+                src="{{company_item.image.url}}"
+                class="project_scoring_item_logo"
+                alt="star_icon"
+              />
+            </div>
+
+            <div class="project_scoring_item_name_points_div">
+              <div class="project_scoring_item_name_div">
+                <h3 class="project_scoring_item_fullname">
+                  {{ company_item.name }}
+                </h3>
+                <p class="project_scoring_item_shortname">
+                  {{ company_item.ticker }}
+                </p>
+              </div>
+
+              <div class="project_scoring_item_points_div">
+                <img
+                  src="{% static 'img/main/star.svg' %}"
+                  class="project_scoring_item_points_star_icon"
+                  width="24px"
+                  height="24px"
+                  alt="star_icon"
+                />
+
+                <div class="project_scoring_item_points">
+                  <span class="project_scoring_item_points_number"
+                    >{{ company_item.average_score }}</span
+                  >
+                  <span class="project_scoring_item_points_text">TPS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project_scoring_item_triangle_image_div">
+            <div class="project_scoring_item_triangle_top_text">
+              <p class="project_scoring_item_triangle_p_text">Product</p>
+            </div>
+            <img
+              src="{% static 'img/main/project_params_triangle.svg' %}"
+              class="project_params_triangle_icon"
+              width="86px"
+              height="86px"
+              alt="triangle_icon"
+            />
+            <div class="project_scoring_item_triangle_bottom_text">
+              <p class="project_scoring_item_triangle_p_text">Team</p>
+              <p class="project_scoring_item_triangle_p_text">Security</p>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+
+    {% comment %}
+    <div class="project_view_all_div">
+      <a href="{% url 'company_ratings' %}"
+        ><button class="project_view_all_button">View all projects</button></a
+      >
+    </div>
+    {% endcomment %}
+  </div>
+
+  <div class="companies_rating_system_desc_div">
+    <h3 class="companies_rating_system_title">The rating system</h3>
+    <p class="companies_rating_system_text">
+      evaluates a project based on three vital aspects of its performance: the
+      extent of decentralization within the team structure and decision-making
+      processes; effective marketing activities by the team; strong market
+      performance as indicated by the product's growth, APY over the last year,
+      secure asset management practices; along with token emission limitations,
+      and liquidity level based on TVL.
+    </p>
+  </div>
+
+  <div>
+    <div class="filter_fixed_popup_div" id="comp_filter_fixed_popup_div">
+      <div
+        class="tags_filter_popup companies_fixed_popup"
+        id="tags_filter_popup"
+      >
         <div class="timeline_tags_div_sticky">
           <div class="timeline_tags_filter_div_flex">
             <div class="timeline_tags_filter_div">
-              {% comment %} <div class="timeline_calendar_search_div">
+              {% comment %}
+              <div class="timeline_calendar_search_div">
                 <div class="timeline_search_input_div">
                   <img
                     src="{% static 'img/timelineTags/search.svg' %}"
@@ -32,7 +130,8 @@
                     placeholder="Search"
                   />
                 </div>
-              </div> {% endcomment %}
+              </div>
+              {% endcomment %}
 
               <div class="timeline_main_tags_div">
                 <div class="timeline_categories_projects_tags_div">
@@ -62,157 +161,302 @@
                   </div>
                 </div>
                 <div class="timeline_tags_apply_button_div">
-                    <button
-                      class="timeline_tags_apply_button"
-                      id="comp_tr_apply_button"
-                      onclick="handleSubmit()"
-                    >
-                      Apply
-                    </button>
+                  <button
+                    class="timeline_tags_apply_button"
+                    id="comp_tr_apply_button"
+                    onclick="handleSubmit()"
+                  >
+                    Apply
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
 
+  <div class="companies_list_settings_div">
+    <div class="tags_selector_div_flex">
+      <div class="tags_selector_div" id="tags_selector_div">
+        <div class="tags_selector" id="tags_selector">
+          <span class="tags_selector_p" id="tags_selector_p">All Projects</span>
+          <img
+            src="{% static 'img/timelineTags/dropdown_arrow.svg' %}"
+            id="dropdown_arrow"
+            alt="dropdown_arrow"
+          />
+        </div>
+      </div>
+    </div>
 
-<div
-  class="tags_selector_div"
-  id="tags_selector_div"
->
-  <div class="tags_selector" id="tags_selector">
-    <p
-      class="tags_selector_p"
-      id="tags_selector_p"
-    >
-      All Projects
-    </p>
-    <img
-      src="{% static 'img/timelineTags/dropdown_arrow.svg' %}"
-      id="dropdown_arrow"
-      alt="dropdown_arrow"
-    />
+    <div class="companies_list_settings_option_div" id="sort_options">
+      <div class="companies_list_settings_option">
+        <label for="launched">Launched</label>
+        <input type="radio" id="launched" name="status" value="launched" />
+        <img
+          src="{% static 'img/companies/companies_radio_icon.svg' %}"
+          width="16px"
+          height="16px"
+          alt="companies_radio_icon"
+        />
+      </div>
+      <div class="companies_list_settings_option">
+        <label for="team">Team</label>
+        <input type="radio" id="team" name="status" value="team" />
+        <img
+          src="{% static 'img/companies/companies_radio_icon.svg' %}"
+          width="16px"
+          height="16px"
+          alt="companies_radio_icon"
+        />
+      </div>
+      <div class="companies_list_settings_option">
+        <label for="product">Product</label>
+        <input type="radio" id="product" name="status" value="product" />
+        <img
+          src="{% static 'img/companies/companies_radio_icon.svg' %}"
+          width="16px"
+          height="16px"
+          alt="companies_radio_icon"
+        />
+      </div>
+      <div class="companies_list_settings_option">
+        <label for="security">Security</label>
+        <input type="radio" id="security" name="status" value="security" />
+        <img
+          src="{% static 'img/companies/companies_radio_icon.svg' %}"
+          width="16px"
+          height="16px"
+          alt="companies_radio_icon"
+        />
+      </div>
+      <div class="companies_list_settings_option">
+        <label for="total-score">Total SCORE</label>
+        <input type="radio" id="totalScore" name="status" value="totalScore" />
+        <img
+          src="{% static 'img/companies/companies_radio_icon.svg' %}"
+          width="16px"
+          height="16px"
+          alt="companies_radio_icon"
+        />
+      </div>
+    </div>
   </div>
-</div>
 
-<div style="display: flex; gap: 10px" id="sort_options">
-  <div>
-    <label for="launched">Launched:</label>
-    <input type="radio" id="launched" name="status" value="launched" />
-  </div>
-  <div>
-    <label for="team">Team:</label>
-    <input type="radio" id="team" name="status" value="team" />
-  </div>
-  <div>
-    <label for="product">Product:</label>
-    <input type="radio" id="product" name="status" value="product" />
-  </div>
-  <div>
-    <label for="security">Security:</label>
-    <input type="radio" id="security" name="status" value="security" />
-  </div>
-  <div>
-    <label for="total-score">Total Score:</label>
-    <input type="radio" id="totalScore" name="status" value="totalScore" />
-  </div>
-</div>
+  <span aria-hidden="true" style="display: none" id="all_posts_total"
+    >{{total}}</span
+  >
+  <!-- Таблица рейтинга компаний -->
 
-<span aria-hidden="true" style="display: none" id="all_posts_total"
-  >{{total}}</span
->
-<!-- Таблица рейтинга компаний -->
-
-<table border="1">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Название</th>
-      <th>Тикер</th>
-      <th>Оценка безопасности</th>
-      <th>Оценка команды</th>
-      <th>Оценка продукта</th>
-      <th>Средний балл</th>
-      <th>Дата добавления</th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="companies_list_div">
     {% for company in companies %}
 
-    <div id="company_card_wrapper">
-      <tr>
-        <td>
-          {% if company.image %}
-          <img src="{{ company.image.url }}" width="50" />
-          {% else %}
-          <img src="{% static 'img/default_image.jpg' %}" width="50" />
-          {% endif %}
-        </td>
-        <td>
-          <a class="icon-link" href="{% url 'company_detail' company.id %}"
-            >{{ company.name }}</a
-          >
-        </td>
-        <td>{{ company.ticker }}</td>
-        <td>{{ company.security_score }}</td>
-        <td>{{ company.team_score }}</td>
-        <td>{{ company.product_score }}</td>
-        <td>{{ company.average_score|default:"0"|floatformat:"0" }}</td>
-        <td>{{ company.date_added|date:"M Y" }}</td>
-      </tr>
-      <tr>
-        <td colspan="8">{{ company.description }}</td>
-      </tr>
-      <tr>
-        <td colspan="8">
-          {% if company.link %}
-          <a target="_blank" href="{{ company.link }}">{{ company.link }}</a>
-          {% else %} {% endif %}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="8">
-          {% if company.link %}
-          <a target="_blank" href="{{ company.link }}">{{ company.github }}</a>
+    <div class="company_item_list" id="company_card_wrapper">
+      <div class="company_item_list_elems_tags_div">
+        <div class="company_item_main">
+          <div class="company_left_part_div">
+            <div class="company_logo_name_links">
+              <div class="company_logo_name_div">
+                <div class="company_logo_div">
+                  {% if company.image %}
+                  <img
+                    src="{{ company.image.url }}"
+                    alt="company_icon"
+                    class="company_icon"
+                  />
+                  {% else %}
+                  <img
+                    src="{% static 'img/default_image.jpg' %}"
+                    alt="company_icon"
+                    class="company_icon"
+                  />
+                  {% endif %}
+                </div>
+                <div class="company_logo_name_ticker_div">
+                  <p class="company_logo_name">
+                    <a
+                      class="icon-link"
+                      href="{% url 'company_detail' company.id %}"
+                    >
+                      {{ company.name }}
+                    </a>
+                  </p>
+                  <p class="company_logo_ticker">{{ company.ticker }}</p>
+                </div>
+              </div>
 
-          {% endif %}
-        </td>
-      </tr>
-      <tr>
-        <td colspan="8">
+              <div class="company_home_github_news_div">
+                <a>
+                  <div class="company_home_icon_div">
+                    <img
+                      src="{% static 'img/companies/company_home_icon.svg' %}"
+                      width="24px"
+                      height="24px"
+                      class="company_home_icon"
+                      alt="company_home_icon.svg"
+                    />
+                  </div>
+                </a>
+
+                <a>
+                  <div class="company_github_icon_div">
+                    <img
+                      src="{% static 'img/companies/company_github_icon.svg' %}"
+                      width="24px"
+                      height="24px"
+                      class="company_github_icon"
+                      alt="company_github_icon"
+                    />
+                  </div>
+                </a>
+
+                <a>
+                  <div class="company_news_icon_div">
+                    <span class="company_links_news_text">News</span>
+                    <img
+                      src="{% static 'img/companies/company_news_link_icon.svg' %}"
+                      width="16px"
+                      height="15px"
+                      class="company_news_link_icon"
+                      alt="company_news_link_icon"
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="company_description_div">
+              <p class="company_description">{{ company.description }}</p>
+            </div>
+          </div>
+
+          <div class="company_right_part_div">
+            <div class="company_right_part_date_div">
+              <p class="company_right_part_date_p">
+                {{ company.date_added|date:"M Y" }}
+              </p>
+            </div>
+
+            <div class="company_right_part_team_div">
+              <p class="company_right_part_param_p">{{ company.team_score }}</p>
+            </div>
+
+            <div class="company_right_part_product_score_div">
+              <p class="company_right_part_param_p">
+                {{ company.product_score }}
+              </p>
+            </div>
+
+            <div class="company_right_part_security_score_div">
+              <p class="company_right_part_param_p">
+                {{ company.security_score }}
+              </p>
+            </div>
+
+            <div class="company_right_part_triangle_overall_ratings">
+              <div>
+                <img
+                  src="{% static 'img/companies/companies_radio_icon.svg' %}"
+                  width="86px"
+                  height="86px"
+                  alt="company_trianlge_diagram"
+                />
+              </div>
+
+              <div class="company_star_overall_div">
+                <img
+                  src="{% static 'img/companies/company_star_icon.svg' %}"
+                  width="24px"
+                  height="24px"
+                  alt="company_trianlge_diagram"
+                />
+                <p class="company_star_overall_text">
+                  {{ company.average_score|default:"0"|floatformat:"0" }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="company_tags_div">
           {% for tag in company.tag_rating.all %}
           <a
-            class="btn btn-light btn-sm mb-1"
+            class="btn btn-light btn-sm mb-1 company_tag"
             href="{% url 'tag_projects_result' tag=tag %}"
-            >{{ tag.name }}</a
           >
+            {{ tag.name }}
+          </a>
           {% endfor %}
-        </td>
-      </tr>
+        </div>
+      </div>
     </div>
 
     {% endfor %}
-  </tbody>
-</table>
+  </div>
 
-<div>
-  <button
-    type="text"
-    id="cmp-load-more-button"
-    class="btn btn-outline-secondary"
-    onclick="loadMore(this)"
-  >
-    load more
-  </button>
-</div>
+  <div class="more_projects_btn_icon_flex">
+    <button
+      type="text"
+      id="cmp-load-more-button"
+      class="btn btn-outline-secondary more_projects_btn"
+      onclick="loadMore(this)"
+    >
+      More Projects
+    </button>
+    <img
+      src="{% static 'img/companies/more_projects_dropdown_icon.svg' %}"
+      width="16px"
+      height="16px"
+      alt="more_projects_dropdown_icon"
+    />
+  </div>
+</article>
 
 <script src="{% static 'js/companies/sortBy.js' %}"></script>
 <script src="{% static 'js/companies/loadMoreCompanies.js' %}"></script>
 <script src="{% static 'js/companies/tagFilterPopup.js' %}"></script>
 <script src="{% static 'js/companies/tagFilter.js' %}"></script>
 
+{% endblock %} {% comment %}
+<div>
+  {% if company.image %}
+  <img src="{{ company.image.url }}" width="50" />
+  {% else %}
+  <img src="{% static 'img/default_image.jpg' %}" width="50" />
+  {% endif %}
+</div>
 
-{% endblock %}
+<div>
+  <a class="icon-link" href="{% url 'company_detail' company.id %}">
+    {{ company.name }}
+  </a>
+</div>
+
+{% endcomment %} {% comment %}
+<div>{{ company.ticker }}</div>
+<div>{{ company.security_score }}</div>
+<div>{{ company.team_score }}</div>
+<div>{{ company.product_score }}</div>
+<div>{{ company.average_score|default:"0"|floatformat:"0" }}</div>
+<div>{{ company.date_added|date:"M Y" }}</div>
+{% endcomment %} {% comment %}
+<div>
+  <div colspan="8">{{ company.description }}</div>
+</div>
+<div>
+  <div colspan="8">
+    {% if company.link %}
+    <a target="_blank" href="{{ company.link }}">{{ company.link }}</a>
+    {% else %} {% endif %}
+  </div>
+</div>
+<div>
+  <div colspan="8">
+    {% if company.link %}
+    <a target="_blank" href="{{ company.link }}">{{ company.github }}</a>
+    {% endif %}
+  </div>
+</div>
+{% endcomment %}
