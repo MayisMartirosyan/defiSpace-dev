@@ -16,11 +16,7 @@ class Guides(models.Model):
     def str(self):
         return self.title
 
-class About(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    def str(self):
-        return self.title
+
     
 class Company(models.Model):
     name = models.CharField(max_length=200)
@@ -83,6 +79,14 @@ class Post(models.Model):
 
     def str(self):
         return self.title
+    
+    
+class About(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    def str(self):
+        return self.title
+    
 
 class Advantage(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='advantages')

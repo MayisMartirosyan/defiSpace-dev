@@ -396,15 +396,12 @@
     {% endfor %}
   </div>
 
-  <div class="more_projects_btn_icon_flex">
-    <button
-      type="text"
-      id="cmp-load-more-button"
+  <button class="more_projects_btn_icon_flex" id="cmp-load-more-button"  onclick="loadMore(this)">
+    <span
       class="btn btn-outline-secondary more_projects_btn"
-      onclick="loadMore(this)"
     >
       More Projects
-    </button>
+    </span>
     <img
       src="{% static 'img/companies/more_projects_dropdown_icon.svg' %}"
       width="16px"

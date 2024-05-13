@@ -33,13 +33,25 @@ class AdvantageInline(admin.TabularInline):
     model = Advantage
     extra = 1
 
+class AboutAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+     
+        if About.objects.exists():
+            return False  
+        else:
+            return True  
+        
+        
+
+
 @admin.register(Company)
+
 class CompanyAdmin(admin.ModelAdmin):
     inlines = [SecurityScoreInline, TeamcoreInline, ProductScoreInline, AdvantageInline]
 
+admin.site.register(About, AboutAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Review)
 admin.site.register(Guides)
-admin.site.register(About)
 admin.site.register(TagPosts)
 admin.site.register(TagRating)

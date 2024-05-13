@@ -201,8 +201,8 @@ def company_ratings(request):
 
 
 def about(request):
-    about = About.objects.first()
-    return render(request, 'blog/about.html', {'about': about, 'request': request})
+    about_instance = get_object_or_404(About)
+    return render(request, 'blog/about.html', {'about': about_instance})
 
 
 def tag_result(request, tag):
