@@ -13,8 +13,10 @@
       <div class="companies_project_scoring_items_div">
         {% for company_item in top_companies %}
 
-        <div class="project_scoring_item">
-          <div class="project_scoring_item_logo_name_points_div">
+       
+        <a  class="company-item-link" href="{% url 'company_detail' company_item.id %}"> 
+         <div class="project_scoring_item">
+        <div class="project_scoring_item_logo_name_points_div">
             <div class="project_scoring_item_logo_div">
               <img
                 src="{{company_item.image.url}}"
@@ -68,7 +70,10 @@
               <p class="project_scoring_item_triangle_p_text">Security</p>
             </div>
           </div>
-        </div>
+       </div>
+        </a>
+          
+        
 
         {% endfor %}
       </div>
@@ -101,7 +106,7 @@
         class="tags_filter_popup companies_fixed_popup"
         id="tags_filter_popup"
       >
-        <div class="timeline_tags_div_sticky">
+        <div class="timeline_tags_div_sticky" id="cmp_timeline_tags_div">
           <div class="timeline_tags_filter_div_flex">
             <div class="timeline_tags_filter_div">
               {% comment %}
@@ -288,19 +293,24 @@
               </div>
 
               <div class="company_home_github_news_div">
-                <a>
-                  <div class="company_home_icon_div">
-                    <img
-                      src="{% static 'img/companies/company_home_icon.svg' %}"
-                      width="24px"
-                      height="24px"
-                      class="company_home_icon"
-                      alt="company_home_icon.svg"
-                    />
-                  </div>
-                </a>
 
-                <a>
+              {% if  company.link %}
+                 <a href="{{ company.link }}" target="_blank">
+                   <div class="company_home_icon_div">
+                      <img
+                        src="{% static 'img/companies/company_home_icon.svg' %}"
+                        width="24px"
+                        height="24px"
+                        class="company_home_icon"
+                        alt="company_home_icon.svg"
+                      />
+                    </div>
+                  </a>
+              {% endif %}
+               
+
+              {% if company.github  %}
+               <a href="{{ company.github }}" target="_blank">
                   <div class="company_github_icon_div">
                     <img
                       src="{% static 'img/companies/company_github_icon.svg' %}"
@@ -311,6 +321,10 @@
                     />
                   </div>
                 </a>
+  
+              {% endif %}
+
+               
 
                 <a>
                   <div class="company_news_icon_div">

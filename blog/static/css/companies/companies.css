@@ -269,7 +269,26 @@
     align-items: center;
     width: 24px;
     height: 24px;
+    cursor: pointer;
+    opacity: 1;
+   transition: opacity 0.2s ease-in-out ;
   }
+
+  .company_home_icon_div:hover {
+   
+    opacity: 0.8;
+   transition: opacity 0.2s ease-in-out ;
+  }
+  .company_github_icon_div{
+cursor: pointer;
+   opacity: 1;
+   transition: opacity 0.2s ease-in-out ;
+  }
+
+  .company_github_icon_div:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out ;
+   }
   
   .company_home_icon {
     width: 24px;
@@ -455,3 +474,6 @@
     line-height: 140%;
   }
   
+  .company-item-link{
+    width: 100%;
+  }

@@ -157,7 +157,7 @@ def post_detail(request, pk):
 def company_ratings(request):
     
     page_number = request.GET.get('page')
-    items_per_page = int(page_number) * 1 if page_number else 1
+    items_per_page = int(page_number) * 12 if page_number else 12
     
     companies = Company.objects.all()
     top_companies = companies.filter(mark=True)[:3]

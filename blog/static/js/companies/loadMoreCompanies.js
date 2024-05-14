@@ -4,10 +4,12 @@ document.addEventListener("DOMContentLoaded",()=> {
     const total = document.getElementById("all_posts_total").innerText
     const alreadyLoaded = document.querySelectorAll("#company_card_wrapper").length
     
+
+    console.log(total,alreadyLoaded);
     if(Number(total) === Number(alreadyLoaded)){
-        btn.disabled = true
+        btn.style.display = "none"
     }else{
-        btn.disabled = false
+        btn.style.display = "flex"
     }
 })
 

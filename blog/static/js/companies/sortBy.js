@@ -5,15 +5,16 @@ const loadQueryToDOM = () => {
   const filterInputs = getUrlParams();
 
   radioButtons.forEach((button) => {
-
     if(!filterInputs.sort_by){
         if(button.id === "totalScore"){
             button.checked = true
+            button.parentElement.style = 'background: var(--Blue, #BDD4FA);'
         }
     }
 
     if (button.value === filterInputs.sort_by) {
       button.checked = true;
+      button.parentElement.style = 'background: var(--Blue, #BDD4FA);'
     }
   });
 };
