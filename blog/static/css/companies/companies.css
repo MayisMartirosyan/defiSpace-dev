@@ -188,7 +188,9 @@
   
   .company_item_main {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    gap: 12px;
     width: 100%;
   }
   
@@ -350,30 +352,21 @@ cursor: pointer;
   }
   
   .company_right_part_div {
+    max-width: 655px;
     display: flex;
     justify-content: flex-end;
     /* height: 66px; */
     align-items: center;
     /* gap: 12px; */
     width: 100%;
+    margin-right: 20px;
   }
   
-  /* .company_right_part_date_div {
-    width: 15%;
-  } */
-  
-  .company_right_part_team_div {
-    width: 15%;
+  .company_right_part_item_div {
+    width: 100%;
   }
   
-  .company_right_part_product_score_div {
-    width: 15%;
-  }
-  
-  .company_right_part_security_score_div {
-    width: 15%;
-  }
-  
+
   .company_right_part_triangle_overall_ratings {
     display: flex;
     align-items: center;
