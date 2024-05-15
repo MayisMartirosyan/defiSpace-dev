@@ -357,7 +357,7 @@ cursor: pointer;
     justify-content: flex-end;
     /* height: 66px; */
     align-items: center;
-    /* gap: 12px; */
+    gap: 12px;
     width: 100%;
     margin-right: 20px;
   }
@@ -374,6 +374,19 @@ cursor: pointer;
  
   }
   
+  .bg{
+    width: 85px;
+    height: 85px;
+    /* background: darkgreen; */
+  }
+  
+  .triangle {
+    width: 85px;
+    height: 85px;
+    background: darkorange;
+    /* clip-path: polygon(26% 74%, 50% 20%, 80% 80%); */
+  }
+
   .company_star_overall_text {
     color: var(--DeFi-Space-Orange, #fe6a25);
     font-family: Inter;

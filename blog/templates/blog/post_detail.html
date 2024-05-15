@@ -369,13 +369,19 @@
                               Product
                            </p>
                         </div>
-                        <img
-                           src="{% static 'img/main/project_params_triangle.svg' %}"
-                           class="project_params_triangle_icon"
-                           width="86px"
-                           height="86px"
-                           alt="triangle_icon"
-                        />
+                        <div class="bg">
+                           <div 
+                              class="triangle" 
+                              style="clip-path: polygon({{ company.team_score_first_formatted }}% {{ company.team_score_second_formatted }}%, 50% {{ company.product_score_formatted }}%, {{ company.security_score_formatted }}% {{ company.security_score_formatted }}%)"
+                           >
+                             <img 
+                               src="{% static 'img/companies/company_triangle_white_icon.png' %}" 
+                               alt=""
+                               width="85px" 
+                               height="85px"
+                             />
+                           </div>
+                         </div>
                         <div
                            class="post_detail_related_project_item_triangle_bottom_text"
                         >
