@@ -269,8 +269,19 @@
                   <div class="project_scoring_item_triangle_top_text">
                     <p class="project_scoring_item_triangle_p_text">Product</p>
                   </div>
-                  <img src="{% static 'img/main/project_params_triangle.svg' %}" class="project_params_triangle_icon"
-                    width="86px" height="86px" alt="triangle_icon" />
+                  <div class="bg">
+                    <div 
+                    class="triangle" 
+                    style="clip-path: polygon({{ company_item.team_score_first_formatted }}% {{ company_item.team_score_second_formatted }}%, 50% {{ company_item.product_score_formatted }}%, {{ company_item.security_score_formatted }}% {{ company_item.security_score_formatted }}%)"
+                    >
+                      <img 
+                        src="{% static 'img/companies/company_triangle_white_icon.png' %}" 
+                        alt=""
+                        width="85px" 
+                        height="85px"
+                      />
+                    </div>
+                  </div>
                   <div class="project_scoring_item_triangle_bottom_text">
                     <p class="project_scoring_item_triangle_p_text">Team</p>
                     <p class="project_scoring_item_triangle_p_text">Security</p>
