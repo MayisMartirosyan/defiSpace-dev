@@ -45,6 +45,11 @@
 }
 
 @media (max-width: 700px) {
+
+  #company_list_item_triangle_div{
+    display: none;
+  }
+
   .companies_list_settings_option_div {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -85,5 +90,21 @@
   .company_left_part_div {
     min-width: auto;
     padding-right: 0px;
+  }
+
+  .company_item_total_score_div{
+    display: block;
+  }
+
+  #company_left_param_text{
+    text-align: left;
+  }
+
+  #company_right_param_text{
+    text-align: right;
+  }
+
+  .company_star_overall_tps{
+    opacity: 1;
   }
 }
