@@ -64,8 +64,8 @@
               style="clip-path: polygon({{ company_item.team_score_first_formatted }}% {{ company_item.team_score_second_formatted }}%, 50% {{ company_item.product_score_formatted }}%, {{ company_item.security_score_formatted }}% {{ company_item.security_score_formatted }}%)"
               >
                 <img 
-                  src="{% static 'img/companies/company_triangle_white_icon.png' %}" 
-                  alt=""
+                  src="{% static 'img/companies/company_triangle_white_icon.svg' %}" 
+                  alt="triangle_white_icon"
                   width="85px" 
                   height="85px"
                 />
@@ -85,13 +85,6 @@
       </div>
     </div>
 
-    {% comment %}
-    <div class="project_view_all_div">
-      <a href="{% url 'company_ratings' %}"
-        ><button class="project_view_all_button">View all projects</button></a
-      >
-    </div>
-    {% endcomment %}
   </div>
 
   <div class="companies_rating_system_desc_div">
@@ -188,6 +181,9 @@
     </div>
   </div>
 
+
+  <article class="companies_all_table">
+
   <div class="companies_list_settings_div">
     <div class="tags_selector_div_flex">
       <div class="tags_selector_div" id="tags_selector_div">
@@ -210,6 +206,7 @@
           src="{% static 'img/companies/companies_radio_icon.svg' %}"
           width="16px"
           height="16px"
+          id="companies_radio_button"
           alt="companies_radio_icon"
         />
       </div>
@@ -220,6 +217,7 @@
           src="{% static 'img/companies/companies_radio_icon.svg' %}"
           width="16px"
           height="16px"
+          id="companies_radio_button"
           alt="companies_radio_icon"
         />
       </div>
@@ -230,6 +228,7 @@
           src="{% static 'img/companies/companies_radio_icon.svg' %}"
           width="16px"
           height="16px"
+          id="companies_radio_button"
           alt="companies_radio_icon"
         />
       </div>
@@ -240,26 +239,28 @@
           src="{% static 'img/companies/companies_radio_icon.svg' %}"
           width="16px"
           height="16px"
+          id="companies_radio_button"
           alt="companies_radio_icon"
         />
       </div>
-      <div class="companies_list_settings_option">
+      <div class="companies_list_settings_option" id="companies_list_total_score_option">
         <label for="total-score">Total SCORE</label>
         <input type="radio" id="totalScore" name="status" value="totalScore" />
         <img
           src="{% static 'img/companies/companies_radio_icon.svg' %}"
           width="16px"
           height="16px"
+          id="companies_radio_button"
           alt="companies_radio_icon"
         />
       </div>
     </div>
-  </div>
+    </div>
 
-  <span aria-hidden="true" style="display: none" id="all_posts_total"
-    >{{total}}</span
-  >
-  <!-- Таблица рейтинга компаний -->
+    <span aria-hidden="true" style="display: none" id="all_posts_total">
+      {{total}}
+    </span>
+
 
   <div class="companies_list_div">
     {% for company in companies %}
@@ -330,7 +331,6 @@
   
               {% endif %}
 
-               
 
                 <a>
                   <div class="company_news_icon_div">
@@ -377,17 +377,27 @@
 
             <div class="company_right_part_triangle_overall_ratings">
 
-              <div class="bg">
-                <div 
-                class="triangle" 
-                style="clip-path: polygon({{ company.team_score_first_formatted }}% {{ company.team_score_second_formatted }}%, 50% {{ company.product_score_formatted }}%, {{ company.security_score_formatted }}% {{ company.security_score_formatted }}%)"
-                >
-                  <img 
-                    src="{% static 'img/companies/company_triangle_white_icon.png' %}" 
-                    alt=""
-                    width="85px" 
-                    height="85px"
-                  />
+
+              <div class="project_scoring_item_triangle_image_div">
+                <div class="project_scoring_item_triangle_top_text">
+                  <p class="project_scoring_item_triangle_p_text">Product</p>
+                </div>
+                <div class="bg">
+                  <div 
+                  class="triangle" 
+                  style="clip-path: polygon({{ company.team_score_first_formatted }}% {{ company.team_score_second_formatted }}%, 50% {{ company.product_score_formatted }}%, {{ company.security_score_formatted }}% {{ company.security_score_formatted }}%)"
+                  >
+                    <img 
+                      src="{% static 'img/companies/company_triangle_white_icon.svg' %}" 
+                      alt="triangle_white_icon"
+                      width="85px" 
+                      height="85px"
+                    />
+                  </div>
+                </div>
+                <div class="project_scoring_item_triangle_bottom_text">
+                  <p class="project_scoring_item_triangle_p_text">Team</p>
+                  <p class="project_scoring_item_triangle_p_text">Security</p>
                 </div>
               </div>
 
@@ -400,6 +410,9 @@
                 />
                 <p class="company_star_overall_text">
                   {{ company.average_score|default:"0"|floatformat:"0" }}
+                </p>
+                <p class="company_star_overall_tps">
+                  TPS
                 </p>
               </div>
             </div>
@@ -422,6 +435,8 @@
     {% endfor %}
   </div>
 
+</article>
+
   <button class="more_projects_btn_icon_flex" id="cmp-load-more-button"  onclick="loadMore(this)">
     <span
       class="btn btn-outline-secondary more_projects_btn"
@@ -442,55 +457,4 @@
 <script src="{% static 'js/companies/tagFilterPopup.js' %}"></script>
 <script src="{% static 'js/companies/tagFilter.js' %}"></script>
 
-{% endblock %} {% comment %}
-<div>
-  {% if company.image %}
-  <img src="{{ company.image.url }}" width="50" />
-  {% else %}
-  <img src="{% static 'img/default_image.jpg' %}" width="50" />
-  {% endif %}
-</div>
-
-<div>
-  <a class="icon-link" href="{% url 'company_detail' company.id %}">
-    {{ company.name }}
-  </a>
-</div>
-
-{% endcomment %} {% comment %}
-<div>{{ company.ticker }}</div>
-<div>{{ company.security_score }}</div>
-<div>{{ company.team_score }}</div>
-<div>{{ company.product_score }}</div>
-<div>{{ company.average_score|default:"0"|floatformat:"0" }}</div>
-<div>{{ company.date_added|date:"M Y" }}</div>
-{% endcomment %} {% comment %}
-<div>
-  <div colspan="8">{{ company.description }}</div>
-</div>
-<div>
-  <div colspan="8">
-    {% if company.link %}
-    <a target="_blank" href="{{ company.link }}">{{ company.link }}</a>
-    {% else %} {% endif %}
-  </div>
-</div>
-<div>
-  <div colspan="8">
-    {% if company.link %}
-    <a target="_blank" href="{{ company.link }}">{{ company.github }}</a>
-    {% endif %}
-  </div>
-</div>
-{% endcomment %}
-
-
-{% comment %} formules {% endcomment %}
-{% comment %} product score {% endcomment %}
-{% comment %} {{ 100 - company.product_score/2 }} {% endcomment %}
-
-
-
-{% comment %} team score {% endcomment %}
-{% comment %} 100 - {{ company.team_score }} {% endcomment %}
-{% comment %} {{ company.team_score }} {% endcomment %}
+{% endblock %}
