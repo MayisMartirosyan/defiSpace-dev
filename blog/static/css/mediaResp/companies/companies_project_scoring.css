@@ -1,0 +1,5 @@
+@media (max-width: 1200px) {
+  .companies_project_scoring_items_div {
+    flex-direction: column;
+  }
+}

@@ -99,12 +99,12 @@
     }
 
     .project_scoring_item_points_star_icon {
-        width: 18px;
-        height: 18px;
+        width: 15px;
+        height: 15px;
     }
 
     .project_scoring_item_points_number {
-        font-size: 18px;
+        font-size: 15px;
     }
 
     .project_scoring_item_points_text {
