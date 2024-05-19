@@ -354,32 +354,33 @@
 
           <div class="company_right_part_div">
             <div class="company_right_part_item_div">
-              <p class="company_right_part_date_p">
+              <p class="company_right_part_date_p" id="company_left_param_text">
                 {{ company.date_added|date:"M Y" }}
               </p>
             </div>
 
             <div class="company_right_part_item_div">
-              <p class="company_right_part_param_p">{{ company.team_score }}</p>
+              <p class="company_right_part_param_p" id="company_right_param_text">
+                {{ company.team_score }}
+              </p>
             </div>
 
             <div class="company_right_part_item_div">
-              <p class="company_right_part_param_p">
+              <p class="company_right_part_param_p" id="company_left_param_text">
                 {{ company.product_score }}
               </p>
             </div>
 
             <div class="company_right_part_item_div">
-              <p class="company_right_part_param_p">
+              <p class="company_right_part_param_p" id="company_right_param_text">
                 {{ company.security_score }}
               </p>
             </div>
 
             <div class="company_right_part_triangle_overall_ratings">
 
-
-              <div class="project_scoring_item_triangle_image_div">
-                <div class="project_scoring_item_triangle_top_text">
+              <div class="project_scoring_item_triangle_image_div" id="company_list_item_triangle_div">
+                <div class="project_scoring_item_triangle_top_text_list_item">
                   <p class="project_scoring_item_triangle_p_text">Product</p>
                 </div>
                 <div class="bg">
@@ -395,10 +396,14 @@
                     />
                   </div>
                 </div>
-                <div class="project_scoring_item_triangle_bottom_text">
+                <div class="project_scoring_item_triangle_bottom_text_list_item">
                   <p class="project_scoring_item_triangle_p_text">Team</p>
                   <p class="project_scoring_item_triangle_p_text">Security</p>
                 </div>
+              </div>
+
+              <div class="company_item_total_score_div">
+                <p class="company_item_total_score_text">Total score</p>
               </div>
 
               <div class="company_star_overall_div">
