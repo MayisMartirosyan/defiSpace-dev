@@ -2,12 +2,20 @@ document.addEventListener("DOMContentLoaded",()=> {
     const ticker = document.getElementById("ticker");
     const navbar_logo = document.getElementById("navbar_logo");
     const header = document.getElementById("header");
+    const filter_btn = document.getElementById("header_filter_btn_div")
     
+
+    
+    if (window.location.pathname !== "/" && window.location.pathname !== "/companies/"){
+     filter_btn.style.display = "none";
+    }
     
     ////////////////// Active route //////////////////
     
     let nav_routes = document.getElementById("nav_routes");
     let btns = nav_routes.getElementsByClassName("nav_item");
+
+
     
     const currentUrl = window.location.pathname;
     
@@ -24,8 +32,7 @@ document.addEventListener("DOMContentLoaded",()=> {
     }
     let newsBtn = document.getElementById('nav_item_link_news');
 
-    console.log(newsBtn,'ssss');
-
+  
     if(currentUrl.includes('/post')){
        
         newsBtn.classList.add("nav_active");

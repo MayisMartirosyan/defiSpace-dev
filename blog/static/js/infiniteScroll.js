@@ -43,7 +43,7 @@ window.addEventListener('scroll', () => {
 
     const alreadyLoaded = document.querySelectorAll(".news_project_div").length
 
-    console.log(total,alreadyLoaded);
+
     if (isBottomOfPage() && Number(total) > Number(alreadyLoaded)) {
         replaceUrlForRequest()
     }

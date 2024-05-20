@@ -3,12 +3,16 @@ const loadFilterInputs = () => {
 
   const device = document.getElementById('content').getAttribute("data-device")
 
+  console.log(device);
+
   const filterInputs = getUrlParams();
 
  
 
   if (Object.keys(filterInputs).length > 0) {
     // Load search inputs
+
+    
     const searchInput = document.getElementById(`timeline_search_input_${device}`);
 
     searchInput.value = filterInputs.q || "";
@@ -19,6 +23,7 @@ const loadFilterInputs = () => {
       .getElementById(`tag_post_list_${device}`)
       .querySelectorAll('.big_tag_item input[type="checkbox"]');
 
+    
 
     TagPostsList.forEach((tag) => {
 
@@ -45,7 +50,6 @@ const loadFilterInputs = () => {
 
     TagRatingsList.forEach((tag) => {
 
-      console.log(tag.parentElement);
       if (filterInputs.tag_rating) {
         if (typeof filterInputs.tag_rating === "string") {
           filterInputs.tag_rating = filterInputs.tag_rating.split(",");

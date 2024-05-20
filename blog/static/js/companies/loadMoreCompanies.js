@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded",()=> {
     const alreadyLoaded = document.querySelectorAll("#company_card_wrapper").length
     
 
-    console.log(total,alreadyLoaded);
     if(Number(total) === Number(alreadyLoaded)){
         btn.style.display = "none"
     }else{

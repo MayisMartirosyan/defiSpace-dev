@@ -28,6 +28,7 @@
 
   .company_logo_name_links {
     max-width: none;
+    gap: 6px;
   }
 }
 
@@ -106,5 +107,20 @@
 
   .company_star_overall_tps{
     opacity: 1;
+  }
+}
+
+@media (max-width:500px) {
+  .company_item_list{
+    padding: 24px 0;
+  }
+
+  .company_right_part_triangle_overall_ratings {
+    justify-content: space-between;
+    
+  }
+
+  .company_item_total_score_text{
+    font-size: 14px;
   }
 }

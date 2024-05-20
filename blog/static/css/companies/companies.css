@@ -384,9 +384,9 @@ input[type="radio"]:checked + label {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   width: 100%;
-  margin-right: 20px;
+
 }
 
 .company_right_part_item_div {

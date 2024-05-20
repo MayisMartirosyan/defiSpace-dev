@@ -99,13 +99,13 @@
     </p>
   </div>
 
-  <div>
+
     <div class="filter_fixed_popup_div" id="comp_filter_fixed_popup_div">
       <div
         class="tags_filter_popup companies_fixed_popup"
         id="tags_filter_popup"
       >
-        <div class="timeline_tags_div_sticky" id="cmp_timeline_tags_div">
+        <div class="timeline_tags_div_sticky" id="cmp_timeline_tags_div" onclick="(e)=> e.stopPropagation()">
           <div class="timeline_tags_filter_div_flex">
             <div class="timeline_tags_filter_div">
               {% comment %}
@@ -179,14 +179,14 @@
         </div>
       </div>
     </div>
-  </div>
+
 
 
   <article class="companies_all_table">
 
   <div class="companies_list_settings_div">
     <div class="tags_selector_div_flex">
-      <div class="tags_selector_div" id="tags_selector_div">
+      <div class="tags_selector_div" onclick="openPopup()">
         <div class="tags_selector" id="tags_selector">
           <span class="tags_selector_p" id="tags_selector_p">All Projects</span>
           <img
@@ -332,8 +332,7 @@
               {% endif %}
 
 
-                <a>
-                  <div class="company_news_icon_div">
+                  <div class="company_news_icon_div" onclick="handle_build_redirect_url('comp_tags{{ company.id }}')">
                     <span class="company_links_news_text">News</span>
                     <img
                       src="{% static 'img/companies/company_news_link_icon.svg' %}"
@@ -343,7 +342,7 @@
                       alt="company_news_link_icon"
                     />
                   </div>
-                </a>
+
               </div>
             </div>
 
@@ -424,11 +423,12 @@
           </div>
         </div>
 
-        <div class="company_tags_div">
+        <div class="company_tags_div" id="comp_tags{{ company.id }}">
           {% for tag in company.tag_rating.all %}
           <a
             class="btn btn-light btn-sm mb-1 company_tag"
-            href="{% url 'tag_projects_result' tag=tag %}"
+            id={{tag.id}}
+            {% comment %} href="{% url 'tag_projects_result' tag=tag %}" {% endcomment %}
           >
             {{ tag.name }}
           </a>
@@ -461,5 +461,6 @@
 <script src="{% static 'js/companies/loadMoreCompanies.js' %}"></script>
 <script src="{% static 'js/companies/tagFilterPopup.js' %}"></script>
 <script src="{% static 'js/companies/tagFilter.js' %}"></script>
+<script src="{% static 'js/companies/buildRedirectUrl.js' %}"></script>
 
 {% endblock %}
