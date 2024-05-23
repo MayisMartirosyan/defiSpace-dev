@@ -7,6 +7,10 @@
    width: 100%;
 }
 
+#post_detail_triangle_item_url{
+   width: 100%;
+}
+
 .post_detail_related_project {
    display: flex;
    width: 100%;
