@@ -64,8 +64,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'blog.apps.BlogConfig',
-    'django_social_share'
-
 ]
 
 MIDDLEWARE = [
