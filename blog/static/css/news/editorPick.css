@@ -18,6 +18,10 @@
     margin: 60px 0;
 }
 
+.editor_pick_div > .glider-contain > .glider > .glider-track{
+    gap: 41px;
+}
+
 /* Editor pick title and buttons */
 
 .editor_pick_title_buttons {
@@ -86,7 +90,6 @@
     border-radius: 20px;
     background: var(--Light-Grey, #F8F8F8);
     width: 100%;
-    margin: 0 20px;
 }
 
 .editor_pick_item_image_link{

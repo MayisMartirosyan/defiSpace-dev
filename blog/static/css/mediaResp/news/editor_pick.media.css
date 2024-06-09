@@ -12,4 +12,9 @@
     .editor_pick_item {
         margin: 0px;
     }
+
+    .editor_pick_div > .glider-contain > .glider > .glider-track{
+        gap: 0px;
+    }
+    
 }

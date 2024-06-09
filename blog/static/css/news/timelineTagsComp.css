@@ -613,6 +613,7 @@
   
   .news_project_tags_share_div {
     display: flex;
+    gap: 8px;
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
@@ -620,6 +621,7 @@
   
   .news_project_tags_div {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     gap: 8px;
   }
