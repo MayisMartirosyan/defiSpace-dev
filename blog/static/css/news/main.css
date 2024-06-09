@@ -65,6 +65,7 @@
 
 .slider_tags_date_div {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     gap: 8px;
 }
@@ -86,6 +87,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-align: center;
 }
 
 .slider_description_buttons_div {
