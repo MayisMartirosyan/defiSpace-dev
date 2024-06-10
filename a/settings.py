@@ -14,9 +14,17 @@ from pathlib import Path
 import os
 from django.conf import settings
 from django.conf.urls.static import static
+import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+DJANGO_ENV = os.environ.get('DJANGO_ENV', 'development')
+
+
 
 LOGGING = {
     'version': 1,
@@ -48,10 +56,11 @@ LOGGING = {
 SECRET_KEY = 'django-insecure-q-)^wo0!bh6b2gmi!h0j#9e8h4=o1ef)z$@zxi)+r4687tn*eq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = DJANGO_ENV == 'production'
 
-ALLOWED_HOSTS = ['defispace.com','news.defispace.com','127.0.0.1']
 
+
+ALLOWED_HOSTS = os.environ.get("HTTP_HOST").split(" ")
 
 # Application definition
 
@@ -64,6 +73,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'blog.apps.BlogConfig',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -74,6 +84,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'a.urls'
@@ -98,6 +109,32 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'a.wsgi.application'
 
+CORS_ALLOWED_ORIGINS = [
+    f'http://{host}' if 'localhost' in host else f'https://{host}'
+    for host in ALLOWED_HOSTS
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    f'http://{host}' if 'localhost' in host else f'https://{host}'
+    for host in ALLOWED_HOSTS
+]
+
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+CORS_ALLOW_HEADERS = (
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+)
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -112,6 +149,10 @@ DATABASES = {
         'PORT': '',                 
     }
 }
+
+
+if DJANGO_ENV == 'production':
+    DATABASES["default"] = dj_database_url.parse(os.environ.get('POSTGRES_DB'))
 
 
 
