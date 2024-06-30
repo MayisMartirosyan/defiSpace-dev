@@ -51,7 +51,7 @@
   .timeline_title_div {
     width: 100%;
     gap: 10px;
-    display: none;
+    display: flex;
   }
 
   .news_project_image_link {
@@ -92,7 +92,7 @@
   }
 
   .timeline_title {
-    font-size: 21px;
+    font-size: 15px;
   }
 }
 

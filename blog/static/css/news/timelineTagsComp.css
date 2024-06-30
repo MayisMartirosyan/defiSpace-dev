@@ -382,7 +382,7 @@
 }
 
 .timeline_title_div {
-  display: none;
+  display: flex;
   align-items: center;
   gap: 40px;
   justify-content: flex-end;
