@@ -1,5 +1,5 @@
 const search_input_desktop = document.getElementById("timeline_search_input_desktop");
-const timeline_calendar_div_desktop = document.getElementById("timeline_search_input_desktoptimeline_search_input_desktop");
+const timeline_calendar_div_desktop = document.getElementById("timeline_calendar_div_desktop");
 const timeline_calendar_desktop = document.getElementById("timeline_calendar_desktop");
 const search_icon_desktop = document.getElementById("search_icon_desktop");
 const search_max_vector_desktop = document.getElementById("search_max_vector_desktop");
@@ -44,6 +44,7 @@ function selectOption(option) {
 search_input_desktop.addEventListener("focus", () => {
     search_input_desktop.placeholder = "Type something";
     timeline_calendar_desktop.style.width = "0px";
+    timeline_calendar_desktop.style.transition = "all 0.4s linear";
     timeline_calendar_div_desktop.style.opacity = "0";
     timeline_calendar_div_desktop.style.pointerEvents = "none";
     timeline_dropdown_div_desktop.style.pointerEvents = 'none';
@@ -62,6 +63,7 @@ search_input_desktop.addEventListener("focus", () => {
 
 search_max_vector_desktop_div.addEventListener("click", () => {
     search_input_desktop.placeholder = "Search";
+    timeline_calendar_div_desktop.style.transition = "all 0.4s linear";
     timeline_calendar_desktop.style.width = "180px";
     timeline_calendar_div_desktop.style.opacity = "1";
     timeline_calendar_div_desktop.style.pointerEvents = "all";
@@ -141,7 +143,8 @@ search_input_mobile.addEventListener("focus", () => {
     timeline_calendar_mobile.style.color = "rgba(0,0,0,0)";
     timeline_calendar_div_mobile.style.height = "40px";
     search_icon_mobile.style.display = "none";
-    search_max_vector_mobile.style.display = "block";
+    // search_max_vector_mobile.style.display = "block !important";
+    search_max_vector_mobile_div.style.display = "flex";
     search_max_vector_mobile_div.style.width = "24px";
     search_max_vector_mobile_div.style.height = "24px";
 });
@@ -161,7 +164,8 @@ search_max_vector_mobile_div.addEventListener("click", () => {
     dropdown_arrow.style.width = "auto";
     timeline_calendar_div_mobile.style.height = "40px";
     search_icon_mobile.style.display = "block";
-    search_max_vector_mobile.style.display = "none";
+    // search_max_vector_mobile.style.display = "none";
+    search_max_vector_mobile_div.style.display = "none";
     search_max_vector_mobile_div.style.width = "0px";
     search_max_vector_mobile_div.style.height = "0px";
 });
