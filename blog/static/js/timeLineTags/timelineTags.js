@@ -35,7 +35,7 @@ shevron_div.addEventListener("click", () => {
 
 shevron_div.addEventListener("mouseover", () => {
     if(!shevronBool){
-        shevron_div.style.background = "#DFEBFC";
+        shevron_div.style.background = "rgba(189, 212, 250, 0.30)";
     }
 });
 

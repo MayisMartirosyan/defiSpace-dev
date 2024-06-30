@@ -97,10 +97,9 @@
   position: relative;
 }
 
-.timeline_calendar_current_option{
+.timeline_calendar_current_option {
   white-space: nowrap;
   font-family: Inter, serif;
-
 }
 
 .timeline_calendar_div_desktop {
@@ -122,7 +121,7 @@
   position: relative;
 }
 
-#timeline_calendar_div_desktop{
+#timeline_calendar_div_desktop {
   transition: all 0.4s linear;
 }
 
@@ -191,6 +190,10 @@
   cursor: pointer;
 }
 
+.timeline_current_calendar:hover {
+  background-color: #3c3c3c;
+}
+
 .timeline_dropdown_div {
   display: none;
   flex-direction: column;
@@ -223,7 +226,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 12px;
+  padding: 8px 10px;
+  gap: 8px;
   width: 100%;
 }
 
@@ -490,8 +494,6 @@
   max-width: 792px;
   width: 100%;
   display: flex;
-  /* justify-content: center; */
-  align-items: center;
   border-radius: 20px;
   background: var(--Light-Grey, #f8f8f8);
   position: relative;
@@ -584,16 +586,12 @@
   align-self: stretch;
 }
 
-
-
 .news_project_description_title {
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  /* height: 56px; */
   align-self: stretch;
-  /* overflow: hidden; */
   color: var(--Black, #141919);
   text-overflow: ellipsis;
   font-family: Inter, serif;
@@ -604,12 +602,9 @@
 }
 
 .news_project_description_text {
-  /* display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; */
-        display: -webkit-box; 
--webkit-box-orient: vertical; 
--webkit-line-clamp: 2; 
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   overflow: hidden;
   color: var(--Dark-Grey, #3c3c3c);
   text-overflow: ellipsis;
