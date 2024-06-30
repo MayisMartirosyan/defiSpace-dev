@@ -243,6 +243,10 @@
   background: rgba(0, 0, 0, 0);
 }
 
+.timeline_search_input::placeholder {
+  color: #9E9E9E;
+}
+
 .search_max_vector_div {
   display: flex;
   justify-content: center;
