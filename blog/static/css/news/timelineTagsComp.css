@@ -96,6 +96,10 @@
   .timeline_calendar_select_div {
     position: relative;
   }
+
+  .timeline_calendar_current_option{
+    white-space: nowrap;
+  }
   
   .timeline_calendar_div_desktop {
     display: flex;
@@ -114,6 +118,10 @@
     line-height: 22px;
     transition: all 0.4s linear;
     position: relative;
+  }
+
+  #timeline_calendar_div_desktop{
+    transition: all 0.4s linear;
   }
   
   .timeline_calendar {
@@ -212,6 +220,7 @@
   .timeline_search_input_div {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     gap: 12px;
     width: 100%;
   }
