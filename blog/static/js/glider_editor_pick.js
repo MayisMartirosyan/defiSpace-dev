@@ -4,7 +4,8 @@ new Glider(document.querySelector('.glider'), {
   slidesToScroll: 1,
   scrollLock: true,
   dots: '#resp-dots',
-  arrows: {
+  decoration:"none",
+    arrows: {
     prev: '.glider-prev-edit',
     next: '.glider-next-edit'
   },

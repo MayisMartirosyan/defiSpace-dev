@@ -2,9 +2,6 @@
 const loadFilterInputs = () => {
 
   const device = document.getElementById('content').getAttribute("data-device")
-
-  console.log(device);
-
   const filterInputs = getUrlParams();
 
  

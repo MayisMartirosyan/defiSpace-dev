@@ -56,8 +56,8 @@ LOGGING = {
 SECRET_KEY = 'django-insecure-q-)^wo0!bh6b2gmi!h0j#9e8h4=o1ef)z$@zxi)+r4687tn*eq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = DJANGO_ENV == 'production'
-DEBUG = True
+DEBUG = DJANGO_ENV == 'development'
+
 
 
 ALLOWED_HOSTS = os.environ.get("HTTP_HOST").split(" ")
@@ -110,12 +110,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'a.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
-    f'http://{host}' if 'localhost' in host else f'https://{host}'
+    f'http://{host}' if 'localhost' or '127.0.0.1' in host else f'https://{host}'
     for host in ALLOWED_HOSTS
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    f'http://{host}' if 'localhost' in host else f'https://{host}'
+    f'http://{host}' if 'localhost' or '127.0.0.1' in host else f'https://{host}'
     for host in ALLOWED_HOSTS
 ]
 
@@ -152,6 +152,7 @@ DATABASES = {
 
 
 if DJANGO_ENV == 'production':
+ 
     DATABASES["default"] = dj_database_url.parse(os.environ.get('POSTGRES_DB'))
 
 

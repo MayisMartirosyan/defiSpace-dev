@@ -12,7 +12,7 @@
   }
 
   #header_filter_btn_div {
-    display: block;
+    display: block !important;
   }
 
   #header_filter_btn {

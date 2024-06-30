@@ -67,6 +67,7 @@
         margin-left: 15px !important;
         width: 20px !important;
         height: 20px !important;
+        display: block !important;
     }
 
     #header_filter_btn{

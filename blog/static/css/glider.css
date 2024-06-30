@@ -9,9 +9,34 @@
   margin: 0 auto;
   position: relative;
   overflow-y: hidden;
+ 
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   transform: translateZ(0);
+}
+
+
+/* Custom scrollbar for webkit browsers */
+.glider::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+.glider::-webkit-scrollbar-track {
+  background: transparent; /* Background of the track */
+}
+
+.glider::-webkit-scrollbar-thumb {
+  background: transparent; /* Color of the scrollbar thumb */
+}
+
+.glider::-webkit-scrollbar-thumb:hover {
+  background: transparent; /* Color of the scrollbar thumb when hovered */
+}
+
+/* Custom scrollbar for Firefox */
+.glider {
+  scrollbar-color: transparent transparent; /* Scrollbar thumb color and track color */
+  scrollbar-width: thin; /* Makes the scrollbar thinner */
 }
 
 .glider-track {
