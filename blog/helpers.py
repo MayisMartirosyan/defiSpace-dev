@@ -22,7 +22,7 @@ def handle_add_company_fields(company):
     
     
 def calculate_total_score_product(company):
-    product_scores = company.productscore_set.first()
+    product_scores = company.product_scores.first()
     performace_score = product_scores.performace_score
     apy_1yr_score = product_scores.apy_1yr_score
     apy_5yr_score = product_scores.apy_5yr_score
@@ -31,7 +31,7 @@ def calculate_total_score_product(company):
     product_scores.save()
 
 def calculate_total_score_team(company):
-    team_scores = company.teamscore_set.first()
+    team_scores = company.team_scores.first()
     decentralized_score = team_scores.decentralized_score
     performace_score = team_scores.performace_score
     total_score = (decentralized_score + performace_score) / 3
@@ -39,7 +39,7 @@ def calculate_total_score_team(company):
     team_scores.save()
 
 def calculate_total_score_scurity(company):
-    security_scores = company.securityscore_set.first()
+    security_scores = company.security_scores.first()
     asset_secured_score = security_scores.asset_secured_score
     emission_limit_score = security_scores.emission_limit_score
     liquidity_score = security_scores.liquidity_score

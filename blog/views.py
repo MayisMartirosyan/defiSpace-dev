@@ -244,7 +244,11 @@ def add_comment(request, post_id):
 
 
 def company_detail(request, company_id):
+    
+    print(company_id)
     company = get_object_or_404(Company, pk=company_id)
+    
+    print(company)
     companies = Company.objects.all()
     reviews = company.reviews.all()
     security_advantages = company.advantages.filter(position=1).order_by('-count')
@@ -253,9 +257,9 @@ def company_detail(request, company_id):
     calculate_total_score_product(company)
     calculate_total_score_team(company)
     calculate_total_score_scurity(company)
-    security_scores = company.securityscore_set.first()
-    team_scores = company.teamscore_set.first()
-    product_scores = company.productscore_set.first()
+    security_scores = company.security_scores.first()
+    team_scores = company.team_scores.first()
+    product_scores = company.product_scores.first()
     if request.method == 'POST':
         name = request.POST.get('name')
         comment = request.POST.get('comment')
