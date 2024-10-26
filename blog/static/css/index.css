@@ -37,6 +37,11 @@ a {
   transition: all 0.2s ease-out;
 }
 
+.big_tag_item:hover {
+  
+  background-color: #bdd4fa;
+  transition: all 0.2s ease-out;
+}
 .sm_tag_item {
   display: flex;
   padding: 5px 10px;
