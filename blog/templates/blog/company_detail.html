@@ -1,232 +1,1082 @@
 {% extends 'blog/base.html' %}
-
+{% load static %}
 {% block content %}
-    <style>
-        .blue-text {
-            color: blue;
-        }
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/companies/company_detail/company_detail.css' %}"> 
+        <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/post_detail.css' %}"> 
+        <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/related_projects.css' %}"> 
+    </head>
 
-        .red-text {
-            color: red;
-        }
-        .security-block {
-        border: 1px solid #ccc;
-        padding: 10px;
-        }
-        .advantage-column {
-        border: 1px solid #ccc;
-        padding: 10px;
-        }
-        .score-block {
-        border: 1px solid #ccc;
-        padding: 10px;
-        }
-    </style>
-<div class="container"><br><br>
-    <li><a class="icon-link" href="{% url 'company_ratings' %}">&larr; Invest rating</a></li>
-    <p><h2 class="p-4 mb-3 bg-body-tertiary rounded">{{ company.name }}</h2></p>
-    <p>{% for tag in company.tag_rating.all %}
-            <a class="btn btn-light btn-sm mb-1" href="{% url 'tag_projects_result' tag=tag %}">{{ tag }}</a>
-        {% endfor %}</big></td></p>
-    <p>Rating: {{ company.rating }}</p>
 
-    <div class="advantages-container"><div class="advantage-column">
 
-<div class="form-control">
-    <h2>Product</h2>
-
-    <table class="criteria-table">
-        <tr>
-            <td><b>Performace</b></td>
-            <td><b>APY 1yr</b></td>
-            <td><b>APY 5yr</b></td>
-            <td><div class="form-control"><b>SCORE</b></div></td>
-        </tr>
-        <tr>
-            <td>{{ product_scores.performace_score }}</td>
-            <td>{{ product_scores.apy_1yr_score }}</td>
-            <td>{{ product_scores.apy_5yr_score }}</td>
-            <td><b>{{ product_scores.total_score }}</b></td>
-        </tr>
-    </table>
-</div>
-
-            <table>
-                {% for advantage in product_advantages %}
-                    <form method="POST" action="{% url 'increment_advantage' advantage_id=advantage.id %}">
-                        {% csrf_token %}
-                        <tr>
-                            <td style="padding: 10px;">
-                                {{ advantage.advantage }}
-                            </td>
-                            <td style="padding: 10px;">
-                                <span class="{% if advantage.mark %}blue-text{% else %}red-text{% endif %}">
-                                    ({{ advantage.count }}%)
-                                </span>
-                            </td>
-                            <td style="padding: 10px;">
-                                <input class="btn btn-outline-primary rounded-pill" value="+" type="submit">
-                            </td>
-                        </tr>
-                        </form>
-                {% empty %}
-                <tr>
-                  <td colspan="3">No advantages</td>
-                </tr>
-              {% endfor %}
-            </table>
-            <form method="post" action="{% url 'add_advantage' company.id %}">
-                {% csrf_token %}
-                <input type="hidden" name="position" value="3">
-                <input class="form-select" name="advantage" required>
-                <select class="form-select" name="mark" required>
-                    <option value="positive">Advantage</option>
-                    <option value="negative">Disadvantage</option>
-                </select>
-                <input class="form-select" type="submit" value="Add">
-            </form>
+<article class="company_detail_article">
+<div class="company_detail">
+    <div class="cmp_det_description_div">
+        <div class="cmp_det_full_description_div">
+            <div class="cmp_det_description_top_div">
+                <div class="cmp_det_full_description_logo_name_div">
+                    <img
+                        src="{% static 'img/main/project_icon.png' %}"
+                        width="40px"
+                        height="40px"
+                        class="cmp_det_full_description_logo"
+                        alt="company_logo"
+                    />
+                    <div class="cmp_det_full_description_name">
+                        <p class="cmp_det_full_name">Ethereum</p>
+                        <span class="cmp_det_full_abbreviation">ETH</span>
+                    </div>
+                </div>
+                <div class="cmp_det_description_top_right_div">
+                    <a href="#" target="_blank">
+                        <div class="company_home_icon_div">
+                            <img
+                                src="{% static 'img/companies/company_home_icon.svg' %}"
+                                width="24px"
+                                height="24px"
+                                class="company_home_icon"
+                                alt="company_home_icon.svg"
+                            />
+                        </div>
+                    </a>
+                    <a href="{{ company.github }}" target="_blank">
+                        <div class="company_github_icon_div">
+                            <img
+                                src="{% static 'img/companies/company_github_icon.svg' %}"
+                                width="24px"
+                                height="24px"
+                                class="company_github_icon"
+                                alt="company_github_icon"
+                            />
+                        </div>
+                    </a>
+                    <div class="company_news_icon_div" onclick="handle_build_redirect_url('comp_tags{{ company.id }}')">
+                        <span class="company_links_news_text">News</span>
+                        <img
+                            src="{% static 'img/companies/company_news_link_icon.svg' %}"
+                            width="16px"
+                            height="15px"
+                            class="company_news_link_icon"
+                            alt="company_news_link_icon"
+                        />
+                    </div>
+                </div>
+            </div>
+            <p class="cmp_det_full_description_text">
+                Bitcoin is a digital currency, created and held electronically. 
+                It uses cryptography to control the creation of new units and secure 
+                transactions without any central authority. The father of all  
+                blockchains with a great decentralisation impact.
+            </p>
+            <p class="cmp_det_description_launched_date">
+                Launched: Sep 2010
+            </p>
+            <div class="cmp_det_full_description_tags_div">
+                <a class="cmp_det_full_description_tag sm_tag_item">Next.js</a>
+                <a class="cmp_det_full_description_tag sm_tag_item">React.js</a>
+                <a class="cmp_det_full_description_tag sm_tag_item">Node.js</a>
+            </div>
         </div>
-
-        <div class="advantage-column">
-
-<div class="form-control">
-    <h2>Team</h2>
-
-    <table class="criteria-table">
-        <tr>
-            <td><b>Decentralized</b></td>
-            <td><b>Performace</b></td>
-            <td><div class="form-control"><b>SCORE</b></div></td>
-        </tr>
-        <tr>
-            <td>{{ team_scores.decentralized_score }}</td>
-            <td>{{ team_scores.performace_score }}</td>
-            <td><b>{{ team_scores.total_score }}</b></td>
-        </tr>
-    </table>
-</div>
-
-            <table>
-                {% for advantage in team_advantages %}
-                    <form method="POST" action="{% url 'increment_advantage' advantage_id=advantage.id %}">
-                        {% csrf_token %}
-                        <tr>
-                            <td style="padding: 10px;">
-                            {{ advantage.advantage }}
-                        </td>
-                        <td style="padding: 10px;">
-                            <span class="{% if advantage.mark %}blue-text{% else %}red-text{% endif %}">
-                                {{ advantage.count }}%
-                            </span>
-                        </td>
-                        <td style="padding: 10px;">
-                            <input class="btn btn-outline-primary rounded-pill" value="+" type="submit">
-                        </td>
-                    </tr>
-                    </form>
-                {% empty %}
-                <tr>
-                  <td colspan="3">No advantages</td>
-                </tr>
-              {% endfor %}
-            </table>
-            <form method="post" action="{% url 'add_advantage' company.id %}">
-                {% csrf_token %}
-                <input type="hidden" name="position" value="2">
-                <input class="form-select" name="advantage" required></input>
-                <select class="form-select" name="mark" required>
-                    <option value="positive">Advantage</option>
-                    <option value="negative">Disadvantage</option>
-                </select>
-                <input class="form-select" type="submit" value="Add">
-            </form>
-        </div>
-        <div class="advantage-column">
-
- <div class="form-control">
-    <h2>Security</h2>
-
-    <table class="criteria-table">
-        <tr>
-            <td><b>Asset</b></td>
-            <td><b>Emission</b></td>
-            <td><b>Liquidity</b></td>
-            <td><div class="form-control"><b>SCORE</b></div></td>
-
-        </tr>
-        <tr>
-            <td>{{ security_scores.asset_secured_score }}</td>
-            <td>{{ security_scores.emission_limit_score }}</td>
-            <td>{{ security_scores.liquidity_score }}</td>
-            <td><b>{{ security_scores.total_score }}</b><td>
-        </tr>
-    </table>
-</div>
-
-  <table>
-    {% for advantage in security_advantages %}
-        <form method="POST" action="{% url 'increment_advantage' advantage_id=advantage.id %}">
-          {% csrf_token %}
-          <tr>
-            <td style="padding: 10px;">
-                {{ advantage.advantage }}
-            </td>
-            <td style="padding: 10px;">
-                <span class="{% if advantage.mark %}blue-text{% else %}red-text{% endif %}">
-                   {{ advantage.count }}%
-                </span>
-            </td>
-            <td style="padding: 10px;">
-                <input class="btn btn-outline-primary rounded-pill" value="+" type="submit">
-            </td>
-          </tr>
-        </form>
-  {% empty %}
-    <tr>
-      <td colspan="3">No advantages</td>
-    </tr>
-  {% endfor %}
-</table>
-
-            <form method="post" action="{% url 'add_advantage' company.id %}">
-                {% csrf_token %}
-                <input type="hidden" name="position" value="1">
-                <input class="form-select" name="advantage" required>
-                <select class="form-select" name="mark" required>
-                    <option value="positive">Advantage</option>
-                    <option value="negative">Disadvantage</option>
-                </select>
-                <input class="form-select" type="submit" value="Add">
-            </form>
+        <div class="cmp_det_description_total_score_div">
+            <p class="cmp_det_description_total_score_p">Total SCORE</p>
+            <div class="cmp_det_description_total_score_text_div">
+                <img
+                    src="{% static 'img/main/star.svg' %}"
+                    class="project_scoring_item_points_star_icon"
+                    width="24px"
+                    height="24px"
+                    alt="star_icon"
+                />
+                <div class="cmp_det_description_total_score_num_div">
+                    <span class="cmp_det_description_total_score_num">224</span>
+                    <span class="cmp_det_description_total_score_tps">TPS</span>
+                </div>
+            </div>
         </div>
     </div>
-    <br><br><br>
-    <div class="col-lg-6 mx-auto" align="center">
-        <h2>Latest Reviews</h2><br><br><br>
-        {% for review in reviews %}
-        <div>
-        <p>{{ review.comment }}</p>
-            <p>— {% if review.rating == True %}<span class="blue-text">Positive</span>{% else %}<span class="red-text">Negative</span>{% endif %} review by <b>{{ review.name }}</b> on {{ review.date|date:"M j, Y" }}</p>
-             </div><br><br>
-        {% empty %}
-        {% endfor %}
 
-        <br><br><h2>Leave a comment</h2><br>
-        <form method="post" action="{% url 'company_detail' company_id=company.id %}">
-            {% csrf_token %}
-            <label for="name">Name:</label>
-            <input class="form-control" type="text" name="name" id="name" required><br>
+    <div class="company_ratings">
+        {% comment %} 1 {% endcomment %}
+        <div class="company_ratings_card">
+            <div class="company_ratings_card_title_score_div">
+                <div class="company_ratings_card_title_div">
+                    <p class="company_ratings_card_title">TEAM</p>
+                    <span class="company_ratings_card_description">The extent of decentralization within the team structure and decision-making processes</span>
+                </div>
+                <div class="company_ratings_card_score_div" style="background: conic-gradient(#FE6A25 306deg, #FFFFFF 0deg)">
+                    <div class="company_ratings_card_score">
+                        <span class="company_ratings_card_score_text">85</span>
+                    </div>
+                </div>
+            </div>
+            <div class="company_ratings_card_stats_div">
+                <div class="company_ratings_card_stats">
+                    <div class="company_ratings_card_stat_rating_div">
+                        <div class="company_ratings_card_stat_rating" style="width: 79%;"></div>
+                        <div class="company_ratings_card_stat_rating_name_icon_param">
+                            <div class="company_ratings_card_stat_rating_name_icon_div">
+                                <span class="company_ratings_card_stat_rating_name">Decentralization</span>
+                                <img
+                                    src="{% static 'img/company_detail/info_icon.svg' %}"
+                                    class="project_scoring_item_points_star_icon"
+                                    width="16px"
+                                    height="16px"
+                                    alt="info_icon"
+                                />
+                            </div>
+                            <span class="company_ratings_card_stat_rating_score">79</span>
+                        </div>
+                    </div>
+                    <div class="company_ratings_card_stats_comment">
+                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    </div>
+                </div>
+                <div class="company_ratings_card_stats">
+                    <div class="company_ratings_card_stat_rating_div">
+                        <div class="company_ratings_card_stat_rating" style="width: 79%;"></div>
+                        <div class="company_ratings_card_stat_rating_name_icon_param">
+                            <div class="company_ratings_card_stat_rating_name_icon_div">
+                                <span class="company_ratings_card_stat_rating_name">Decentralization</span>
+                                <img
+                                    src="{% static 'img/company_detail/info_icon.svg' %}"
+                                    class="project_scoring_item_points_star_icon"
+                                    width="16px"
+                                    height="16px"
+                                    alt="info_icon"
+                                />
+                            </div>
+                            <span class="company_ratings_card_stat_rating_score">79</span>
+                        </div>
+                    </div>
+                    <div class="company_ratings_card_stats_comment">
+                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    </div>
+                </div>
+                <div class="company_ratings_card_stats">
+                    <div class="company_ratings_card_stat_rating_div">
+                        <div class="company_ratings_card_stat_rating" style="width: 79%;"></div>
+                        <div class="company_ratings_card_stat_rating_name_icon_param">
+                            <div class="company_ratings_card_stat_rating_name_icon_div">
+                                <span class="company_ratings_card_stat_rating_name">Decentralization</span>
+                                <img
+                                    src="{% static 'img/company_detail/info_icon.svg' %}"
+                                    class="project_scoring_item_points_star_icon"
+                                    width="16px"
+                                    height="16px"
+                                    alt="info_icon"
+                                />
+                            </div>
+                            <span class="company_ratings_card_stat_rating_score">79</span>
+                        </div>
+                    </div>
+                    <div class="company_ratings_card_stats_comment">
+                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <label for="comment">A comment:</label>
-            <textarea class="form-control" name="comment" id="comment" required></textarea><br>
+        {% comment %} 2 {% endcomment %}
+        <div class="company_ratings_card">
+            <div class="company_ratings_card_title_score_div">
+                <div class="company_ratings_card_title_div">
+                    <p class="company_ratings_card_title">TEAM</p>
+                    <span class="company_ratings_card_description">The extent of decentralization within the team structure and decision-making processes</span>
+                </div>
+                <div class="company_ratings_card_score_div" style="background: conic-gradient(#FE6A25 306deg, #FFFFFF 0deg)">
+                    <div class="company_ratings_card_score">
+                        <span class="company_ratings_card_score_text">85</span>
+                    </div>
+                </div>
+            </div>
+            <div class="company_ratings_card_stats_div">
+                <div class="company_ratings_card_stats">
+                    <div class="company_ratings_card_stat_rating_div">
+                        <div class="company_ratings_card_stat_rating" style="width: 79%;"></div>
+                        <div class="company_ratings_card_stat_rating_name_icon_param">
+                            <div class="company_ratings_card_stat_rating_name_icon_div">
+                                <span class="company_ratings_card_stat_rating_name">Decentralization</span>
+                                <img
+                                    src="{% static 'img/company_detail/info_icon.svg' %}"
+                                    class="project_scoring_item_points_star_icon"
+                                    width="16px"
+                                    height="16px"
+                                    alt="info_icon"
+                                />
+                            </div>
+                            <span class="company_ratings_card_stat_rating_score">79</span>
+                        </div>
+                    </div>
+                    <div class="company_ratings_card_stats_comment">
+                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    </div>
+                </div>
+                <div class="company_ratings_card_stats">
+                    <div class="company_ratings_card_stat_rating_div">
+                        <div class="company_ratings_card_stat_rating" style="width: 79%;"></div>
+                        <div class="company_ratings_card_stat_rating_name_icon_param">
+                            <div class="company_ratings_card_stat_rating_name_icon_div">
+                                <span class="company_ratings_card_stat_rating_name">Decentralization</span>
+                                <img
+                                    src="{% static 'img/company_detail/info_icon.svg' %}"
+                                    class="project_scoring_item_points_star_icon"
+                                    width="16px"
+                                    height="16px"
+                                    alt="info_icon"
+                                />
+                            </div>
+                            <span class="company_ratings_card_stat_rating_score">79</span>
+                        </div>
+                    </div>
+                    <div class="company_ratings_card_stats_comment">
+                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    </div>
+                </div>
+                <div class="company_ratings_card_stats">
+                    <div class="company_ratings_card_stat_rating_div">
+                        <div class="company_ratings_card_stat_rating" style="width: 79%;"></div>
+                        <div class="company_ratings_card_stat_rating_name_icon_param">
+                            <div class="company_ratings_card_stat_rating_name_icon_div">
+                                <span class="company_ratings_card_stat_rating_name">Decentralization</span>
+                                <img
+                                    src="{% static 'img/company_detail/info_icon.svg' %}"
+                                    class="project_scoring_item_points_star_icon"
+                                    width="16px"
+                                    height="16px"
+                                    alt="info_icon"
+                                />
+                            </div>
+                            <span class="company_ratings_card_stat_rating_score">79</span>
+                        </div>
+                    </div>
+                    <div class="company_ratings_card_stats_comment">
+                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <select class="form-control" name="rating" id="rating" required>
-                <option value="positive">Positive</option>
-                <option value="negative">Negative</option>
-            </select><br>
-
-            <button type="submit" class="btn btn-outline-secondary">Submit</button>
-        </form><br><br>
+        {% comment %} 3 {% endcomment %}
+        <div class="company_ratings_card">
+            <div class="company_ratings_card_title_score_div">
+                <div class="company_ratings_card_title_div">
+                    <p class="company_ratings_card_title">TEAM</p>
+                    <span class="company_ratings_card_description">The extent of decentralization within the team structure and decision-making processes</span>
+                </div>
+                <div class="company_ratings_card_score_div" style="background: conic-gradient(#FE6A25 306deg, #FFFFFF 0deg)">
+                    <div class="company_ratings_card_score">
+                        <span class="company_ratings_card_score_text">85</span>
+                    </div>
+                </div>
+            </div>
+            <div class="company_ratings_card_stats_div">
+                <div class="company_ratings_card_stats">
+                    <div class="company_ratings_card_stat_rating_div">
+                        <div class="company_ratings_card_stat_rating" style="width: 79%;"></div>
+                        <div class="company_ratings_card_stat_rating_name_icon_param">
+                            <div class="company_ratings_card_stat_rating_name_icon_div">
+                                <span class="company_ratings_card_stat_rating_name">Decentralization</span>
+                                <img
+                                    src="{% static 'img/company_detail/info_icon.svg' %}"
+                                    class="project_scoring_item_points_star_icon"
+                                    width="16px"
+                                    height="16px"
+                                    alt="info_icon"
+                                />
+                            </div>
+                            <span class="company_ratings_card_stat_rating_score">79</span>
+                        </div>
+                    </div>
+                    <div class="company_ratings_card_stats_comment">
+                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    </div>
+                </div>
+                <div class="company_ratings_card_stats">
+                    <div class="company_ratings_card_stat_rating_div">
+                        <div class="company_ratings_card_stat_rating" style="width: 79%;"></div>
+                        <div class="company_ratings_card_stat_rating_name_icon_param">
+                            <div class="company_ratings_card_stat_rating_name_icon_div">
+                                <span class="company_ratings_card_stat_rating_name">Decentralization</span>
+                                <img
+                                    src="{% static 'img/company_detail/info_icon.svg' %}"
+                                    class="project_scoring_item_points_star_icon"
+                                    width="16px"
+                                    height="16px"
+                                    alt="info_icon"
+                                />
+                            </div>
+                            <span class="company_ratings_card_stat_rating_score">79</span>
+                        </div>
+                    </div>
+                    <div class="company_ratings_card_stats_comment">
+                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    </div>
+                </div>
+                <div class="company_ratings_card_stats">
+                    <div class="company_ratings_card_stat_rating_div">
+                        <div class="company_ratings_card_stat_rating" style="width: 79%;"></div>
+                        <div class="company_ratings_card_stat_rating_name_icon_param">
+                            <div class="company_ratings_card_stat_rating_name_icon_div">
+                                <span class="company_ratings_card_stat_rating_name">Decentralization</span>
+                                <img
+                                    src="{% static 'img/company_detail/info_icon.svg' %}"
+                                    class="project_scoring_item_points_star_icon"
+                                    width="16px"
+                                    height="16px"
+                                    alt="info_icon"
+                                />
+                            </div>
+                            <span class="company_ratings_card_stat_rating_score">79</span>
+                        </div>
+                    </div>
+                    <div class="company_ratings_card_stats_comment">
+                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+
+    <div class="cmp_det_comment_slider_section_div">
+            <div class="cmp_det_comment_section">
+
+                <h2 class="cmp_det_comment_title">Users opinions</h2>
+
+                <div class="cmp_det_comment_filter_div">
+                    <div class="cmp_det_comment_filter_dropdown">
+                        <span class="cmp_det_comment_filter_current">All comments</span>
+                        <img src="{% static 'img/timelineTags/dropdown_arrow.svg' %}" alt="dropdown_arrow" />
+                    </div>
+                </div>
+
+                <div class="cmp_det_comments_div">
+                    <div class="cmp_det_comment">
+                        <img 
+                            src="{% static 'img/default_image.jpg' %}"
+                            class="cmp_det_comment_profile_picture"
+                            alt="dropdown_arrow" 
+                        />
+                        <div class="cmp_det_comment_author_name_desc_react_div">
+                            <div class="cmp_det_comment_author_name_div">
+                                <div class="cmp_det_comment_author_name">
+                                    <span class="cmp_det_comment_author">Bitcoin Sistemi</span>
+                                    <span class="cmp_det_comment_author_create_date">28 Jul 2023, 13:29 PM</span>
+                                </div>
+                                <div class="cmp_det_comment_author_name_category_div">
+                                    <span class="cmp_det_comment_about_fix">About</span>
+                                    <span class="cmp_det_comment_author_category">Security</span>
+                                    <span class="cmp_det_comment_author_slash">/</span>
+                                    <span class="cmp_det_comment_author_subcategory">Asset secured</span>
+                                </div>
+                            </div>
+                            <div class="cmp_det_comment_author_desc_div">
+                                Famous analyst Peter Brandt, known for his analysis of 
+                                Bitcoin and cryptocurrencies, made statements about the 
+                                spot Bitcoin ETFs that everyone is looking forward to 
+                                and their impact on the market.
+                            </div>
+                            <div class="cmp_det_comment_author_react_div">
+                                <div class="cmp_det_comment_author_reply_comment">
+                                    <span class="cmp_det_comment_author_reply_comment_span">Reply</span>
+                                </div>
+                                <div class="cmp_det_comment_author_react_like_count_div">
+                                    <img 
+                                        src="{% static 'img/company_detail/like_icon.svg' %}"
+                                        class="cmp_det_comment_author_react_like_btn"
+                                        alt="like_icon" 
+                                    />
+                                    <span class="cmp_det_comment_author_react_like_count">243</span>
+                                </div>
+                                <div class="cmp_det_comment_author_react_dislike_count_div">
+                                    <img 
+                                        src="{% static 'img/company_detail/dislike_icon.svg' %}"
+                                        class="cmp_det_comment_author_react_dislike_btn"
+                                        alt="dislike_icon" 
+                                    />
+                                    <span class="cmp_det_comment_author_react_dislike_count">11</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cmp_det_comment_reply">
+                        <img 
+                            src="{% static 'img/default_image.jpg' %}"
+                            class="cmp_det_comment_profile_picture"
+                            alt="dropdown_arrow" 
+                        />
+                        <div class="cmp_det_comment_author_name_desc_react_div">
+                            <div class="cmp_det_comment_author_name_div">
+                                <div class="cmp_det_comment_author_name">
+                                    <span class="cmp_det_comment_author">Bitcoin Sistemi</span>
+                                    <span class="cmp_det_comment_author_create_date">28 Jul 2023, 13:29 PM</span>
+                                </div>
+                                <div class="cmp_det_comment_author_name_category_div">
+                                    <span class="cmp_det_comment_about_fix">About</span>
+                                    <span class="cmp_det_comment_author_category">Security</span>
+                                    <span class="cmp_det_comment_author_slash">/</span>
+                                    <span class="cmp_det_comment_author_subcategory">Asset secured</span>
+                                </div>
+                            </div>
+                            <div class="cmp_det_comment_author_desc_div">
+                                Famous analyst Peter Brandt, known for his analysis of 
+                                Bitcoin and cryptocurrencies, made statements about the 
+                                spot Bitcoin ETFs that everyone is looking forward to 
+                                and their impact on the market.
+                            </div>
+                            <div class="cmp_det_comment_author_react_div">
+                                <div class="cmp_det_comment_author_reply_comment">
+                                    <span class="cmp_det_comment_author_reply_comment_span">Reply</span>
+                                </div>
+                                <div class="cmp_det_comment_author_react_like_count_div">
+                                    <img 
+                                        src="{% static 'img/company_detail/like_icon.svg' %}"
+                                        class="cmp_det_comment_author_react_like_btn"
+                                        alt="like_icon" 
+                                    />
+                                    <span class="cmp_det_comment_author_react_like_count">243</span>
+                                </div>
+                                <div class="cmp_det_comment_author_react_dislike_count_div">
+                                    <img 
+                                        src="{% static 'img/company_detail/dislike_icon.svg' %}"
+                                        class="cmp_det_comment_author_react_dislike_btn"
+                                        alt="dislike_icon" 
+                                    />
+                                    <span class="cmp_det_comment_author_react_dislike_count">11</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cmp_det_comment">
+                        <img 
+                            src="{% static 'img/default_image.jpg' %}"
+                            class="cmp_det_comment_profile_picture"
+                            alt="dropdown_arrow" 
+                        />
+                        <div class="cmp_det_comment_author_name_desc_react_div">
+                            <div class="cmp_det_comment_author_name_div">
+                                <div class="cmp_det_comment_author_name">
+                                    <span class="cmp_det_comment_author">Bitcoin Sistemi</span>
+                                    <span class="cmp_det_comment_author_create_date">28 Jul 2023, 13:29 PM</span>
+                                </div>
+                                <div class="cmp_det_comment_author_name_category_div">
+                                    <span class="cmp_det_comment_about_fix">About</span>
+                                    <span class="cmp_det_comment_author_category">Security</span>
+                                    <span class="cmp_det_comment_author_slash">/</span>
+                                    <span class="cmp_det_comment_author_subcategory">Asset secured</span>
+                                </div>
+                            </div>
+                            <div class="cmp_det_comment_author_desc_div">
+                                Famous analyst Peter Brandt, known for his analysis of 
+                                Bitcoin and cryptocurrencies, made statements about the 
+                                spot Bitcoin ETFs that everyone is looking forward to 
+                                and their impact on the market.
+                            </div>
+                            <div class="cmp_det_comment_author_react_div">
+                                <div class="cmp_det_comment_author_reply_comment">
+                                    <span class="cmp_det_comment_author_reply_comment_span">Reply</span>
+                                </div>
+                                <div class="cmp_det_comment_author_react_like_count_div">
+                                    <img 
+                                        src="{% static 'img/company_detail/like_icon.svg' %}"
+                                        class="cmp_det_comment_author_react_like_btn"
+                                        alt="like_icon" 
+                                    />
+                                    <span class="cmp_det_comment_author_react_like_count">243</span>
+                                </div>
+                                <div class="cmp_det_comment_author_react_dislike_count_div">
+                                    <img 
+                                        src="{% static 'img/company_detail/dislike_icon.svg' %}"
+                                        class="cmp_det_comment_author_react_dislike_btn"
+                                        alt="dislike_icon" 
+                                    />
+                                    <span class="cmp_det_comment_author_react_dislike_count">11</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cmp_det_show_more_comments_div">
+                    <div class="cmp_det_show_more_comments_border"></div>
+                    <div class="cmp_det_show_more_comments">
+                        <span class="cmp_det_show_more_comments_span">Show more comments</span>
+                        <img 
+                            src="{% static 'img/company_detail/dropdown_icon.svg' %}" 
+                            width="12px" 
+                            height="6px" 
+                            alt="comment_dropdown_icon"
+                        />
+                    </div>
+                    <div class="cmp_det_show_more_comments_border"></div>
+                </div>
+
+                <div class="cmp_det_add_comment_form">
+                    <div class="cmp_det_add_comment_asset_secured" id="cmp_det_add_comment_asset_secured">
+                        <span class="cmp_det_add_comment_asset_secured_p">Asset secured</span>
+                        <div class="cmp_det_add_comment_asset_secured_icon_div">
+                            <img 
+                                src="{% static 'img/company_detail/dropdown_icon.svg' %}" 
+                                width="12px" 
+                                height="6px" 
+                                alt="comment_dropdown_icon"
+                            />
+                        </div>
+                    </div>
+                    <div class="cmp_det_comment_input_div">
+                        <img 
+                            src="{% static 'img/company_detail/comment_icon.svg' %}" 
+                            width="20px" 
+                            height="20px" 
+                            alt="comment_icon" 
+                        />
+                        <input 
+                            type="text" 
+                            class="cmp_det_comment_input"
+                            placeholder="Write comment"
+                        />
+                    </div>       
+                    <div class="cmp_det_add_comment_btn_div">
+                        <button class="cmp_det_comment_btn">
+                            <span class="cmp_det_comment_btn_span">Send</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cmp_det_list_sub_criterion" id="cmp_det_list_sub_criterion">
+                <div class="cmp_det_sub_criterion">
+                    <span class="cmp_det_sub_criterion_group_span">Team / </span>
+                    <span class="cmp_det_sub_criterion_span">Asset secured</span>
+                </div>
+                <div class="cmp_det_sub_criterion">
+                    <span class="cmp_det_sub_criterion_group_span">Team / </span>
+                    <span class="cmp_det_sub_criterion_span">Max supply</span>
+                </div>
+                <div class="cmp_det_sub_criterion">
+                    <span class="cmp_det_sub_criterion_group_span">Team / </span>
+                    <span class="cmp_det_sub_criterion_span">Liquidity</span>
+                </div>
+
+                <div class="cmp_det_sub_criterion">
+                    <span class="cmp_det_sub_criterion_group_span">Product / </span>
+                    <span class="cmp_det_sub_criterion_span">Decentralization</span>
+                </div>
+                <div class="cmp_det_sub_criterion">
+                    <span class="cmp_det_sub_criterion_group_span">Product / </span>
+                    <span class="cmp_det_sub_criterion_span">Activity</span>
+                </div>
+                <div class="cmp_det_sub_criterion">
+                    <span class="cmp_det_sub_criterion_group_span">Product / </span>
+                    <span class="cmp_det_sub_criterion_span">Exposure</span>
+                </div>
+                <div class="cmp_det_sub_criterion">
+                    <span class="cmp_det_sub_criterion_group_span">Security / </span>
+                    <span class="cmp_det_sub_criterion_span">Monthly active users</span>
+                </div>
+                <div class="cmp_det_sub_criterion">
+                    <span class="cmp_det_sub_criterion_group_span">Security / </span>
+                    <span class="cmp_det_sub_criterion_span">APY 1 year</span>
+                </div>
+                <div class="cmp_det_sub_criterion">
+                    <span class="cmp_det_sub_criterion_group_span">Security / </span>
+                    <span class="cmp_det_sub_criterion_span">APY 5 years</span>
+                </div>
+                </div>
+                
+            </div>
+
+            <div class="cmp_det_slider_div">
+                <h2 class="cmp_det_slider_title">Related news</h2>
+                <div class="cmp_det_slider_container">
+                    <div class="glider-contain">
+                        <div class="glider-post-detail-sidebar-slider">
+                       {% comment %} {% for related_group in related_sidebar  %} {% endcomment %}
+                        <div class="post_detail_related_news_slider_items_flex">
+                            
+                             {% comment %} {% for related_post_sidebar in related_group  %} {% endcomment %}
+                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
+
+                                <div
+                                   class="post_detail_related_news_slider_item_description"
+                                >
+                                   <p
+                                      class="post_detail_related_news_slider_item_description_p"
+                                   >
+                                     Hello post typescript
+                                   </p>
+                                </div>
+                                <div
+                                   class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                                >
+  
+  
+                                   <div
+                                      class="post_detail_related_news_slider_item_tags_flex"
+                                   >
+  
+                                   
+                                      
+                                   <div class="sm_tag_item">
+                                      <p
+                                         class="post_detail_related_news_slider_item_tag_p"
+                                      >
+                                         Next.js {% comment %} {{tag.name}} {% endcomment %}
+                                      </p>
+                                   </div>
+                                   <div class="sm_tag_item">
+                                    <p
+                                       class="post_detail_related_news_slider_item_tag_p"
+                                    >
+                                       Next.js {% comment %} {{tag.name}} {% endcomment %}
+                                    </p>
+                                    </div>
+                                      
+                                   </div>
+  
+                                   <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+                  
+                                      <div class="share_dropdown_div" id="share_dropdown_div">
+                                        <div class="share_dropdown_item" >
+                                          {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
+                      
+                                            <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                            <p class="share_dropdown_item_text">Copy link</p>
+                                          {% comment %} </a> {% endcomment %}
+                                          
+                                        </div>
+                      
+                                        <div class="share_dropdown_item">
+                                          {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                      
+                                            <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                            <p class="share_dropdown_item_text">
+                                            LinkedIn
+                                          </p>
+                                          {% comment %} </a> {% endcomment %}
+                                          
+                                        </div>
+                      
+                                        <div class="share_dropdown_item">
+                                          {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                      
+                                          <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                          <p class="share_dropdown_item_text">
+                                           Telegram
+                                          {% comment %} </a> {% endcomment %}
+                                         
+                                        </p>
+                                        
+                                        </div>
+                      
+                                        <div class="share_dropdown_item">
+                                          {% comment %} <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                                            <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                            <p class="share_dropdown_item_text">
+                                              Twitter
+                                            </p>  
+                                          {% comment %} </a> {% endcomment %}
+                                         
+                                        </div>
+                                      </div>
+                                      </div>  
+                                </div>
+                            </div>
+                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
+
+                                <div
+                                   class="post_detail_related_news_slider_item_description"
+                                >
+                                   <p
+                                      class="post_detail_related_news_slider_item_description_p"
+                                   >
+                                     Hello post typescript
+                                   </p>
+                                </div>
+                                <div
+                                   class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                                >
+  
+  
+                                   <div
+                                      class="post_detail_related_news_slider_item_tags_flex"
+                                   >
+  
+                                   
+                                      
+                                   <div class="sm_tag_item">
+                                      <p
+                                         class="post_detail_related_news_slider_item_tag_p"
+                                      >
+                                         Next.js {% comment %} {{tag.name}} {% endcomment %}
+                                      </p>
+                                   </div>
+                                   <div class="sm_tag_item">
+                                    <p
+                                       class="post_detail_related_news_slider_item_tag_p"
+                                    >
+                                       Next.js {% comment %} {{tag.name}} {% endcomment %}
+                                    </p>
+                                    </div>
+                                      
+                                   </div>
+  
+                                   <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+                  
+                                      <div class="share_dropdown_div" id="share_dropdown_div">
+                                        <div class="share_dropdown_item" >
+                                          {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
+                      
+                                            <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                            <p class="share_dropdown_item_text">Copy link</p>
+                                          {% comment %} </a> {% endcomment %}
+                                          
+                                        </div>
+                      
+                                        <div class="share_dropdown_item">
+                                          {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                      
+                                            <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                            <p class="share_dropdown_item_text">
+                                            LinkedIn
+                                          </p>
+                                          {% comment %} </a> {% endcomment %}
+                                          
+                                        </div>
+                      
+                                        <div class="share_dropdown_item">
+                                          {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                      
+                                          <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                          <p class="share_dropdown_item_text">
+                                           Telegram
+                                          {% comment %} </a> {% endcomment %}
+                                         
+                                        </p>
+                                        
+                                        </div>
+                      
+                                        <div class="share_dropdown_item">
+                                          {% comment %} <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                                            <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                            <p class="share_dropdown_item_text">
+                                              Twitter
+                                            </p>  
+                                          {% comment %} </a> {% endcomment %}
+                                         
+                                        </div>
+                                      </div>
+                                      </div>  
+                                </div>
+                            </div>
+
+                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
+
+                                <div
+                                   class="post_detail_related_news_slider_item_description"
+                                >
+                                   <p
+                                      class="post_detail_related_news_slider_item_description_p"
+                                   >
+                                     Hello post typescript
+                                   </p>
+                                </div>
+                                <div
+                                   class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                                >
+  
+  
+                                   <div
+                                      class="post_detail_related_news_slider_item_tags_flex"
+                                   >
+  
+                                   
+                                      
+                                   <div class="sm_tag_item">
+                                      <p
+                                         class="post_detail_related_news_slider_item_tag_p"
+                                      >
+                                         Next.js {% comment %} {{tag.name}} {% endcomment %}
+                                      </p>
+                                   </div>
+                                   <div class="sm_tag_item">
+                                    <p
+                                       class="post_detail_related_news_slider_item_tag_p"
+                                    >
+                                       Next.js {% comment %} {{tag.name}} {% endcomment %}
+                                    </p>
+                                    </div>
+                                      
+                                   </div>
+  
+                                   <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+                  
+                                      <div class="share_dropdown_div" id="share_dropdown_div">
+                                        <div class="share_dropdown_item" >
+                                          {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
+                      
+                                            <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                            <p class="share_dropdown_item_text">Copy link</p>
+                                          {% comment %} </a> {% endcomment %}
+                                          
+                                        </div>
+                      
+                                        <div class="share_dropdown_item">
+                                          {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                      
+                                            <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                            <p class="share_dropdown_item_text">
+                                            LinkedIn
+                                          </p>
+                                          {% comment %} </a> {% endcomment %}
+                                          
+                                        </div>
+                      
+                                        <div class="share_dropdown_item">
+                                          {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                      
+                                          <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                          <p class="share_dropdown_item_text">
+                                           Telegram
+                                          {% comment %} </a> {% endcomment %}
+                                         
+                                        </p>
+                                        
+                                        </div>
+                      
+                                        <div class="share_dropdown_item">
+                                          {% comment %} <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                                            <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                            <p class="share_dropdown_item_text">
+                                              Twitter
+                                            </p>  
+                                          {% comment %} </a> {% endcomment %}
+                                         
+                                        </div>
+                                      </div>
+                                      </div>  
+                                </div>
+                            </div>
+
+                            {% comment %} {% endfor %} {% endcomment %}
+                        </div>
+
+                        <div class="post_detail_related_news_slider_items_flex">
+                         
+                            {% comment %} {% for related_post_sidebar in related_group  %} {% endcomment %}
+
+                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
+
+                           <div
+                              class="post_detail_related_news_slider_item_description"
+                           >
+                              <p
+                                 class="post_detail_related_news_slider_item_description_p"
+                              >
+                                Hello post typescript
+                              </p>
+                           </div>
+                           <div
+                              class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                           >
+
+
+                              <div
+                                 class="post_detail_related_news_slider_item_tags_flex"
+                              >
+
+                              
+                                 
+                              <div class="sm_tag_item">
+                                 <p
+                                    class="post_detail_related_news_slider_item_tag_p"
+                                 >
+                                    Next.js {% comment %} {{tag.name}} {% endcomment %}
+                                 </p>
+                              </div>
+                              <div class="sm_tag_item">
+                               <p
+                                  class="post_detail_related_news_slider_item_tag_p"
+                               >
+                                  Next.js {% comment %} {{tag.name}} {% endcomment %}
+                               </p>
+                               </div>
+                                 
+                              </div>
+
+                              <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+             
+                                 <div class="share_dropdown_div" id="share_dropdown_div">
+                                   <div class="share_dropdown_item" >
+                                     {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
+                 
+                                       <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                       <p class="share_dropdown_item_text">Copy link</p>
+                                     {% comment %} </a> {% endcomment %}
+                                     
+                                   </div>
+                 
+                                   <div class="share_dropdown_item">
+                                     {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                 
+                                       <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                       <p class="share_dropdown_item_text">
+                                       LinkedIn
+                                     </p>
+                                     {% comment %} </a> {% endcomment %}
+                                     
+                                   </div>
+                 
+                                   <div class="share_dropdown_item">
+                                     {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                 
+                                     <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                     <p class="share_dropdown_item_text">
+                                      Telegram
+                                     {% comment %} </a> {% endcomment %}
+                                    
+                                   </p>
+                                   
+                                   </div>
+                 
+                                   <div class="share_dropdown_item">
+                                     {% comment %} <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                                       <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                       <p class="share_dropdown_item_text">
+                                         Twitter
+                                       </p>  
+                                     {% comment %} </a> {% endcomment %}
+                                    
+                                   </div>
+                                 </div>
+                                 </div>  
+                           </div>
+                            </div>
+
+                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
+
+                           <div
+                              class="post_detail_related_news_slider_item_description"
+                           >
+                              <p
+                                 class="post_detail_related_news_slider_item_description_p"
+                              >
+                                Hello post typescript
+                              </p>
+                           </div>
+                           <div
+                              class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                           >
+
+
+                              <div
+                                 class="post_detail_related_news_slider_item_tags_flex"
+                              >
+
+                              
+                                 
+                              <div class="sm_tag_item">
+                                 <p
+                                    class="post_detail_related_news_slider_item_tag_p"
+                                 >
+                                    Next.js {% comment %} {{tag.name}} {% endcomment %}
+                                 </p>
+                              </div>
+                              <div class="sm_tag_item">
+                               <p
+                                  class="post_detail_related_news_slider_item_tag_p"
+                               >
+                                  Next.js {% comment %} {{tag.name}} {% endcomment %}
+                               </p>
+                               </div>
+                                 
+                              </div>
+
+                              <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+             
+                                 <div class="share_dropdown_div" id="share_dropdown_div">
+                                   <div class="share_dropdown_item" >
+                                     {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
+                 
+                                       <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                       <p class="share_dropdown_item_text">Copy link</p>
+                                     {% comment %} </a> {% endcomment %}
+                                     
+                                   </div>
+                 
+                                   <div class="share_dropdown_item">
+                                     {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                 
+                                       <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                       <p class="share_dropdown_item_text">
+                                       LinkedIn
+                                     </p>
+                                     {% comment %} </a> {% endcomment %}
+                                     
+                                   </div>
+                 
+                                   <div class="share_dropdown_item">
+                                     {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                 
+                                     <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                     <p class="share_dropdown_item_text">
+                                      Telegram
+                                     {% comment %} </a> {% endcomment %}
+                                    
+                                   </p>
+                                   
+                                   </div>
+                 
+                                   <div class="share_dropdown_item">
+                                     {% comment %} <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                                       <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                       <p class="share_dropdown_item_text">
+                                         Twitter
+                                       </p>  
+                                     {% comment %} </a> {% endcomment %}
+                                    
+                                   </div>
+                                 </div>
+                                 </div>  
+                           </div>
+                            </div>
+
+                            {% comment %} {% endfor %} {% endcomment %}
+
+                        </div>
+                       
+                       {% comment %} {% endfor %} {% endcomment %}
+                        </div>
+                        </div>
+                    </div>
+                <div class="post_detail_sidebar_buttons_div_flex">
+                    <div class="post_detail_sidebar_buttons_div">
+                       <div
+                          class="post_detail_sidebar_left_button glider-prev-post-detail-sidebar"
+                       >
+                          <img
+                             src="{% static 'img/post_detail/post_detail_sidebar_left_arrow.svg' %}"
+                             alt="left_arrow_icon"
+                             width="24px"
+                             height="24px"
+                          />
+                       </div>
+                       <div
+                          class="post_detail_sidebar_right_button glider-next-post-detail-sidebar"
+                       >
+                          <img
+                             src="{% static 'img/post_detail/post_detail_sidebar_right_arrow.svg' %}"
+                             alt="right_arrow_icon"
+                             width="24px"
+                             height="24px"
+                          />
+                       </div>
+                    </div>
+                 </div>
+            </div>
+
+
+    </div>
+
+</article>
+
+<script src="{% static 'js/company_detail/company_detail.js' %}"></script>
 {% endblock %}
