@@ -1,0 +1,672 @@
+/* Company detail article for center elements */
+
+.company_detail_article {
+  display: flex;
+  justify-content: center;
+}
+
+/* Company detail description div */
+
+.cmp_det_description_div {
+  margin-top: 50px;
+  display: flex;
+  gap: 40px;
+  width: fit-content;
+  padding: 0 24px;
+}
+
+/**/
+
+.cmp_det_full_description_div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 596px;
+}
+
+.cmp_det_description_top_div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cmp_det_full_description_logo_name_div {
+  display: flex;
+  gap: 16px;
+}
+
+.cmp_det_description_top_right_div {
+  display: flex;
+  gap: 16px;
+}
+
+.cmp_det_full_description_logo {
+  border-radius: 10px;
+}
+
+.cmp_det_full_description_name {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.cmp_det_full_name {
+  font-family: Inter, serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 33.89px;
+  color: #141919;
+}
+
+.cmp_det_full_abbreviation {
+  font-family: Inter, serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16.94px;
+  color: #9e9e9e;
+}
+
+.cmp_det_full_description_text {
+  font-family: Inter, serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: #3c3c3c;
+}
+
+.cmp_det_description_launched_date {
+  font-family: Inter, serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  color: #141919;
+}
+
+.cmp_det_full_description_tags_div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.cmp_det_full_description_tag {
+  background-color: #f8f8f8 !important;
+}
+
+/**/
+
+.cmp_det_description_total_score_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 180px;
+  height: fit-content;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 5px 20px 0px #d9d9d966;
+}
+
+.cmp_det_description_total_score_p {
+  font-family: Inter, serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  white-space: nowrap;
+}
+
+.cmp_det_description_total_score_text_div {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.cmp_det_description_total_score_num_div {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+.cmp_det_description_total_score_num {
+  font-family: Inter, serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29.05px;
+  color: #fe6a25;
+}
+
+.cmp_det_description_total_score_tps {
+  font-family: Inter, serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  padding: 3px 0;
+  color: #141919;
+}
+
+/* Comment add form */
+
+.cmp_det_add_comment_form {
+  display: flex;
+  gap: 16px;
+  padding: 12px;
+  border: 1px #9e9e9e solid;
+  border-radius: 36px;
+  max-width: 1440px;
+}
+
+.cmp_det_add_comment_asset_secured {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 9px 20px;
+  background-color: #bdd4fa;
+  border-radius: 24px;
+}
+
+.cmp_det_add_comment_asset_secured_p {
+  font-family: Inter, serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: #141919;
+  white-space: nowrap;
+}
+
+.cmp_det_add_comment_asset_secured_icon_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}
+
+.cmp_det_list_sub_criterion {
+  /**/
+  display: none;
+  /**/
+  border-radius: 20px;
+  padding: 4px;
+  background-color: #edf3fc;
+  width: fit-content;
+}
+
+.cmp_det_sub_criterion {
+  border-radius: 24px;
+  padding: 9px 20px;
+  display: block;
+}
+
+.cmp_det_sub_criterion_group_span {
+  font-family: Inter, serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: #9e9e9e;
+}
+
+.cmp_det_sub_criterion_span {
+  font-family: Inter, serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: #141919;
+}
+
+/**/
+
+.cmp_det_comment_input_div {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 20px;
+}
+
+.cmp_det_comment_input {
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.cmp_det_comment_btn {
+  padding: 12px 24px;
+  border-radius: 24px;
+  border: none;
+  background-color: #fe6a25;
+}
+
+.cmp_det_comment_btn_span {
+  font-family: Inter, serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19.36px;
+  color: #ffffff;
+}
+
+/**/
+
+.company_ratings {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1440px;
+  margin-top: 60px;
+}
+
+.company_ratings_card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 400px;
+  padding: 24px;
+  border-radius: 36px;
+  background-color: #edf3fc;
+}
+
+.company_ratings_card_title_score_div {
+  display: flex;
+  gap: 24px;
+}
+
+.company_ratings_card_title_div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 264px;
+}
+
+.company_ratings_card_title {
+  font-family: Inter, serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #141919;
+}
+
+.company_ratings_card_description {
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  color: #3c3c3c;
+}
+
+.company_ratings_card_score_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.company_ratings_card_score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: #edf3fc;
+}
+
+.company_ratings_card_score_text {
+  font-family: Inter, serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 33.6px;
+  color: #141919;
+}
+
+.company_ratings_card_stats_div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.company_ratings_card_stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.company_ratings_card_stat_rating_div {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px rgba(0, 0, 0, 0) solid;
+  background-color: #ffffff;
+  position: relative;
+  transition: all 0.3s ease-out;
+}
+
+.company_ratings_card_stat_rating_div:hover {
+  border: 1px #fe6a25 solid;
+}
+
+.company_ratings_card_stat_rating {
+  height: 100%;
+  border-radius: 20px;
+  background-color: #bdd4fa;
+}
+
+.company_ratings_card_stat_rating_name_icon_param {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0%, 50%);
+  width: 100%;
+}
+
+.company_ratings_card_stat_rating_name_icon_div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.company_ratings_card_stat_rating_name {
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.36px;
+  color: #141919;
+}
+
+.company_ratings_card_stat_rating_score {
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.36px;
+  color: #141919;
+}
+
+.company_ratings_card_stats_comment {
+  padding: 0 20px;
+}
+
+.company_ratings_card_stats_comment_text {
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  padding: 4px 0;
+  border-bottom: 1px dashed #3c3c3c;
+  color: #3c3c3c;
+}
+
+/* Comment section */
+
+.cmp_det_comment_slider_section_div {
+  margin-top: 60px;
+  max-width: 1440px;
+  display: flex;
+  gap: 40px;
+}
+
+.cmp_det_comment_section {
+  max-width: 840px;
+  width: 100%;
+}
+
+.cmp_det_comment_title {
+  font-family: Inter, serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 33.89px;
+  color: #141919;
+  margin-bottom: 30px;
+}
+
+.cmp_det_comment_filter_div {
+  width: 100%;
+  padding: 12px;
+  gap: 12px;
+  border-radius: 36px;
+  border: 1px #9e9e9e solid;
+  margin-bottom: 30px;
+}
+
+.cmp_det_comment_filter_current {
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  color: #ffffff;
+}
+
+.cmp_det_comment_filter_dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  gap: 10px;
+  padding: 9px 20px 9px 20px;
+  border-radius: 24px;
+  background-color: #141919;
+}
+
+.cmp_det_comments_div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cmp_det_comment {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  border-bottom: 1px #f8f8f8 solid;
+}
+
+.cmp_det_comment:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.cmp_det_comment_reply {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  border-bottom: 1px #f8f8f8 solid;
+  padding-left: 80px;
+}
+
+.cmp_det_comment_profile_picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.cmp_det_comment_author_name_desc_react_div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cmp_det_comment_author_name_div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cmp_det_comment_author_name {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cmp_det_comment_author {
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.36px;
+  color: #141919;
+}
+
+.cmp_det_comment_author_create_date {
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  color: #9e9e9e;
+}
+
+.cmp_det_comment_author_name_category_div {
+  display: flex;
+  gap: 6px;
+}
+
+.cmp_det_comment_about_fix {
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  color: #3c3c3c;
+}
+
+.cmp_det_comment_author_category {
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.52px;
+  color: #3c3c3c;
+}
+
+.cmp_det_comment_author_slash {
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  color: #3c3c3c;
+}
+
+.cmp_det_comment_author_subcategory {
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.52px;
+  color: #fe6a25;
+}
+
+.cmp_det_comment_author_desc_div {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: #141919;
+}
+
+.cmp_det_comment_author_react_div {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.cmp_det_comment_author_reply_comment_span {
+  color: #3c3c3c;
+  border-bottom: 2px #3c3c3c dashed;
+  padding: 4px 0;
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  color: #3c3c3c;
+}
+
+.cmp_det_comment_author_react_like_count_div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.cmp_det_comment_author_react_like_count_div:hover {
+  opacity: 0.75;
+}
+
+.cmp_det_comment_author_react_dislike_count_div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.cmp_det_comment_author_react_dislike_count_div:hover {
+  opacity: 0.45;
+}
+
+.cmp_det_comment_author_react_like_count {
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.52px;
+  color: #fe6a25;
+}
+
+.cmp_det_comment_author_react_dislike_count {
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.52px;
+  color: #141919;
+}
+
+.cmp_det_show_more_comments_div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.cmp_det_show_more_comments_border {
+  width: 100%;
+  height: 2px;
+  background-color: #f8f8f8;
+}
+
+.cmp_det_show_more_comments {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 24px;
+  background-color: #edf3fc;
+  cursor: pointer;
+}
+
+.cmp_det_show_more_comments_span {
+  font-family: Inter, serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  color: #141919;
+  white-space: nowrap;
+}
+
+/* Slider style */
+
+.cmp_det_slider_title {
+  font-family: Inter, serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 33.89px;
+  color: #141919;
+  margin-bottom: 28px;
+}
+
+.cmp_det_slider_container {
+  max-width: 400px;
+}
