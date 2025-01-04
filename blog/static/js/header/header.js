@@ -5,8 +5,6 @@ document.addEventListener("DOMContentLoaded",()=> {
     const header = document.getElementById("header");
     const filter_btn =  document.querySelector('#header_filter_btn_div, #tags_selector_div_mobile');
    
-
-    console.log(ticker,'ticker')
     
     if (window.location.pathname == "/" || window.location.pathname == "/companies/"){
      filter_btn.style.visibility = "visible";

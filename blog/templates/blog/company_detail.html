@@ -28,29 +28,29 @@
                     </div>
                 </div>
                 <div class="cmp_det_description_top_right_div">
-                    <a href="#" target="_blank">
-                        <div class="company_home_icon_div">
+                    {% comment %} <a href="#" target="_blank"> {% endcomment %}
+                        <div class="cmp_det_company_home_icon_div">
                             <img
-                                src="{% static 'img/companies/company_home_icon.svg' %}"
+                                src="{% static 'img/company_detail/home_icon.svg' %}"
                                 width="24px"
                                 height="24px"
-                                class="company_home_icon"
-                                alt="company_home_icon.svg"
+                                class="cmp_det_company_home_icon"
+                                alt="company_home_icon"
                             />
                         </div>
-                    </a>
-                    <a href="{{ company.github }}" target="_blank">
-                        <div class="company_github_icon_div">
+                    {% comment %} </a> {% endcomment %}
+                    {% comment %} <a href="{{ company.github }}" target="_blank"> {% endcomment %}
+                        <div class="cmp_det_company_github_icon_div">
                             <img
                                 src="{% static 'img/companies/company_github_icon.svg' %}"
                                 width="24px"
                                 height="24px"
-                                class="company_github_icon"
+                                class="cmp_det_company_github_icon"
                                 alt="company_github_icon"
                             />
                         </div>
-                    </a>
-                    <div class="company_news_icon_div" onclick="handle_build_redirect_url('comp_tags{{ company.id }}')">
+                    {% comment %} </a> {% endcomment %}
+                    <div class="cmp_det_company_news_icon_div">
                         <span class="company_links_news_text">News</span>
                         <img
                             src="{% static 'img/companies/company_news_link_icon.svg' %}"
@@ -376,7 +376,7 @@
                                 and their impact on the market.
                             </div>
                             <div class="cmp_det_comment_author_react_div">
-                                <div class="cmp_det_comment_author_reply_comment">
+                                <div class="cmp_det_comment_author_reply_comment" id="cmp_det_comment_author_reply_comment">
                                     <span class="cmp_det_comment_author_reply_comment_span">Reply</span>
                                 </div>
                                 <div class="cmp_det_comment_author_react_like_count_div">
@@ -397,6 +397,12 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="cmp_det_comment_for_reply_textarea_div" id="cmp_det_comment_for_reply_textarea_div">
+                        <textarea class="cmp_det_comment_for_reply_textarea">Name, </textarea>
+                        <button class="cmp_det_comment_for_reply_textarea_btn">
+                            <span class="cmp_det_comment_for_reply_textarea_btn_span">Send</span>
+                        </button>
                     </div>
                     <div class="cmp_det_comment_reply">
                         <img 
@@ -543,43 +549,42 @@
                 </div>
 
                 <div class="cmp_det_list_sub_criterion" id="cmp_det_list_sub_criterion">
-                <div class="cmp_det_sub_criterion">
-                    <span class="cmp_det_sub_criterion_group_span">Team / </span>
-                    <span class="cmp_det_sub_criterion_span">Asset secured</span>
-                </div>
-                <div class="cmp_det_sub_criterion">
-                    <span class="cmp_det_sub_criterion_group_span">Team / </span>
-                    <span class="cmp_det_sub_criterion_span">Max supply</span>
-                </div>
-                <div class="cmp_det_sub_criterion">
-                    <span class="cmp_det_sub_criterion_group_span">Team / </span>
-                    <span class="cmp_det_sub_criterion_span">Liquidity</span>
-                </div>
-
-                <div class="cmp_det_sub_criterion">
-                    <span class="cmp_det_sub_criterion_group_span">Product / </span>
-                    <span class="cmp_det_sub_criterion_span">Decentralization</span>
-                </div>
-                <div class="cmp_det_sub_criterion">
-                    <span class="cmp_det_sub_criterion_group_span">Product / </span>
-                    <span class="cmp_det_sub_criterion_span">Activity</span>
-                </div>
-                <div class="cmp_det_sub_criterion">
-                    <span class="cmp_det_sub_criterion_group_span">Product / </span>
-                    <span class="cmp_det_sub_criterion_span">Exposure</span>
-                </div>
-                <div class="cmp_det_sub_criterion">
-                    <span class="cmp_det_sub_criterion_group_span">Security / </span>
-                    <span class="cmp_det_sub_criterion_span">Monthly active users</span>
-                </div>
-                <div class="cmp_det_sub_criterion">
-                    <span class="cmp_det_sub_criterion_group_span">Security / </span>
-                    <span class="cmp_det_sub_criterion_span">APY 1 year</span>
-                </div>
-                <div class="cmp_det_sub_criterion">
-                    <span class="cmp_det_sub_criterion_group_span">Security / </span>
-                    <span class="cmp_det_sub_criterion_span">APY 5 years</span>
-                </div>
+                    <div class="cmp_det_sub_criterion">
+                        <span class="cmp_det_sub_criterion_group_span">Team / </span>
+                        <span class="cmp_det_sub_criterion_span">Asset secured</span>
+                    </div>
+                    <div class="cmp_det_sub_criterion">
+                        <span class="cmp_det_sub_criterion_group_span">Team / </span>
+                        <span class="cmp_det_sub_criterion_span">Max supply</span>
+                    </div>
+                    <div class="cmp_det_sub_criterion">
+                        <span class="cmp_det_sub_criterion_group_span">Team / </span>
+                        <span class="cmp_det_sub_criterion_span">Liquidity</span>
+                    </div>
+                    <div class="cmp_det_sub_criterion">
+                        <span class="cmp_det_sub_criterion_group_span">Product / </span>
+                        <span class="cmp_det_sub_criterion_span">Decentralization</span>
+                    </div>
+                    <div class="cmp_det_sub_criterion">
+                        <span class="cmp_det_sub_criterion_group_span">Product / </span>
+                        <span class="cmp_det_sub_criterion_span">Activity</span>
+                    </div>
+                    <div class="cmp_det_sub_criterion">
+                        <span class="cmp_det_sub_criterion_group_span">Product / </span>
+                        <span class="cmp_det_sub_criterion_span">Exposure</span>
+                    </div>
+                    <div class="cmp_det_sub_criterion">
+                        <span class="cmp_det_sub_criterion_group_span">Security / </span>
+                        <span class="cmp_det_sub_criterion_span">Monthly active users</span>
+                    </div>
+                    <div class="cmp_det_sub_criterion">
+                        <span class="cmp_det_sub_criterion_group_span">Security / </span>
+                        <span class="cmp_det_sub_criterion_span">APY 1 year</span>
+                    </div>
+                    <div class="cmp_det_sub_criterion">
+                        <span class="cmp_det_sub_criterion_group_span">Security / </span>
+                        <span class="cmp_det_sub_criterion_span">APY 5 years</span>
+                    </div>
                 </div>
                 
             </div>
@@ -821,23 +826,19 @@
                       
                                         <div class="share_dropdown_item">
                                           {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                      
                                             <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
                                             <p class="share_dropdown_item_text">
                                             LinkedIn
                                           </p>
                                           {% comment %} </a> {% endcomment %}
-                                          
                                         </div>
                       
                                         <div class="share_dropdown_item">
                                           {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                      
                                           <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
                                           <p class="share_dropdown_item_text">
                                            Telegram
                                           {% comment %} </a> {% endcomment %}
-                                         
                                         </p>
                                         
                                         </div>
@@ -883,7 +884,6 @@
                                  class="post_detail_related_news_slider_item_tags_flex"
                               >
 
-                              
                                  
                               <div class="sm_tag_item">
                                  <p
@@ -1079,4 +1079,5 @@
 </article>
 
 <script src="{% static 'js/company_detail/company_detail.js' %}"></script>
+<script src="{% static 'js/company_detail/reply_comment_field.js' %}"></script>
 {% endblock %}
