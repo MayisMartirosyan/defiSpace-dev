@@ -339,7 +339,27 @@
   border-radius: 50%;
 }
 
-.company_ratings_card_score {
+.circle_div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #edf3fc;
+  transform: rotate(270deg);
+  position: relative;
+}
+
+circle{
+  fill: none;
+  stroke: #FE6A25;
+  stroke-width: 5px;
+  stroke-dasharray: 450;
+  stroke-dashoffset: 290;
+}
+
+/* .company_ratings_card_score {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -347,9 +367,11 @@
   height: 54px;
   border-radius: 50%;
   background-color: #edf3fc;
-}
+} */
+
 
 .company_ratings_card_score_text {
+  position: absolute;
   font-family: Inter, serif;
   font-size: 24px;
   font-weight: 400;

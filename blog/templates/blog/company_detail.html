@@ -103,11 +103,29 @@
                     <p class="company_ratings_card_title">TEAM</p>
                     <span class="company_ratings_card_description">The extent of decentralization within the team structure and decision-making processes</span>
                 </div>
-                <div class="company_ratings_card_score_div" style="background: conic-gradient(#FE6A25 306deg, #FFFFFF 0deg)">
-                    <div class="company_ratings_card_score">
+
+                
+
+                <div class="company_ratings_card_score_div">
+                    {% comment %} <div class="company_ratings_card_score"> {% endcomment %}
+                        <div class="circle_div">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64px" height="64px">
+                              <defs>
+                                <linearGradient id="GradientColor">
+                                  <stop offset="0%" stop-color="#FE6A25" >
+                                  <stop offset="100%" stop-color="#edf3fc" >
+                                </linearGradient>
+                              </defs>
+                              <circle cx="32" cy="32" r="28" stroke-linecap="round" />
+                            </svg>
+                        </div>
                         <span class="company_ratings_card_score_text">85</span>
-                    </div>
+                    {% comment %} </div> {% endcomment %}
                 </div>
+
+
+
+                
             </div>
             <div class="company_ratings_card_stats_div">
                 <div class="company_ratings_card_stats">
@@ -637,7 +655,8 @@
                                       
                                    </div>
   
-                                   <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+                                   <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                    {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
                   
                                       <div class="share_dropdown_div" id="share_dropdown_div">
                                         <div class="share_dropdown_item" >
@@ -724,8 +743,9 @@
                                       
                                    </div>
   
-                                   <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
-                  
+                                   <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                    {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
+
                                       <div class="share_dropdown_div" id="share_dropdown_div">
                                         <div class="share_dropdown_item" >
                                           {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
@@ -812,7 +832,8 @@
                                       
                                    </div>
   
-                                   <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+                                   <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                    {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
                   
                                       <div class="share_dropdown_div" id="share_dropdown_div">
                                         <div class="share_dropdown_item" >
@@ -902,8 +923,9 @@
                                  
                               </div>
 
-                              <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
-             
+                              <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
+
                                  <div class="share_dropdown_div" id="share_dropdown_div">
                                    <div class="share_dropdown_item" >
                                      {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
@@ -990,8 +1012,9 @@
                                  
                               </div>
 
-                              <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
-             
+                              <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
+
                                  <div class="share_dropdown_div" id="share_dropdown_div">
                                    <div class="share_dropdown_item" >
                                      {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
