@@ -39,18 +39,18 @@
   gap: 16px;
 }
 
-.cmp_det_company_home_icon_div{
+.cmp_det_company_home_icon_div {
   width: 24px;
   height: 24px;
   cursor: pointer;
 }
 
-.cmp_det_company_home_icon{
+.cmp_det_company_home_icon {
   width: 24px;
   height: 24px;
 }
 
-.cmp_det_company_news_icon_div{
+.cmp_det_company_news_icon_div {
   display: flex;
   padding: 5px 10px;
   justify-content: center;
@@ -220,8 +220,8 @@
   cursor: pointer;
 }
 
-.cmp_det_sub_criterion:hover{
-  background-color: #BDD4FA;
+.cmp_det_sub_criterion:hover {
+  background-color: #bdd4fa;
 }
 
 .cmp_det_sub_criterion_group_span {
@@ -270,8 +270,8 @@
   cursor: pointer;
 }
 
-.cmp_det_comment_btn:hover{
-  background-color: #FF580A;
+.cmp_det_comment_btn:hover {
+  background-color: #ff580a;
 }
 
 .cmp_det_comment_btn_span {
@@ -339,21 +339,20 @@
   border-radius: 50%;
 }
 
-.circle_div{
+.circle_div {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 64px;
-  height: 64px;
+  width: 61px;
+  height: 61px;
   border-radius: 50%;
-  background-color: #edf3fc;
   transform: rotate(270deg);
-  position: relative;
+  border: 5px white solid;
 }
 
-circle{
+circle {
   fill: none;
-  stroke: #FE6A25;
+  stroke: #fe6a25;
   stroke-width: 5px;
   stroke-dasharray: 450;
   stroke-dashoffset: 290;
@@ -368,7 +367,6 @@ circle{
   border-radius: 50%;
   background-color: #edf3fc;
 } */
-
 
 .company_ratings_card_score_text {
   position: absolute;
