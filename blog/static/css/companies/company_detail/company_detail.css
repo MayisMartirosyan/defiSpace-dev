@@ -694,6 +694,10 @@ circle {
   opacity: 0.75;
 }
 
+.cmp_det_comment_author_react_like_count_div:active{
+  opacity: 1;
+}
+
 .cmp_det_comment_author_react_dislike_count_div {
   display: flex;
   align-items: center;
