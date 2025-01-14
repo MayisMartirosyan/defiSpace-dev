@@ -8,10 +8,7 @@
 /* Company detail description div */
 
 .cmp_det_description_div {
-  /**/
-  display: none;
-  /**/
-  /* display: flex; */
+  display: flex;
   gap: 40px;
   width: fit-content;
   margin-top: 50px;
