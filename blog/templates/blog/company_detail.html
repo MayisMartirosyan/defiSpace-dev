@@ -4,7 +4,8 @@
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'css/companies/company_detail/company_detail.css' %}"> 
         <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/post_detail.css' %}"> 
-        <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/related_projects.css' %}"> 
+        <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/related_projects.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/company_detail/company_detail_media.css' %}"> 
     </head>
 
 
@@ -82,7 +83,6 @@
             <div class="cmp_det_description_total_score_text_div">
                 <img
                     src="{% static 'img/main/star.svg' %}"
-                    class="project_scoring_item_points_star_icon"
                     width="24px"
                     height="24px"
                     alt="star_icon"
@@ -551,7 +551,7 @@
 
                 <div class="cmp_det_add_comment_form">
                     <div class="cmp_det_add_comment_asset_secured" id="cmp_det_add_comment_asset_secured">
-                        <span class="cmp_det_add_comment_asset_secured_p">Asset secured</span>
+                        <span class="cmp_det_add_comment_asset_secured_p" id="cmp_det_add_comment_asset_secured_p">Asset secured</span>
                         <div class="cmp_det_add_comment_asset_secured_icon_div">
                             <img 
                                 src="{% static 'img/company_detail/dropdown_icon.svg' %}" 
@@ -582,39 +582,39 @@
                 </div>
 
                 <div class="cmp_det_list_sub_criterion" id="cmp_det_list_sub_criterion">
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Team / </span>
                         <span class="cmp_det_sub_criterion_span">Asset secured</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Team / </span>
                         <span class="cmp_det_sub_criterion_span">Max supply</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Team / </span>
                         <span class="cmp_det_sub_criterion_span">Liquidity</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Product / </span>
                         <span class="cmp_det_sub_criterion_span">Decentralization</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Product / </span>
                         <span class="cmp_det_sub_criterion_span">Activity</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Product / </span>
                         <span class="cmp_det_sub_criterion_span">Exposure</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Security / </span>
                         <span class="cmp_det_sub_criterion_span">Monthly active users</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Security / </span>
                         <span class="cmp_det_sub_criterion_span">APY 1 year</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Security / </span>
                         <span class="cmp_det_sub_criterion_span">APY 5 years</span>
                     </div>
@@ -654,9 +654,7 @@
                                    
                                       
                                    <div class="sm_tag_item">
-                                      <p
-                                         class="post_detail_related_news_slider_item_tag_p"
-                                      >
+                                      <p class="post_detail_related_news_slider_item_tag_p">
                                          Next.js {% comment %} {{tag.name}} {% endcomment %}
                                       </p>
                                    </div>
@@ -1111,7 +1109,6 @@
                  </div>
             </div>
 
-
     </div>
 
 </article>
@@ -1119,4 +1116,5 @@
 <script src="{% static 'js/company_detail/company_detail.js' %}"></script>
 <script src="{% static 'js/company_detail/reply_comment_field.js' %}"></script>
 <script src="{% static 'js/company_detail/handle_like_dislike.js' %}"></script>
+<script src="{% static 'js/company_detail/comment_dropdown.js' %}"></script>
 {% endblock %}

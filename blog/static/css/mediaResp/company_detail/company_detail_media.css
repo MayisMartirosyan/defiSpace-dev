@@ -1,0 +1,67 @@
+@media (max-width: 900px) {
+  .cmp_det_description_div {
+    flex-direction: column;
+  }
+  .cmp_det_description_total_score_div {
+    width: 100%;
+  }
+  .cmp_det_full_description_div {
+    width: 100%;
+  }
+}
+
+@media (max-width: 460px) {
+  .cmp_det_description_div {
+    padding: 0;
+  }
+  .cmp_det_full_description_logo_name_div {
+    gap: 8px;
+  }
+  .cmp_det_full_description_logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+  }
+  .cmp_det_full_name {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .cmp_det_full_abbreviation {
+    font-size: 10px;
+    line-height: 12.1px;
+  }
+  .cmp_det_description_top_right_div {
+    gap: 6px;
+  }
+  .cmp_det_company_home_icon_div {
+    width: 18px;
+    height: 18px;
+  }
+  .cmp_det_company_home_icon {
+    width: 18px;
+    height: 18px;
+  }
+  .cmp_det_company_github_icon {
+    width: 18px;
+    height: 18px;
+  }
+  .cmp_det_company_news_icon_div {
+    padding: 4px 8px;
+    height: 19px;
+  }
+  .company_links_news_text {
+    font-size: 10px;
+  }
+  .company_news_link_icon {
+    width: 12px;
+    height: 11.8px;
+  }
+  .cmp_det_full_description_text{
+    font-size: 14px;
+    line-height: 19.6px;
+  }
+  .cmp_det_description_launched_date{
+    font-size: 11px;
+    line-height: 13.31px;
+  }
+}
