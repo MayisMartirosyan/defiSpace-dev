@@ -128,4 +128,7 @@
     font-size: 10px;
     line-height: 12.1px;
   }
+  .company_ratings_card_score_text{
+    font-size: 22px;
+  }
 }
