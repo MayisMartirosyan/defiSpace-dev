@@ -4,7 +4,8 @@
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'css/companies/company_detail/company_detail.css' %}"> 
         <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/post_detail.css' %}"> 
-        <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/related_projects.css' %}"> 
+        <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/related_projects.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/company_detail/company_detail_media.css' %}"> 
     </head>
 
 
@@ -82,7 +83,6 @@
             <div class="cmp_det_description_total_score_text_div">
                 <img
                     src="{% static 'img/main/star.svg' %}"
-                    class="project_scoring_item_points_star_icon"
                     width="24px"
                     height="24px"
                     alt="star_icon"
@@ -103,11 +103,24 @@
                     <p class="company_ratings_card_title">TEAM</p>
                     <span class="company_ratings_card_description">The extent of decentralization within the team structure and decision-making processes</span>
                 </div>
-                <div class="company_ratings_card_score_div" style="background: conic-gradient(#FE6A25 306deg, #FFFFFF 0deg)">
-                    <div class="company_ratings_card_score">
-                        <span class="company_ratings_card_score_text">85</span>
+
+            
+                <div class="company_ratings_card_score_div">
+                    <div class="circle_div">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64px" height="64px" style="margin: -12px;">
+                          <defs>
+                            <linearGradient id="GradientColor">
+                              <stop offset="0%" stop-color="#FE6A25" >
+                              <stop offset="100%" stop-color="#edf3fc" >
+                            </linearGradient>
+                          </defs>
+                          <circle cx="32" cy="32" r="28" stroke-linecap="round" />
+                        </svg>
                     </div>
+                    <span class="company_ratings_card_score_text">85</span>
                 </div>
+
+                
             </div>
             <div class="company_ratings_card_stats_div">
                 <div class="company_ratings_card_stats">
@@ -118,7 +131,7 @@
                                 <span class="company_ratings_card_stat_rating_name">Decentralization</span>
                                 <img
                                     src="{% static 'img/company_detail/info_icon.svg' %}"
-                                    class="project_scoring_item_points_star_icon"
+                                    class="company_ratings_card_stat_rating_icon"
                                     width="16px"
                                     height="16px"
                                     alt="info_icon"
@@ -139,7 +152,7 @@
                                 <span class="company_ratings_card_stat_rating_name">Decentralization</span>
                                 <img
                                     src="{% static 'img/company_detail/info_icon.svg' %}"
-                                    class="project_scoring_item_points_star_icon"
+                                    class="company_ratings_card_stat_rating_icon"
                                     width="16px"
                                     height="16px"
                                     alt="info_icon"
@@ -160,7 +173,7 @@
                                 <span class="company_ratings_card_stat_rating_name">Decentralization</span>
                                 <img
                                     src="{% static 'img/company_detail/info_icon.svg' %}"
-                                    class="project_scoring_item_points_star_icon"
+                                    class="company_ratings_card_stat_rating_icon"
                                     width="16px"
                                     height="16px"
                                     alt="info_icon"
@@ -178,17 +191,28 @@
 
         {% comment %} 2 {% endcomment %}
         <div class="company_ratings_card">
+
             <div class="company_ratings_card_title_score_div">
                 <div class="company_ratings_card_title_div">
                     <p class="company_ratings_card_title">TEAM</p>
                     <span class="company_ratings_card_description">The extent of decentralization within the team structure and decision-making processes</span>
                 </div>
-                <div class="company_ratings_card_score_div" style="background: conic-gradient(#FE6A25 306deg, #FFFFFF 0deg)">
-                    <div class="company_ratings_card_score">
-                        <span class="company_ratings_card_score_text">85</span>
+                <div class="company_ratings_card_score_div">
+                    <div class="circle_div">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64px" height="64px" style="margin: -12px;">
+                          <defs>
+                            <linearGradient id="GradientColor">
+                              <stop offset="0%" stop-color="#FE6A25" >
+                              <stop offset="100%" stop-color="#edf3fc" >
+                            </linearGradient>
+                          </defs>
+                          <circle cx="32" cy="32" r="28" stroke-linecap="round" />
+                        </svg>
                     </div>
+                    <span class="company_ratings_card_score_text">85</span>
                 </div>
             </div>
+            
             <div class="company_ratings_card_stats_div">
                 <div class="company_ratings_card_stats">
                     <div class="company_ratings_card_stat_rating_div">
@@ -198,7 +222,7 @@
                                 <span class="company_ratings_card_stat_rating_name">Decentralization</span>
                                 <img
                                     src="{% static 'img/company_detail/info_icon.svg' %}"
-                                    class="project_scoring_item_points_star_icon"
+                                    class="company_ratings_card_stat_rating_icon"
                                     width="16px"
                                     height="16px"
                                     alt="info_icon"
@@ -219,7 +243,7 @@
                                 <span class="company_ratings_card_stat_rating_name">Decentralization</span>
                                 <img
                                     src="{% static 'img/company_detail/info_icon.svg' %}"
-                                    class="project_scoring_item_points_star_icon"
+                                    class="company_ratings_card_stat_rating_icon"
                                     width="16px"
                                     height="16px"
                                     alt="info_icon"
@@ -240,7 +264,7 @@
                                 <span class="company_ratings_card_stat_rating_name">Decentralization</span>
                                 <img
                                     src="{% static 'img/company_detail/info_icon.svg' %}"
-                                    class="project_scoring_item_points_star_icon"
+                                    class="company_ratings_card_stat_rating_icon"
                                     width="16px"
                                     height="16px"
                                     alt="info_icon"
@@ -263,10 +287,19 @@
                     <p class="company_ratings_card_title">TEAM</p>
                     <span class="company_ratings_card_description">The extent of decentralization within the team structure and decision-making processes</span>
                 </div>
-                <div class="company_ratings_card_score_div" style="background: conic-gradient(#FE6A25 306deg, #FFFFFF 0deg)">
-                    <div class="company_ratings_card_score">
-                        <span class="company_ratings_card_score_text">85</span>
+                <div class="company_ratings_card_score_div">
+                    <div class="circle_div">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64px" height="64px" style="margin: -12px;">
+                          <defs>
+                            <linearGradient id="GradientColor">
+                              <stop offset="0%" stop-color="#FE6A25" >
+                              <stop offset="100%" stop-color="#edf3fc" >
+                            </linearGradient>
+                          </defs>
+                          <circle cx="32" cy="32" r="28" stroke-linecap="round" />
+                        </svg>
                     </div>
+                    <span class="company_ratings_card_score_text">85</span>
                 </div>
             </div>
             <div class="company_ratings_card_stats_div">
@@ -278,7 +311,7 @@
                                 <span class="company_ratings_card_stat_rating_name">Decentralization</span>
                                 <img
                                     src="{% static 'img/company_detail/info_icon.svg' %}"
-                                    class="project_scoring_item_points_star_icon"
+                                    class="company_ratings_card_stat_rating_icon"
                                     width="16px"
                                     height="16px"
                                     alt="info_icon"
@@ -299,7 +332,7 @@
                                 <span class="company_ratings_card_stat_rating_name">Decentralization</span>
                                 <img
                                     src="{% static 'img/company_detail/info_icon.svg' %}"
-                                    class="project_scoring_item_points_star_icon"
+                                    class="company_ratings_card_stat_rating_icon"
                                     width="16px"
                                     height="16px"
                                     alt="info_icon"
@@ -320,7 +353,7 @@
                                 <span class="company_ratings_card_stat_rating_name">Decentralization</span>
                                 <img
                                     src="{% static 'img/company_detail/info_icon.svg' %}"
-                                    class="project_scoring_item_points_star_icon"
+                                    class="company_ratings_card_stat_rating_icon"
                                     width="16px"
                                     height="16px"
                                     alt="info_icon"
@@ -379,7 +412,7 @@
                                 <div class="cmp_det_comment_author_reply_comment" id="cmp_det_comment_author_reply_comment">
                                     <span class="cmp_det_comment_author_reply_comment_span">Reply</span>
                                 </div>
-                                <div class="cmp_det_comment_author_react_like_count_div">
+                                <div class="cmp_det_comment_author_react_like_count_div" id="cmp_det_comment_author_react_like_count_div">
                                     <img 
                                         src="{% static 'img/company_detail/like_icon.svg' %}"
                                         class="cmp_det_comment_author_react_like_btn"
@@ -387,7 +420,7 @@
                                     />
                                     <span class="cmp_det_comment_author_react_like_count">243</span>
                                 </div>
-                                <div class="cmp_det_comment_author_react_dislike_count_div">
+                                <div class="cmp_det_comment_author_react_dislike_count_div" id="cmp_det_comment_author_react_dislike_count_div">
                                     <img 
                                         src="{% static 'img/company_detail/dislike_icon.svg' %}"
                                         class="cmp_det_comment_author_react_dislike_btn"
@@ -518,7 +551,7 @@
 
                 <div class="cmp_det_add_comment_form">
                     <div class="cmp_det_add_comment_asset_secured" id="cmp_det_add_comment_asset_secured">
-                        <span class="cmp_det_add_comment_asset_secured_p">Asset secured</span>
+                        <span class="cmp_det_add_comment_asset_secured_p" id="cmp_det_add_comment_asset_secured_p">Asset secured</span>
                         <div class="cmp_det_add_comment_asset_secured_icon_div">
                             <img 
                                 src="{% static 'img/company_detail/dropdown_icon.svg' %}" 
@@ -549,39 +582,39 @@
                 </div>
 
                 <div class="cmp_det_list_sub_criterion" id="cmp_det_list_sub_criterion">
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Team / </span>
                         <span class="cmp_det_sub_criterion_span">Asset secured</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Team / </span>
                         <span class="cmp_det_sub_criterion_span">Max supply</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Team / </span>
                         <span class="cmp_det_sub_criterion_span">Liquidity</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Product / </span>
                         <span class="cmp_det_sub_criterion_span">Decentralization</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Product / </span>
                         <span class="cmp_det_sub_criterion_span">Activity</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Product / </span>
                         <span class="cmp_det_sub_criterion_span">Exposure</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Security / </span>
                         <span class="cmp_det_sub_criterion_span">Monthly active users</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Security / </span>
                         <span class="cmp_det_sub_criterion_span">APY 1 year</span>
                     </div>
-                    <div class="cmp_det_sub_criterion">
+                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
                         <span class="cmp_det_sub_criterion_group_span">Security / </span>
                         <span class="cmp_det_sub_criterion_span">APY 5 years</span>
                     </div>
@@ -621,9 +654,7 @@
                                    
                                       
                                    <div class="sm_tag_item">
-                                      <p
-                                         class="post_detail_related_news_slider_item_tag_p"
-                                      >
+                                      <p class="post_detail_related_news_slider_item_tag_p">
                                          Next.js {% comment %} {{tag.name}} {% endcomment %}
                                       </p>
                                    </div>
@@ -637,7 +668,8 @@
                                       
                                    </div>
   
-                                   <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+                                   <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                    {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
                   
                                       <div class="share_dropdown_div" id="share_dropdown_div">
                                         <div class="share_dropdown_item" >
@@ -724,8 +756,9 @@
                                       
                                    </div>
   
-                                   <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
-                  
+                                   <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                    {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
+
                                       <div class="share_dropdown_div" id="share_dropdown_div">
                                         <div class="share_dropdown_item" >
                                           {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
@@ -812,7 +845,8 @@
                                       
                                    </div>
   
-                                   <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+                                   <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                    {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
                   
                                       <div class="share_dropdown_div" id="share_dropdown_div">
                                         <div class="share_dropdown_item" >
@@ -902,8 +936,9 @@
                                  
                               </div>
 
-                              <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
-             
+                              <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
+
                                  <div class="share_dropdown_div" id="share_dropdown_div">
                                    <div class="share_dropdown_item" >
                                      {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
@@ -990,8 +1025,9 @@
                                  
                               </div>
 
-                              <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
-             
+                              <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
+
                                  <div class="share_dropdown_div" id="share_dropdown_div">
                                    <div class="share_dropdown_item" >
                                      {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
@@ -1073,11 +1109,12 @@
                  </div>
             </div>
 
-
     </div>
 
 </article>
 
 <script src="{% static 'js/company_detail/company_detail.js' %}"></script>
 <script src="{% static 'js/company_detail/reply_comment_field.js' %}"></script>
+<script src="{% static 'js/company_detail/handle_like_dislike.js' %}"></script>
+<script src="{% static 'js/company_detail/comment_dropdown.js' %}"></script>
 {% endblock %}

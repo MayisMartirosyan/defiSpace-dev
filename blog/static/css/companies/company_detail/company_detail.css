@@ -8,10 +8,13 @@
 /* Company detail description div */
 
 .cmp_det_description_div {
-  margin-top: 50px;
-  display: flex;
+  /**/
+  display: none;
+  /**/
+  /* display: flex; */
   gap: 40px;
   width: fit-content;
+  margin-top: 50px;
   padding: 0 24px;
 }
 
@@ -39,18 +42,18 @@
   gap: 16px;
 }
 
-.cmp_det_company_home_icon_div{
+.cmp_det_company_home_icon_div {
   width: 24px;
   height: 24px;
   cursor: pointer;
 }
 
-.cmp_det_company_home_icon{
+.cmp_det_company_home_icon {
   width: 24px;
   height: 24px;
 }
 
-.cmp_det_company_news_icon_div{
+.cmp_det_company_news_icon_div {
   display: flex;
   padding: 5px 10px;
   justify-content: center;
@@ -184,6 +187,7 @@
   background-color: #bdd4fa;
   border-radius: 24px;
   cursor: pointer;
+  outline: none;
 }
 
 .cmp_det_add_comment_asset_secured_p {
@@ -220,8 +224,8 @@
   cursor: pointer;
 }
 
-.cmp_det_sub_criterion:hover{
-  background-color: #BDD4FA;
+.cmp_det_sub_criterion:hover {
+  background-color: #bdd4fa;
 }
 
 .cmp_det_sub_criterion_group_span {
@@ -270,8 +274,8 @@
   cursor: pointer;
 }
 
-.cmp_det_comment_btn:hover{
-  background-color: #FF580A;
+.cmp_det_comment_btn:hover {
+  background-color: #ff580a;
 }
 
 .cmp_det_comment_btn_span {
@@ -296,7 +300,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 400px;
+  max-width: 500px;
+  width: 100%;
   padding: 24px;
   border-radius: 36px;
   background-color: #edf3fc;
@@ -311,7 +316,8 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  width: 264px;
+  width: 100%;
+  min-width: 180px;
 }
 
 .company_ratings_card_title {
@@ -339,7 +345,26 @@
   border-radius: 50%;
 }
 
-.company_ratings_card_score {
+.circle_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 61px;
+  height: 61px;
+  border-radius: 50%;
+  transform: rotate(270deg);
+  border: 5px white solid;
+}
+
+circle {
+  fill: none;
+  stroke: #fe6a25;
+  stroke-width: 5px;
+  stroke-dasharray: 450;
+  stroke-dashoffset: 290;
+}
+
+/* .company_ratings_card_score {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -347,9 +372,10 @@
   height: 54px;
   border-radius: 50%;
   background-color: #edf3fc;
-}
+} */
 
 .company_ratings_card_score_text {
+  position: absolute;
   font-family: Inter, serif;
   font-size: 24px;
   font-weight: 400;
@@ -388,6 +414,11 @@
   height: 100%;
   border-radius: 20px;
   background-color: #bdd4fa;
+}
+
+.company_ratings_card_stat_rating_icon {
+  width: 16px;
+  height: 16px;
 }
 
 .company_ratings_card_stat_rating_name_icon_param {
@@ -441,10 +472,13 @@
 /* Comment section */
 
 .cmp_det_comment_slider_section_div {
+  /**/
+  display: none;
+  /**/
+  /* display: flex; */
+  gap: 40px;
   margin-top: 60px;
   max-width: 1440px;
-  display: flex;
-  gap: 40px;
 }
 
 .cmp_det_comment_section {
@@ -672,6 +706,10 @@
 
 .cmp_det_comment_author_react_like_count_div:hover {
   opacity: 0.75;
+}
+
+.cmp_det_comment_author_react_like_count_div:active {
+  opacity: 1;
 }
 
 .cmp_det_comment_author_react_dislike_count_div {
