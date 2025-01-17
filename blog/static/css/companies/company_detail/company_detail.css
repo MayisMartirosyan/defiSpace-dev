@@ -1,17 +1,18 @@
 /* Company detail article for center elements */
 
-.company_detail_article {
+/* .company_detail_article {
   display: flex;
   justify-content: center;
-}
+} */
 
 /* Company detail description div */
 
 .cmp_det_description_div {
   display: flex;
   gap: 40px;
-  width: fit-content;
-  margin-top: 50px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 50px auto;
   padding: 0 24px;
 }
 
@@ -243,6 +244,12 @@
 
 /**/
 
+.cmp_det_comment_input_div_for_responsive {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
 .cmp_det_comment_input_div {
   display: flex;
   gap: 12px;
@@ -290,7 +297,7 @@
   justify-content: space-between;
   gap: 40px;
   max-width: 1440px;
-  margin-top: 60px;
+  margin: 60px auto;
 }
 
 .company_ratings_card {
@@ -469,18 +476,10 @@ circle {
 /* Comment section */
 
 .cmp_det_comment_slider_section_div {
-  /**/
-  display: none;
-  /**/
-  /* display: flex; */
+  display: flex;
   gap: 40px;
-  margin-top: 60px;
+  margin: 60px auto;
   max-width: 1440px;
-}
-
-.cmp_det_comment_section {
-  max-width: 840px;
-  width: 100%;
 }
 
 .cmp_det_comment_title {
@@ -495,7 +494,6 @@ circle {
 .cmp_det_comment_filter_div {
   width: 100%;
   padding: 12px;
-  gap: 12px;
   border-radius: 36px;
   border: 1px #9e9e9e solid;
   margin-bottom: 30px;
@@ -772,6 +770,12 @@ circle {
 
 /* Slider style */
 
+.cmp_detail_related_news{
+  min-width: 260px;
+  max-width: 400px;
+  width: 100%;
+}
+
 .cmp_det_slider_title {
   font-family: Inter, serif;
   font-size: 28px;
@@ -779,8 +783,4 @@ circle {
   line-height: 33.89px;
   color: #141919;
   margin-bottom: 28px;
-}
-
-.cmp_det_slider_container {
-  max-width: 400px;
 }

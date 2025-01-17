@@ -1,17 +1,27 @@
 @media (max-width: 1200px) {
-  .company_ratings{
+  .company_ratings {
     align-items: center;
     gap: 24px;
   }
+  /* .cmp_det_slider_div {
+    max-width: 900px;
+  } */
 }
-
 
 @media (max-width: 1100px) {
-  .company_ratings{
+  .company_ratings {
     flex-direction: column;
   }
+  .cmp_det_comment_slider_section_div{
+    flex-direction: column;
+  }
+  .cmp_slider_contain{
+    max-width: 900px;
+  }
+  .cmp_detail_related_news {
+    max-width: 900px;
+  }
 }
-
 
 @media (max-width: 900px) {
   .cmp_det_description_div {
@@ -22,6 +32,17 @@
   }
   .cmp_det_full_description_div {
     width: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .cmp_det_add_comment_form {
+    flex-direction: column;
+    border-radius: 24px;
+    padding: 8px;
+  }
+  .cmp_det_add_comment_asset_secured {
+    justify-content: space-between;
   }
 }
 
@@ -71,65 +92,182 @@
     width: 12px;
     height: 11.8px;
   }
-  .cmp_det_full_description_text{
+  .cmp_det_full_description_text {
     font-size: 14px;
     line-height: 19.6px;
   }
-  .cmp_det_description_launched_date{
+  .cmp_det_description_launched_date {
     font-size: 11px;
     line-height: 13.31px;
   }
 }
 
 @media (max-width: 420px) {
-  .company_ratings_card_title_score_div{
+  .company_ratings_card_title_score_div {
     gap: 16px;
   }
-  .company_ratings_card_title{
+  .company_ratings_card_title {
     font-size: 17px;
     line-height: 23.8px;
   }
-  .company_ratings_card_description{
+  .company_ratings_card_description {
     font-size: 11px;
     line-height: 13.5px;
   }
-  .company_ratings_card{
+  .company_ratings_card {
     padding: 18px;
     border-radius: 24px;
   }
-  .company_ratings_card_stat_rating_name_icon_param{
+  .company_ratings_card_stat_rating_name_icon_param {
     padding: 0 14px;
   }
-  .company_ratings_card_stat_rating_name{
+  .company_ratings_card_stat_rating_name {
     font-size: 12px;
     line-height: 14.52px;
   }
-  .company_ratings_card_stat_rating_div{
+  .company_ratings_card_stat_rating_div {
     height: 34px;
   }
-  .company_ratings_card_stat_rating_icon{
+  .company_ratings_card_stat_rating_icon {
     width: 12px;
     height: 12px;
   }
-  .company_ratings_card_stat_rating_score{
+  .company_ratings_card_stat_rating_score {
     font-size: 12.5px;
     line-height: 16px;
   }
-  .company_ratings_card_stats_div{
+  .company_ratings_card_stats_div {
     gap: 8px;
   }
-  .company_ratings_card_stats{
+  .company_ratings_card_stats {
     gap: 2px;
   }
-  .company_ratings_card_stats_comment{
+  .company_ratings_card_stats_comment {
     padding: 0 14px;
   }
-  .company_ratings_card_stats_comment_text{
+  .company_ratings_card_stats_comment_text {
     padding: 2px 0;
     font-size: 10px;
     line-height: 12.1px;
   }
-  .company_ratings_card_score_text{
+  .cmp_det_comment_for_reply_textarea_div {
+    margin-top: 8px;
+    margin-left: 42px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+  .cmp_det_comment_for_reply_textarea_btn {
+    padding: 8px 16px 8px 16px;
+  }
+  .cmp_det_comment_for_reply_textarea_btn_span {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .cmp_det_comment_for_reply_textarea {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .company_ratings_card_score_text {
     font-size: 22px;
+  }
+  .cmp_det_comment_title {
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 22px;
+  }
+  .cmp_det_comment_filter_dropdown {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .cmp_det_comment_filter_div {
+    margin-bottom: 32px;
+  }
+  .cmp_det_comment {
+    gap: 12px;
+    padding: 0;
+  }
+  .cmp_det_comment_profile_picture {
+    width: 34px;
+    height: 34px;
+  }
+  .cmp_det_comment_author_name_desc_react_div {
+    gap: 8px;
+  }
+  .cmp_det_comment_author_name {
+    justify-content: space-between;
+  }
+  .cmp_det_comment_author {
+    font-size: 11.5px;
+    line-height: 14px;
+  }
+  .cmp_det_comment_author_create_date {
+    font-size: 8.5px;
+    line-height: 11px;
+  }
+  .cmp_det_comment_author_name_category_div {
+    gap: 4px;
+  }
+  .cmp_det_comment_author_name_div {
+    gap: 4px;
+  }
+  .cmp_det_comment_about_fix {
+    font-size: 10.5px;
+    line-height: 12.7px;
+  }
+  .cmp_det_comment_author_category {
+    font-size: 10.5px;
+    line-height: 12.7px;
+  }
+  .cmp_det_comment_author_slash {
+    font-size: 10.5px;
+    line-height: 12.7px;
+  }
+  .cmp_det_comment_author_subcategory {
+    font-size: 10.5px;
+    line-height: 12.7px;
+  }
+  .cmp_det_comment_author_desc_div {
+    font-size: 12.8px;
+    line-height: 18px;
+  }
+  .cmp_det_comment_author_reply_comment_span {
+    font-size: 11px;
+    line-height: 13.31px;
+  }
+  .cmp_det_comment_author_react_div {
+    margin-bottom: 4px;
+  }
+  .cmp_det_comment_author_react_like_count {
+    font-size: 11px;
+    line-height: 13.31px;
+  }
+  .cmp_det_comment_author_react_dislike_count {
+    font-size: 11px;
+    line-height: 13.31px;
+  }
+  .cmp_det_comment_author_react_dislike_count_div {
+    padding-top: 2px;
+  }
+  .cmp_det_comment_author_react_like_count_div {
+    padding-top: 2px;
+  }
+  .cmp_det_comment_reply {
+    gap: 12px;
+    padding-left: 40px;
+    padding-right: 0;
+  }
+  .cmp_det_show_more_comments_div {
+    margin-top: 16px;
+  }
+  .cmp_det_show_more_comments_span {
+    font-size: 10px;
+    line-height: 12.8px;
+  }
+  .cmp_det_show_more_comments_dropdown_icon {
+    width: 8px;
+    height: 4px;
+  }
+  .cmp_det_show_more_comments {
+    padding: 4px 8px;
   }
 }
