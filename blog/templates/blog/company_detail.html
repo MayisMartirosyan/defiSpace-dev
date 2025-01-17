@@ -540,9 +540,10 @@
                     <div class="cmp_det_show_more_comments">
                         <span class="cmp_det_show_more_comments_span">Show more comments</span>
                         <img 
-                            src="{% static 'img/company_detail/dropdown_icon.svg' %}" 
+                            src="{% static 'img/company_detail/dropdown_icon.svg' %}"
                             width="12px" 
-                            height="6px" 
+                            height="6px"
+                            class="cmp_det_show_more_comments_dropdown_icon"
                             alt="comment_dropdown_icon"
                         />
                     </div>
@@ -561,23 +562,25 @@
                             />
                         </div>
                     </div>
-                    <div class="cmp_det_comment_input_div">
-                        <img 
-                            src="{% static 'img/company_detail/comment_icon.svg' %}" 
-                            width="20px" 
-                            height="20px" 
-                            alt="comment_icon" 
-                        />
-                        <input 
-                            type="text" 
-                            class="cmp_det_comment_input"
-                            placeholder="Write comment"
-                        />
-                    </div>       
-                    <div class="cmp_det_add_comment_btn_div">
-                        <button class="cmp_det_comment_btn">
-                            <span class="cmp_det_comment_btn_span">Send</span>
-                        </button>
+                    <div class="cmp_det_comment_input_div_for_responsive">
+                        <div class="cmp_det_comment_input_div">
+                            <img 
+                                src="{% static 'img/company_detail/comment_icon.svg' %}" 
+                                width="20px" 
+                                height="20px" 
+                                alt="comment_icon" 
+                            />
+                            <input 
+                                type="text" 
+                                class="cmp_det_comment_input"
+                                placeholder="Write comment"
+                            />
+                        </div>       
+                        <div class="cmp_det_add_comment_btn_div">
+                            <button class="cmp_det_comment_btn">
+                                <span class="cmp_det_comment_btn_span">Send</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -586,35 +589,35 @@
                         <span class="cmp_det_sub_criterion_group_span">Team / </span>
                         <span class="cmp_det_sub_criterion_span">Asset secured</span>
                     </div>
-                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
+                    <div class="cmp_det_sub_criterion">
                         <span class="cmp_det_sub_criterion_group_span">Team / </span>
                         <span class="cmp_det_sub_criterion_span">Max supply</span>
                     </div>
-                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
+                    <div class="cmp_det_sub_criterion">
                         <span class="cmp_det_sub_criterion_group_span">Team / </span>
                         <span class="cmp_det_sub_criterion_span">Liquidity</span>
                     </div>
-                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
+                    <div class="cmp_det_sub_criterion">
                         <span class="cmp_det_sub_criterion_group_span">Product / </span>
                         <span class="cmp_det_sub_criterion_span">Decentralization</span>
                     </div>
-                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
+                    <div class="cmp_det_sub_criterion">
                         <span class="cmp_det_sub_criterion_group_span">Product / </span>
                         <span class="cmp_det_sub_criterion_span">Activity</span>
                     </div>
-                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
+                    <div class="cmp_det_sub_criterion">
                         <span class="cmp_det_sub_criterion_group_span">Product / </span>
                         <span class="cmp_det_sub_criterion_span">Exposure</span>
                     </div>
-                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
+                    <div class="cmp_det_sub_criterion">
                         <span class="cmp_det_sub_criterion_group_span">Security / </span>
                         <span class="cmp_det_sub_criterion_span">Monthly active users</span>
                     </div>
-                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
+                    <div class="cmp_det_sub_criterion">
                         <span class="cmp_det_sub_criterion_group_span">Security / </span>
                         <span class="cmp_det_sub_criterion_span">APY 1 year</span>
                     </div>
-                    <div class="cmp_det_sub_criterion" onclick="ForTest(event)">
+                    <div class="cmp_det_sub_criterion">
                         <span class="cmp_det_sub_criterion_group_span">Security / </span>
                         <span class="cmp_det_sub_criterion_span">APY 5 years</span>
                     </div>
@@ -622,291 +625,221 @@
                 
             </div>
 
-            <div class="cmp_det_slider_div">
-                <h2 class="cmp_det_slider_title">Related news</h2>
-                <div class="cmp_det_slider_container">
-                    <div class="glider-contain">
-                        <div class="glider-post-detail-sidebar-slider">
-                       {% comment %} {% for related_group in related_sidebar  %} {% endcomment %}
-                        <div class="post_detail_related_news_slider_items_flex">
-                            
-                             {% comment %} {% for related_post_sidebar in related_group  %} {% endcomment %}
-                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
 
-                                <div
-                                   class="post_detail_related_news_slider_item_description"
-                                >
-                                   <p
-                                      class="post_detail_related_news_slider_item_description_p"
-                                   >
-                                     Hello post typescript
-                                   </p>
-                                </div>
-                                <div
-                                   class="post_detail_related_news_slider_item_tags_share_icon_flex"
-                                >
-  
-  
-                                   <div
-                                      class="post_detail_related_news_slider_item_tags_flex"
-                                   >
-  
-                                   
-                                      
-                                   <div class="sm_tag_item">
-                                      <p class="post_detail_related_news_slider_item_tag_p">
-                                         Next.js {% comment %} {{tag.name}} {% endcomment %}
+         <div class="cmp_detail_related_news">
+            <h3 class="post_detail_related_news_title">Related news</h3>
+            <div class="cmp_slider_contain">
+               <div class="glider-contain">
+                  <div class="glider-company-detail-sidebar-slider">
+                     <div class="post_detail_related_news_slider_items_flex">
+                    
+                           <div class="post_detail_related_news_slider_item">
+                              <div
+                                 class="post_detail_related_news_slider_item_description"
+                              >
+                                 <p
+                                    class="post_detail_related_news_slider_item_description_p"
+                                 >
+                                   Hello
+                                 </p>
+                              </div>
+                              <div
+                                 class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                              >
+
+                                 <div class="post_detail_related_news_slider_item_tags_flex">
+
+                                 </div>
+
+                                 <div class="share_icon_style related_news_silder_sidebar_item_style">
+                
+                                    <div class="share_dropdown_div" id="share_dropdown_div">
+                                      <div class="share_dropdown_item" >
+                                        <a> 
+                    
+                                          <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                          <p class="share_dropdown_item_text">Copy link</p>
+                                        </a>
+                                        
+                                      </div>
+                    
+                                      <div class="share_dropdown_item">
+                                        <a target="_blank">
+                    
+                                          <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                          <p class="share_dropdown_item_text">
+                                          LinkedIn
+                                        </p>
+                                        </a>
+                                        
+                                      </div>
+                    
+                                      <div class="share_dropdown_item">
+                                        <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                    
+                                        <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                        <p class="share_dropdown_item_text">
+                                         Telegram
+                                        </a>
+                                       
                                       </p>
-                                   </div>
-                                   <div class="sm_tag_item">
-                                    <p
-                                       class="post_detail_related_news_slider_item_tag_p"
-                                    >
-                                       Next.js {% comment %} {{tag.name}} {% endcomment %}
-                                    </p>
-                                    </div>
                                       
-                                   </div>
-  
-                                   <div class="share_icon_style related_news_silder_sidebar_item_style">
-                                    {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
+                                      </div>
+                    
+                                      <div class="share_dropdown_item">
+                                        <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                                          <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                          <p class="share_dropdown_item_text">
+                                            Twitter
+                                          </p>  
+                                        </a>
+                                       
+                                      </div>
+                                    </div>
+                                    </div>  
+                              </div>
+                           </div>
+                           <div class="post_detail_related_news_slider_item">
+                            <div
+                               class="post_detail_related_news_slider_item_description"
+                            >
+                               <p
+                                  class="post_detail_related_news_slider_item_description_p"
+                               >
+                                 Bye
+                               </p>
+                            </div>
+                            <div
+                               class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                            >
+
+
+                               <div class="post_detail_related_news_slider_item_tags_flex"></div>
+
+                               <div class="share_icon_style related_news_silder_sidebar_item_style">
+              
+                                  <div class="share_dropdown_div" id="share_dropdown_div">
+                                    <div class="share_dropdown_item" >
+                                      <a> 
                   
-                                      <div class="share_dropdown_div" id="share_dropdown_div">
-                                        <div class="share_dropdown_item" >
-                                          {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
-                      
-                                            <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
-                                            <p class="share_dropdown_item_text">Copy link</p>
-                                          {% comment %} </a> {% endcomment %}
-                                          
-                                        </div>
-                      
-                                        <div class="share_dropdown_item">
-                                          {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                      
-                                            <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
-                                            <p class="share_dropdown_item_text">
-                                            LinkedIn
-                                          </p>
-                                          {% comment %} </a> {% endcomment %}
-                                          
-                                        </div>
-                      
-                                        <div class="share_dropdown_item">
-                                          {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                      
-                                          <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
-                                          <p class="share_dropdown_item_text">
-                                           Telegram
-                                          {% comment %} </a> {% endcomment %}
-                                         
-                                        </p>
-                                        
-                                        </div>
-                      
-                                        <div class="share_dropdown_item">
-                                          {% comment %} <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                                            <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
-                                            <p class="share_dropdown_item_text">
-                                              Twitter
-                                            </p>  
-                                          {% comment %} </a> {% endcomment %}
-                                         
-                                        </div>
-                                      </div>
-                                      </div>  
-                                </div>
-                            </div>
-                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
-
-                                <div
-                                   class="post_detail_related_news_slider_item_description"
-                                >
-                                   <p
-                                      class="post_detail_related_news_slider_item_description_p"
-                                   >
-                                     Hello post typescript
-                                   </p>
-                                </div>
-                                <div
-                                   class="post_detail_related_news_slider_item_tags_share_icon_flex"
-                                >
-  
-  
-                                   <div
-                                      class="post_detail_related_news_slider_item_tags_flex"
-                                   >
-  
-                                   
+                                        <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                        <p class="share_dropdown_item_text">Copy link</p>
+                                      </a>
                                       
-                                   <div class="sm_tag_item">
-                                      <p
-                                         class="post_detail_related_news_slider_item_tag_p"
-                                      >
-                                         Next.js {% comment %} {{tag.name}} {% endcomment %}
-                                      </p>
-                                   </div>
-                                   <div class="sm_tag_item">
-                                    <p
-                                       class="post_detail_related_news_slider_item_tag_p"
-                                    >
-                                       Next.js {% comment %} {{tag.name}} {% endcomment %}
-                                    </p>
                                     </div>
-                                      
-                                   </div>
-  
-                                   <div class="share_icon_style related_news_silder_sidebar_item_style">
-                                    {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
-
-                                      <div class="share_dropdown_div" id="share_dropdown_div">
-                                        <div class="share_dropdown_item" >
-                                          {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
-                      
-                                            <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
-                                            <p class="share_dropdown_item_text">Copy link</p>
-                                          {% comment %} </a> {% endcomment %}
-                                          
-                                        </div>
-                      
-                                        <div class="share_dropdown_item">
-                                          {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                      
-                                            <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
-                                            <p class="share_dropdown_item_text">
-                                            LinkedIn
-                                          </p>
-                                          {% comment %} </a> {% endcomment %}
-                                          
-                                        </div>
-                      
-                                        <div class="share_dropdown_item">
-                                          {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                      
-                                          <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
-                                          <p class="share_dropdown_item_text">
-                                           Telegram
-                                          {% comment %} </a> {% endcomment %}
-                                         
-                                        </p>
-                                        
-                                        </div>
-                      
-                                        <div class="share_dropdown_item">
-                                          {% comment %} <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                                            <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
-                                            <p class="share_dropdown_item_text">
-                                              Twitter
-                                            </p>  
-                                          {% comment %} </a> {% endcomment %}
-                                         
-                                        </div>
-                                      </div>
-                                      </div>  
-                                </div>
-                            </div>
-
-                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
-
-                                <div
-                                   class="post_detail_related_news_slider_item_description"
-                                >
-                                   <p
-                                      class="post_detail_related_news_slider_item_description_p"
-                                   >
-                                     Hello post typescript
-                                   </p>
-                                </div>
-                                <div
-                                   class="post_detail_related_news_slider_item_tags_share_icon_flex"
-                                >
-  
-  
-                                   <div
-                                      class="post_detail_related_news_slider_item_tags_flex"
-                                   >
-  
-                                   
-                                      
-                                   <div class="sm_tag_item">
-                                      <p
-                                         class="post_detail_related_news_slider_item_tag_p"
-                                      >
-                                         Next.js {% comment %} {{tag.name}} {% endcomment %}
-                                      </p>
-                                   </div>
-                                   <div class="sm_tag_item">
-                                    <p
-                                       class="post_detail_related_news_slider_item_tag_p"
-                                    >
-                                       Next.js {% comment %} {{tag.name}} {% endcomment %}
-                                    </p>
-                                    </div>
-                                      
-                                   </div>
-  
-                                   <div class="share_icon_style related_news_silder_sidebar_item_style">
-                                    {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
                   
-                                      <div class="share_dropdown_div" id="share_dropdown_div">
-                                        <div class="share_dropdown_item" >
-                                          {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
-                      
-                                            <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
-                                            <p class="share_dropdown_item_text">Copy link</p>
-                                          {% comment %} </a> {% endcomment %}
-                                          
-                                        </div>
-                      
-                                        <div class="share_dropdown_item">
-                                          {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                                            <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
-                                            <p class="share_dropdown_item_text">
-                                            LinkedIn
-                                          </p>
-                                          {% comment %} </a> {% endcomment %}
-                                        </div>
-                      
-                                        <div class="share_dropdown_item">
-                                          {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                                          <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
-                                          <p class="share_dropdown_item_text">
-                                           Telegram
-                                          {% comment %} </a> {% endcomment %}
-                                        </p>
-                                        
-                                        </div>
-                      
-                                        <div class="share_dropdown_item">
-                                          {% comment %} <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                                            <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
-                                            <p class="share_dropdown_item_text">
-                                              Twitter
-                                            </p>  
-                                          {% comment %} </a> {% endcomment %}
-                                         
-                                        </div>
-                                      </div>
-                                      </div>  
-                                </div>
+                                    <div class="share_dropdown_item">
+                                      <a target="_blank">
+                  
+                                        <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                        <p class="share_dropdown_item_text">
+                                        LinkedIn
+                                      </p>
+                                      </a>
+                                      
+                                    </div>
+                  
+                                    <div class="share_dropdown_item">
+                                      <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                  
+                                      <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                      <p class="share_dropdown_item_text">
+                                       Telegram
+                                      </a>
+                                     
+                                    </p>
+                                    
+                                    </div>
+                  
+                                    <div class="share_dropdown_item">
+                                      <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                                        <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                        <p class="share_dropdown_item_text">
+                                          Twitter
+                                        </p>  
+                                      </a>
+                                     
+                                    </div>
+                                  </div>
+                                  </div>  
                             </div>
+                         </div>
+                         <div class="post_detail_related_news_slider_item">
+                            <div
+                               class="post_detail_related_news_slider_item_description"
+                            >
+                               <p
+                                  class="post_detail_related_news_slider_item_description_p"
+                               >
+                                 Hello
+                               </p>
+                            </div>
+                            <div
+                               class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                            >
 
-                            {% comment %} {% endfor %} {% endcomment %}
-                        </div>
 
-                        <div class="post_detail_related_news_slider_items_flex">
-                         
-                            {% comment %} {% for related_post_sidebar in related_group  %} {% endcomment %}
+                               <div class="post_detail_related_news_slider_item_tags_flex"></div>
 
-                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
-
+                               <div class="share_icon_style related_news_silder_sidebar_item_style">
+              
+                                  <div class="share_dropdown_div" id="share_dropdown_div">
+                                    <div class="share_dropdown_item" >
+                                      <a> 
+                  
+                                        <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                        <p class="share_dropdown_item_text">Copy link</p>
+                                      </a>
+                                      
+                                    </div>
+                  
+                                    <div class="share_dropdown_item">
+                                      <a target="_blank">
+                  
+                                        <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                        <p class="share_dropdown_item_text">
+                                        LinkedIn
+                                      </p>
+                                      </a>
+                                      
+                                    </div>
+                  
+                                    <div class="share_dropdown_item">
+                                      <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                  
+                                      <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                      <p class="share_dropdown_item_text">
+                                       Telegram
+                                      </a>
+                                     
+                                    </p>
+                                    
+                                    </div>
+                  
+                                    <div class="share_dropdown_item">
+                                      <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                                        <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                        <p class="share_dropdown_item_text">
+                                          Twitter
+                                        </p>  
+                                      </a>
+                                     
+                                    </div>
+                                  </div>
+                                  </div>  
+                            </div>
+                         </div>
+                     </div>
+                     <div class="post_detail_related_news_slider_items_flex">
+                    
+                        <div class="post_detail_related_news_slider_item">
                            <div
                               class="post_detail_related_news_slider_item_description"
                            >
                               <p
                                  class="post_detail_related_news_slider_item_description_p"
                               >
-                                Hello post typescript
+                                Hello
                               </p>
                            </div>
                            <div
@@ -914,200 +847,215 @@
                            >
 
 
-                              <div
-                                 class="post_detail_related_news_slider_item_tags_flex"
-                              >
-
-                                 
-                              <div class="sm_tag_item">
-                                 <p
-                                    class="post_detail_related_news_slider_item_tag_p"
-                                 >
-                                    Next.js {% comment %} {{tag.name}} {% endcomment %}
-                                 </p>
-                              </div>
-                              <div class="sm_tag_item">
-                               <p
-                                  class="post_detail_related_news_slider_item_tag_p"
-                               >
-                                  Next.js {% comment %} {{tag.name}} {% endcomment %}
-                               </p>
-                               </div>
-                                 
-                              </div>
+                              <div class="post_detail_related_news_slider_item_tags_flex"></div>
 
                               <div class="share_icon_style related_news_silder_sidebar_item_style">
-                                {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
-
+             
                                  <div class="share_dropdown_div" id="share_dropdown_div">
                                    <div class="share_dropdown_item" >
-                                     {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
+                                     <a> 
                  
                                        <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
                                        <p class="share_dropdown_item_text">Copy link</p>
-                                     {% comment %} </a> {% endcomment %}
+                                     </a>
                                      
                                    </div>
                  
                                    <div class="share_dropdown_item">
-                                     {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                                     <a target="_blank">
                  
                                        <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
                                        <p class="share_dropdown_item_text">
                                        LinkedIn
                                      </p>
-                                     {% comment %} </a> {% endcomment %}
+                                     </a>
                                      
                                    </div>
                  
                                    <div class="share_dropdown_item">
-                                     {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                                     <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
                  
                                      <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
                                      <p class="share_dropdown_item_text">
                                       Telegram
-                                     {% comment %} </a> {% endcomment %}
+                                     </a>
                                     
                                    </p>
                                    
                                    </div>
                  
                                    <div class="share_dropdown_item">
-                                     {% comment %} <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
+                                     <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
                                        <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
                                        <p class="share_dropdown_item_text">
                                          Twitter
                                        </p>  
-                                     {% comment %} </a> {% endcomment %}
+                                     </a>
                                     
                                    </div>
                                  </div>
                                  </div>  
                            </div>
-                            </div>
+                        </div>
+                        <div class="post_detail_related_news_slider_item">
+                         <div
+                            class="post_detail_related_news_slider_item_description"
+                         >
+                            <p
+                               class="post_detail_related_news_slider_item_description_p"
+                            >
+                              Hello
+                            </p>
+                         </div>
+                         <div
+                            class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                         >
 
-                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
+                            <div class="post_detail_related_news_slider_item_tags_flex"></div>
 
-                           <div
-                              class="post_detail_related_news_slider_item_description"
-                           >
-                              <p
-                                 class="post_detail_related_news_slider_item_description_p"
-                              >
-                                Hello post typescript
-                              </p>
-                           </div>
-                           <div
-                              class="post_detail_related_news_slider_item_tags_share_icon_flex"
-                           >
-
-
-                              <div
-                                 class="post_detail_related_news_slider_item_tags_flex"
-                              >
-
-                              
-                                 
-                              <div class="sm_tag_item">
-                                 <p
-                                    class="post_detail_related_news_slider_item_tag_p"
-                                 >
-                                    Next.js {% comment %} {{tag.name}} {% endcomment %}
-                                 </p>
-                              </div>
-                              <div class="sm_tag_item">
-                               <p
-                                  class="post_detail_related_news_slider_item_tag_p"
-                               >
-                                  Next.js {% comment %} {{tag.name}} {% endcomment %}
-                               </p>
-                               </div>
-                                 
-                              </div>
-
-                              <div class="share_icon_style related_news_silder_sidebar_item_style">
-                                {% comment %} onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')" {% endcomment %}
-
-                                 <div class="share_dropdown_div" id="share_dropdown_div">
-                                   <div class="share_dropdown_item" >
-                                     {% comment %} <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')">  {% endcomment %}
-                 
-                                       <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
-                                       <p class="share_dropdown_item_text">Copy link</p>
-                                     {% comment %} </a> {% endcomment %}
-                                     
-                                   </div>
-                 
-                                   <div class="share_dropdown_item">
-                                     {% comment %} <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                 
-                                       <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
-                                       <p class="share_dropdown_item_text">
-                                       LinkedIn
-                                     </p>
-                                     {% comment %} </a> {% endcomment %}
-                                     
-                                   </div>
-                 
-                                   <div class="share_dropdown_item">
-                                     {% comment %} <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                 
-                                     <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
-                                     <p class="share_dropdown_item_text">
-                                      Telegram
-                                     {% comment %} </a> {% endcomment %}
-                                    
-                                   </p>
+                            <div class="share_icon_style related_news_silder_sidebar_item_style">
+           
+                               <div class="share_dropdown_div" id="share_dropdown_div">
+                                 <div class="share_dropdown_item" >
+                                   <a> 
+               
+                                     <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                     <p class="share_dropdown_item_text">Copy link</p>
+                                   </a>
                                    
-                                   </div>
-                 
-                                   <div class="share_dropdown_item">
-                                     {% comment %} <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank"> {% endcomment %}
-                                       <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
-                                       <p class="share_dropdown_item_text">
-                                         Twitter
-                                       </p>  
-                                     {% comment %} </a> {% endcomment %}
-                                    
-                                   </div>
                                  </div>
-                                 </div>  
-                           </div>
-                            </div>
+               
+                                 <div class="share_dropdown_item">
+                                   <a target="_blank">
+               
+                                     <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                     <p class="share_dropdown_item_text">
+                                     LinkedIn
+                                   </p>
+                                   </a>
+                                   
+                                 </div>
+               
+                                 <div class="share_dropdown_item">
+                                   <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+               
+                                   <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                   <p class="share_dropdown_item_text">
+                                    Telegram
+                                   </a>
+                                  
+                                 </p>
+                                 
+                                 </div>
+               
+                                 <div class="share_dropdown_item">
+                                   <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                                     <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                     <p class="share_dropdown_item_text">
+                                       Twitter
+                                     </p>  
+                                   </a>
+                                  
+                                 </div>
+                               </div>
+                               </div>  
+                         </div>
+                      </div>
+                      <div class="post_detail_related_news_slider_item">
+                         <div
+                            class="post_detail_related_news_slider_item_description"
+                         >
+                            <p
+                               class="post_detail_related_news_slider_item_description_p"
+                            >
+                              Hello
+                            </p>
+                         </div>
+                         <div
+                            class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                         >
 
-                            {% comment %} {% endfor %} {% endcomment %}
 
-                        </div>
-                       
-                       {% comment %} {% endfor %} {% endcomment %}
-                        </div>
-                        </div>
-                    </div>
-                <div class="post_detail_sidebar_buttons_div_flex">
-                    <div class="post_detail_sidebar_buttons_div">
-                       <div
-                          class="post_detail_sidebar_left_button glider-prev-post-detail-sidebar"
-                       >
-                          <img
-                             src="{% static 'img/post_detail/post_detail_sidebar_left_arrow.svg' %}"
-                             alt="left_arrow_icon"
-                             width="24px"
-                             height="24px"
-                          />
-                       </div>
-                       <div
-                          class="post_detail_sidebar_right_button glider-next-post-detail-sidebar"
-                       >
-                          <img
-                             src="{% static 'img/post_detail/post_detail_sidebar_right_arrow.svg' %}"
-                             alt="right_arrow_icon"
-                             width="24px"
-                             height="24px"
-                          />
-                       </div>
-                    </div>
-                 </div>
+                            <div class="post_detail_related_news_slider_item_tags_flex"></div>
+
+                            <div class="share_icon_style related_news_silder_sidebar_item_style">
+           
+                               <div class="share_dropdown_div" id="share_dropdown_div">
+                                 <div class="share_dropdown_item" >
+                                   <a> 
+               
+                                     <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                     <p class="share_dropdown_item_text">Copy link</p>
+                                   </a>
+                                   
+                                 </div>
+               
+                                 <div class="share_dropdown_item">
+                                   <a target="_blank">
+               
+                                     <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                     <p class="share_dropdown_item_text">
+                                     LinkedIn
+                                   </p>
+                                   </a>
+                                   
+                                 </div>
+               
+                                 <div class="share_dropdown_item">
+                                   <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+               
+                                   <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                   <p class="share_dropdown_item_text">
+                                    Telegram
+                                   </a>
+                                  
+                                 </p>
+                                 
+                                 </div>
+               
+                                 <div class="share_dropdown_item">
+                                   <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                                     <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                     <p class="share_dropdown_item_text">
+                                       Twitter
+                                     </p>  
+                                   </a>
+                                  
+                                 </div>
+                               </div>
+                               </div>  
+                         </div>
+                      </div>
+                  </div>
+                  </div>
+               </div>
+               <div class="post_detail_sidebar_buttons_div_flex">
+                  <div class="post_detail_sidebar_buttons_div">
+                     <div
+                        class="post_detail_sidebar_left_button glider-prev-company-detail-sidebar"
+                     >
+                        <img
+                           src="{% static 'img/post_detail/post_detail_sidebar_left_arrow.svg' %}"
+                           alt="left_arrow_icon"
+                           width="24px"
+                           height="24px"
+                        />
+                     </div>
+                     <div
+                        class="post_detail_sidebar_right_button glider-next-company-detail-sidebar"
+                     >
+                        <img
+                           src="{% static 'img/post_detail/post_detail_sidebar_right_arrow.svg' %}"
+                           alt="right_arrow_icon"
+                           width="24px"
+                           height="24px"
+                        />
+                     </div>
+                  </div>
+               </div>
             </div>
+         </div>
+         {% comment %} {% endif %} {% endcomment %}
 
     </div>
 
@@ -1116,5 +1064,6 @@
 <script src="{% static 'js/company_detail/company_detail.js' %}"></script>
 <script src="{% static 'js/company_detail/reply_comment_field.js' %}"></script>
 <script src="{% static 'js/company_detail/handle_like_dislike.js' %}"></script>
+<script src="{% static 'js/company_detail/comment_dropdown.js' %}"></script>
 <script src="{% static 'js/company_detail/comment_dropdown.js' %}"></script>
 {% endblock %}
