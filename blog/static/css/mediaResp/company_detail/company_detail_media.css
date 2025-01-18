@@ -44,6 +44,9 @@
   .cmp_det_add_comment_asset_secured {
     justify-content: space-between;
   }
+  .post_detail_related_news_title{
+    font-size: 22px;
+  }
 }
 
 @media (max-width: 460px) {
