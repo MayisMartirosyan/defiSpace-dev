@@ -225,6 +225,7 @@
    display: flex;
    align-items: flex-start;
    gap: 8px;
+   flex-wrap: wrap;
 }
 
 .post_detail_related_news_slider_item_tag {
