@@ -263,7 +263,7 @@ def company_detail(request, company_id):
     
     handle_add_company_fields(company=company)
     
-    print(vars(company).tag_rating,'abcasncansc')
+    print(vars(company),'abcasncansc')
     print(vars(company.product_score_obj),'1')
     print(vars(company.team_score_obj),'2')
     print(vars(company.security_score_obj),'3')
