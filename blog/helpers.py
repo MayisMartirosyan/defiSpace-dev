@@ -8,7 +8,7 @@ def handle_add_company_fields(company):
     product_score_total = product_scores.total_score if product_scores else 0
     team_score_total = team_scores.total_score if team_scores else 0
     security_score_total = security_scores.total_score if security_scores else 0
-
+    
     average_score = round(min((product_score_total + team_score_total + security_score_total) / 3,100))
 
     company.product_score = product_score_total
@@ -34,7 +34,7 @@ def calculate_total_score_team(company):
     team_scores = company.team_scores.first()
     decentralized_score = team_scores.decentralized_score
     performace_score = team_scores.performace_score
-    total_score = (decentralized_score + performace_score) / 3
+    total_score = (decentralized_score + performace_score) / 2
     team_scores.total_score = total_score
     team_scores.save()
 

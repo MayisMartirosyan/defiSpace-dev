@@ -8,7 +8,10 @@ from django.db.models import Count,OuterRef,Subquery
 from collections import defaultdict
 from datetime import datetime, timedelta
 from django.core.paginator import Paginator
+from django.forms.models import model_to_dict
+import json
 from .helpers import handle_add_company_fields,calculate_total_score_product,calculate_total_score_team,calculate_total_score_scurity
+
 
 
 
@@ -248,30 +251,41 @@ def company_detail(request, company_id):
     print(company_id)
     company = get_object_or_404(Company, pk=company_id)
     
-    print(company)
-    companies = Company.objects.all()
-    reviews = company.reviews.all()
-    security_advantages = company.advantages.filter(position=1).order_by('-count')
-    team_advantages = company.advantages.filter(position=2).order_by('-count')
-    product_advantages = company.advantages.filter(position=3).order_by('-count')
-    calculate_total_score_product(company)
-    calculate_total_score_team(company)
-    calculate_total_score_scurity(company)
-    security_scores = company.security_scores.first()
-    team_scores = company.team_scores.first()
-    product_scores = company.product_scores.first()
+   # Extract fields and values
+    related_posts = company.related_posts.all() 
+    
+    # security_advantages = company.advantages.filter(position=1).order_by('-count')
+    # team_advantages = company.advantages.filter(position=2).order_by('-count')
+    # product_advantages = company.advantages.filter(position=3).order_by('-count')
+    company.product_score_obj = company.product_scores.first()
+    company.team_score_obj = company.team_scores.first()
+    company.security_score_obj = company.security_scores.first()
+    
+    handle_add_company_fields(company=company)
+    
+    print(vars(company).tag_rating,'abcasncansc')
+    print(vars(company.product_score_obj),'1')
+    print(vars(company.team_score_obj),'2')
+    print(vars(company.security_score_obj),'3')
+    print(vars(related_posts[0]),'4')
+
     if request.method == 'POST':
         name = request.POST.get('name')
         comment = request.POST.get('comment')
         rating = request.POST.get('rating')
         if rating == 'positive':
             rating = True
-        elif rating == 'negative':
+        else:
             rating = False
         review = Review(company=company, name=name, rating=rating, comment=comment)
         review.save()
         return redirect('company_detail', company_id=company.id)
-    return render(request, 'blog/company_detail.html', {'company': company, 'companies': companies,'reviews': reviews, 'security_advantages': security_advantages, 'team_advantages': team_advantages, 'product_advantages': product_advantages, 'security_scores': security_scores, 'team_scores': team_scores, 'product_scores': product_scores})
+    
+
+    return render(request, 'blog/company_detail.html',
+                  {'company': company, 
+                   'related_posts':related_posts
+                   })
 
 def add_advantage(request, company_id):
     company = get_object_or_404(Company, pk=company_id)
@@ -320,4 +334,4 @@ def increment_advantage(request, advantage_id):
                 advantage.count += remaining_percent
                 advantage.save()
 
-    return redirect('company_detail', company_id=advantage.company.id)
+    return redirect('company_detail_old_version', company_id=advantage.company.id)

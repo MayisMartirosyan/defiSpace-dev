@@ -29,6 +29,8 @@ class Company(models.Model):
     link = models.CharField(max_length=200, null=True, blank=True)
     github = models.CharField(max_length=200, null=True, blank=True)
     mark = models.BooleanField('Отображать на главной в Projects Scoring', default=False, null=True)
+    related_posts = models.ManyToManyField('Post', related_name='related_companies', blank=True)
+
 
     def __str__(self):
         return self.name
