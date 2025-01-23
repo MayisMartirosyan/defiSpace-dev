@@ -20,6 +20,10 @@ def handle_add_company_fields(company):
     company.security_score_formatted = 50 + company.security_score / 2
     company.product_score_formatted  = 50 - company.product_score / 2
     
+    company.product_score_formatted_2  =  440 - company.product_score * 1.6
+    company.team_score_formatted  = 440 - company.team_score * 1.6
+    company.security_score_formatted  = 440 - company.security_score * 1.6
+    
     
 def calculate_total_score_product(company):
     product_scores = company.product_scores.first()
