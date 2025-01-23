@@ -365,18 +365,7 @@ circle {
   stroke: #fe6a25;
   stroke-width: 5px;
   stroke-dasharray: 450;
-  stroke-dashoffset: 290;
 }
-
-/* .company_ratings_card_score {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background-color: #edf3fc;
-} */
 
 .company_ratings_card_score_text {
   position: absolute;
@@ -411,13 +400,15 @@ circle {
 }
 
 .company_ratings_card_stat_rating_div:hover {
-  border: 1px #fe6a25 solid;
+  box-shadow: 0 0 0 1px #fe6a25;
 }
 
 .company_ratings_card_stat_rating {
-  height: 100%;
+  height: calc(100% + 1.5px);
   border-radius: 20px;
   background-color: #bdd4fa;
+  margin-left: -0.5px;
+  margin-top: -1px;
 }
 
 .company_ratings_card_stat_rating_icon {
@@ -497,6 +488,7 @@ circle {
   border-radius: 36px;
   border: 1px #9e9e9e solid;
   margin-bottom: 30px;
+  position: relative;
 }
 
 .cmp_det_comment_filter_current {
@@ -517,6 +509,38 @@ circle {
   border-radius: 24px;
   background-color: #141919;
   cursor: pointer;
+  position: relative;
+}
+
+.cmp_det_comment_filter_dropdown_list {
+  /**/
+  display: none;
+  /**/
+  width: 158px;
+  padding: 4px;
+  border-radius: 20px;
+  background-color: #141919;
+  position: absolute;
+  top: 56px;
+  left: 8px;
+}
+
+.cmp_det_comment_filter_dropdown_item {
+  padding: 9px 20px;
+  gap: 10px;
+  border-radius: 24px;
+  background-color: #141919;
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  color: #ffffff;
+  width: 100%;
+  cursor: pointer;
+}
+
+.cmp_det_comment_filter_dropdown_item:hover{
+  background-color: #3C3C3C;
 }
 
 .cmp_det_comments_div {
@@ -770,7 +794,7 @@ circle {
 
 /* Slider style */
 
-.cmp_detail_related_news{
+.cmp_detail_related_news {
   min-width: 260px;
   max-width: 400px;
   width: 100%;

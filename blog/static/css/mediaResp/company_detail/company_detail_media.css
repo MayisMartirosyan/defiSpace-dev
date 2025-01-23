@@ -1,21 +1,18 @@
 @media (max-width: 1200px) {
   .company_ratings {
-    align-items: center;
     gap: 24px;
   }
-  /* .cmp_det_slider_div {
-    max-width: 900px;
-  } */
 }
 
 @media (max-width: 1100px) {
   .company_ratings {
+    align-items: center;
     flex-direction: column;
   }
-  .cmp_det_comment_slider_section_div{
+  .cmp_det_comment_slider_section_div {
     flex-direction: column;
   }
-  .cmp_slider_contain{
+  .cmp_slider_contain {
     max-width: 900px;
   }
   .cmp_detail_related_news {
@@ -44,7 +41,7 @@
   .cmp_det_add_comment_asset_secured {
     justify-content: space-between;
   }
-  .post_detail_related_news_title{
+  .post_detail_related_news_title {
     font-size: 22px;
   }
 }
