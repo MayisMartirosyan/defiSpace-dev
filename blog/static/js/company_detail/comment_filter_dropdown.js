@@ -14,7 +14,27 @@ const dropdownFilterTypes = [
   },
   {
     type: "Team",
-    items: ["Decentralization", "Activity"]
+    items: [`<div class="companies_list_settings_option">
+                                <label for="team">Decentralization</label>
+                                <input type="radio" id="team" name="status" value="team" />
+                                <img
+                                  src="{% static 'img/companies/companies_radio_icon.svg' %}"
+                                  width="16px"
+                                  height="16px"
+                                  id="companies_radio_button"
+                                  alt="companies_radio_icon"
+                                />
+                            </div>`, `<div class="companies_list_settings_option">
+                                <label for="team">Activity</label>
+                                <input type="radio" id="team" name="status" value="team" />
+                                <img
+                                  src="{% static 'img/companies/companies_radio_icon.svg' %}"
+                                  width="16px"
+                                  height="16px"
+                                  id="companies_radio_button"
+                                  alt="companies_radio_icon"
+                                />
+                            </div>`]
   },
   {
     type: "Product",

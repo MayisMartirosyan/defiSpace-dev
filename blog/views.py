@@ -248,11 +248,9 @@ def add_comment(request, post_id):
 
 def company_detail(request, company_id):
     
-    print(company_id)
     company = get_object_or_404(Company, pk=company_id)
     
-    # Extract fields and values
-    related_posts = company.related_posts.all() 
+   # Extract fields and values
     
     # security_advantages = company.advantages.filter(position=1).order_by('-count')
     # team_advantages = company.advantages.filter(position=2).order_by('-count')
@@ -260,14 +258,24 @@ def company_detail(request, company_id):
     company.product_score_obj = company.product_scores.first()
     company.team_score_obj = company.team_scores.first()
     company.security_score_obj = company.security_scores.first()
-    
     handle_add_company_fields(company=company)
     
-    # print(vars(company),'abcasncansc')
-    # print(vars(company.product_score_obj),'1')
-    # print(vars(company.team_score_obj),'2')
-    # print(vars(company.security_score_obj),'3')
-    print('4', vars(related_posts))
+    
+    related_posts = company.related_posts.all() 
+    related_posts_queryset = related_posts.values('id','title', 'pub_date')
+    sublists = []
+    
+    for sub_post in related_posts_queryset:
+        sub_post_tags = TagPosts.objects.filter(post__id=sub_post['id']).values('id', 'name')
+        sub_post['tag_posts'] = list(sub_post_tags)
+        if not sublists or len(sublists[-1]) == 3:
+            sublists.append([sub_post])
+        else:
+            sublists[-1].append(sub_post)
+    
+  
+   
+    print(sublists,'4')
 
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -284,7 +292,7 @@ def company_detail(request, company_id):
 
     return render(request, 'blog/company_detail.html',
                   {'company': company, 
-                   'related_posts':related_posts
+                   'related_posts':sublists
                    })
 
 def add_advantage(request, company_id):
