@@ -129,7 +129,7 @@
                               <stop offset="100%" stop-color="#edf3fc" >
                             </linearGradient>
                           </defs>
-                          <circle cx="32" cy="32" r="28" stroke-linecap="round" style="stroke-dashoffset: {{company.team_score_formatted}};"/>
+                          <circle cx="32" cy="32" r="28" stroke-linecap="round" style="stroke-dashoffset: {{company.team_score_formatted_2}};"/>
                         </svg>
                     </div>
                     <span class="company_ratings_card_score_text">{{company.team_score}}</span>
@@ -290,7 +290,7 @@
                               <stop offset="100%" stop-color="#edf3fc" >
                             </linearGradient>
                           </defs>
-                          <circle cx="32" cy="32" r="28" stroke-linecap="round" style="stroke-dashoffset: {{company.security_score_formatted}};"/>
+                          <circle cx="32" cy="32" r="28" stroke-linecap="round" style="stroke-dashoffset: {{company.security_score_formatted_2}};"/>
                         </svg>
                     </div>
                     <span class="company_ratings_card_score_text">{{company.security_score}}</span>
@@ -370,9 +370,24 @@
                 <h2 class="cmp_det_comment_title">Users opinions</h2>
 
                 <div class="cmp_det_comment_filter_div">
-                    <div class="cmp_det_comment_filter_dropdown" id="cmp_det_comment_filter_dropdown">
-                        <span class="cmp_det_comment_filter_current" id="cmp_det_comment_filter_current">All comments</span>
-                        <img src="{% static 'img/timelineTags/dropdown_arrow.svg' %}" alt="dropdown_arrow" />
+                    <div class="cmp_det_comment_filter_dropdown_div">
+                        <div class="cmp_det_comment_filter_dropdown" id="cmp_det_comment_filter_dropdown">
+                            <span class="cmp_det_comment_filter_current" id="cmp_det_comment_filter_current">All comments</span>
+                            <img src="{% static 'img/timelineTags/dropdown_arrow.svg' %}" alt="dropdown_arrow" />
+                        </div>
+                        <div class="cmp_det_comment_filter_dropdown_types" id="cmp_det_comment_filter_dropdown_types">
+                            {% comment %} <div class="companies_list_settings_option">
+                                <label for="team">Team</label>
+                                <input type="radio" id="team" name="status" value="team" />
+                                <img
+                                  src="{% static 'img/companies/companies_radio_icon.svg' %}"
+                                  width="16px"
+                                  height="16px"
+                                  id="companies_radio_button"
+                                  alt="companies_radio_icon"
+                                />
+                            </div> {% endcomment %}
+                        </div>
                     </div>
                     <div class="cmp_det_comment_filter_dropdown_list" id="cmp_det_comment_filter_dropdown_list">
                         <div class="cmp_det_comment_filter_dropdown_item" onclick="FilterDropdown(event)">
@@ -635,46 +650,40 @@
             </div>
 
 
+        {% comment %} {% if related_posts %}
          <div class="cmp_detail_related_news">
             <h3 class="post_detail_related_news_title">Related news</h3>
             <div class="cmp_slider_contain">
                <div class="glider-contain">
                   <div class="glider-company-detail-sidebar-slider">
-                     <div class="post_detail_related_news_slider_items_flex">
-                    
-                           <div class="post_detail_related_news_slider_item">
-                              <div class="post_detail_related_news_slider_item_description">
-                                 <p class="post_detail_related_news_slider_item_description_p">
-                                   Hello
-                                 </p>
-                              </div>
-                              <div
-                                 class="post_detail_related_news_slider_item_tags_share_icon_flex"
-                              >
 
-                                 <div class="post_detail_related_news_slider_item_tags_flex">
+                    {% for related_group in related_posts %}
+
+                    <div class="post_detail_related_news_slider_items_flex">
+
+                        {% for related_post_company in related_group %}
+
+                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_company.id }}">
+                                <div class="post_detail_related_news_slider_item_description">
+                                    <p class="post_detail_related_news_slider_item_description_p">
+                                        {{related_post_company.title}}
+                                    </p>
+                                </div>
+                                <div class="post_detail_related_news_slider_item_tags_share_icon_flex">
+
                                     <div class="post_detail_related_news_slider_item_tags_flex">
-                                        <div class="sm_tag_item">
-                                           <p class="post_detail_related_news_slider_item_tag_p">
-                                              JUST
-                                           </p>
+                                        <div class="post_detail_related_news_slider_item_tags_flex">
+                                            {% for tag in related_post_company.tag_posts  %}
+                                                <div class="sm_tag_item">
+                                                    <p class="post_detail_related_news_slider_item_tag_p">
+                                                        {{tag.name}}
+                                                    </p>
+                                                </div>
+                                        {% endfor %}
                                         </div>
-                                        <div class="sm_tag_item">
-                                           <p class="post_detail_related_news_slider_item_tag_p">
-                                              DO
-                                           </p>
-                                        </div>
-                                        <div class="sm_tag_item">
-                                            <p class="post_detail_related_news_slider_item_tag_p">
-                                               IT
-                                            </p>
-                                        </div>
-                                           
-                                        </div>
-                                 </div>
+                                    </div>
 
-                                 <div class="share_icon_style related_news_silder_sidebar_item_style">
-                
+                                    <div class="share_icon_style related_news_silder_sidebar_item_style">
                                     <div class="share_dropdown_div" id="share_dropdown_div">
                                       <div class="share_dropdown_item" >
                                         <a> 
@@ -719,18 +728,15 @@
                                       </div>
                                     </div>
                                     </div>  
-                              </div>
-                           </div>
+                                </div>
+                            </div>
                            <div class="post_detail_related_news_slider_item">
                             <div class="post_detail_related_news_slider_item_description">
                                <p class="post_detail_related_news_slider_item_description_p">
                                  Bye
                                </p>
                             </div>
-                            <div
-                               class="post_detail_related_news_slider_item_tags_share_icon_flex"
-                            >
-
+                            <div class="post_detail_related_news_slider_item_tags_share_icon_flex">
 
                                <div class="post_detail_related_news_slider_item_tags_flex">
                                 <div class="sm_tag_item">
@@ -959,137 +965,12 @@
                                     
                                    </div>
                                  </div>
-                                 </div>  
-                           </div>
+                                </div>  
+                            </div>
                         </div>
-                        <div class="post_detail_related_news_slider_item">
-                         <div class="post_detail_related_news_slider_item_description">
-                            <p class="post_detail_related_news_slider_item_description_p">
-                              Hello
-                            </p>
-                         </div>
-                         <div class="post_detail_related_news_slider_item_tags_share_icon_flex">
-
-                            <div class="post_detail_related_news_slider_item_tags_flex">
-                                <div class="sm_tag_item">
-                                    <p class="post_detail_related_news_slider_item_tag_p">
-                                       NIKE
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="share_icon_style related_news_silder_sidebar_item_style">
-           
-                               <div class="share_dropdown_div" id="share_dropdown_div">
-                                 <div class="share_dropdown_item" >
-                                   <a>
-                                     <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
-                                     <p class="share_dropdown_item_text">Copy link</p>
-                                   </a>
-                                   
-                                 </div>
-               
-                                 <div class="share_dropdown_item">
-                                   <a target="_blank">
-               
-                                     <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
-                                     <p class="share_dropdown_item_text">
-                                     LinkedIn
-                                   </p>
-                                   </a>
-                                   
-                                 </div>
-               
-                                 <div class="share_dropdown_item">
-                                   <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
-               
-                                   <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
-                                   <p class="share_dropdown_item_text">
-                                    Telegram
-                                   </a>
-                                  
-                                 </p>
-                                 
-                                 </div>
-               
-                                 <div class="share_dropdown_item">
-                                   <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
-                                     <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
-                                     <p class="share_dropdown_item_text">
-                                       Twitter
-                                     </p>  
-                                   </a>
-                                  
-                                 </div>
-                               </div>
-                               </div>  
-                         </div>
-                      </div>
-                      <div class="post_detail_related_news_slider_item">
-                         <div class="post_detail_related_news_slider_item_description">
-                            <p class="post_detail_related_news_slider_item_description_p">
-                              Hello
-                            </p>
-                         </div>
-                         <div class="post_detail_related_news_slider_item_tags_share_icon_flex">
-
-                            <div class="post_detail_related_news_slider_item_tags_flex">
-                                <div class="sm_tag_item">
-                                    <p class="post_detail_related_news_slider_item_tag_p">
-                                       JUST
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="share_icon_style related_news_silder_sidebar_item_style">
-           
-                               <div class="share_dropdown_div" id="share_dropdown_div">
-                                 <div class="share_dropdown_item" >
-                                   <a> 
-               
-                                     <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
-                                     <p class="share_dropdown_item_text">Copy link</p>
-                                   </a>
-                                   
-                                 </div>
-               
-                                 <div class="share_dropdown_item">
-                                   <a target="_blank">
-               
-                                     <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
-                                     <p class="share_dropdown_item_text">
-                                     LinkedIn
-                                   </p>
-                                   </a>
-                                   
-                                 </div>
-               
-                                 <div class="share_dropdown_item">
-                                   <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
-               
-                                   <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
-                                   <p class="share_dropdown_item_text">
-                                    Telegram
-                                   </a>
-                                  
-                                 </p>
-                                 
-                                 </div>
-               
-                                 <div class="share_dropdown_item">
-                                   <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
-                                     <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
-                                     <p class="share_dropdown_item_text">
-                                       Twitter
-                                     </p>  
-                                   </a>
-                                  
-                                 </div>
-                               </div>
-                               </div>  
-                         </div>
-                      </div>
-                  </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
                   </div>
                </div>
                <div class="post_detail_sidebar_buttons_div_flex">
@@ -1114,7 +995,139 @@
                </div>
             </div>
          </div>
-         {% comment %} {% endif %} {% endcomment %}
+         {% endif %} {% endcomment %}
+
+         {% comment %} {% if related_sidebar %}
+         <div class="post_detail_related_news">
+            <h3 class="post_detail_related_news_title">Related news</h3>
+            <div class="post_detail_related_news_slider_div_flex">
+               <div class="glider-contain">
+                  <div class="glider-post-detail-sidebar-slider">
+                     {% for related_group in related_sidebar %}
+                     <div class="post_detail_related_news_slider_items_flex">
+                       
+                           
+                           {% for related_post_sidebar in related_group  %}
+                           <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}">
+                              <div
+                                 class="post_detail_related_news_slider_item_description"
+                              >
+                                 <p
+                                    class="post_detail_related_news_slider_item_description_p"
+                                 >
+                                   {{related_post_sidebar.title}}
+                                 </p>
+                              </div>
+                              <div
+                                 class="post_detail_related_news_slider_item_tags_share_icon_flex"
+                              >
+
+
+                                 <div
+                                    class="post_detail_related_news_slider_item_tags_flex"
+                                 >
+
+                                 
+                                 {% for tag in related_post_sidebar.tag_posts  %}
+                                    
+                                 <div class="sm_tag_item">
+                                    <p
+                                       class="post_detail_related_news_slider_item_tag_p"
+                                    >
+                                       {{tag.name}}
+                                    </p>
+                                 </div>
+                                 {% endfor %}
+                                    
+                                 </div>
+                                 <!-- <img
+                                    class="post_detail_post_share_icon_img"
+                                    src="{% static 'img/post_detail/post_share_icon_bold.svg' %}"
+                                    alt="share_icon"
+                                    width="24px"
+                                    height="24px"
+                                 /> -->
+
+                                 <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+                
+                                    <div class="share_dropdown_div" id="share_dropdown_div">
+                                      <div class="share_dropdown_item" >
+                                        <a href="/post/{{ related_post_sidebar.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post_sidebar.id }}')"> 
+                    
+                                          <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                          <p class="share_dropdown_item_text">Copy link</p>
+                                        </a>
+                                        
+                                      </div>
+                    
+                                      <div class="share_dropdown_item">
+                                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                    
+                                          <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                          <p class="share_dropdown_item_text">
+                                          LinkedIn
+                                        </p>
+                                        </a>
+                                        
+                                      </div>
+                    
+                                      <div class="share_dropdown_item">
+                                        <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                    
+                                        <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                        <p class="share_dropdown_item_text">
+                                         Telegram
+                                        </a>
+                                       
+                                      </p>
+                                      
+                                      </div>
+                    
+                                      <div class="share_dropdown_item">
+                                        <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                                          <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                          <p class="share_dropdown_item_text">
+                                            Twitter
+                                          </p>  
+                                        </a>
+                                       
+                                      </div>
+                                    </div>
+                                    </div>  
+                              </div>
+                           </div>
+                           {% endfor %}
+                     </div>
+                     {% endfor %}
+                  </div>
+               </div>
+               <div class="post_detail_sidebar_buttons_div_flex">
+                  <div class="post_detail_sidebar_buttons_div">
+                     <div
+                        class="post_detail_sidebar_left_button glider-prev-post-detail-sidebar"
+                     >
+                        <img
+                           src="{% static 'img/post_detail/post_detail_sidebar_left_arrow.svg' %}"
+                           alt="left_arrow_icon"
+                           width="24px"
+                           height="24px"
+                        />
+                     </div>
+                     <div
+                        class="post_detail_sidebar_right_button glider-next-post-detail-sidebar"
+                     >
+                        <img
+                           src="{% static 'img/post_detail/post_detail_sidebar_right_arrow.svg' %}"
+                           alt="right_arrow_icon"
+                           width="24px"
+                           height="24px"
+                        />
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         {% endif %} {% endcomment %}
 
     </div>
 

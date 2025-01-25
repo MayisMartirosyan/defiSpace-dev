@@ -499,6 +499,18 @@ circle {
   color: #ffffff;
 }
 
+.cmp_det_comment_filter_dropdown_div{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.cmp_det_comment_filter_dropdown_types{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
 .cmp_det_comment_filter_dropdown {
   display: flex;
   justify-content: center;

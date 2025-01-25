@@ -30,6 +30,16 @@
   .cmp_det_full_description_div {
     width: 100%;
   }
+  .cmp_det_comment_filter_dropdown_div {
+    flex-direction: column;
+  }
+  .cmp_det_comment_filter_dropdown_types {
+    flex-direction: column;
+  }
+  .cmp_det_comment_filter_dropdown {
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
 @media (max-width: 650px) {
