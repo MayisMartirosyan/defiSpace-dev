@@ -251,7 +251,7 @@ def company_detail(request, company_id):
     print(company_id)
     company = get_object_or_404(Company, pk=company_id)
     
-   # Extract fields and values
+    # Extract fields and values
     related_posts = company.related_posts.all() 
     
     # security_advantages = company.advantages.filter(position=1).order_by('-count')
@@ -267,7 +267,7 @@ def company_detail(request, company_id):
     # print(vars(company.product_score_obj),'1')
     # print(vars(company.team_score_obj),'2')
     # print(vars(company.security_score_obj),'3')
-    # print(vars(related_posts[0]),'4')
+    print('4', vars(related_posts))
 
     if request.method == 'POST':
         name = request.POST.get('name')
