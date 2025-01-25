@@ -1,9 +1,15 @@
-const cmp_det_comment_filter_dropdown_list = document.getElementById("cmp_det_comment_filter_dropdown_list");
-const cmp_det_comment_filter_dropdown = document.getElementById("cmp_det_comment_filter_dropdown");
-const cmp_det_comment_filter_current = document.getElementById("cmp_det_comment_filter_current");
-const cmp_det_comment_filter_dropdown_types = document.getElementById("cmp_det_comment_filter_dropdown_types");
-
-
+const cmp_det_comment_filter_dropdown_list = document.getElementById(
+  "cmp_det_comment_filter_dropdown_list"
+);
+const cmp_det_comment_filter_dropdown = document.getElementById(
+  "cmp_det_comment_filter_dropdown"
+);
+const cmp_det_comment_filter_current = document.getElementById(
+  "cmp_det_comment_filter_current"
+);
+const cmp_det_comment_filter_dropdown_types = document.getElementById(
+  "cmp_det_comment_filter_dropdown_types"
+);
 
 let currentTypes = [];
 let filterDropdownBoolean = true;
@@ -14,27 +20,7 @@ const dropdownFilterTypes = [
   },
   {
     type: "Team",
-    items: [`<div class="companies_list_settings_option">
-                                <label for="team">Decentralization</label>
-                                <input type="radio" id="team" name="status" value="team" />
-                                <img
-                                  src="{% static 'img/companies/companies_radio_icon.svg' %}"
-                                  width="16px"
-                                  height="16px"
-                                  id="companies_radio_button"
-                                  alt="companies_radio_icon"
-                                />
-                            </div>`, `<div class="companies_list_settings_option">
-                                <label for="team">Activity</label>
-                                <input type="radio" id="team" name="status" value="team" />
-                                <img
-                                  src="{% static 'img/companies/companies_radio_icon.svg' %}"
-                                  width="16px"
-                                  height="16px"
-                                  id="companies_radio_button"
-                                  alt="companies_radio_icon"
-                                />
-                            </div>`]
+    items: ["Decentralization", "Activity"]
   },
   {
     type: "Product",
@@ -55,21 +41,53 @@ function FilterDropdownOpenClose() {
 
 function FilterDropdown(event) {
   cmp_det_comment_filter_current.innerText = event.target.innerText;
-  for(let i = 0; i < dropdownFilterTypes.length; i++){
-    if(event.target.innerText === dropdownFilterTypes[i].type){
+  for (let i = 0; i < dropdownFilterTypes.length; i++) {
+    if (event.target.innerText === dropdownFilterTypes[i].type) {
       currentTypes = dropdownFilterTypes[i].items;
     }
   }
 
-  cmp_det_comment_filter_dropdown_types.innerHTML = '';
+  cmp_det_comment_filter_dropdown_types.innerHTML = "";
 
-  for(let i = 0; i < currentTypes.length; i++){
+  for (let i = 0; i < currentTypes.length; i++) {
     const newDiv = document.createElement("div");
-    const node = document.createTextNode(`${currentTypes[i]}`);
-    newDiv.appendChild(node);
+
+    // Create the label element
+    const label = document.createElement("label");
+    label.setAttribute("for", "team");
+    label.textContent = currentTypes[i]; // Label text
+
+    // Create the input radio element
+    const checkInput = document.createElement("input");
+    checkInput.setAttribute("type", "checkbox");
+    checkInput.setAttribute("id", "team");
+    checkInput.setAttribute("name", "status");
+    checkInput.setAttribute("value", "team");
+    checkInput.style.backgroundColor = "darkgreen";
+    checkInput.style.width = "fit-content";
+
+    // Create the img element
+    const img = document.createElement("img");
+    img.setAttribute(
+      "src",
+      '../../img/company_detail/dropdown_icon.svg'
+    );
+    img.setAttribute("width", "16px");
+    img.setAttribute("height", "16px");
+    img.setAttribute("id", "companies_radio_button");
+    img.setAttribute("alt", "companies_radio_icon");
+
+    // Append the elements in the right order
+    newDiv.appendChild(label);
+    newDiv.appendChild(checkInput);
+    newDiv.appendChild(img);
+
+    // const node = document.createTextNode(`${currentTypes[i]}`);
+    // newDiv.appendChild(node);
+
     cmp_det_comment_filter_dropdown_types.appendChild(newDiv);
   }
-  
+
   FilterDropdownOpenClose();
 }
 
