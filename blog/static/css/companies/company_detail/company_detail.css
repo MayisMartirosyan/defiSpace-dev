@@ -833,4 +833,10 @@ circle {
   font-weight: 400;
   line-height: 22.4px;
   color: #141919;
+  position: relative;
+  transition: all 0.4s linear;
+}
+
+.cmp_filter_checked_checkbox_div{
+  background-color: transparent;
 }

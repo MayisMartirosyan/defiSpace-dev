@@ -16,20 +16,55 @@ let filterDropdownBoolean = true;
 const dropdownFilterTypes = [
   {
     type: "All comments",
-    items: []
+    items: [],
   },
   {
     type: "Team",
-    items: ["Decentralization", "Activity"]
+    items: [
+      {
+        name: "Decentralization",
+        checked: true,
+      },
+      {
+        name: "Activity",
+        checked: true,
+      },
+    ],
   },
   {
     type: "Product",
-    items: ["Monthly active users", "APY 1 year", "APY 5 years"]
+    items: [
+      {
+        name: "Monthly active users",
+        checked: true,
+      },
+      {
+        name: "APY 1 year",
+        checked: true,
+      },
+      {
+        name: "APY 5 years",
+        checked: true,
+      },
+    ],
   },
   {
     type: "Security",
-    items: ["Asset secured", "Max supply", "Liquidity"]
-  },
+    items: [
+      {
+        name: "Asset secured",
+        checked: true,
+      },
+      {
+        name: "Max supply",
+        checked: true,
+      },
+      {
+        name: "Liquidity",
+        checked: true,
+      }
+    ]
+  }
 ];
 
 function FilterDropdownOpenClose() {
@@ -39,8 +74,10 @@ function FilterDropdownOpenClose() {
   filterDropdownBoolean = !filterDropdownBoolean;
 }
 
-function FilterDropdown(event) {
-  cmp_det_comment_filter_current.innerText = event.target.innerText;
+function FilterDropdown(event, bool) {
+
+  cmp_det_comment_filter_current.innerText = event.target.innerText.trim();
+
   for (let i = 0; i < dropdownFilterTypes.length; i++) {
     if (event.target.innerText === dropdownFilterTypes[i].type) {
       currentTypes = dropdownFilterTypes[i].items;
@@ -53,14 +90,19 @@ function FilterDropdown(event) {
     const newDiv = document.createElement("div");
     newDiv.className = "cmp_filter_checkbox_div";
 
-    if(!i){
+    const currentWindowWidth =
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth;
+
+    if (!i && currentWindowWidth < 1200) {
       newDiv.style.marginTop = "12px";
     }
 
     // Create the label element
     const label = document.createElement("label");
     label.setAttribute("for", "team");
-    label.textContent = currentTypes[i]; // Label text
+    label.textContent = currentTypes[i].name; // Label text
 
     // Create the input radio element
     const checkInput = document.createElement("input");
@@ -68,32 +110,38 @@ function FilterDropdown(event) {
     checkInput.setAttribute("id", "team");
     checkInput.setAttribute("name", "status");
     checkInput.setAttribute("value", "team");
-    checkInput.style.backgroundColor = "darkgreen";
-    checkInput.style.width = "fit-content";
+    checkInput.setAttribute("checked", currentTypes[i].checked);
 
     // Create the img element
     const img = document.createElement("img");
-    img.setAttribute(
-      "src",
-      '/static/img/company_detail/checked_icon.svg'
-    );
+    img.setAttribute("src", "/static/img/company_detail/checked_icon.svg");
     img.setAttribute("width", "16px");
     img.setAttribute("height", "16px");
-    img.setAttribute("id", "companies_radio_button");
+    img.setAttribute("id", "company_detail_filter_checkbox");
     img.setAttribute("alt", "companies_radio_icon");
+
+    if(!currentTypes[i].checked){
+      newDiv.classList.add("cmp_filter_checked_checkbox_div");
+      img.style.display = "none";
+    }
 
     // Append the elements in the right order
     newDiv.appendChild(label);
     newDiv.appendChild(checkInput);
     newDiv.appendChild(img);
 
-    // const node = document.createTextNode(`${currentTypes[i]}`);
-    // newDiv.appendChild(node);
+    checkInput.addEventListener("click", () => {
+      currentTypes[i].checked = !currentTypes[i].checked;
+      return FilterDropdown(event, false);
+    });
+
 
     cmp_det_comment_filter_dropdown_types.appendChild(newDiv);
   }
 
-  FilterDropdownOpenClose();
+  if(bool){
+    FilterDropdownOpenClose();
+  }
 }
 
 cmp_det_comment_filter_dropdown.addEventListener(
