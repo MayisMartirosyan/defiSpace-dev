@@ -499,13 +499,13 @@ circle {
   color: #ffffff;
 }
 
-.cmp_det_comment_filter_dropdown_div{
+.cmp_det_comment_filter_dropdown_div {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
-.cmp_det_comment_filter_dropdown_types{
+.cmp_det_comment_filter_dropdown_types {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -551,8 +551,8 @@ circle {
   cursor: pointer;
 }
 
-.cmp_det_comment_filter_dropdown_item:hover{
-  background-color: #3C3C3C;
+.cmp_det_comment_filter_dropdown_item:hover {
+  background-color: #3c3c3c;
 }
 
 .cmp_det_comments_div {
@@ -819,4 +819,18 @@ circle {
   line-height: 33.89px;
   color: #141919;
   margin-bottom: 28px;
+}
+
+.cmp_filter_checkbox_div {
+  display: flex;
+  align-items: center;
+  padding: 9px 16px;
+  gap: 8px;
+  border-radius: 24px;
+  background-color: #edf3fc;
+  font-family: Inter, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22.4px;
+  color: #141919;
 }

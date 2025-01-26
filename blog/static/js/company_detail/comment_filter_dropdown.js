@@ -51,6 +51,7 @@ function FilterDropdown(event) {
 
   for (let i = 0; i < currentTypes.length; i++) {
     const newDiv = document.createElement("div");
+    newDiv.className = "cmp_filter_checkbox_div";
 
     // Create the label element
     const label = document.createElement("label");
@@ -70,7 +71,7 @@ function FilterDropdown(event) {
     const img = document.createElement("img");
     img.setAttribute(
       "src",
-      '../../img/company_detail/dropdown_icon.svg'
+      '/static/img/company_detail/checked_icon.svg'
     );
     img.setAttribute("width", "16px");
     img.setAttribute("height", "16px");
