@@ -2,6 +2,19 @@
   .company_ratings {
     gap: 24px;
   }
+  .cmp_det_comment_filter_dropdown_div {
+    flex-direction: column;
+  }
+  .cmp_det_comment_filter_dropdown_types {
+    flex-direction: column;
+  }
+  .cmp_det_comment_filter_dropdown {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .cmp_det_comment_filter_dropdown_div{
+    gap: 0;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -28,16 +41,6 @@
     width: 100%;
   }
   .cmp_det_full_description_div {
-    width: 100%;
-  }
-  .cmp_det_comment_filter_dropdown_div {
-    flex-direction: column;
-  }
-  .cmp_det_comment_filter_dropdown_types {
-    flex-direction: column;
-  }
-  .cmp_det_comment_filter_dropdown {
-    justify-content: space-between;
     width: 100%;
   }
 }
@@ -279,5 +282,9 @@
   }
   .cmp_det_show_more_comments {
     padding: 4px 8px;
+  }
+  .cmp_det_description_top_div{
+    flex-direction: column;
+    gap: 16px;
   }
 }

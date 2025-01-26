@@ -53,6 +53,10 @@ function FilterDropdown(event) {
     const newDiv = document.createElement("div");
     newDiv.className = "cmp_filter_checkbox_div";
 
+    if(!i){
+      newDiv.style.marginTop = "12px";
+    }
+
     // Create the label element
     const label = document.createElement("label");
     label.setAttribute("for", "team");
