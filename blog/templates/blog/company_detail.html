@@ -140,7 +140,11 @@
             <div class="company_ratings_card_stats_div">
                 <div class="company_ratings_card_stats">
                     <div class="company_ratings_card_stat_rating_div">
-                        <div class="company_ratings_card_stat_rating" style="width: {{company.team_score_obj.decentralized_score}}%;"></div>
+                        {% if company.team_score_obj.decentralized_score > 10 %}
+                            <div class="company_ratings_card_stat_rating" style="width: calc({{company.team_score_obj.decentralized_score}}% + 1px);"></div>
+                        {% else %}
+                            <div class="company_ratings_card_stat_rating" style="width: 10%;"></div>
+                        {% endif %}
                         <div class="company_ratings_card_stat_rating_name_icon_param">
                             <div class="company_ratings_card_stat_rating_name_icon_div">
                                 <span class="company_ratings_card_stat_rating_name">Decentralization</span>
@@ -594,11 +598,13 @@
                                 height="20px" 
                                 alt="comment_icon" 
                             />
-                            <input 
+                            <textarea 
                                 type="text" 
-                                class="cmp_det_comment_input"
+                                class="cmp_det_comment_textarea"
+                                cols="1"
                                 placeholder="Write comment"
-                            />
+                                oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                            ></textarea>
                         </div>       
                         <div class="cmp_det_add_comment_btn_div">
                             <button class="cmp_det_comment_btn">
