@@ -111,6 +111,7 @@ function FilterDropdown(event, bool) {
     checkInput.setAttribute("name", "status");
     checkInput.setAttribute("value", "team");
     checkInput.setAttribute("checked", currentTypes[i].checked);
+    checkInput.style.cursor = "pointer";
 
     // Create the img element
     const img = document.createElement("img");
@@ -134,7 +135,6 @@ function FilterDropdown(event, bool) {
       currentTypes[i].checked = !currentTypes[i].checked;
       return FilterDropdown(event, false);
     });
-
 
     cmp_det_comment_filter_dropdown_types.appendChild(newDiv);
   }
