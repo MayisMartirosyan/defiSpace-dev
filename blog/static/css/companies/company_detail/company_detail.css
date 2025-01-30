@@ -216,15 +216,6 @@
   width: fit-content;
 }
 
-.display-none {
-  display: none;
-}
-
-.display-flex {
-  display: flex;
-}
-
-
 .cmp_det_sub_criterion {
   border-radius: 24px;
   padding: 9px 20px;
