@@ -1,19 +1,19 @@
-// let add_comment_asset_secured_p = document.getElementById("cmp_det_add_comment_asset_secured_p");
-// const span = document.getElementById("cmp_det_sub_criterion_2").getElementsByTagName("span")[1].textContent;
-// let current_element = document.getElementById("cmp_det_sub_criterion_2");
+const add_comment_asset_secured_p = document.getElementById("cmp_det_add_comment_asset_secured_p");
+const cmp_det_add_comment_asset_secured = document.getElementById("cmp_det_add_comment_asset_secured");
+const cmp_det_list_sub_criterion = document.getElementById("cmp_det_list_sub_criterion");
 
-// console.log("span", span);
+let subCriterionBool = true;
 
-
-// function ForTest(event){
-//   console.log("event", event);
-//   // add_comment_asset_secured_p.innerText = event.target;
-// }
-
-
-// current_element.addEventListener("click", () => {
-//   add_comment_asset_secured_p.innerText = span;
-// });
+function OpenCloseSubCriterion(){
+  const currentStyle = subCriterionBool ? "block" : "none";
+  cmp_det_list_sub_criterion.style.display = currentStyle;
+  subCriterionBool = !subCriterionBool;
+}
 
 
-// add_comment_asset_secured_p.addEventListener("click", () => console.log("Select"));
+function makeActiveCategory(event){
+  add_comment_asset_secured_p.innerText = event.target.getElementsByTagName("span")[1].innerText;
+  OpenCloseSubCriterion();
+}
+
+cmp_det_add_comment_asset_secured.addEventListener("click", () => OpenCloseSubCriterion(subCriterionBool));
