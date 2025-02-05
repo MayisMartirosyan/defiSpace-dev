@@ -669,6 +669,7 @@
 
                         {% for related_post_company in related_group %}
 
+                        <a href="{% url 'post_detail' related_post_company.id %}">
                             <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_company.id }}">
                                 <div class="post_detail_related_news_slider_item_description">
                                     <p class="post_detail_related_news_slider_item_description_p">
@@ -736,6 +737,7 @@
                                     </div>  
                                 </div>
                             </div>
+                        </a>
                     
                         {% endfor %}
                     </div>
