@@ -669,13 +669,15 @@
 
                         {% for related_post_company in related_group %}
 
-                        <a href="{% url 'post_detail' related_post_company.id %}">
+
                             <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_company.id }}">
+                                <a href="{% url 'post_detail' related_post_company.id %}">
                                 <div class="post_detail_related_news_slider_item_description">
                                     <p class="post_detail_related_news_slider_item_description_p">
                                         {{related_post_company.title}}
                                     </p>
                                 </div>
+                                </a>
                                 <div class="post_detail_related_news_slider_item_tags_share_icon_flex">
 
                                     <div class="post_detail_related_news_slider_item_tags_flex">
@@ -691,7 +693,7 @@
                                     </div>
 
                                     <div class="share_icon_style related_news_silder_sidebar_item_style">
-                                    <div class="share_dropdown_div" id="share_dropdown_div">
+                                        <div class="share_dropdown_div" id="share_dropdown_div">
                                       <div class="share_dropdown_item" >
                                         <a> 
                     
@@ -733,11 +735,10 @@
                                         </a>
                                        
                                       </div>
-                                    </div>
+                                        </div>
                                     </div>  
                                 </div>
                             </div>
-                        </a>
                     
                         {% endfor %}
                     </div>
