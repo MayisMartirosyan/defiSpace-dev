@@ -296,7 +296,6 @@
                      >
                         <div class="post_detail_related_project_item_logo_div">
                            
-
                               {% if post.company.image %}
                                <img src="/media/{{post.company.image}}" class="project_scoring_item_logo" alt="star_icon" />
                               {% else %}
@@ -373,7 +372,7 @@
                               style="clip-path: polygon({{ post.company.team_score_first_formatted }}% {{ post.company.team_score_second_formatted }}%, 50% {{ post.company.product_score_formatted }}%, {{ post.company.security_score_formatted }}% {{ post.company.security_score_formatted }}%)"
                            >
                              <img 
-                               src="{% static 'img/companies/company_triangle_white_icon.png' %}" 
+                               src="{% static 'img/companies/company_triangle_white_icon.svg' %}" 
                                alt=""
                                width="85px" 
                                height="85px"
