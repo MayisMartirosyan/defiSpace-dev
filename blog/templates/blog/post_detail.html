@@ -169,8 +169,7 @@
                         <div
                            class="post_detail_news_slider_item_description_text"
                         >
-                           <a  href="{% url 'post_detail' related_post.id %}"> {{related_post.title}} </a
-                           >
+                           <a  href="{% url 'post_detail' related_post.id %}"> {{related_post.title}} </a>
                         </div>
                         <div class="post_detail_news_slider_item_tags_div_flex">
                            <div class="post_detail_news_slider_item_tags">
@@ -232,7 +231,7 @@
                                  
                                 </div>
                               </div>
-                              </div>  
+                           </div>  
                         </div>
                      </div>
                   </div>
@@ -240,7 +239,7 @@
                   {% endfor %}
                </div>
 
-               {% if related_posts|length > 1 %}
+               {% if related_posts|length > 2 %}
 
                <div class="post_detail_slider_buttons_div" id="post_detail_slider_buttons_div">
                   <div

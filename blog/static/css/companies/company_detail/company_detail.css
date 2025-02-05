@@ -214,6 +214,8 @@
   padding: 4px;
   background-color: #edf3fc;
   width: fit-content;
+  position: absolute;
+  z-index: 100;
 }
 
 .cmp_det_sub_criterion {
