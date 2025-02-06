@@ -2,7 +2,6 @@ const post_detail_slider_buttons_div = document.getElementById("post_detail_slid
 
 
 const openShareDropdown = (id) => {
-
     const sharedProject = document.getElementById(id);
     const selectedCompStyle = sharedProject.getElementsByClassName("share_dropdown_div");
     if (selectedCompStyle[0].classList.contains("active")) {
