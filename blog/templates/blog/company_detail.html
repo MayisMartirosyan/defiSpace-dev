@@ -692,51 +692,52 @@
                                         </div>
                                     </div>
 
-                                    <div class="share_icon_style related_news_silder_sidebar_item_style">
+                                    <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_company.id }}')">
+                
                                         <div class="share_dropdown_div" id="share_dropdown_div">
-                                      <div class="share_dropdown_item" >
-                                        <a> 
-                    
-                                          <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
-                                          <p class="share_dropdown_item_text">Copy link</p>
-                                        </a>
-                                        
-                                      </div>
-                    
-                                      <div class="share_dropdown_item">
-                                        <a target="_blank">
-                    
-                                          <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
-                                          <p class="share_dropdown_item_text">
-                                          LinkedIn
-                                        </p>
-                                        </a>
-                                        
-                                      </div>
-                    
-                                      <div class="share_dropdown_item">
-                                        <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
-                    
-                                        <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
-                                        <p class="share_dropdown_item_text">
-                                         Telegram
-                                        </a>
-                                       
-                                      </p>
-                                      
-                                      </div>
-                    
-                                      <div class="share_dropdown_item">
-                                        <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
-                                          <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
-                                          <p class="share_dropdown_item_text">
-                                            Twitter
-                                          </p>  
-                                        </a>
-                                       
-                                      </div>
+                                          <div class="share_dropdown_item" >
+                                            <a href="/companies/{{ related_post_company.id }}" onclick="copyToClipboard(event, '{{ main_url }}companies/{{ related_post_company.id }}')"> 
+                        
+                                              <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
+                                              <p class="share_dropdown_item_text">Copy link</p>
+                                            </a>
+                                            
+                                          </div>
+                        
+                                          <div class="share_dropdown_item">
+                                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                        
+                                              <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
+                                              <p class="share_dropdown_item_text">
+                                              LinkedIn
+                                            </p>
+                                            </a>
+                                            
+                                          </div>
+                        
+                                          <div class="share_dropdown_item">
+                                            <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                        
+                                            <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                            <p class="share_dropdown_item_text">
+                                             Telegram
+                                            </a>
+                                           
+                                          </p>
+                                          
+                                          </div>
+                        
+                                          <div class="share_dropdown_item">
+                                            <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                                              <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
+                                              <p class="share_dropdown_item_text">
+                                                Twitter
+                                              </p>  
+                                            </a>
+                                           
+                                          </div>
                                         </div>
-                                    </div>  
+                                     </div>
                                 </div>
                             </div>
                     
