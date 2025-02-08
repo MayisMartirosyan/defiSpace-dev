@@ -163,7 +163,7 @@
 
                   <div class="post_detail_news_slider_item" id="news_about_item{{ related_post.id }}">
                      <a class="post_detail_news_slider_item_image_link" href="{% url 'post_detail' related_post.id %}" >
-                        <div class="post_detail_news_slider_item_image"style="background: url('{% if related_post.image %} /media/{{related_post.image}}{% else %}{% static 'img/default_image.jpg' %}{% endif %}'); background-repeat: no-repeat; background-size: cover; background-position: center;"> </div>
+                        <div class="post_detail_news_slider_item_image"style="background: url('{% if related_post.image %} /media/{{related_post.image}}{% else %}{% static 'img/default_image.webp' %}{% endif %}'); background-repeat: no-repeat; background-size: cover; background-position: center;"> </div>
                      </a>
                      <div class="post_detail_news_slider_item_description_div">
                         <div
@@ -299,8 +299,8 @@
                               {% if post.company.image %}
                                <img src="/media/{{post.company.image}}" class="project_scoring_item_logo" alt="star_icon" />
                               {% else %}
-                                 <img
-                              src="{% static 'img/default_image.jpg' %}"
+                              <img
+                              src="{% static 'img/default_image.webp' %}"
                               class="post_detail_related_project_item_logo"
                               alt="star_icon"
                            />

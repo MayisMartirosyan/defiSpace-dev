@@ -18,11 +18,20 @@
          <div class="project_scoring_item">
         <div class="project_scoring_item_logo_name_points_div">
             <div class="project_scoring_item_logo_div">
+              {% if  company_item.image and company_item.image.url%}
               <img
                 src="{{company_item.image.url}}"
                 class="project_scoring_item_logo"
                 alt="star_icon"
               />
+              {% else %}
+              <img
+              src="{% static 'img/default_image.webp' %}"
+                class="project_scoring_item_logo"
+                alt="star_icon"
+              />
+              {% endif %}
+              
             </div>
 
             <div class="project_scoring_item_name_points_div">
@@ -280,7 +289,7 @@
                   />
                   {% else %}
                   <img
-                    src="{% static 'img/default_image.jpg' %}"
+                    src="{% static 'img/default_image.webp' %}"
                     alt="company_icon"
                     class="company_icon"
                   />

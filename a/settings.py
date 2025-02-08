@@ -15,15 +15,16 @@ import os
 from django.conf import settings
 from django.conf.urls.static import static
 import dj_database_url
-from dotenv import load_dotenv
+from dotenv import dotenv_values
 
-load_dotenv()
 
+env_vars = dotenv_values('.env')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DJANGO_ENV = os.environ.get('DJANGO_ENV', 'development')
+DJANGO_ENV = env_vars['DJANGO_ENV']
 
+print(DJANGO_ENV,env_vars['HTTP_HOST'],env_vars['POSTGRES_DB'])
 
 
 LOGGING = {
@@ -60,7 +61,7 @@ DEBUG = DJANGO_ENV == 'development'
 
 
 
-ALLOWED_HOSTS = os.environ.get("HTTP_HOST").split(" ")
+ALLOWED_HOSTS = env_vars['HTTP_HOST'].split(" ")
 
 # Application definition
 
@@ -153,7 +154,7 @@ DATABASES = {
 
 if DJANGO_ENV == 'production':
  
-    DATABASES["default"] = dj_database_url.parse(os.environ.get('POSTGRES_DB'))
+    DATABASES["default"] = dj_database_url.parse(env_vars['POSTGRES_DB'])
 
 
 
@@ -194,17 +195,24 @@ SECURE_BROWSER_XSS_FILTER = False
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'css/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+if DJANGO_ENV == 'production':
+    STATIC_ROOT = '/var/www/defispace/staticfiles/'
 urlpatterns = [
     # Ваши другие URL-шаблоны здесь
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if DJANGO_ENV == 'production':
+    MEDIA_ROOT = '/var/www/defispace/media/'
+

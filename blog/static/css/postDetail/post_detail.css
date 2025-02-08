@@ -251,7 +251,7 @@
 .post_detail_news_slider_item_image {
    display: flex;
    height: 200px;
-   background: url("../../img/default_image.jpg");
+   background: url("../../img/default_image.webp");
    padding: 16px;
    justify-content: flex-end;
    align-items: flex-end;
