@@ -537,4 +537,5 @@ input[type="radio"]:checked + label {
 
 .company-item-link {
   width: 100%;
+  max-width: 450px;
 }

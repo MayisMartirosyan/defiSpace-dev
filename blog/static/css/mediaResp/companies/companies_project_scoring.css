@@ -2,4 +2,7 @@
   .companies_project_scoring_items_div {
     flex-direction: column;
   }
+  .company-item-link {
+    max-width: none;
+  }
 }
