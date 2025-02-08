@@ -306,8 +306,8 @@
   align-items: flex-start;
   align-content: flex-start;
   gap: 12px;
-  flex-wrap: wrap;
-  width: 1440px;
+  max-width: 400px;
+  width: 100%;
 }
 
 .timeline_categories_projects_tags_div {
