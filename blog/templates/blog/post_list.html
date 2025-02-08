@@ -333,7 +333,11 @@
 
           <div class="editor_pick_item" id="edit_slider{{ edit_pick_item.id }}">
             <a href="{% url 'post_detail' edit_pick_item.id %}" class="editor_pick_item_image_link">
-              <div class="editor_pick_item_image" style="background: url(media/{{edit_pick_item.image}})">
+              <div class="editor_pick_item_image"
+              style="background: url('{% if edit_pick_item.image %} /media/{{edit_pick_item.image}}{% else %}{% static 'img/default_image.webp' %}{% endif %}');"
+              >
+
+    
                 <div class="editor_pick_item_date">
               
        
