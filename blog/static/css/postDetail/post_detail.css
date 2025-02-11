@@ -149,6 +149,7 @@
    width: 100%;
    border-radius: 36px;
    min-height: 300px;
+   max-height: 650px;
 }
 
 /**/
