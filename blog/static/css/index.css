@@ -153,3 +153,7 @@ input[type="checkbox"] {
   left: 0;
   opacity: 0;
 }
+
+.post_is_not_available{
+  font-family: Inter, serif;
+}
