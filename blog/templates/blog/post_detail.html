@@ -279,13 +279,12 @@
       </div>
 
       <div class="post_detail_sidebar">
+         {% if post.company  %}
          <div class="post_detail_related_project">
             <div class="post_detail_related_project_title_items_div">
                <h3 class="post_detail_related_project_title">
                   Related Project
                </h3>
-
-               {% if post.company  %}
 
 
             <a href="{% url 'company_detail' post.company.id %}" id="post_detail_triangle_item_url">
@@ -397,7 +396,6 @@
                   </div>
                </div>
             </a>
-               {% endif %}
               
             </div>
             <div class="post_detail_view_all_projects_btn_div">
@@ -408,6 +406,7 @@
                </a>
             </div>
          </div>
+         {% endif %}
 
          
          {% if related_sidebar %}

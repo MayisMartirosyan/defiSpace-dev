@@ -482,6 +482,10 @@ circle {
   max-width: 1440px;
 }
 
+.cmp_det_comment_section{
+  max-width: 1000px;
+}
+
 .cmp_det_comment_title {
   font-family: Inter, serif;
   font-size: 28px;
