@@ -1,5 +1,5 @@
 
-const loadFilterInputs = () => {
+const loadSearchFilterInputs = () => {
 
   const device = document.getElementById('content').getAttribute("data-device")
   const filterInputs = getUrlParams();
@@ -76,7 +76,7 @@ const loadFilterInputs = () => {
 };
 
 
-document.addEventListener("DOMContentLoaded",loadFilterInputs);
+document.addEventListener("DOMContentLoaded",loadSearchFilterInputs);
 
 
 const handleSubmit = () => {

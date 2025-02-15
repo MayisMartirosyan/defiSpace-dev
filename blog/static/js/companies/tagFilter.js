@@ -1,4 +1,4 @@
-const loadFilterInputs = () => {
+const loadTagFilterInputs = () => {
   const filterInputs = getUrlParams();
 
   if (Object.keys(filterInputs).length > 0) {
@@ -23,9 +23,9 @@ const loadFilterInputs = () => {
   }
 };
 
-document.addEventListener("DOMContentLoaded", loadFilterInputs);
+document.addEventListener("DOMContentLoaded", loadTagFilterInputs);
 
-const handleSubmit = () => {
+ const handleFilterSubmit = () => {
 
   let url = "";
   const filterInputs = getUrlParams();  
