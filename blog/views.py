@@ -156,7 +156,6 @@ def post_detail(request, pk):
             
     return render(request, 'blog/post_detail.html', {'post': post,'related_posts': related_posts, 'tags_posts': tags_posts,'gmt':gmt_offset,'related_sidebar':sublists})
 
-
 def company_ratings(request):
     
     page_number = request.GET.get('page')
@@ -167,23 +166,26 @@ def company_ratings(request):
     all_tag_ratings = TagRating.objects.all() 
     
     sort_by = request.GET.getlist('sort_by')
+    sort_order = request.GET.get('sort_order', 'desc')  # Default to "desc"
     query_tag_rating = request.GET.getlist('tag_rating')
- 
+    order_prefix = "" if sort_order == "asc" else "-"  # "-" for descending order
+    
+    print(sort_order,'asdasadssd')
     if 'launched' in sort_by:
-        companies = companies.order_by('-date_added')
+        companies = companies.order_by(f'{order_prefix}date_added')
         
     if 'security' in sort_by:
-        companies = companies.order_by('-security_scores__total_score')
+        companies = companies.order_by(f'{order_prefix}security_scores__total_score')
     if 'team' in sort_by:
-        companies = companies.order_by('-team_scores__total_score')
+        companies = companies.order_by(f'{order_prefix}team_scores__total_score')
         
     if 'product' in sort_by:
-        companies = companies.order_by('-product_scores__total_score')
+        companies = companies.order_by(f'{order_prefix}product_scores__total_score')
         
     if 'totalScore' in sort_by or not sort_by: 
         companies = companies.annotate(average_score=(F('security_scores__total_score') + F(
             'team_scores__total_score') + F('product_scores__total_score')) / 3)
-        companies = companies.order_by('-average_score')
+        companies = companies.order_by(f'{order_prefix}average_score')
         
     
     if query_tag_rating:

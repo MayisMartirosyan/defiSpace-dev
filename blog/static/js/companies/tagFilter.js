@@ -2,7 +2,6 @@ const loadTagFilterInputs = () => {
   const filterInputs = getUrlParams();
 
   if (Object.keys(filterInputs).length > 0) {
-
     const TagRatingsList = document
       .getElementById(`tag_rating_list`)
       .querySelectorAll('.big_tag_item input[type="checkbox"]');
@@ -25,11 +24,12 @@ const loadTagFilterInputs = () => {
 
 document.addEventListener("DOMContentLoaded", loadTagFilterInputs);
 
- const handleFilterSubmit = () => {
-
+const handleFilterSubmit = () => {
   let url = "";
-  const filterInputs = getUrlParams();  
-  url += `?sort_by=${!filterInputs.sort_by ? "totalScore" : filterInputs.sort_by}`
+  const filterInputs = getUrlParams();
+  url += `?sort_by=${
+    !filterInputs.sort_by ? "totalScore" : filterInputs.sort_by
+  }&sort_order=${!filterInputs.sort_order ? "asc" : filterInputs.sort_order}`;
 
   const checkedTagRatings = document
     .getElementById(`tag_rating_list`)

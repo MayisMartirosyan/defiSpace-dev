@@ -22,7 +22,8 @@
                 </a>
                
 
-            <div class="marquee" id="ticker">
+            <div class="marquee" id="ticker" >
+               
                 <marquee>
                   {{latest_post.title}}
                 </marquee>
@@ -30,17 +31,25 @@
 
             <nav>
                 <div class="navigation_bar" id="nav_routes">
-                    <a href="{% url 'post_list' %}" id="nav_item_link_news" class="nav_item">
-                        <p class="nav_item_text">News</p>
-                    </a>
+                    <li class="nav_item">
+                        <a href="{% url 'post_list' %}" id="nav_item_link_news">
+                            <p class="nav_item_text">
+                                News
+                            </p>
+                        </a>
+                    </li>
                          
-                    <a href="{% url 'company_ratings' %}" id="nav_item_link_invest" class="nav_item">
-                        <p class="nav_item_text">Invest</p>
-                    </a>
+                    <li class="nav_item">
+                        <a href="{% url 'company_ratings' %}" id="nav_item_link_invest">
+                            <p class="nav_item_text">Invest</p>
+                        </a>
+                    </li>
                 
-                    <a href="{% url 'about' %}" id="nav_item_link_about" class="nav_item">
-                        <p class="nav_item_text">About</p>
-                    </a>
+                    <li class="nav_item">
+                        <a href="{% url 'about' %}" id="nav_item_link_about">
+                            <p class="nav_item_text">About</p>
+                        </a>
+                    </li>
                 </div>
             </nav>
         </header>

@@ -1,3 +1,3 @@
-function ToInnerCompanyPage(id){
-  window.location.href = `/companies/${id}`;
-}
+// function ToInnerCompanyPage(id){
+//   window.location.href = `/companies/${id}`;
+// }

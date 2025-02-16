@@ -1,15 +1,3 @@
-<<<<<<< Updated upstream
-document.addEventListener("DOMContentLoaded",()=> {
-    const ticker = document.querySelector("#ticker");
-    const header = document.getElementById("header");
-    const filter_btn =  document.querySelector('#header_filter_btn_div, #tags_selector_div_mobile');
-   
-    
-    if (window.location.pathname == "/" || window.location.pathname == "/companies/"){
-        filter_btn.style.visibility = "visible";
-    }else{
-        filter_btn.style.visibility = 'hidden'
-=======
 document.addEventListener("DOMContentLoaded", () => {
   const ticker = document.querySelector("#ticker");
   console.log(ticker,'asdasd');
@@ -40,30 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentUrl === btns[i].children[0].getAttribute("href")) {
       btns[i].classList.add("nav_active");
       btns[i].children[0].children[0].style.color = "white";
->>>>>>> Stashed changes
     }
 
-<<<<<<< Updated upstream
-    console.log("btns", btns);
-    
-
-    const currentUrl = window.location.pathname;
-    
-    for (let i = 0; i < btns.length; i++) {
-        if (currentUrl === btns[i].getAttribute("href")) {
-            btns[i].classList.add("nav_active");
-            btns[i].children[0].style.color = "white";
-        }
-
-        if(btns[i].textContent.includes('News') && currentUrl.includes("/post")){
-            btns[i].classList.add("nav_active");
-            btns[i].children[0].style.color = "white";
-        }
-=======
     if (btns[i].textContent.includes("News") && currentUrl.includes("/post")) {
       btns[i].classList.add("nav_active");
       btns[i].children[0].children[0].style.color = "white";
->>>>>>> Stashed changes
     }
     if (
       btns[i].textContent.includes("Invest") &&
@@ -75,45 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   let newsBtn = document.getElementById("nav_item_link_news");
 
-<<<<<<< Updated upstream
-  
-    if(currentUrl.includes('/post')){
-        newsBtn.classList.add("nav_active");
-        newsBtn.children[0].style.color = "white";
-    }   
-    
-    ////////////////// Scroll event //////////////////
-    
-    
-    document.addEventListener("scroll", () => {
-        let currentScrollPos = window.pageYOffset;
-    
-        if (currentScrollPos > 10) {
-    
-            ticker.style.width = "0px";
-            // ticker.style.transition = "all 0.2s linear";
-            header.style.width = "auto";
-            // header.style.transition = "all 0.2s linear";
-    
-            for (let i = 0; i < btns.length; i++) {
-                if (btns[i].className !== "nav_item nav_active") {
-                    btns[i].style.display = "none";
-                    // btns[i].style.transition = "all 0.2s linear";
-                }
-            }
-        } else {
-            ticker.style.width = "100%";
-            // ticker.style.transition = "all 0.2s linear";
-            header.style.width = "100%";
-            // header.style.transition = "all 0.2s linear";
-    
-            for (let i = 0; i < btns.length; i++) {
-                if (btns[i].className !== "nav_item nav_active") {
-                    btns[i].style.display = "block";
-                    // btns[i].style.transition = "all 0.2s linear";
-                }
-            }
-=======
   if (currentUrl.includes("/post")) {
     newsBtn.classList.add("nav_active");
     newsBtn.children[0].style.color = "white";
@@ -135,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (btns[i].className !== "nav_item nav_active") {
           btns[i].style.display = "none";
           // btns[i].style.transition = "all 0.2s linear";
->>>>>>> Stashed changes
         }
       }
     } else {
