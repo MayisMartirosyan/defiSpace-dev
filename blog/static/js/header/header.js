@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded",()=> {
     
     let nav_routes = document.getElementById("nav_routes");
     let btns = nav_routes.getElementsByClassName("nav_item");
-
-    console.log("btns", btns);
     
 
     const currentUrl = window.location.pathname;

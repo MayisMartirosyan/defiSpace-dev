@@ -140,14 +140,9 @@
 
                   <div class="slider_description_buttons_div">
                     <div class="slider_description_div">
-                      <h2 class="slider_description_title"><a href="{% url 'post_detail' slide.id %}">
-                         
-
-                          {% if slide.title|length > 25 %}
-                          {{slide.title|slice:":25"}}...
-                          {% else %}
+                      <div class="slider_description_title">
+                        <a href="{% url 'post_detail' slide.id %}" class="slider_description_title_link">
                           {{slide.title}}
-                          {% endif %}
                         </a>
 
                         <div class="share_icon_style main_slider_icon" onclick="openShareDropdown('main_slider{{slide.id}}')" id="main_slider{{slide.id}}">
@@ -195,7 +190,7 @@
                             </div>
                           </div>
                         </div>
-                      </h2>
+                      </div>
                       <p class="slider_description_description"><a href="{% url 'post_detail' slide.id %}">
                           {% if slide.content|length > 150 %}
                           {{slide.content|slice:":150"}}...

@@ -88,12 +88,14 @@ a {
 
 .main_slider_icon {
   position: relative;
+  padding-left: 24px;
 }
 
 .share_dropdown_div {
   display: none;
   padding: 4px;
   width: max-content;
+  height: max-content;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 20px;
@@ -109,6 +111,10 @@ a {
   bottom: 30px;
   right: -15px;
   z-index: 20;
+}
+
+.share_to_bottom_open{
+  top: 30px !important;
 }
 
 .share_dropdown_div.active {

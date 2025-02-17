@@ -706,14 +706,13 @@
             <h3 class="post_detail_related_news_title">Related news</h3>
             <div class="cmp_slider_contain">
                <div class="glider-contain">
-                  <div class="glider-company-detail-sidebar-slider">
+                  <div class="glider-company-detail-sidebar-slider" id="glider-company-detail-sidebar-slider">
 
                     {% for related_group in related_posts %}
 
-                    <div class="post_detail_related_news_slider_items_flex">
+                    <div class="post_detail_related_news_slider_items_flex" id="post_detail_related_news_slider_items_flex">
 
                         {% for related_post_company in related_group %}
-
 
                             <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_company.id }}">
                                 <a href="{% url 'post_detail' related_post_company.id %}">
