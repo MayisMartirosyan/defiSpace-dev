@@ -191,12 +191,7 @@
                           </div>
                         </div>
                       </div>
-                      <p class="slider_description_description"><a href="{% url 'post_detail' slide.id %}">
-                          {% if slide.content|length > 150 %}
-                          {{slide.content|slice:":150"}}...
-                          {% else %}
-                          {{slide.content}}
-                          {% endif %}</a></p>
+                      <p class="slider_description_description"><a href="{% url 'post_detail' slide.id %}"> {{slide.content}}</a></p>
                     </div>
 
                    

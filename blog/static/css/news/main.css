@@ -121,10 +121,17 @@
     gap: 24px;
 }
 
-.slider_description_title_link{
+.slider_description_title_link {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.slider_description_description{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
     overflow: hidden;
 }
 

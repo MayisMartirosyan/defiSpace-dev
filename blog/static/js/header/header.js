@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const ticker = document.querySelector("#ticker");
-  console.log(ticker,'asdasd');
+
   // const ticker = document.getElementById("ticker");
   const navbar_logo = document.getElementById("navbar_logo");
   const header = document.getElementById("header");
@@ -30,11 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
       btns[i].children[0].children[0].style.color = "white";
     }
 
-    ////////////////// Active route //////////////////
-    
-    let nav_routes = document.getElementById("nav_routes");
-    let btns = nav_routes.getElementsByClassName("nav_item");
-    
 
     if (btns[i].textContent.includes("News") && currentUrl.includes("/post")) {
       btns[i].classList.add("nav_active");

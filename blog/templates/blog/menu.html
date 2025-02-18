@@ -30,7 +30,7 @@
             </div>
 
             <nav>
-                <div class="navigation_bar" id="nav_routes">
+                <ul class="navigation_bar" id="nav_routes">
                     <li class="nav_item">
                         <a href="{% url 'post_list' %}" id="nav_item_link_news">
                             <p class="nav_item_text">
@@ -50,7 +50,7 @@
                             <p class="nav_item_text">About</p>
                         </a>
                     </li>
-                </div>
+                </ul>
             </nav>
         </header>
        <div class="header_filter_btn_div" id="{% if request.path != '/companies/' %}header_filter_btn_div{% else %}tags_selector_div_mobile{% endif %}">

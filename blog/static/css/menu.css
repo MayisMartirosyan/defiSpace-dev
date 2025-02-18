@@ -62,13 +62,16 @@
 
 .nav_item {
   display: flex;
-  padding: 12px 24px;
   justify-content: center;
   align-items: center;
   gap: 10px;
   border-radius: 24px;
   transition: all 0.3s ease-out;
   cursor: pointer;
+}
+
+.nav_item a{
+  padding: 12px 24px;
 }
 
 .nav_item:hover {
