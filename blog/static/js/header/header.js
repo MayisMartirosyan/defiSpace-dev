@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
       btns[i].children[0].children[0].style.color = "white";
     }
 
+    ////////////////// Active route //////////////////
+    
+    let nav_routes = document.getElementById("nav_routes");
+    let btns = nav_routes.getElementsByClassName("nav_item");
+    
+
     if (btns[i].textContent.includes("News") && currentUrl.includes("/post")) {
       btns[i].classList.add("nav_active");
       btns[i].children[0].children[0].style.color = "white";
@@ -43,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   let newsBtn = document.getElementById("nav_item_link_news");
+
 
   if (currentUrl.includes("/post")) {
     newsBtn.classList.add("nav_active");
