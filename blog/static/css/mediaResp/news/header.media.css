@@ -67,7 +67,9 @@
         margin-left: 10px !important;
         width: 20px !important;
         height: 20px !important;
-        display: block !important;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
     }
 
     #header_filter_btn{
