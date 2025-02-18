@@ -177,7 +177,7 @@
                   <button
                     class="timeline_tags_apply_button"
                     id="comp_tr_apply_button"
-                    onclick="handleSubmit()"
+                    onclick="handleFilterSubmit()"
                   >
                     Apply
                   </button>
@@ -210,7 +210,7 @@
     <div class="companies_list_settings_option_div" id="sort_options">
       <div class="companies_list_settings_option">
         <label for="launched">Launched</label>
-        <input type="radio" id="launched" name="status" value="launched" />
+        <input type="radio" id="launched" name="status" value="launched" onclick="handleSort('launched')" />
         <img
           src="{% static 'img/companies/companies_radio_icon.svg' %}"
           width="16px"
@@ -221,7 +221,7 @@
       </div>
       <div class="companies_list_settings_option">
         <label for="team">Team</label>
-        <input type="radio" id="team" name="status" value="team" />
+        <input type="radio" id="team" name="status" value="team" onclick="handleSort('team')" />
         <img
           src="{% static 'img/companies/companies_radio_icon.svg' %}"
           width="16px"
@@ -232,7 +232,7 @@
       </div>
       <div class="companies_list_settings_option">
         <label for="product">Product</label>
-        <input type="radio" id="product" name="status" value="product" />
+        <input type="radio" id="product" name="status" value="product"  onclick="handleSort('product')" />
         <img
           src="{% static 'img/companies/companies_radio_icon.svg' %}"
           width="16px"
@@ -243,7 +243,7 @@
       </div>
       <div class="companies_list_settings_option">
         <label for="security">Security</label>
-        <input type="radio" id="security" name="status" value="security" />
+        <input type="radio" id="security" name="status" value="security"  onclick="handleSort('security')" />
         <img
           src="{% static 'img/companies/companies_radio_icon.svg' %}"
           width="16px"
@@ -254,7 +254,7 @@
       </div>
       <div class="companies_list_settings_option" id="companies_list_total_score_option">
         <label for="total-score">Total SCORE</label>
-        <input type="radio" id="totalScore" name="status" value="totalScore" />
+        <input type="radio" id="totalScore" name="status" value="totalScore"  onclick="handleSort('totalScore')" />
         <img
           src="{% static 'img/companies/companies_radio_icon.svg' %}"
           width="16px"
@@ -274,7 +274,7 @@
   <div class="companies_list_div">
     {% for company in companies %}
 
-    <div class="company_item_list" id="company_card_wrapper" onclick="ToInnerCompanyPage({{company.id}})">
+    <div class="company_item_list" id="company_card_wrapper">
       <div class="company_item_list_elems_tags_div">
         <div class="company_item_main">
           <div class="company_left_part_div">
@@ -469,8 +469,6 @@
 <script src="{% static 'js/companies/sortBy.js' %}"></script>
 <script src="{% static 'js/companies/loadMoreCompanies.js' %}"></script>
 <script src="{% static 'js/companies/tagFilterPopup.js' %}"></script>
-<script src="{% static 'js/companies/tagFilter.js' %}"></script>
-<script src="{% static 'js/companies/buildRedirectUrl.js' %}"></script>
-<script src="{% static 'js/companies/redirectToInnerCompany.js' %}"></script>
+
 
 {% endblock %}

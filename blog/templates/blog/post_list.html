@@ -522,14 +522,14 @@
 
             <div class="timeline_title_div">
               <h3 class="timeline_title">Timeline</h3>
-              <img src="{% static 'img/timelineTags/timeline_Divider.svg' %}" class="timeline_divider"
+              <img src="{% static 'img/timelineTags/timeline_divider.svg' %}" class="timeline_divider"
                 alt="timeline_divider_icon" />
             </div>
 
            
 
             {% if not posts %}
-              <p class="post_is_not_available">No posts available.</p>
+            <p>No posts available.</p>
             {% endif %}
 
 
@@ -680,6 +680,7 @@
 <script src="{% static 'js/timeLineTags/timelineTags.js' %}"></script>
 <script src="{% static 'js/timeLineTags/filterSidebarSticky.js' %}"></script>
 <script src="{% static 'js/timeLineTags/filterResponsive.js' %}"></script>
+
 
 
 {% endblock %}

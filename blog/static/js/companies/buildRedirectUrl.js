@@ -1,15 +1,11 @@
-const handle_build_redirect_url = (id) =>{
+const handle_build_redirect_url = (id) => {
+  const tagsDiv = document.getElementById(id).children;
 
-    const tagsDiv = document.getElementById(id).children
+  let buildedUrl = "/?q=";
+  for (const element of tagsDiv) {
+    buildedUrl += `&tag_rating=${element.id}`;
+  }
 
-    let url = "/?q="
-    for (const element of tagsDiv) {
-        url += `&tag_rating=${element.id}`
-    }
-
-    url += "&page=1#timeline_tags_article"
-    
-    window.location.href = url
-
-
-}
+  buildedUrl += "&page=1#timeline_tags_article";
+  window.location.href = buildedUrl;
+};

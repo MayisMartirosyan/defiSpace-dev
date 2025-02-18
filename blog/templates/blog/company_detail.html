@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="cmp_det_description_top_right_div">
-                    <a href="#" target="_blank">
+                    <a href="{{ company.link }}" target="_blank">
                         <div class="cmp_det_company_home_icon_div">
                             <img
                                 src="{% static 'img/company_detail/home_icon.svg' %}"
@@ -64,8 +64,8 @@
                     {% endif %}
 
                     {% if company.link %}
-                        <a href="{{ company.link }}" target="_blank">
-                            <div class="cmp_det_company_news_icon_div">
+                        {% comment %} <a href="{{ company.link }}" target="_blank"> {% endcomment %}
+                            <div class="cmp_det_company_news_icon_div" onclick="handle_build_redirect_url('comp_inner_tags{{ company.id }}')">
                                 <span class="company_links_news_text">News</span>
                                 <img
                                     src="{% static 'img/companies/company_news_link_icon.svg' %}"
@@ -75,7 +75,7 @@
                                     alt="company_news_link_icon"
                                 />
                             </div>
-                        </a>
+                        {% comment %} </a> {% endcomment %}
                     {% endif %}
                 </div>
             </div>
@@ -85,7 +85,7 @@
             <p class="cmp_det_description_launched_date">
                 Launched: {{company.date_added|date:"M Y"}}
             </p>
-            <div class="cmp_det_full_description_tags_div">
+            <div class="cmp_det_full_description_tags_div" id="comp_inner_tags{{ company.id }}">
                 {% for tag in company.tag_rating.all %}
                     
                         <a class="cmp_det_full_description_tag sm_tag_item">{{ tag.name }}</a>
@@ -749,7 +749,7 @@
                                           </div>
                         
                                           <div class="share_dropdown_item">
-                                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_company.id }}" target="_blank">
                         
                                               <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
                                               <p class="share_dropdown_item_text">
@@ -760,7 +760,7 @@
                                           </div>
                         
                                           <div class="share_dropdown_item">
-                                            <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                                            <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_company.id }}" target="_blank">
                         
                                             <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
                                             <p class="share_dropdown_item_text">
@@ -772,7 +772,7 @@
                                           </div>
                         
                                           <div class="share_dropdown_item">
-                                            <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_sidebar.id }}" target="_blank">
+                                            <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_company.id }}" target="_blank">
                                               <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
                                               <p class="share_dropdown_item_text">
                                                 Twitter
