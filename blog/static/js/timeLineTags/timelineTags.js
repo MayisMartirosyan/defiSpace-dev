@@ -3,6 +3,7 @@ const shevron_icon = document.getElementById("shevron_icon");
 const tags_sidebar_aside = document.getElementById("tags_sidebar_aside");
 const apply_btn = document.getElementById("timeline_tags_apply_button");
 const timeline_div_flex = document.getElementById("timeline_div_flex");
+const timeline_tags_div_flex = document.getElementById("timeline_tags_div_flex");
 
 
 let shevronBool = false;
@@ -14,6 +15,7 @@ shevron_div.addEventListener("click", () => {
         shevron_div.style.background = "#DFEBFC";
         shevron_icon.style.transform = "rotate(-180deg)";
         tags_sidebar_aside.style.width = "100%";
+        timeline_tags_div_flex.style.borderRadius = "30px";
         apply_btn.style.width = "328px";
         timeline_div_flex.style.paddingLeft = "450px";
         timeline_div_flex.style.marginLeft = "0px";
@@ -23,6 +25,7 @@ shevron_div.addEventListener("click", () => {
         shevron_div.style.background =  "#F8F8F8";
         shevron_icon.style.transform = "rotate(0deg)";
         tags_sidebar_aside.style.width = "400px";
+        timeline_tags_div_flex.style.borderRadius = "30px 0 0 30px";
         timeline_div_flex.style.position = "static";
         timeline_div_flex.style.paddingLeft = "0px";
         timeline_div_flex.style.marginLeft = "56px";
