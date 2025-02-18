@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       for (let i = 0; i < btns.length; i++) {
         if (btns[i].className !== "nav_item nav_active") {
-          btns[i].style.display = "block";
+          btns[i].style.display = "flex";
           // btns[i].style.transition = "all 0.2s linear";
         }
       }
