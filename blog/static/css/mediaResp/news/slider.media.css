@@ -130,4 +130,8 @@
   .project_view_all_button {
     font-size: 18px;
   }
+
+  .slider_div_flex {
+    border-radius: 24px;
+  }
 }
