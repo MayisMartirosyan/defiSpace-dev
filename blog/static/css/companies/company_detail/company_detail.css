@@ -420,6 +420,10 @@ circle {
   margin-top: -1px;
 }
 
+.min_value_of_stats{
+  width: 14%;
+}
+
 .company_ratings_card_stat_rating_icon {
   width: 16px;
   height: 16px;
