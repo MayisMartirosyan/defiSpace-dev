@@ -12,7 +12,7 @@
   }
 
   #header_filter_btn_div {
-    display: block !important;
+    display: flex !important;
   }
 
   #header_filter_btn {
@@ -78,7 +78,7 @@
   }
 
   .news_project_description_tags_div {
-    padding: 8px 12px;
+    padding: 14px;
     width: 100%;
     min-width: 130px;
   }

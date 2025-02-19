@@ -70,6 +70,12 @@
   cursor: pointer;
 }
 
+@media (max-width: 700px) {
+  .nav_item a{
+    padding: 4px 8px !important;
+  }
+}
+
 .nav_item a{
   padding: 12px 24px;
 }
@@ -104,7 +110,7 @@
   width: 30px;
   height: 30px;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 4px;
   margin-left: 30px;
   padding: 4px;
   display: none;

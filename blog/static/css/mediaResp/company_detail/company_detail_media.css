@@ -287,4 +287,7 @@
     flex-direction: column;
     gap: 16px;
   }
+  .company_ratings_card_title_div{
+    min-width: 165px;
+  }
 }

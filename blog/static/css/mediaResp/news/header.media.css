@@ -36,8 +36,8 @@
 
 @media (max-width: 500px) {
     #header {
-        padding: 8px 10px 8px 20px;
-        gap: 12px;
+        padding: 7px 9px 7px 17px;
+        gap: 10px;
     }
 
     .logo_flex {
@@ -60,14 +60,16 @@
 
     .nav_item_text {
         font-size: 9px !important;
-        padding: 3px 6px;
+        padding: 2px 4px;
     }
 
     .header_filter_btn_div{
-        margin-left: 15px !important;
+        margin-left: 10px !important;
         width: 20px !important;
         height: 20px !important;
-        display: block !important;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
     }
 
     #header_filter_btn{
