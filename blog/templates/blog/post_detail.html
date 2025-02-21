@@ -15,7 +15,7 @@
                      {{ post.pub_date|date:"H:i" }} GMT {{ gmt}}
                   </div>
                </div>
-               <div class="post_detail_share_btn_div" onclick="openShareDropdown('main_post{{post.id}}')" id="main_post{{post.id}}">
+               <div class="post_detail_share_btn_div" onclick="openShare('main_post{{post.id}}')" id="main_post{{post.id}}">
                   <p class="post_detail_share_p">Share</p>
                   <img
                      src="{% static 'img/post_detail/post_share_icon_bold.svg' %}"
@@ -186,7 +186,7 @@
                            </div>
 
                  
-                           <div class="share_icon_style related_news_silder_item_style" onclick="openShareDropdown('news_about_item{{ related_post.id }}')">
+                           <div class="share_icon_style related_news_silder_item_style" onclick="openShare('news_about_item{{ related_post.id }}')">
                               <div class="share_dropdown_div" id="share_dropdown_div">
                                 <div class="share_dropdown_item" >
                                   <a href="/post/{{ related_post.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ related_post.id }}')"> 
@@ -460,7 +460,7 @@
                                     height="24px"
                                  /> -->
 
-                                 <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShareDropdown('related_new{{ related_post_sidebar.id }}')">
+                                 <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShare('related_new{{ related_post_sidebar.id }}')">
                 
                                     <div class="share_dropdown_div" id="share_dropdown_div">
                                       <div class="share_dropdown_item" >

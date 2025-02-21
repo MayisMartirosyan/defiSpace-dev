@@ -145,7 +145,7 @@
                           {{slide.title}}
                         </a>
 
-                        <div class="share_icon_style main_slider_icon" onclick="openShareDropdown('main_slider{{slide.id}}')" id="main_slider{{slide.id}}">
+                        <div class="share_icon_style main_slider_icon" onclick="openShare('main_slider{{slide.id}}')" id="main_slider{{slide.id}}">
                           <div class="share_dropdown_div" id="share_dropdown_div">
                             <div class="share_dropdown_item" >
                               <a href="{{ request.build_absolute_uri }}post/{{ slide.id }}" onclick="copyToClipboard(event, '{{ request.build_absolute_uri }}post/{{ slide.id }}')"> 
@@ -351,7 +351,7 @@
 
                 </div>
 
-                <div class="share_icon_style" onclick="openShareDropdown('edit_slider{{ edit_pick_item.id }}')">
+                <div class="share_icon_style" onclick="openShare('edit_slider{{ edit_pick_item.id }}')">
                 
                 <div class="share_dropdown_div" id="share_dropdown_div">
                   <div class="share_dropdown_item" >
@@ -594,7 +594,7 @@
                             </div>
                             {% endif %}
 
-                            <div class="share_icon_style" onclick="openShareDropdown('{{ post.local_id }}')">
+                            <div class="share_icon_style" onclick="openShare('{{ post.local_id }}')">
                             
                               <div class="share_dropdown_div" id="share_dropdown_div">
                                 <div class="share_dropdown_item" >

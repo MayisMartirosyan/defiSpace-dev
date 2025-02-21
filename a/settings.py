@@ -198,8 +198,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-if DJANGO_ENV == 'production':
-    STATIC_ROOT = '/var/www/defispace/staticfiles/'
+
 urlpatterns = [
     # Ваши другие URL-шаблоны здесь
 ]
@@ -215,4 +214,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if DJANGO_ENV == 'production':
     MEDIA_ROOT = '/var/www/defispace/media/'
+    STATIC_ROOT = '/var/www/defispace/staticfiles/'
 
