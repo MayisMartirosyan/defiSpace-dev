@@ -1,5 +1,12 @@
 @media (max-width: 480px) {
   .timeline_current_calendar{
-    width: 120px;
+    max-width: 120px;
+  } 
+}
+
+@media (max-width: 480px) {
+  #timeline_calendar_mobile{
+    max-width: 130px !important;
+    width: 100% !important;
   } 
 }

@@ -16,7 +16,7 @@
               <div class="timeline_tags_filter_div">
                 <div class="timeline_calendar_search_div">
 
-                  <div class="timeline_calendar_select_div">
+                  <div class="timeline_calendar_select_div" id="timeline_calendar_select_div">
 
                     <div class="timeline_calendar_div" id="timeline_calendar_div_mobile" onclick="toggleOptionsMob()">
                       <div class="timeline_current_calendar" id="timeline_calendar_mobile">
@@ -524,7 +524,7 @@
            
 
             {% if not posts %}
-            <p>No posts available.</p>
+              <p class="timeline_no_post">No posts available.</p>
             {% endif %}
 
 

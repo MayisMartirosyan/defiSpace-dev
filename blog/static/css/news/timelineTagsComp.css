@@ -180,7 +180,9 @@
 .timeline_current_calendar {
   display: flex;
   justify-content: space-between;
-  width: 120px;
+  gap: 8px;
+  min-width: 180px;
+  width: 100%;
   color: #ffffff;
   background: #141919;
   transition: all 0.4s linear;
@@ -192,6 +194,14 @@
 
 .timeline_current_calendar:hover {
   background-color: #3c3c3c;
+}
+
+#timeline_calendar_mobile{
+  gap: 8px;
+  align-items: center;
+  min-width: 130px;
+  width: 100%;
+  padding: 6px 18px 6px 18px;
 }
 
 .timeline_dropdown_div {
@@ -634,4 +644,8 @@
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 8px;
+}
+
+.timeline_no_post{
+  font-family: Inter, serif;
 }

@@ -854,3 +854,7 @@ circle {
 .cmp_filter_checked_checkbox_div{
   background-color: transparent;
 }
+
+.cmp_det_comment_section{
+  max-width: 1000px;
+}

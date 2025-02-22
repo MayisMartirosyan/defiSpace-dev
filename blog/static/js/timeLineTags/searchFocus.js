@@ -8,6 +8,7 @@ const dropdown_arrow = document.getElementById("dropdown_arrow");
 const timeline_calendar_selected_button_desktop = document.getElementById("timeline_calendar_selected_button_desktop");
 const timeline_dropdown_div_desktop = document.getElementById("timeline_dropdown_div_desktop");
 const timeline_dropdown = document.getElementById("timeline_dropdown");
+const timeline_calendar_select_div = document.getElementById("timeline_calendar_select_div");
 
 
 // Toggle options visibility
@@ -137,11 +138,12 @@ search_input_mobile.addEventListener("focus", () => {
     timeline_dropdown_div_mobile.style.pointerEvents = 'none';
     dropdown_arrow.style.width = "0px";
     timeline_calendar_selected_button_mobile.style.width = "0px";
-    timeline_calendar_selected_button_mobile.innerText = "";
+    // timeline_calendar_selected_button_mobile.innerText = "";
     timeline_calendar_mobile.style.paddingLeft = "0px";
     timeline_calendar_mobile.style.paddingRight = "0px";
     timeline_calendar_mobile.style.color = "rgba(0,0,0,0)";
     timeline_calendar_div_mobile.style.height = "40px";
+    timeline_calendar_div_mobile.style.display = "none";
     search_icon_mobile.style.display = "none";
     // search_max_vector_mobile.style.display = "block !important";
     search_max_vector_mobile_div.style.display = "flex";
@@ -152,19 +154,21 @@ search_input_mobile.addEventListener("focus", () => {
 
 search_max_vector_mobile_div.addEventListener("click", () => {
     search_input_mobile.placeholder = "Search";
-    timeline_calendar_mobile.style.width = "180px";
+    timeline_calendar_mobile.style.width = "140px";
     timeline_calendar_div_mobile.style.opacity = "1";
     timeline_calendar_div_mobile.style.pointerEvents = "all";
     timeline_dropdown_div_mobile.style.pointerEvents = 'all';
     timeline_calendar_selected_button_mobile.style.width = "auto";
-    timeline_calendar_selected_button_mobile.innerText = current_option_text;
-    timeline_calendar_mobile.style.paddingLeft = "20px";
-    timeline_calendar_mobile.style.paddingRight = "20px";
+    timeline_calendar_selected_button_mobile.innerText = current_option_text.trim();
+    timeline_calendar_mobile.style.paddingLeft = "16px";
+    timeline_calendar_mobile.style.paddingRight = "16px";
     timeline_calendar_mobile.style.color = "#FFFFFF";
     dropdown_arrow.style.width = "auto";
     timeline_calendar_div_mobile.style.height = "40px";
+    timeline_calendar_div_mobile.style.width = "120px";
     search_icon_mobile.style.display = "block";
     // search_max_vector_mobile.style.display = "none";
+    timeline_calendar_div_mobile.style.display = "flex";
     search_max_vector_mobile_div.style.display = "none";
     search_max_vector_mobile_div.style.width = "0px";
     search_max_vector_mobile_div.style.height = "0px";
