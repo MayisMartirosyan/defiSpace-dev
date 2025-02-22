@@ -108,6 +108,7 @@
 .cmp_det_full_description_tags_div {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
   align-items: center;
 }
 

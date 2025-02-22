@@ -416,7 +416,7 @@
             <div class="post_detail_related_news_slider_div_flex">
                <div class="glider-contain">
                   <div class="glider-post-detail-sidebar-slider">
-                     {% for related_group in related_sidebar  %}
+                     {% for related_group in related_sidebar %}
                      <div class="post_detail_related_news_slider_items_flex">
                        
                            {% for related_post_sidebar in related_group  %}
@@ -513,6 +513,7 @@
                      {% endfor %}
                   </div>
                </div>
+               {% if related_sidebar|length > 1%}
                <div class="post_detail_sidebar_buttons_div_flex">
                   <div class="post_detail_sidebar_buttons_div">
                      <div
@@ -537,6 +538,7 @@
                      </div>
                   </div>
                </div>
+               {% endif %}
             </div>
          </div>
          {% endif %}
