@@ -1,12 +1,21 @@
 @media (max-width: 480px) {
   .timeline_current_calendar{
     max-width: 120px;
-  } 
-}
-
-@media (max-width: 480px) {
+  }
   #timeline_calendar_mobile{
     max-width: 130px !important;
     width: 100% !important;
   } 
+}
+
+@media (max-width: 370px) {
+  .timeline_calendar_search_div{
+    gap: 6px;
+  }
+  .timeline_search_input_div{
+    padding: 6px 8px;
+  }
+  .timeline_tags_filter_div{
+    padding: 16px;
+  }
 }
