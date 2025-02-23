@@ -576,11 +576,7 @@
                             </div>
                              <div class="news_project_description_text">
                               <a href="{% url 'post_detail' post.id %}">
-                                {% if post.content|length > 150 %}
-                                {{ post.content|slice:":150" }}...
-                                {% else %}
                                 {{post.content}}
-                                {% endif %}
                               </a>
                             </div>
                           </div>
