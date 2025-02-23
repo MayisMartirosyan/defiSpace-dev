@@ -38,26 +38,6 @@ function openShare(id) {
   }
 }
 
-document.addEventListener("click", function (event) {
-
-  print(event,'asdasd')
-  const allDropdowns = document.querySelectorAll(".share_dropdown_div");
-
-  let isClickInsideDropdown = false;
-  allDropdowns.forEach((dropdown) => {
-    if (dropdown.contains(event.target)) {
-      isClickInsideDropdown = true;
-    }
-  });
-
-  // If the click is outside all dropdowns, close them
-  if (!isClickInsideDropdown) {
-    allDropdowns.forEach((dropdown) => {
-      dropdown.classList.remove("active");
-    });
-    post_detail_slider_buttons_div.style.display = "flex"; // Show buttons again
-  }
-});
 
 function copyToClipboard(e, text) {
   e.preventDefault();
