@@ -582,11 +582,11 @@
 }
 
 .news_project_description_tags_div {
-  /* max-width: 510px; */
   width: 100%;
   display: flex;
   padding: 16px 24px;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
   flex: 1 0 0;

@@ -790,6 +790,7 @@
                     {% endfor %}
                   </div>
                </div>
+               {% if related_posts|length > 1 %}
                <div class="post_detail_sidebar_buttons_div_flex">
                   <div class="post_detail_sidebar_buttons_div">
                      <div class="post_detail_sidebar_left_button glider-prev-company-detail-sidebar">
@@ -810,6 +811,7 @@
                      </div>
                   </div>
                </div>
+               {% endif %}
             </div>
          </div>
          {% endif %}
