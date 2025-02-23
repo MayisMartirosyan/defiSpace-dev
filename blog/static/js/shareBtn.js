@@ -11,17 +11,53 @@ const slider_content = document.getElementById(
 const slider_items = post_detail_related_news_slider_items_flex.children;
 
 function openShare(id) {
+  const allDropdowns = document.querySelectorAll(".share_dropdown_div");
+
   const sharedProject = document.getElementById(id);
   const selectedCompStyle =
-    sharedProject.getElementsByClassName("share_dropdown_div");
-  if (selectedCompStyle[0].classList.contains("active")) {
-    selectedCompStyle[0].classList.remove("active");
-    post_detail_slider_buttons_div.style.display = "flex";
+    sharedProject.getElementsByClassName("share_dropdown_div")[0];
+
+  // Check if the clicked dropdown is already open
+  const isCurrentlyActive = selectedCompStyle.classList.contains("active");
+
+  // Close all dropdowns
+  allDropdowns.forEach((dropdown) => {
+    dropdown.classList.remove("active");
+  });
+
+  // If the clicked dropdown was NOT active, open it
+  if (!isCurrentlyActive) {
+    selectedCompStyle.classList.add("active");
+    if (post_detail_slider_buttons_div) {
+      post_detail_slider_buttons_div.style.display = "none";
+    }
   } else {
-    selectedCompStyle[0].classList.add("active");
-    post_detail_slider_buttons_div.style.display = "none";
+    if (post_detail_slider_buttons_div) {
+      post_detail_slider_buttons_div.style.display = "flex";
+    }
   }
 }
+
+document.addEventListener("click", function (event) {
+
+  print(event,'asdasd')
+  const allDropdowns = document.querySelectorAll(".share_dropdown_div");
+
+  let isClickInsideDropdown = false;
+  allDropdowns.forEach((dropdown) => {
+    if (dropdown.contains(event.target)) {
+      isClickInsideDropdown = true;
+    }
+  });
+
+  // If the click is outside all dropdowns, close them
+  if (!isClickInsideDropdown) {
+    allDropdowns.forEach((dropdown) => {
+      dropdown.classList.remove("active");
+    });
+    post_detail_slider_buttons_div.style.display = "flex"; // Show buttons again
+  }
+});
 
 function copyToClipboard(e, text) {
   e.preventDefault();

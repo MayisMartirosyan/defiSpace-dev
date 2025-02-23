@@ -181,7 +181,7 @@
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  min-width: 180px;
+  min-width: 120px;
   width: 100%;
   color: #ffffff;
   background: #141919;
@@ -618,7 +618,7 @@
 .news_project_description_text {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   overflow: hidden;
   color: var(--Dark-Grey, #3c3c3c);
   text-overflow: ellipsis;
