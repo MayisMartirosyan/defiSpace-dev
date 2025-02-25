@@ -456,30 +456,28 @@
 
 
                 <div class="cmp_det_comments_div">
+                    {% for comment in main_comments %}
                     <div class="cmp_det_comment">
                         <img 
                             src="{% static 'img/default_image.webp' %}"
                             class="cmp_det_comment_profile_picture"
-                            alt="dropdown_arrow" 
+                            alt="profile_picture" 
                         />
                         <div class="cmp_det_comment_author_name_desc_react_div">
                             <div class="cmp_det_comment_author_name_div">
                                 <div class="cmp_det_comment_author_name">
-                                    <span class="cmp_det_comment_author">Bitcoin Sistemi</span>
-                                    <span class="cmp_det_comment_author_create_date">28 Jul 2023, 13:29 PM</span>
+                                    <span class="cmp_det_comment_author">{{ comment.author }}</span>
+                                    <span class="cmp_det_comment_author_create_date">{{ comment.date }}</span>
                                 </div>
                                 <div class="cmp_det_comment_author_name_category_div">
                                     <span class="cmp_det_comment_about_fix">About</span>
-                                    <span class="cmp_det_comment_author_category">Security</span>
+                                    <span class="cmp_det_comment_author_category">{{ comment.category }}</span>
                                     <span class="cmp_det_comment_author_slash">/</span>
-                                    <span class="cmp_det_comment_author_subcategory">Asset secured</span>
+                                    <span class="cmp_det_comment_author_subcategory">{{ comment.subcategory }}</span>
                                 </div>
                             </div>
                             <div class="cmp_det_comment_author_desc_div">
-                                Famous analyst Peter Brandt, known for his analysis of 
-                                Bitcoin and cryptocurrencies, made statements about the 
-                                spot Bitcoin ETFs that everyone is looking forward to 
-                                and their impact on the market.
+                                {{ comment.description }}
                             </div>
                             <div class="cmp_det_comment_author_react_div">
                                 <div class="cmp_det_comment_author_reply_comment" id="cmp_det_comment_author_reply_comment">
@@ -491,121 +489,37 @@
                                         class="cmp_det_comment_author_react_like_btn"
                                         alt="like_icon" 
                                     />
-                                    <span class="cmp_det_comment_author_react_like_count">243</span>
+                                    <span class="cmp_det_comment_author_react_like_count">{{ comment.likes }}</span>
                                 </div>
-                                <div class="cmp_det_comment_author_react_dislike_count_div" id="cmp_det_comment_author_react_dislike_count_div">
+                                <div class="cmp_det_comment_author_react_dislike_count_div" id='cmp_det_comment_author_react_dislike_count_div'>
                                     <img 
                                         src="{% static 'img/company_detail/dislike_icon.svg' %}"
                                         class="cmp_det_comment_author_react_dislike_btn"
                                         alt="dislike_icon" 
                                     />
-                                    <span class="cmp_det_comment_author_react_dislike_count">11</span>
+                                    <span class="cmp_det_comment_author_react_dislike_count">{{ comment.dislikes }}</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="cmp_det_comment_for_reply_textarea_div" id="cmp_det_comment_for_reply_textarea_div">
-                        <textarea class="cmp_det_comment_for_reply_textarea">Name, </textarea>
-                        <button class="cmp_det_comment_for_reply_textarea_btn">
-                            <span class="cmp_det_comment_for_reply_textarea_btn_span">Send</span>
-                        </button>
-                    </div>
-                    <div class="cmp_det_comment_reply">
-                        <img 
-                            src="{% static 'img/default_image.webp' %}"
-                            class="cmp_det_comment_profile_picture"
-                            alt="dropdown_arrow" 
-                        />
-                        <div class="cmp_det_comment_author_name_desc_react_div">
-                            <div class="cmp_det_comment_author_name_div">
-                                <div class="cmp_det_comment_author_name">
-                                    <span class="cmp_det_comment_author">Bitcoin Sistemi</span>
-                                    <span class="cmp_det_comment_author_create_date">28 Jul 2023, 13:29 PM</span>
-                                </div>
-                                <div class="cmp_det_comment_author_name_category_div">
-                                    <span class="cmp_det_comment_about_fix">About</span>
-                                    <span class="cmp_det_comment_author_category">Security</span>
-                                    <span class="cmp_det_comment_author_slash">/</span>
-                                    <span class="cmp_det_comment_author_subcategory">Asset secured</span>
-                                </div>
-                            </div>
-                            <div class="cmp_det_comment_author_desc_div">
-                                Famous analyst Peter Brandt, known for his analysis of 
-                                Bitcoin and cryptocurrencies, made statements about the 
-                                spot Bitcoin ETFs that everyone is looking forward to 
-                                and their impact on the market.
-                            </div>
-                            <div class="cmp_det_comment_author_react_div">
-                                <div class="cmp_det_comment_author_reply_comment">
-                                    <span class="cmp_det_comment_author_reply_comment_span">Reply</span>
-                                </div>
-                                <div class="cmp_det_comment_author_react_like_count_div">
-                                    <img 
-                                        src="{% static 'img/company_detail/like_icon.svg' %}"
-                                        class="cmp_det_comment_author_react_like_btn"
-                                        alt="like_icon" 
-                                    />
-                                    <span class="cmp_det_comment_author_react_like_count">243</span>
-                                </div>
-                                <div class="cmp_det_comment_author_react_dislike_count_div">
-                                    <img 
-                                        src="{% static 'img/company_detail/dislike_icon.svg' %}"
-                                        class="cmp_det_comment_author_react_dislike_btn"
-                                        alt="dislike_icon" 
-                                    />
-                                    <span class="cmp_det_comment_author_react_dislike_count">11</span>
-                                </div>
-                            </div>
+            
+
+                        <div class="cmp_det_comment_for_reply_textarea_div" style="display:none;">
+                            <textarea class="cmp_det_comment_for_reply_textarea" placeholder="Write a reply..."></textarea>
+                            <button class="cmp_det_comment_for_reply_textarea_btn">
+                                <span class="cmp_det_comment_for_reply_textarea_btn_span">Send</span>
+                            </button>
                         </div>
+            
+   
+                        {% if comment.replies %}
+                            <div class="cmp_det_comment_reply_div">
+                                {% for reply in comment.replies %}
+                                    {% include 'blog/comment_template.html' with comment=reply %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
-                    <div class="cmp_det_comment">
-                        <img 
-                            src="{% static 'img/default_image.webp' %}"
-                            class="cmp_det_comment_profile_picture"
-                            alt="dropdown_arrow" 
-                        />
-                        <div class="cmp_det_comment_author_name_desc_react_div">
-                            <div class="cmp_det_comment_author_name_div">
-                                <div class="cmp_det_comment_author_name">
-                                    <span class="cmp_det_comment_author">Bitcoin Sistemi</span>
-                                    <span class="cmp_det_comment_author_create_date">28 Jul 2023, 13:29 PM</span>
-                                </div>
-                                <div class="cmp_det_comment_author_name_category_div">
-                                    <span class="cmp_det_comment_about_fix">About</span>
-                                    <span class="cmp_det_comment_author_category">Security</span>
-                                    <span class="cmp_det_comment_author_slash">/</span>
-                                    <span class="cmp_det_comment_author_subcategory">Asset secured</span>
-                                </div>
-                            </div>
-                            <div class="cmp_det_comment_author_desc_div">
-                                Famous analyst Peter Brandt, known for his analysis of 
-                                Bitcoin and cryptocurrencies, made statements about the 
-                                spot Bitcoin ETFs that everyone is looking forward to 
-                                and their impact on the market.
-                            </div>
-                            <div class="cmp_det_comment_author_react_div">
-                                <div class="cmp_det_comment_author_reply_comment">
-                                    <span class="cmp_det_comment_author_reply_comment_span">Reply</span>
-                                </div>
-                                <div class="cmp_det_comment_author_react_like_count_div">
-                                    <img 
-                                        src="{% static 'img/company_detail/like_icon.svg' %}"
-                                        class="cmp_det_comment_author_react_like_btn"
-                                        alt="like_icon" 
-                                    />
-                                    <span class="cmp_det_comment_author_react_like_count">243</span>
-                                </div>
-                                <div class="cmp_det_comment_author_react_dislike_count_div">
-                                    <img 
-                                        src="{% static 'img/company_detail/dislike_icon.svg' %}"
-                                        class="cmp_det_comment_author_react_dislike_btn"
-                                        alt="dislike_icon" 
-                                    />
-                                    <span class="cmp_det_comment_author_react_dislike_count">11</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                {% endfor %}
                 </div>
 
                 <div class="cmp_det_show_more_comments_div">
@@ -814,7 +728,7 @@
                {% endif %}
             </div>
          </div>
-         {% endif %}
+         {% endif %} 
 
     </div>
 

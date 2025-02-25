@@ -16,7 +16,7 @@ document.addEventListener(
       allDropdowns.forEach((dropdown) => {
         dropdown.classList.remove("active");
       });
-      post_detail_slider_buttons_div.style.display = "flex";
+      // post_detail_slider_buttons_div.style.display = "flex";
     }
   },
   true

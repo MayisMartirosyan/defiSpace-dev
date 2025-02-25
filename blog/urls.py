@@ -12,6 +12,7 @@ urlpatterns = [
     path('post/<int:post_id>/comment/', views.add_comment, name='add_comment'),
     path('companies/', views.company_ratings, name='company_ratings'),
     path('companies/<int:company_id>/', views.company_detail, name='company_detail'),
+    path('add_comment/<int:company_id>/', views.add_comment, name='add_comment'),
     path('companies/<int:company_id>/add-advantage/', views.add_advantage, name='add_advantage'),
     path('advantages/<int:advantage_id>/increment/', views.increment_advantage, name='increment_advantage'),
     path('tags/<str:tag>/', views.tag_result, name='tag_result'),

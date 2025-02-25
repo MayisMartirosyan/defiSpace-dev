@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Company, Advantage, Review, Guides, About, TagRating, TagPosts
+from .models import Post, Company, Advantage, Review, Guides, About, TagRating, TagPosts,Comment
 from django.db.models import F, Sum,  Q
 from .forms import SearchForm
 from django import forms
@@ -7,10 +7,9 @@ from django.db.models.functions import TruncDate
 from django.db.models import Count,OuterRef,Subquery
 from collections import defaultdict
 from datetime import datetime, timedelta
-from django.core.paginator import Paginator
 from django.forms.models import model_to_dict
-import json
-from .helpers import handle_add_company_fields,calculate_total_score_product,calculate_total_score_team,calculate_total_score_scurity
+from .helpers import handle_add_company_fields
+from django.http import JsonResponse
 
 
 
@@ -251,12 +250,7 @@ def add_comment(request, post_id):
 def company_detail(request, company_id):
     
     company = get_object_or_404(Company, pk=company_id)
-    
-   # Extract fields and values
-    
-    # security_advantages = company.advantages.filter(position=1).order_by('-count')
-    # team_advantages = company.advantages.filter(position=2).order_by('-count')
-    # product_advantages = company.advantages.filter(position=3).order_by('-count')
+
     company.product_score_obj = company.product_scores.first()
     company.team_score_obj = company.team_scores.first()
     company.security_score_obj = company.security_scores.first()
@@ -265,7 +259,10 @@ def company_detail(request, company_id):
     
     related_posts = company.related_posts.all() 
     related_posts_queryset = related_posts.values('id','title', 'pub_date')
+    main_comments = Comment.objects.filter(company=company, parent__isnull=True).order_by('-created_at')
+   
     sublists = []
+    comments_data = []
     
     for sub_post in related_posts_queryset:
         sub_post_tags = TagPosts.objects.filter(post__id=sub_post['id']).values('id', 'name')
@@ -275,27 +272,73 @@ def company_detail(request, company_id):
         else:
             sublists[-1].append(sub_post)
     
-  
-   
-    print(sublists,'4')
+    for comment in main_comments:
+        
+        replies = comment.replies.all().order_by('-created_at')
+        comment_data = {
+            'id': comment.id,
+            'name': comment.name,
+            'description': comment.description,  # Fixed field name
+            'category': comment.category if comment.category else None,
+            'subcategory': comment.subcategory if comment.subcategory else None ,
+            'likes': comment.likes,
+            'dislikes': comment.dislikes,
+            'created_at': comment.created_at.strftime('%d %b %Y, %H:%M %p'),
+            'replies': [
+                {
+                    'id': reply.id,
+                    'name': reply.name,
+                    'description': reply.description,
+                    'category': reply.category.name if reply.category else None,
+                    'subcategory': reply.subcategory,
+                    'likes': reply.likes,
+                    'dislikes': reply.dislikes,
+                    'created_at': reply.created_at.strftime('%d %b %Y, %H:%M %p'),
+                } for reply in replies
+            ]
+        }
+        comments_data.append(comment_data)
+    print(comments_data,'asdasdasdasdasdad')
 
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        comment = request.POST.get('comment')
-        rating = request.POST.get('rating')
-        if rating == 'positive':
-            rating = True
-        else:
-            rating = False
-        review = Review(company=company, name=name, rating=rating, comment=comment)
-        review.save()
-        return redirect('company_detail', company_id=company.id)
+    # if request.headers.get('X-Requested-With') == 'XMLHttpRequest':  # AJAX Request
+    #     return JsonResponse(comments_data, safe=False)
     
 
     return render(request, 'blog/company_detail.html',
                   {'company': company, 
-                   'related_posts':sublists
+                   'related_posts':sublists,
+                   'main_comments':comments_data
                    })
+    
+    
+def add_comment(request, company_id):
+    """ Saves a new comment or reply for a specific company """
+    company = get_object_or_404(Company, id=company_id)
+
+    if request.method == 'POST':
+        name = request.POST.get('name', '').strip()
+        comment_text = request.POST.get('comment', '').strip()
+        rating = request.POST.get('rating')
+        parent_id = request.POST.get('parent_id')  # Parent comment ID for replies
+
+        if not name or not comment_text:
+            return JsonResponse({'error': 'Name and comment are required!'}, status=400)
+
+        rating = True if rating == 'positive' else False
+        parent_comment = Comment.objects.filter(id=parent_id).first() if parent_id else None
+        new_comment = Comment.objects.create(company=company, name=name, comment=comment_text, rating=rating, parent=parent_comment)
+
+        return JsonResponse({
+            'message': 'Comment added successfully!',
+            'comment': {
+                'name': new_comment.name,
+                'comment': new_comment.comment,
+                'rating': 'Positive' if new_comment.rating else 'Negative',
+                'created_at': new_comment.created_at.strftime('%d %b %Y, %H:%M %p')
+            }
+        }, status=201)
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)
 
 def add_advantage(request, company_id):
     company = get_object_or_404(Company, pk=company_id)

@@ -90,6 +90,75 @@ class About(models.Model):
         return self.title
     
 
+# Category model for better structure (optional, if you want to categorize comments)
+class Category(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+# User model for comment authors (if you don't have a user model, replace with a simple string)
+class Author(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+# Comment model to represent both main comments and replies
+from django.db import models
+
+class Comment(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='comments', null=True, blank=True) 
+    name = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='comments', null=True)
+    subcategory = models.CharField(max_length=255, null=True)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    # Likes and Dislikes
+    likes = models.PositiveIntegerField(default=0)
+    dislikes = models.PositiveIntegerField(default=0)
+
+    # Reply functionality (Self-referencing ForeignKey)
+    parent = models.ForeignKey(
+        'self', on_delete=models.CASCADE, null=True, blank=True, related_name='replies'
+    )
+    
+    objects = models.Manager()  
+
+
+    def __str__(self):
+        return f"Comment by {self.name} in {self.category.name if self.category else 'No Category'}"
+
+    def get_replies(self):
+        """Returns all replies for this comment"""
+        return self.replies.all()
+
+    @property
+    def formatted_date(self):
+        """Custom formatted date as per your example"""
+        return self.created_at.strftime('%d %b %Y, %H:%M %p')
+
+    @property
+    def likes_count(self):
+        """Returns the number of likes"""
+        return self.likes
+
+    @property
+    def dislikes_count(self):
+        """Returns the number of dislikes"""
+        return self.dislikes
+
+# Optionally, a model to track which users liked/disliked
+class CommentReaction(models.Model):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    like = models.BooleanField(default=False)  # True for like, False for dislike
+
+    def __str__(self):
+        return f"{'Like' if self.like else 'Dislike'} by {self.user.username}"
+
+
 class Advantage(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='advantages')
     position = models.PositiveIntegerField()
@@ -108,6 +177,7 @@ class Position(models.Model):
     comment = models.TextField()
     def str(self):
         return self.name
+    
 
 class Review(models.Model):
     company = models.ForeignKey(Company, related_name='reviews', on_delete=models.CASCADE)
