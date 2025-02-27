@@ -290,4 +290,7 @@
   .company_ratings_card_title_div{
     min-width: 165px;
   }
+  .cmp_det_comment_reply_div{
+    padding-left: 48px;
+  }
 }

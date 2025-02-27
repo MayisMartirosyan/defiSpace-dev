@@ -510,15 +510,14 @@
                             </button>
                         </div>
             
-   
-                        {% if comment.replies %}
+                    </div>
+                    {% if comment.replies %}
                             <div class="cmp_det_comment_reply_div">
                                 {% for reply in comment.replies %}
                                     {% include 'blog/comment_template.html' with comment=reply %}
                                 {% endfor %}
                             </div>
                         {% endif %}
-                    </div>
                 {% endfor %}
                 </div>
 

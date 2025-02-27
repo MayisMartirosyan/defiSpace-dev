@@ -2,7 +2,6 @@
 
 .slider_scoring_projects_article {
     display: flex;
-    /* display: none; */
     justify-content: center;
 }
 
@@ -57,7 +56,6 @@
     height: 480px;
     border-radius: 36px 36px 0px 0px;
     padding: 24px;
-    /* background: url('../../img/main/slide_image.png'); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
