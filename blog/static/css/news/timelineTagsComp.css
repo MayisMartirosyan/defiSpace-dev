@@ -68,31 +68,6 @@
 
 /* Dropdown select option with div tag */
 
-/* .timeline_calendar_dropdown {
-    display: flex;
-    width: 181px;
-    padding: 4px;
-    flex-direction: column;
-    align-items: flex-start;
-    border-radius: 20px;
-    background: var(--Black, #141919);
-} */
-
-/*.timeline_calendar_option {
-    display: flex;
-    padding: 9px 20px;
-    align-items: center;
-    gap: 10px;
-    align-self: stretch;
-    border-radius: 24px;
-    color: var(--White, #FFF);
-    font-family: Inter, serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-} */
-
 .timeline_calendar_select_div {
   position: relative;
 }
@@ -108,7 +83,6 @@
   align-items: center;
   gap: 20px;
   width: max-content;
-  /* padding-right: 9px; */
   border-radius: 24px;
   background: #141919;
   cursor: pointer;
@@ -515,7 +489,6 @@
 
 .news_project_item_time {
   display: flex;
-  /* display: none; */
   padding: 2px 6px;
   justify-content: center;
   align-items: center;
@@ -567,11 +540,6 @@
   max-width: 282px;
   width: 100%;
   height: 207px;
-  /* border-radius: 20px 0px 0px 20px;  */
-  /* background: url("../../img/timelineTags/news_project_image.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
 }
 
 .news_project_image img {
@@ -622,7 +590,6 @@
   overflow: hidden;
   color: var(--Dark-Grey, #3c3c3c);
   text-overflow: ellipsis;
-  /* white-space: nowrap; */
   font-family: Inter, serif;
   align-self: stretch;
   font-size: 16px;

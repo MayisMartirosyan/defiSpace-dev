@@ -571,6 +571,7 @@ circle {
 
 .cmp_det_comments_div {
   display: flex;
+  gap: 8px;
   flex-direction: column;
 }
 
@@ -579,6 +580,10 @@ circle {
   gap: 16px;
   padding: 20px;
   border-bottom: 1px #f8f8f8 solid;
+}
+
+.cmp_det_comment_reply_div{
+  padding-left: 60px;
 }
 
 .cmp_det_comment_for_reply_textarea_div {
@@ -857,5 +862,6 @@ circle {
 }
 
 .cmp_det_comment_section{
+  width: 100%;
   max-width: 1000px;
 }
