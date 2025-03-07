@@ -2,6 +2,14 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.shortcuts import render
+
+def custom_404(request, exception):
+    return render(request, 'blog/custom_not_found.html', status=404)
+
+def custom_500(request):
+    return render(request, 'blog/custom_server_error.html', status=500)
+
 
 urlpatterns = [
     path('guides/', views.guides, name='guides'),
@@ -17,6 +25,5 @@ urlpatterns = [
     path('advantages/<int:advantage_id>/increment/', views.increment_advantage, name='increment_advantage'),
     path('tags/<str:tag>/', views.tag_result, name='tag_result'),
     path('tags2/<str:tag>/', views.tag_projects_result, name='tag_projects_result'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

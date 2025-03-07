@@ -414,28 +414,18 @@
     </div>
 
     <div class="cmp_det_comment_slider_section_div">
-            <div class="cmp_det_comment_section">
+            {% comment %} <div class="cmp_det_comment_section"> {% endcomment %}
 
-                <h2 class="cmp_det_comment_title">Users opinions</h2>
+                {% comment %} <h2 class="cmp_det_comment_title">Users opinions</h2> {% endcomment %}
 
-                <div class="cmp_det_comment_filter_div">
+                {% comment %} <div class="cmp_det_comment_filter_div">
                     <div class="cmp_det_comment_filter_dropdown_div">
                         <div class="cmp_det_comment_filter_dropdown" id="cmp_det_comment_filter_dropdown">
                             <span class="cmp_det_comment_filter_current" id="cmp_det_comment_filter_current">All comments</span>
                             <img src="{% static 'img/timelineTags/dropdown_arrow.svg' %}" alt="dropdown_arrow" />
                         </div>
                         <div class="cmp_det_comment_filter_dropdown_types" id="cmp_det_comment_filter_dropdown_types">
-                            {% comment %} <div class="companies_list_settings_option">
-                                <label for="team">Team</label>
-                                <input type="radio" id="team" name="status" value="team" />
-                                <img
-                                  src="{% static 'img/companies/companies_radio_icon.svg' %}"
-                                  width="16px"
-                                  height="16px"
-                                  id="companies_radio_button"
-                                  alt="companies_radio_icon"
-                                />
-                            </div> {% endcomment %}
+                           
                         </div>
                     </div>
                     <div class="cmp_det_comment_filter_dropdown_list" id="cmp_det_comment_filter_dropdown_list">
@@ -610,8 +600,8 @@
                         <span class="cmp_det_sub_criterion_span">APY 5 years</span>
                     </div>
                 </div>
-                
-            </div>
+                 {% endcomment %}
+            {% comment %} </div> {% endcomment %}
 
 
          {% if related_posts %}

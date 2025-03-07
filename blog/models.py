@@ -178,7 +178,6 @@ class Position(models.Model):
     def str(self):
         return self.name
     
-
 class Review(models.Model):
     company = models.ForeignKey(Company, related_name='reviews', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)

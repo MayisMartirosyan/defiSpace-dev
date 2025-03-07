@@ -148,7 +148,7 @@
                         <div class="share_icon_style main_slider_icon" onclick="openShare('main_slider{{slide.id}}')" id="main_slider{{slide.id}}">
                           <div class="share_dropdown_div" id="share_dropdown_div">
                             <div class="share_dropdown_item" >
-                              <a href="{{ request.build_absolute_uri }}post/{{ slide.id }}" onclick="copyToClipboard(event, '{{ request.build_absolute_uri }}post/{{ slide.id }}')"> 
+                              <a href="{{ main_url }}post/{{ slide.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ slide.id }}')"> 
 
                                 <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
                                 <p class="share_dropdown_item_text">Copy link</p>
@@ -157,7 +157,7 @@
                             </div>
           
                             <div class="share_dropdown_item">
-                              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}post/{{ slide.id }}" target="_blank">
+                              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ slide.id }}" target="_blank">
 
                                 <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
                                 <p class="share_dropdown_item_text">
@@ -168,7 +168,7 @@
                             </div>
           
                             <div class="share_dropdown_item">
-                              <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}post/{{ slide.id }}" target="_blank">
+                              <a href="https://t.me/share/url?url={{ main_url }}post/{{ slide.id }}" target="_blank">
 
                               <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
                               <p class="share_dropdown_item_text">
@@ -180,7 +180,7 @@
                             </div>
           
                             <div class="share_dropdown_item">
-                              <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}post/{{ slide.id }}" target="_blank">
+                              <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ slide.id }}" target="_blank">
                                 <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
                                 <p class="share_dropdown_item_text">
                                   Twitter
@@ -355,7 +355,7 @@
                 
                 <div class="share_dropdown_div" id="share_dropdown_div">
                   <div class="share_dropdown_item" >
-                    <a href="{{ request.build_absolute_uri }}post/{{ edit_pick_item.id }}" onclick="copyToClipboard(event, '{{ request.build_absolute_uri }}post/{{ edit_pick_item.id }}')"> 
+                    <a href="{{ main_url }}post/{{ edit_pick_item.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ edit_pick_item.id }}')"> 
 
                       <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
                       <p class="share_dropdown_item_text">Copy link</p>
@@ -364,7 +364,7 @@
                   </div>
 
                   <div class="share_dropdown_item">
-                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}post/{{ edit_pick_item.id }}" target="_blank">
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ edit_pick_item.id }}" target="_blank">
 
                       <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
                       <p class="share_dropdown_item_text">
@@ -375,7 +375,7 @@
                   </div>
 
                   <div class="share_dropdown_item">
-                    <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}post/{{ edit_pick_item.id }}" target="_blank">
+                    <a href="https://t.me/share/url?url={{ main_url }}post/{{ edit_pick_item.id }}" target="_blank">
 
                     <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
                     <p class="share_dropdown_item_text">
@@ -387,7 +387,7 @@
                   </div>
 
                   <div class="share_dropdown_item">
-                    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}post/{{ edit_pick_item.id }}" target="_blank">
+                    <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ edit_pick_item.id }}" target="_blank">
                       <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
                       <p class="share_dropdown_item_text">
                         Twitter
@@ -594,7 +594,7 @@
                             
                               <div class="share_dropdown_div" id="share_dropdown_div">
                                 <div class="share_dropdown_item" >
-                                  <a href="{{ request.build_absolute_uri }}post/{{ post.id }}" onclick="copyToClipboard(event, '{{ request.build_absolute_uri }}post/{{ post.id }}')"> 
+                                  <a href="{{ main_url }}post/{{ post.id }}" onclick="copyToClipboard(event, '{{ main_url }}post/{{ post.id }}')"> 
               
                                     <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
                                     <p class="share_dropdown_item_text">Copy link</p>
@@ -603,7 +603,7 @@
                                 </div>
               
                                 <div class="share_dropdown_item">
-                                  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}post/{{ post.id }}" target="_blank">
+                                  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ post.id }}" target="_blank">
               
                                     <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
                                     <p class="share_dropdown_item_text">
@@ -614,7 +614,7 @@
                                 </div>
               
                                 <div class="share_dropdown_item">
-                                  <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}post/{{ post.id }}" target="_blank">
+                                  <a href="https://t.me/share/url?url={{ main_url }}post/{{ post.id }}" target="_blank">
               
                                   <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
                                   <p class="share_dropdown_item_text">
@@ -626,7 +626,7 @@
                                 </div>
               
                                 <div class="share_dropdown_item">
-                                  <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}post/{{ post.id }}" target="_blank">
+                                  <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ post.id }}" target="_blank">
                                     <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
                                     <p class="share_dropdown_item_text">
                                       Twitter
