@@ -19,11 +19,21 @@
   position: relative;
 }
 
+.tags_sidebar_aside_wrapper{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999999999;
+}
+
 .tags_sidebar_aside {
   display: block;
   position: sticky;
   top: 150px;
   width: 400px;
+  max-width: 1440px;
   height: auto;
   z-index: 3;
 }

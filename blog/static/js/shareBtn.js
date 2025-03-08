@@ -8,7 +8,7 @@ const slider_content = document.getElementById(
   "glider-company-detail-sidebar-slider"
 );
 
-const slider_items = post_detail_related_news_slider_items_flex.children;
+const slider_items = post_detail_related_news_slider_items_flex?.children;
 
 function openShare(id) {
   const allDropdowns = document.querySelectorAll(".share_dropdown_div");
