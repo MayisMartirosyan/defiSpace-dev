@@ -3,16 +3,11 @@ const shevron_icon = document.getElementById("shevron_icon");
 const tags_sidebar_aside = document.getElementById("tags_sidebar_aside");
 const apply_btn = document.getElementById("timeline_tags_apply_button");
 const timeline_div_flex = document.getElementById("timeline_div_flex");
-const timeline_tags_div_flex = document.getElementById(
-  "timeline_tags_div_flex"
-);
-const tags_sidebar_aside_wrapper = document.getElementById(
-  "tags_sidebar_aside_wrapper"
-);
+const timeline_tags_div_flex = document.getElementById("timeline_tags_div_flex");
+const tags_sidebar_aside_wrapper = document.getElementById("tags_sidebar_aside_wrapper");
+const timeline_tags_filter_div_desktop = document.getElementById("timeline_tags_filter_div_desktop");
 
 let shevronBool = false;
-
-// Event listener of click
 
 function closeFilterModal() {
   shevron_div.style.background = "#F8F8F8";
@@ -23,48 +18,37 @@ function closeFilterModal() {
   timeline_div_flex.style.paddingLeft = "0px";
   timeline_div_flex.style.marginLeft = "56px";
   apply_btn.style.width = "100%";
+  tags_sidebar_aside_wrapper.style.position = "fixed !important";
   tags_sidebar_aside_wrapper.classList.remove("tags_sidebar_aside_wrapper");
-  shevronBool = !shevronBool;
+  shevronBool = false;
 }
 
-shevron_div.addEventListener("click", () => {
+shevron_div.addEventListener("click", (event) => {
+  event.stopPropagation(); // Prevents event bubbling
+  
   if (!shevronBool) {
     shevron_div.style.background = "#DFEBFC";
     shevron_icon.style.transform = "rotate(-180deg)";
     tags_sidebar_aside.style.width = "100%";
     tags_sidebar_aside.style.margin = "0 auto";
-    tags_sidebar_aside.style.padding = "0 80px";
     apply_btn.style.width = "328px";
     timeline_div_flex.style.paddingLeft = "450px";
     timeline_div_flex.style.marginLeft = "0px";
     timeline_div_flex.style.position = "absolute";
     tags_sidebar_aside_wrapper.classList.add("tags_sidebar_aside_wrapper");
-    shevronBool = !shevronBool;
+    shevronBool = true;
   } else {
     closeFilterModal();
   }
 });
 
-// Event listener of mouseover
-
-shevron_div.addEventListener("mouseover", () => {
-  if (!shevronBool) {
-    shevron_div.style.background = "rgba(189, 212, 250, 0.30)";
-  }
-});
-
-// Event listener of mouseleave
-
-shevron_div.addEventListener("mouseleave", () => {
-  if (!shevronBool) {
-    shevron_div.style.background = "#F8F8F8";
-  }
-});
-
-// Body outside click
-
-document.body.addEventListener("click", (event) => {
-  if (event.target === tags_sidebar_aside_wrapper) {
+// Close modal on clicking outside
+document.addEventListener("click", (event) => {
+  if (
+    shevronBool && // Modal is open
+    !tags_sidebar_aside.contains(event.target) && // Click is outside modal
+    !shevron_div.contains(event.target) // Click is outside toggle button
+  ) {
     closeFilterModal();
   }
 });
