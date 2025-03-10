@@ -1,8 +1,8 @@
 {% load static %}
 
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"> 
     <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/news/header.media.css' %}">
 </head>
 
 <div class="header_div_flex">
@@ -10,7 +10,6 @@
        <header class="header" id="header">
         
                 <a href="/">
-
                     <div class="logo_flex">
                         <img 
                             src="{% static 'img/navbar/logo.svg' %}" 
@@ -18,12 +17,9 @@
                             alt="logo_vector_icon"
                         />
                     </div>
-
                 </a>
                
-
-            <div class="marquee" id="ticker" >
-               
+            <div class="marquee" id="ticker">
                 <marquee>
                   {{latest_post.title}}
                 </marquee>
