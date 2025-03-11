@@ -33,7 +33,6 @@
 }
 
 @media (max-width: 900px) {
-
   .companies_list_settings_option {
     font-size: 12px;
     padding: 6px 12px;
@@ -46,8 +45,7 @@
 }
 
 @media (max-width: 700px) {
-
-  #company_list_item_triangle_div{
+  #company_list_item_triangle_div {
     display: none;
   }
 
@@ -93,34 +91,33 @@
     padding-right: 0px;
   }
 
-  .company_item_total_score_div{
+  .company_item_total_score_div {
     display: block;
   }
 
-  #company_left_param_text{
+  #company_left_param_text {
     text-align: left;
   }
 
-  #company_right_param_text{
+  #company_right_param_text {
     text-align: right;
   }
 
-  .company_star_overall_tps{
+  .company_star_overall_tps {
     opacity: 1;
   }
 }
 
-@media (max-width:500px) {
-  .company_item_list{
+@media (max-width: 500px) {
+  .company_item_list {
     padding: 24px 0;
   }
 
   .company_right_part_triangle_overall_ratings {
     justify-content: space-between;
-    
   }
 
-  .company_item_total_score_text{
+  .company_item_total_score_text {
     font-size: 14px;
   }
 }

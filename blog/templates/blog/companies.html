@@ -1,5 +1,10 @@
 {% extends 'blog/base.html' %} {% load static %} {% block content %}
 
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/companies/companies_description_media.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/companies/companies_list_media.css' %}">
+</head>
+
 <article class="companies_article">
   <div class="companeies_project_scoring_div_flex">
     <div class="project_scoring_div">
@@ -13,8 +18,7 @@
       <div class="companies_project_scoring_items_div">
         {% for company_item in top_companies %}
 
-       
-        <a  class="company-item-link" href="{% url 'company_detail' company_item.id %}"> 
+        <a class="company-item-link" href="{% url 'company_detail' company_item.id %}"> 
          <div class="project_scoring_item">
         <div class="project_scoring_item_logo_name_points_div">
             <div class="project_scoring_item_logo_div">
@@ -87,8 +91,6 @@
           </div>
        </div>
         </a>
-          
-    
 
         {% endfor %}
       </div>
