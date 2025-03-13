@@ -12,38 +12,23 @@
     <!-- Styles -->
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}"> 
     <link rel="stylesheet" type="text/css" href="{% static 'css/news/slider.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/news/main.css' %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/news/editorPick.css' %}"> 
     <link rel="stylesheet" type="text/css" href="{% static 'css/news/timelineTagsComp.css' %}"> 
     <link rel="stylesheet" type="text/css" href="{% static 'css/glider.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/news/filterPopup.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/post_detail.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/related_projects.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/companies/companies.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/about/about.css' %}">
-
-    <link rel="stylesheet" type="text/css" href="{% static 'css/companies/company_detail/company_detail.css' %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/company_detail/company_detail_media.css' %}"> 
 
     <!-- Media -->
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/news/index.media.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/news/header.media.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/news/slider.media.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/news/editor_pick.media.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/news/timelineTagsComp.media.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/postDetail/post_detail_media.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/postDetail/related_projects_media.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/footer/footer_media.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/news/filterPopup_media.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/companies/companies_description_media.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/companies/companies_project_scoring.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/companies/companies_list_media.css' %}">
     
-
     <!-- For responsive -->
 
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -81,8 +66,6 @@
     {% include 'blog/footer.html' %}
     
     <script>
-
-         
          function checkWindowWidth() {
             let windowWidth = window.innerWidth || document.documentElement.clientWidth ||  document.body.clientWidth;
             let content = document.getElementById('content');

@@ -5,6 +5,12 @@
 
 {% block content %}
 
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/news/editorPick.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/news/filterPopup.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/news/timelineTagsComp.media.css' %}">
+</head>
+
 <div class="container">
 
   <div>
@@ -120,7 +126,6 @@
                 <div class="slider_div">
                   <a href="{% url 'post_detail' slide.id %}" class="slider_background_tags_date_div_link">
                   
-                  
                       <div class="slider_background_tags_date_div"style="background: url('{% if slide.image %}media/{{slide.image}}{% else %}{% static 'img/default_image.webp' %}{% endif %}'); background-repeat: no-repeat; background-size: cover; background-position: center;">
                       <div class="slider_tags_date_div">
                         {% if slide.tag_posts %}
@@ -195,7 +200,6 @@
                     </div>
 
                    
-
                   </div>
                 </div>
                 
@@ -206,11 +210,6 @@
 
               <div class="slider_btns_share_btn_div" >
                 <div role="tablist" class="dots"></div>
-
-             
-
-                
-
               </div>
 
             </div>
@@ -328,11 +327,8 @@
               >
 
     
-                <div class="editor_pick_item_date">
-              
-       
+                <div class="editor_pick_item_date">       
                  {{ edit_pick_item.pub_date|date:"M j H:i" }}
-
               </div>
               </div>
             </a>

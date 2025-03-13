@@ -1,5 +1,9 @@
 {% extends 'blog/base.html' %} {% load static %} {% block content %}
 
+<head>
+   <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/post_detail.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'css/mediaResp/postDetail/post_detail_media.css' %}">
+</head>
 
 <div class="post_detail_container">
    <div class="post_detail_flex">
@@ -80,7 +84,6 @@
             </div>
 
             {% if post.story|striptags|length > 0 %}
-
                <div class="post_detail_story_highlights_div">
                   <p class="post_detail_story_highlights_title">
                      STORY HIGHLIGHTS
@@ -94,8 +97,6 @@
                   </div>
                </div>
             {% endif %}
-
-            
 
             <div class="post_detail_post_image_div">
                

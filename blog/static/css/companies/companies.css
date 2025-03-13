@@ -470,7 +470,6 @@ input[type="radio"]:checked + label {
   line-height: 140%;
 }
 
-
 .company_star_overall_div {
   display: flex;
   align-items: center;
