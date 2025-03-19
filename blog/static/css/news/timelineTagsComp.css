@@ -493,7 +493,7 @@
 }
 
 .news_project_div {
-  max-width: 792px;
+  /* max-width: 792px; */
   width: 100%;
   display: flex;
   border-radius: 20px;
