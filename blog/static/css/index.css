@@ -19,6 +19,7 @@ a {
 }
 
 .href_tag {
+  white-space: nowrap;
   color: #141919;
 }
 

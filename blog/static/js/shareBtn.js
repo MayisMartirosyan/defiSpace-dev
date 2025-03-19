@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }  
 });
 
-function openShare(id) {
+function openShare(event, id) {
+  event.preventDefault();
+  event.stopPropagation();
   const allDropdowns = document.querySelectorAll(".share_dropdown_div");
 
   const sharedProject = document.getElementById(id);

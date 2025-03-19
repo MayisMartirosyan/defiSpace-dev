@@ -36,6 +36,7 @@ shevron_div.addEventListener("click", (event) => {
     timeline_div_flex.style.marginLeft = "0px";
     timeline_div_flex.style.position = "absolute";
     tags_sidebar_aside_wrapper.classList.add("tags_sidebar_aside_wrapper");
+    timeline_tags_div_flex.style.borderRadius = "28px";
     shevronBool = true;
   } else {
     closeFilterModal();

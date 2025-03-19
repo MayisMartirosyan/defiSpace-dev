@@ -54,7 +54,7 @@
 .timeline_tags_div_flex {
   display: flex;
   height: 100%;
-  border-radius: 27px;
+  border-radius: 28px 0 0 28px;
   background: var(--Light-Blue, #edf3fc);
 }
 

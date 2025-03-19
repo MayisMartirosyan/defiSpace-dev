@@ -276,12 +276,15 @@
 }
 
 .post_detail_news_slider_item_description_text {
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;
    height: 60px;
-   align-self: stretch;
    overflow: hidden;
+    text-overflow: ellipsis;
+   align-self: stretch;
    color: #141919;
    text-overflow: ellipsis;
-   white-space: nowrap;
    font-family: Inter, sans-serif;
    font-size: 20px;
    font-style: normal;

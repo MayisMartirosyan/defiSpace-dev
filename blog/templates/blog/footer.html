@@ -10,20 +10,16 @@
        <footer class="footer" id="footer">
         
             <div class="footer_logo_description_flex">
-               <img
-                  src="{% static 'img/navbar/logo.svg' %}"
-                  class="navbar_logo"
-                  alt="logo_vector_icon"
-               />
+                <a href="/">
+                    <img
+                        src="{% static 'img/navbar/logo.svg' %}"
+                        class="navbar_logo"
+                        alt="logo_vector_icon"
+                    />
+                </a>
                <p class="footer_logo_description_p">
                   The place to explore latest news and greatest projects
                </p>
-            </div>
-
-            <div class="footer_inc_p_div">
-                <p class="footer_inc_p">
-                    ©️ 2024 DefiSpace, Inc.
-                </p>
             </div>
 
             <div class="footer_navigation_bar_flex_div">
@@ -48,7 +44,12 @@
                         </li>
                     </div>
                 </nav>
-
+            </div>
+            
+            <div class="footer_inc_p_div">
+                <p class="footer_inc_p">
+                    © 2024 DefiSpace, Inc.
+                </p>
             </div>
          </footer>
 
