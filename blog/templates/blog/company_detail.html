@@ -615,14 +615,14 @@
 
                         {% for related_post_company in related_group %}
 
-                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_company.id }}">
-                                <a href="{% url 'post_detail' related_post_company.id %}">
+                        {% comment %} <a href="{% url 'post_detail' related_post_company.id %}"> {% endcomment %}
+                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_company.id }}" onclick="openInnerPost('{{ related_post_company.id }}')">
                                 <div class="post_detail_related_news_slider_item_description">
                                     <p class="post_detail_related_news_slider_item_description_p">
                                         {{related_post_company.title}}
                                     </p>
                                 </div>
-                                </a>
+
                                 <div class="post_detail_related_news_slider_item_tags_share_icon_flex">
 
                                     <div class="post_detail_related_news_slider_item_tags_flex">
@@ -637,54 +637,40 @@
                                         </div>
                                     </div>
 
-                                    <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShare('related_new{{ related_post_company.id }}')">
-                
+                                    <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShare(event, 'related_new{{ related_post_company.id }}')">
                                         <div class="share_dropdown_div" id="share_dropdown_div">
-                                          <div class="share_dropdown_item" >
+                                          <div class="share_dropdown_item">
                                             <a href="/companies/{{ related_post_company.id }}" onclick="copyToClipboard(event, '{{ main_url }}companies/{{ related_post_company.id }}')"> 
-                        
                                               <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
                                               <p class="share_dropdown_item_text">Copy link</p>
                                             </a>
-                                            
                                           </div>
-                        
+
                                           <div class="share_dropdown_item">
                                             <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ main_url }}post/{{ related_post_company.id }}" target="_blank">
-                        
                                               <img src="{% static 'img/share/linkedin_icon.svg' %}" alt="link_icon" />
-                                              <p class="share_dropdown_item_text">
-                                              LinkedIn
-                                            </p>
+                                              <p class="share_dropdown_item_text">LinkedIn</p>
                                             </a>
-                                            
                                           </div>
-                        
+
                                           <div class="share_dropdown_item">
                                             <a href="https://t.me/share/url?url={{ main_url }}post/{{ related_post_company.id }}" target="_blank">
-                        
-                                            <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
-                                            <p class="share_dropdown_item_text">
-                                             Telegram
+                                                <img src="{% static 'img/share/telegram_icon.svg' %}" alt="link_icon" />
+                                                <p class="share_dropdown_item_text">Telegram</p>
                                             </a>
-                                           
-                                          </p>
-                                          
                                           </div>
                         
                                           <div class="share_dropdown_item">
                                             <a href="https://twitter.com/intent/tweet?url={{ main_url }}post/{{ related_post_company.id }}" target="_blank">
                                               <img src="{% static 'img/share/twitter_icon.svg' %}" alt="link_icon" />
-                                              <p class="share_dropdown_item_text">
-                                                Twitter
-                                              </p>  
+                                              <p class="share_dropdown_item_text">Twitter</p>  
                                             </a>
-                                           
                                           </div>
                                         </div>
                                      </div>
                                 </div>
                             </div>
+                        {% comment %} </a> {% endcomment %}
                     
                         {% endfor %}
                     </div>
@@ -725,4 +711,5 @@
 <script src="{% static 'js/company_detail/handle_like_dislike.js' %}"></script>
 <script src="{% static 'js/company_detail/company_add_dropdown.js' %}"></script>
 <script src="{% static 'js/company_detail/comment_filter_dropdown.js' %}"></script>
+<script src="{% static 'js/to_post_detail.js' %}"></script>
 {% endblock %}

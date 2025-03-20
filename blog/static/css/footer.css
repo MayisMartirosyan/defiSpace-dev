@@ -1,77 +1,77 @@
 .footer_div_flex {
-   display: flex;
-   justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .footer_div {
-   max-width: 1440px;
-   width: 100%;
+  max-width: 1440px;
+  width: 100%;
 }
 
 .footer {
-   display: flex;
-   padding: 24px;
-   justify-content: space-between;
-   align-items: flex-end;
-   border-radius: 36px;
-   background: #c4c6ca;
-   margin-top: 90px;
+  display: flex;
+  padding: 24px;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-radius: 36px;
+  /* background: #c4c6ca; */
+  background: #f8f8f8;
+  margin-top: 90px;
 }
 
 .navigation_bar_footer {
-   display: flex;
-   justify-content: center;
-   align-items: flex-start;
-   gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .footer_nav_item {
-   display: flex;
-   padding: 12px 24px;
-   justify-content: center;
-   align-items: center;
-   gap: 10px;
-   border-radius: 24px;
-   border: 1px solid #9e9e9e;
-   transition: all 0.3s ease-out;
-   cursor: pointer;
+  display: flex;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 24px;
+  border: 1px solid #9e9e9e;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
 }
 
 .footer_nav_item:hover {
-   border: 1px solid #fe6a25;
+  border: 1px solid #fe6a25;
 }
 
 .footer_logo_description_flex {
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   gap: 20px;
-   max-width: 253px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 253px;
 }
 
 .footer_logo_description_p {
-   color: #141919;
-   font-family: Inter, sans-serif;
-   font-size: 16px;
-   font-style: normal;
-   font-weight: 400;
-   line-height: 140%;
+  color: #141919;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
 }
 
 .footer_inc_p {
-   color: #fff;
-   font-family: Inter, sans-serif;
-   font-size: 16px;
-   font-style: normal;
-   font-weight: 400;
-   line-height: 140%;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: #9E9E9E;
 }
 
 .footer_nav_item_text {
-   color: #141919;
-   font-family: Inter, sans-serif;
-   font-size: 20px;
-   font-style: normal;
-   font-weight: 700;
-   line-height: normal;
+  color: #141919;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }

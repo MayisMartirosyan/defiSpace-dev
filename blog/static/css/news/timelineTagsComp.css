@@ -54,7 +54,7 @@
 .timeline_tags_div_flex {
   display: flex;
   height: 100%;
-  border-radius: 27px;
+  border-radius: 28px 0 0 28px;
   background: var(--Light-Blue, #edf3fc);
 }
 
@@ -493,7 +493,7 @@
 }
 
 .news_project_div {
-  max-width: 792px;
+  /* max-width: 792px; */
   width: 100%;
   display: flex;
   border-radius: 20px;

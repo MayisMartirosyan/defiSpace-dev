@@ -401,7 +401,9 @@ input[type="radio"]:checked + label {
 
 .bg {
   width: 85px;
-  height: 85px;
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
 .triangle {

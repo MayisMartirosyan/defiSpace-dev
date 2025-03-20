@@ -297,11 +297,15 @@
 .project_scoring_item_triangle_top_text {
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 30;
 }
 
 .project_scoring_item_triangle_bottom_text {
     display: flex;
     justify-content: space-between;
+    position: relative;
+    z-index: 30;
 }
 
 .project_scoring_item_triangle_p_text {

@@ -137,12 +137,14 @@
 }
 
 .editor_pick_item_description_text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
     height: 60px;
     align-self: stretch;
     overflow: hidden;
     color: var(--Black, #141919);
     text-overflow: ellipsis;
-    white-space: nowrap;
     font-family: Inter, serif;
     font-size: 20px;
     font-style: normal;
