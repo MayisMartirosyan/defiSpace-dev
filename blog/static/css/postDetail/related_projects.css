@@ -149,6 +149,8 @@
    font-style: normal;
    font-weight: 400;
    line-height: normal;
+   position: relative;
+   z-index: 30;
 }
 
 .post_detail_view_all_projects_btn {
