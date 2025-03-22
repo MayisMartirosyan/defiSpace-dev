@@ -36,6 +36,7 @@ a {
   color: #141919;
   cursor: pointer;
   transition: all 0.2s ease-out;
+  user-select: none;
 }
 
 .big_tag_item:hover {
@@ -159,4 +160,11 @@ input[type="checkbox"] {
   top: 0;
   left: 0;
   opacity: 0;
+}
+
+.no-select {
+  user-select: none; /* Standard */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
 }
