@@ -1,7 +1,7 @@
-const newsButton = document.getElementById("nav_item_link_news");
+const nav_routes = document.getElementById("nav_routes");
 
 document.addEventListener("DOMContentLoaded", () => {
   if(window.location.pathname !== '/' && !window.location.pathname.includes('post')){
-    newsButton.style.paddingLeft = "0";
+    nav_routes.style.marginLeft = "-24px";
   }
 });

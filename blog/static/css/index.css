@@ -62,15 +62,12 @@ a {
   transition: all 0.3s ease-out;
 }
 
-
-
 .sm_tag_item:hover {
   background: #bdd4fa;
 }
 
 .big_tag_item_active {
   background: var(--Blue, #bdd4fa) !important;
-
 }
 
 .big_tag_item input{
@@ -132,6 +129,7 @@ a {
   border-radius: 24px;
   cursor: pointer;
 }
+
 .share_dropdown_item a {
   display: flex;
   width: 100%;

@@ -336,9 +336,10 @@
 .post_detail_slider_buttons_div {
    display: flex;
    justify-content: space-between;
-   width: calc(100% - 16px);
+   width: 100%;
    position: absolute;
    top: 50%;
+   transform: translate(0, -50%);
    z-index: 200;
    padding: 0 16px;
 }
@@ -356,6 +357,7 @@
    gap: 6px;
    border-radius: 24px;
    background: #fff;
+   cursor: pointer;
 }
 
 .glider-next-post-detail-div {
@@ -366,6 +368,7 @@
    gap: 6px;
    border-radius: 24px;
    background: #fff;
+   cursor: pointer;
 }
 
 .glider-post-detail-btn-p {
@@ -375,6 +378,7 @@
    font-style: normal;
    font-weight: 400;
    line-height: normal;
+   cursor: pointer;
 }
 
 

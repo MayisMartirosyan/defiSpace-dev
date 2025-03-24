@@ -20,6 +20,7 @@ function closeFilterModal() {
   apply_btn.style.width = "100%";
   tags_sidebar_aside_wrapper.style.position = "fixed !important";
   tags_sidebar_aside_wrapper.classList.remove("tags_sidebar_aside_wrapper");
+  timeline_tags_div_flex.style.borderRadius = "28px 0 0 28px";
   shevronBool = false;
 }
 
