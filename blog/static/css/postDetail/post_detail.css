@@ -328,6 +328,16 @@
    gap: 50px;
 }
 
+.glider-post-detail-slider{
+   overflow: hidden !important;
+   scrollbar-color: transparent transparent !important;
+   scrollbar-width: thin;
+}
+
+.glider-post-detail-sidebar-slider{
+   scrollbar-color: transparent transparent !important;
+}
+
 .glider-post-detail-slider > .glider-track {
    display: flex;
    gap: 40px;

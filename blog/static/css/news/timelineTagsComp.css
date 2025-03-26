@@ -277,26 +277,26 @@
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar {
-  width: 40px;
-  height: 8px;
+  width: 24px;
+  height: 20px;
+  position: static;
+  z-index: 100;
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb {
-  background: var(--Dark-Grey, #3c3c3c);
-  border-radius: 30px;
-}
-
-.timeline_categories_projects_tags_div_flex::-webkit-scrollbar-track {
-  border-radius: 16px;
-  border: 1px solid var(--Grey, #c4c6ca);
+  background: url("../../img/scrollbar-thumbnail.svg") no-repeat center;
+  position: static;
+  z-index: 100;
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb:hover {
-  border: 2px orange solid;
+  width: 24px;
+  background: url("../../img/scrollbar-thumbnail-active.svg") no-repeat center;
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb:active {
-  border: 2px orange solid;
+  width: 24px;
+  background: url("../../img/scrollbar-thumbnail-active.svg") no-repeat center;
 }
 
 .timeline_categories_projects_tags_flex {
@@ -314,7 +314,17 @@
   align-items: flex-start;
   gap: 24px;
   align-self: stretch;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.line_line {
+  position: absolute;
+  top: 119px;
+  width: 100%;
+  height: 1px;
+  background: rgba(60, 60, 60, 0.5);
 }
 
 .timeline_categories_projects_tags_title {
