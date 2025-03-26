@@ -5,9 +5,9 @@ def handle_add_company_fields(company):
     security_scores = company.security_scores.first() 
         
 
-    product_score_total = product_scores.total_score if product_scores else 0
-    team_score_total = team_scores.total_score if team_scores else 0
-    security_score_total = security_scores.total_score if security_scores else 0
+    product_score_total = product_scores.total_score if product_scores else 1
+    team_score_total = team_scores.total_score if team_scores else 1
+    security_score_total = security_scores.total_score if security_scores else 1
     
     average_score = round(min((product_score_total + team_score_total + security_score_total) / 3,100))
 

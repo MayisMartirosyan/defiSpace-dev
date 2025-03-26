@@ -1,15 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Company, Advantage, Review, Guides, About, TagRating, TagPosts,Comment
-from django.db.models import F, Sum,  Q
+from django.db.models import F, Sum,  Q, Value
 from .forms import SearchForm
 from django import forms
-from django.db.models.functions import TruncDate
+from django.db.models.functions import TruncDate,Coalesce
 from django.db.models import Count,OuterRef,Subquery
 from collections import defaultdict
 from datetime import datetime, timedelta
 from django.forms.models import model_to_dict
 from .helpers import handle_add_company_fields
 from django.http import JsonResponse
+
+
 
 
 
@@ -165,23 +167,43 @@ def company_ratings(request):
     sort_by = request.GET.getlist('sort_by')
     sort_order = request.GET.get('sort_order', 'desc')  # Default to "desc"
     query_tag_rating = request.GET.getlist('tag_rating')
-    order_prefix = "" if sort_order == "asc" else "-"  # "-" for descending order
+    order_prefix = "" if sort_order == "desc" else "-"  # "-" for descending order
     
     print(sort_order,'asdasadssd')
+    companies = companies.annotate(
+    security_score=Coalesce(F('security_scores__total_score'), Value(1)),
+    team_score=Coalesce(F('team_scores__total_score'), Value(1)),
+    product_score=Coalesce(F('product_scores__total_score'), Value(1))
+)
+    
+    # if 'launched' in sort_by:
+    #     companies = companies.order_by(f'{order_prefix}date_added')
+        
+    # if 'security' in sort_by:
+    #     companies = companies.order_by(f'{order_prefix}security_scores__total_score')
+    # if 'team' in sort_by:
+    #     companies = companies.order_by(f'{order_prefix}team_scores__total_score')
+        
+    # if 'product' in sort_by:
+    #     companies = companies.order_by(f'{order_prefix}product_scores__total_score')
+        
     if 'launched' in sort_by:
         companies = companies.order_by(f'{order_prefix}date_added')
-        
-    if 'security' in sort_by:
-        companies = companies.order_by(f'{order_prefix}security_scores__total_score')
-    if 'team' in sort_by:
-        companies = companies.order_by(f'{order_prefix}team_scores__total_score')
-        
-    if 'product' in sort_by:
-        companies = companies.order_by(f'{order_prefix}product_scores__total_score')
+    elif 'security' in sort_by:
+        companies = companies.order_by(f'{order_prefix}security_score')  # Using annotated field
+    elif 'team' in sort_by:
+        companies = companies.order_by(f'{order_prefix}team_score')  # Using annotated field
+    elif 'product' in sort_by:
+        companies = companies.order_by(f'{order_prefix}product_score')  # Using annotated field
         
     if 'totalScore' in sort_by or not sort_by: 
-        companies = companies.annotate(average_score=(F('security_scores__total_score') + F(
-            'team_scores__total_score') + F('product_scores__total_score')) / 3)
+        companies = companies.annotate(
+    average_score=(
+        Coalesce(F('security_scores__total_score'), Value(1)) +
+        Coalesce(F('team_scores__total_score'), Value(1)) +
+        Coalesce(F('product_scores__total_score'), Value(1))
+    ) / 3
+)
         companies = companies.order_by(f'{order_prefix}average_score')
         
     
