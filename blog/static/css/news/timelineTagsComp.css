@@ -287,6 +287,7 @@
   background: url("../../img/scrollbar-thumbnail.svg") no-repeat center;
   position: static;
   z-index: 100;
+  cursor: pointer;
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb:hover {

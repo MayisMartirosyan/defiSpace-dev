@@ -10,7 +10,7 @@ const timeline_dropdown_div_desktop = document.getElementById("timeline_dropdown
 const timeline_dropdown = document.getElementById("timeline_dropdown");
 const timeline_calendar_select_div = document.getElementById("timeline_calendar_select_div");
 const timeline_calendar_select_div_desktop = document.getElementById("timeline_calendar_select_div_desktop");
-
+const timeline_calendar_search_div = document.getElementById("timeline_calendar_search_div");
 
 // Toggle options visibility
 
