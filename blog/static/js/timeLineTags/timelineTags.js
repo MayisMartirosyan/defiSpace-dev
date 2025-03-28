@@ -28,6 +28,7 @@ shevron_div.addEventListener("click", (event) => {
   event.stopPropagation(); // Prevents event bubbling
   
   if (!shevronBool) {
+    timeline_dropdown_div_desktop.style.display = "none";
     shevron_div.style.background = "#DFEBFC";
     shevron_icon.style.transform = "rotate(-180deg)";
     tags_sidebar_aside.style.width = "100%";
@@ -40,6 +41,7 @@ shevron_div.addEventListener("click", (event) => {
     timeline_tags_div_flex.style.borderRadius = "28px";
     shevronBool = true;
   } else {
+    timeline_dropdown_div_desktop.style.display = "none";
     closeFilterModal();
   }
 });
