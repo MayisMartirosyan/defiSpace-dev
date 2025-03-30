@@ -54,27 +54,27 @@ document.addEventListener("DOMContentLoaded", function () {
     ],
   });
 
-  // function updateButtons() {
-  //   const isAtStart = gliderElement.scrollLeft <= 0;
-  //   const isAtEnd =
-  //     gliderElement.scrollLeft + gliderElement.clientWidth >=
-  //     gliderElement.scrollWidth - 1;
+  function updateButtons() {
+    const isAtStart = gliderElement.scrollLeft <= 0;
+    const isAtEnd =
+      gliderElement.scrollLeft + gliderElement.clientWidth >=
+      gliderElement.scrollWidth - 1;
 
-  //   prevButton.disabled = isAtStart;
-  //   nextButton.disabled = isAtEnd;
+    prevButton.disabled = isAtStart;
+    nextButton.disabled = isAtEnd;
 
-  //   if(isAtStart){
-  //     prevButton.style.visibility = "hidden";
-  //   }else{
-  //     prevButton.style.visibility = "visible";
-  //   }
+    if(isAtStart){
+      prevButton.style.visibility = "hidden";
+    }else{
+      prevButton.style.visibility = "visible";
+    }
 
-  //   if(isAtEnd){
-  //     nextButton.style.visibility = "hidden";
-  //   }else{
-  //     nextButton.style.visibility = "visible";
-  //   }
-  // }
+    if(isAtEnd){
+      nextButton.style.visibility = "hidden";
+    }else{
+      nextButton.style.visibility = "visible";
+    }
+  }
 
   gliderElement.addEventListener("scroll", updateButtons);
   updateButtons();
