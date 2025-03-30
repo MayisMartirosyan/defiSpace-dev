@@ -272,32 +272,42 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 20px;
+  padding-bottom: 24px;
   overflow: auto;
 }
 
+.timeline_categories_projects_tags_div_flex {
+  overflow-y: auto;
+  border-radius: 16px;
+}
+
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar {
-  width: 24px;
-  height: 20px;
-  position: static;
-  z-index: 100;
+  width: 40px;
+  height: 18px;
+  border-radius: 16px;
+}
+
+.timeline_categories_projects_tags_div_flex::-webkit-scrollbar-track {
+  border-radius: 16px;
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb {
-  background: url("../../img/scrollbar-thumbnail.svg") no-repeat center;
-  position: static;
-  z-index: 100;
+  background: var(--Dark-Grey, #3c3c3c);
+  border-radius: 16px;
+  border: 6px solid transparent;
+  background-clip: content-box;
   cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0), 0 0 0 1px rgba(60, 60, 60, 0.5);
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb:hover {
-  width: 24px;
-  background: url("../../img/scrollbar-thumbnail-active.svg") no-repeat center;
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0), 0 0 0 1px rgb(254, 106, 37);
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb:active {
-  width: 24px;
-  background: url("../../img/scrollbar-thumbnail-active.svg") no-repeat center;
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0), 0 0 0 1px rgb(254, 106, 37);
 }
 
 .timeline_categories_projects_tags_flex {
@@ -322,7 +332,7 @@
 
 .line_line {
   position: absolute;
-  top: 119px;
+  top: 121.5px;
   width: 100%;
   height: 1px;
   background: rgba(60, 60, 60, 0.5);
