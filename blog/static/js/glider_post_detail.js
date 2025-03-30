@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   new Glider(gliderElement, {
     slidesToShow: 1,
     slidesToScroll: 1,
-    // itemWidth: 150,
+    itemWidth: 400,
     duration: 0.25,
     dots: "#resp-dots",
     arrows: {
