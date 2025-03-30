@@ -2,8 +2,10 @@ const handle_build_redirect_url = (e, id) => {
   e.stopPropagation();
   const tagsDiv = document.getElementById(id).children;
 
+
   let buildedUrl = "/?q=";
   for (const element of tagsDiv) {
+    console.log(element,'qweqwqewqewewasdzc');
     buildedUrl += `&tag_rating=${element.id}`;
   }
 

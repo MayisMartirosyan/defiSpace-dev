@@ -111,18 +111,37 @@ const handleSubmit = () => {
   }
   url += `&page=1`;
 
-  history.replaceState(null, null, url);
-  window.location.reload();
-};
+  window.history.pushState({}, "", url);
 
+  const event = new Event("urlChange");
+  window.dispatchEvent(event);
+
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "X-Requested-With": "XMLHttpRequest",
+    },
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, "text/html");
+
+      const newContent = doc.getElementsByClassName("projects_section")[0];
+
+      document.getElementsByClassName("projects_section")[0].outerHTML =
+        newContent.outerHTML;
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+};
 
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("timeline_search_input_desktop");
 
   searchInput.addEventListener("keypress", function (event) {
-      if (event.key === "Enter") {
-          event.preventDefault(); 
-          handleSubmit();
-      }
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSubmit();
+    }
   });
 });

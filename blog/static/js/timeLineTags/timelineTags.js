@@ -3,9 +3,15 @@ const shevron_icon = document.getElementById("shevron_icon");
 const tags_sidebar_aside = document.getElementById("tags_sidebar_aside");
 const apply_btn = document.getElementById("timeline_tags_apply_button");
 const timeline_div_flex = document.getElementById("timeline_div_flex");
-const timeline_tags_div_flex = document.getElementById("timeline_tags_div_flex");
-const tags_sidebar_aside_wrapper = document.getElementById("tags_sidebar_aside_wrapper");
-const timeline_tags_filter_div_desktop = document.getElementById("timeline_tags_filter_div_desktop");
+const timeline_tags_div_flex = document.getElementById(
+  "timeline_tags_div_flex"
+);
+const tags_sidebar_aside_wrapper = document.getElementById(
+  "tags_sidebar_aside_wrapper"
+);
+const timeline_tags_filter_div_desktop = document.getElementById(
+  "timeline_tags_filter_div_desktop"
+);
 
 let shevronBool = false;
 
@@ -26,7 +32,7 @@ function closeFilterModal() {
 
 shevron_div.addEventListener("click", (event) => {
   event.stopPropagation(); // Prevents event bubbling
-  
+
   if (!shevronBool) {
     timeline_dropdown_div_desktop.style.display = "none";
     shevron_div.style.background = "#DFEBFC";
@@ -53,6 +59,12 @@ document.addEventListener("click", (event) => {
     !tags_sidebar_aside.contains(event.target) && // Click is outside modal
     !shevron_div.contains(event.target) // Click is outside toggle button
   ) {
+    closeFilterModal();
+  }
+});
+
+window.addEventListener("urlChange", () => {
+  if (shevronBool) {
     closeFilterModal();
   }
 });
