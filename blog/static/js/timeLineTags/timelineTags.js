@@ -69,3 +69,9 @@ document.addEventListener("click", (event) => {
     closeFilterModal();
   }
 });
+
+window.addEventListener("urlChange", () => {
+  if (shevronBool) {
+    closeFilterModal();
+  }
+});

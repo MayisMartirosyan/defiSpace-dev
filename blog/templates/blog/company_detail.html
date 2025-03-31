@@ -35,6 +35,7 @@
                     </div>
                 </div>
                 <div class="cmp_det_description_top_right_div">
+                    {% if company.link %}
                     <a href="{{ company.link }}" target="_blank">
                         <div class="cmp_det_company_home_icon_div">
                             <img
@@ -46,6 +47,8 @@
                             />
                         </div>
                     </a>
+
+                    {% endif %}
                     
                     {% if company.github %}
                     <a href="{{ company.github }}" target="_blank">
@@ -61,9 +64,9 @@
                     </a>
                     {% endif %}
 
-                    {% if company.link %}
-                        {% comment %} <a href="{{ company.link }}" target="_blank"> {% endcomment %}
-                            <div class="cmp_det_company_news_icon_div" onclick="handle_build_redirect_url('comp_inner_tags{{ company.id }}')">
+                 
+                       
+                            <div class="cmp_det_company_news_icon_div" onclick="handle_build_redirect_url(event,'comp_inner_tags{{ company.id }}')">
                                 <span class="company_links_news_text">News</span>
                                 <img
                                     src="{% static 'img/companies/company_news_link_icon.svg' %}"
@@ -73,8 +76,8 @@
                                     alt="company_news_link_icon"
                                 />
                             </div>
-                        {% comment %} </a> {% endcomment %}
-                    {% endif %}
+                       
+                  
                 </div>
             </div>
             <p class="cmp_det_full_description_text">
@@ -86,7 +89,7 @@
             <div class="cmp_det_full_description_tags_div" id="comp_inner_tags{{ company.id }}">
                 {% for tag in company.tag_rating.all %}
                     
-                        <a class="cmp_det_full_description_tag sm_tag_item">{{ tag.name }}</a>
+                        <a class="cmp_det_full_description_tag sm_tag_item" id={{tag.id}}>{{ tag.name }}</a>
                         {% comment %} <div class="cmp_det_full_description_tagsm_tag_item">{{ tag.name }}</div> {% endcomment %}
                 {% endfor %}
             </div>

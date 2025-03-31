@@ -276,7 +276,7 @@
   <div class="companies_list_div">
     {% for company in companies %}
 
-    <div class="company_item_list" id="company_card_wrapper">
+    <div class="company_item_list" id="company_card_wrapper" onclick="handle_build_company_inner_url(event, '{{ company.id }}')">
       <div class="company_item_list_elems_tags_div">
         <div class="company_item_main">
           <div class="company_left_part_div">
@@ -313,7 +313,7 @@
               <div class="company_home_github_news_div">
 
               {% if  company.link %}
-                 <a href="{{ company.link }}" target="_blank">
+                 <a href="{{ company.link }}" target="_blank" onclick='handle_force_redirect(event)' >
                    <div class="company_home_icon_div">
                       <img
                         src="{% static 'img/companies/company_home_icon.svg' %}"
@@ -328,7 +328,7 @@
                
 
               {% if company.github  %}
-               <a href="{{ company.github }}" target="_blank">
+               <a href="{{ company.github }}" target="_blank" onclick='handle_force_redirect(event)'>
                   <div class="company_github_icon_div">
                     <img
                       src="{% static 'img/companies/company_github_icon.svg' %}"
@@ -343,7 +343,7 @@
               {% endif %}
 
 
-                  <div class="company_news_icon_div" onclick="handle_build_redirect_url('comp_tags{{ company.id }}')">
+                  <div class="company_news_icon_div" onclick="handle_build_redirect_url(event,'comp_tags{{ company.id }}')">
                     <span class="company_links_news_text">News</span>
                     <img
                       src="{% static 'img/companies/company_news_link_icon.svg' %}"
