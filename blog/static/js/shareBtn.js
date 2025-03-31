@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const company_slider_content = document.getElementById("glider-company-detail-sidebar-slider");
 
   if(company_slider_content?.children[0].children.length === 1 && company_slider_content?.children[0].children[0].children.length === 1){
-    company_slider_content.children[0].children[0].children[0].style.marginBottom = "155px"
+    company_slider_content.children[0].children[0].children[0].style.marginBottom = "170px"
   }
 
   for(let i = 0; i < company_slider_content?.children[0].children.length; i++){
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const post_slider_content = document.getElementById("glider-post-detail-sidebar-slider");
 
   if(post_slider_content?.children[0].children.length === 1 && post_slider_content?.children[0].children[0].children.length === 1){
-    post_slider_content.children[0].children[0].children[0].style.marginBottom = "155px"
+    post_slider_content.children[0].children[0].children[0].style.marginBottom = "170px"
   }
 
   for(let i = 0; i < post_slider_content?.children[0].children.length; i++){
