@@ -13,9 +13,7 @@ const timeline_tags_filter_div_desktop = document.getElementById(
   "timeline_tags_filter_div_desktop"
 );
 const tag_post_list_desktop = document.getElementById("tag_post_list_desktop");
-const tag_rating_list_desktop = document.getElementById(
-  "tag_rating_list_desktop"
-);
+const tag_rating_list_desktop = document.getElementById("tag_rating_list_desktop");
 
 let shevronBool = false;
 
