@@ -339,11 +339,10 @@
    scrollbar-color: transparent transparent !important;
 }
 
-.glider-post-detail-slider > .glider-track {
-   display: flex;
-   gap: 40px;
-}
-
+.glider-post-detail-slider > .glider-track >.glider-slide {
+   margin-right: 40px;
+ }
+ 
 .post_detail_slider_buttons_div {
    display: flex;
    justify-content: space-between;
@@ -352,7 +351,8 @@
    top: 50%;
    transform: translate(0, -50%);
    z-index: 200;
-   padding: 0 16px;
+   padding-left: 16px;
+   padding-right: 56px;
 }
 
 .glider-btn-post-detail {
