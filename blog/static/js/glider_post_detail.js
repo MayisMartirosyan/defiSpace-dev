@@ -3,16 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevButton = document.querySelector(".glider-prev-post-detail");
   const nextButton = document.querySelector(".glider-next-post-detail");
 
-  const track = document.querySelector(".glider-track");
-  if (track) {
-    track.style.width = track.scrollWidth + "px";
-  }
-
   new Glider(gliderElement, {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    itemWidth: 400,
-    duration: 0.25,
+    slidesToShow: 'auto',
+    slidesToScroll: 'auto',
+    itemWidth: 200,
     dots: "#resp-dots",
     arrows: {
       prev: prevButton,
@@ -63,15 +57,15 @@ document.addEventListener("DOMContentLoaded", function () {
     prevButton.disabled = isAtStart;
     nextButton.disabled = isAtEnd;
 
-    if(isAtStart){
+    if (isAtStart) {
       prevButton.style.visibility = "hidden";
-    }else{
+    } else {
       prevButton.style.visibility = "visible";
     }
 
-    if(isAtEnd){
+    if (isAtEnd) {
       nextButton.style.visibility = "hidden";
-    }else{
+    } else {
       nextButton.style.visibility = "visible";
     }
   }
