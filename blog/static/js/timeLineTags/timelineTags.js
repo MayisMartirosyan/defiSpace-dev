@@ -12,6 +12,8 @@ const tags_sidebar_aside_wrapper = document.getElementById(
 const timeline_tags_filter_div_desktop = document.getElementById(
   "timeline_tags_filter_div_desktop"
 );
+const tag_post_list_desktop = document.getElementById("tag_post_list_desktop");
+const tag_rating_list_desktop = document.getElementById("tag_rating_list_desktop");
 
 let shevronBool = false;
 
@@ -34,6 +36,10 @@ shevron_div.addEventListener("click", (event) => {
   event.stopPropagation(); // Prevents event bubbling
 
   if (!shevronBool) {
+    tag_post_list_desktop.style.height = "135px";
+    tag_post_list_desktop.style.maxWidth = "none";
+    tag_rating_list_desktop.style.height = "135px";
+    tag_rating_list_desktop.style.maxWidth = "none";
     timeline_dropdown_div_desktop.style.display = "none";
     shevron_div.style.background = "#DFEBFC";
     shevron_icon.style.transform = "rotate(-180deg)";
@@ -44,9 +50,10 @@ shevron_div.addEventListener("click", (event) => {
     timeline_div_flex.style.marginLeft = "0px";
     timeline_div_flex.style.position = "absolute";
     tags_sidebar_aside_wrapper.classList.add("tags_sidebar_aside_wrapper");
-    timeline_tags_div_flex.style.borderRadius = "28px";
+    timeline_tags_div_flex.style.borderRadius = "28px 0 0 28px";
     shevronBool = true;
   } else {
+    tag_post_list_desktop.style.flexWrap = "wrap";
     timeline_dropdown_div_desktop.style.display = "none";
     closeFilterModal();
   }

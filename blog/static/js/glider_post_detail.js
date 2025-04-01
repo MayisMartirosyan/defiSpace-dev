@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevButton = document.querySelector(".glider-prev-post-detail");
   const nextButton = document.querySelector(".glider-next-post-detail");
 
-  // const track = document.querySelector(".glider-track");
-  // if (track) {
-  //   track.style.width = track.scrollWidth + "px";
-  // }
+  const track = document.querySelector(".glider-track");
+  if (track) {
+    track.style.width = track.scrollWidth + "px";
+  }
 
   new Glider(gliderElement, {
     slidesToShow: 1,
