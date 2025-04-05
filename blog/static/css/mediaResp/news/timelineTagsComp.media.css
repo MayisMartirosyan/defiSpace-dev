@@ -105,6 +105,10 @@
   .news_projects_items_div {
     align-items: center;
   }
+
+  .timeline_no_post{
+    margin-top: 50px;
+  }
 }
 
 @media (max-width: 450px) {

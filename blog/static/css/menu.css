@@ -122,6 +122,11 @@
   cursor: pointer;
 }
 
+.marquee_routes_div{
+  display: flex;
+  align-items: center;
+}
+
 .marquee {
   white-space: nowrap;
   overflow: hidden;

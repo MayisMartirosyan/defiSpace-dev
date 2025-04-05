@@ -74,17 +74,16 @@
    border: 1px solid #3c3c3c;
    cursor: pointer;
    position: relative;
-}
-
-.main_post_dropdown_div{
-   right: -5px;
-   top: 35px;
-   bottom: unset !important;
+   transition: all 0.2s ease-out;
 }
 
 .post_detail_share_btn_div:hover{
    border-radius: 16px;
    border: 1px solid var(--DeFi-Space-Black, #141919);
+}
+
+.post_detail_share_btn_div:hover .post_detail_share_p {
+   color: #141919;
 }
 
 .post_detail_share_p {
@@ -94,8 +93,29 @@
    font-style: normal;
    font-weight: 700;
    line-height: normal;
-  
-   
+   transition: all 0.2s ease-out;
+}
+
+.post_detail_share_icon_img{
+   width: 15px;
+   height: 15px;
+   background-image: url("../../img/post_detail/post_share_icon.svg");
+   background-repeat: no-repeat;
+   background-position: center;
+}
+
+.post_detail_share_btn_div:hover .post_detail_share_icon_img {
+   width: 15px;
+   height: 15px;
+   background-image: url("../../img/post_detail/post_share_icon_active.svg");
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.main_post_dropdown_div{
+   right: -5px;
+   top: 35px;
+   bottom: unset !important;
 }
 
 /**/
@@ -224,6 +244,12 @@
    background: var(--Blue, #BDD4FA);
 }
 
+@media (max-width: 550px) {
+   .post_detail_tag_div:hover{
+      background: #f8f8f8;
+   }
+}
+
 .post_detail_tag_div_text {
    color: #141919;
    font-family: Inter, sans-serif;
@@ -317,11 +343,13 @@
 .post_detail_sidebar_left_button:hover{
    border-radius: 16px;
    background: var(--Blue, #BDD4FA);
+   border: none;
 }
 
 .post_detail_sidebar_right_button:hover{
    border-radius: 16px;
    background: var(--Blue, #BDD4FA);
+   border: none;
 }
 
 .glider-contain-post-detail {

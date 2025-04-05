@@ -66,6 +66,7 @@
 
 .editor_pick_button:hover {
     background: var(--Blue, #BDD4FA);
+    border: none;
 }
 
 /* Editor pick slider */

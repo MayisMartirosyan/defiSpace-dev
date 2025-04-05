@@ -21,13 +21,7 @@
                </div>
                <div class="post_detail_share_btn_div" onclick="openShare(event, 'main_post{{post.id}}')" id="main_post{{post.id}}">
                   <p class="post_detail_share_p">Share</p>
-                  <img
-                     src="{% static 'img/post_detail/post_share_icon_bold.svg' %}"
-                     alt="share_icon"
-                     width="15px"
-                     height="15px"
-                     class="post_detail_share_icon_img"
-                  />
+                  <div class="post_detail_share_icon_img"></div>
 
 
                   <div class="share_dropdown_div main_post_dropdown_div" id="share_dropdown_div">
@@ -178,7 +172,7 @@
                               {% if related_post.tag_posts %}
                               <div class="post_detail_news_slider_item_tags_div">
                                 {% for tag in related_post.tag_posts.all %}
-                                 <div class="sm_tag_item">
+                                 <div class="sm_tag_item" onclick='tagStop(event)'>
                                     <a class="href_tag">{{tag.name}}</a>
                                  </div>
                                  {% endfor %}
@@ -432,7 +426,7 @@
                                  
                                  {% for tag in related_post_sidebar.tag_posts  %}
                                     
-                                 <div class="sm_tag_item">
+                                 <div class="sm_tag_item" onclick='tagStop(event)'>
                                     <p class="post_detail_related_news_slider_item_tag_p">
                                        {{tag.name}}
                                     </p>
@@ -440,13 +434,6 @@
                                  {% endfor %}
                                     
                                  </div>
-                                 <!-- <img
-                                    class="post_detail_post_share_icon_img"
-                                    src="{% static 'img/post_detail/post_share_icon_bold.svg' %}"
-                                    alt="share_icon"
-                                    width="24px"
-                                    height="24px"
-                                 /> -->
 
                                  <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShare(event, 'related_new{{ related_post_sidebar.id }}')">
                                     <div class="share_dropdown_div" id="share_dropdown_div">

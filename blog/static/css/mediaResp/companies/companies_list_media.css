@@ -120,4 +120,12 @@
   .company_item_total_score_text {
     font-size: 14px;
   }
+  
+  .company_logo_name_links {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .company_home_github_news_div{
+    justify-content: flex-start;
+  }
 }
