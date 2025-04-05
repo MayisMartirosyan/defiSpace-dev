@@ -280,10 +280,6 @@
   overflow: auto;
 }
 
-.timeline_categories_projects_tags_div_flex {
-  overflow-y: auto;
-}
-
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar {
   width: 40px;
   height: 18px;
@@ -338,8 +334,6 @@
   align-items: flex-start;
   gap: 24px;
   align-self: stretch;
-  overflow-x: auto;
-  overflow-y: hidden;
   position: relative;
   padding: 1px;
 }
