@@ -1,34 +1,69 @@
-.filter_fixed_popup_div{
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 100;
-    transform: translate(-50%, -50%);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.6);
+.filter_fixed_popup_div {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
 }
 
-.filter_fixed_popup{
-    max-width: 500px;
-    min-width: 300px;
-    width: 100%;
-    height: 400px;
-    background: #333;
+.filter_fixed_popup {
+  max-width: 500px;
+  min-width: 300px;
+  width: 100%;
+  height: 400px;
+  background: #333;
 }
 
-.tags_filter_popup{
-    max-width: 400px;
-    width: 100%;
-    height: auto;
+.tags_filter_popup {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
 }
 
-.timeline_tags_filter_div_flex{
-    background: var(--Light-Blue, #EDF3FC);
-    border-radius: 36px;
+.timeline_tags_filter_div_flex {
+  background: var(--Light-Blue, #edf3fc);
+  border-radius: 36px;
+}
+
+.timeline_main_tags_div_mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.timeline_categories_projects_tags_div_mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+  position: relative;
+  padding: 1px;
+}
+
+.line_line_mobile {
+  position: absolute;
+  top: 212.4px;
+  width: 100%;
+  height: 1px;
+  background: rgba(60, 60, 60, 0.5);
+}
+
+.timeline_tags_filter_div_mobile {
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1 0 0;
+  width: 100%;
 }
