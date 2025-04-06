@@ -631,7 +631,7 @@
                                     <div class="post_detail_related_news_slider_item_tags_flex">
                                         <div class="post_detail_related_news_slider_item_tags_flex">
                                             {% for tag in related_post_company.tag_posts  %}
-                                                <div class="sm_tag_item">
+                                                <div class="sm_tag_item" onclick='tagStop(event)'>
                                                     <p class="post_detail_related_news_slider_item_tag_p">
                                                         {{tag.name}}
                                                     </p>

@@ -136,12 +136,17 @@ const handleSubmit = () => {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("timeline_search_input_desktop");
+  const device = document.getElementById("content").getAttribute("data-device");
+  const searchInput = document.getElementById(
+    `timeline_search_input_${device}`
+  );
 
-  searchInput.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      handleSubmit();
-    }
-  });
+  if (searchInput) {
+    searchInput.addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        handleSubmit();
+      }
+    });
+  }
 });

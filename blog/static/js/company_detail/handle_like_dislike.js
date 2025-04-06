@@ -1,11 +1,15 @@
-const like_button = document.getElementById("cmp_det_comment_author_react_like_count_div");
-const dislike_button = document.getElementById("cmp_det_comment_author_react_dislike_count_div");
+const like_button = document.getElementById(
+  "cmp_det_comment_author_react_like_count_div"
+);
+const dislike_button = document.getElementById(
+  "cmp_det_comment_author_react_dislike_count_div"
+);
 
 let likeBoolean = false;
 let dislikeBoolean = false;
 
-function handleLikeButton(){
-  if(dislikeBoolean) {
+function handleLikeButton() {
+  if (dislikeBoolean) {
     handleDislikeButton();
     dislikeBoolean = false;
   }
@@ -13,8 +17,8 @@ function handleLikeButton(){
   likeBoolean = !likeBoolean;
 }
 
-function handleDislikeButton(){
-  if(likeBoolean) {
+function handleDislikeButton() {
+  if (likeBoolean) {
     handleLikeButton();
     likeBoolean = false;
   }
@@ -22,8 +26,17 @@ function handleDislikeButton(){
   dislikeBoolean = !dislikeBoolean;
 }
 
-like_button.addEventListener("click", () => handleLikeButton(like_button, likeBoolean));
-dislike_button.addEventListener("click", () => handleDislikeButton(dislike_button, dislikeBoolean));
+if (like_button) {
+  like_button.addEventListener("click", () =>
+    handleLikeButton(like_button, likeBoolean)
+  );
+}
+
+if (dislike_button) {
+  dislike_button.addEventListener("click", () =>
+    handleDislikeButton(dislike_button, dislikeBoolean)
+  );
+}
 
 // Alternative solution
 
