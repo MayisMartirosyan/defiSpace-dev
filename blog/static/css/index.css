@@ -66,6 +66,12 @@ a {
   background: #bdd4fa;
 }
 
+@media (max-width: 550px) {
+  .sm_tag_item:hover {
+    background: #fff;
+  }
+}
+
 .big_tag_item_active {
   background: var(--Blue, #bdd4fa) !important;
 }
@@ -83,6 +89,10 @@ a {
   background-position: center;
   transition: all 0.3s ease-out;
   cursor: pointer;
+}
+
+.share_icon_style:hover{
+  background: url("../img/share_active.svg"); 
 }
 
 .main_slider_icon {

@@ -235,13 +235,11 @@ input[type="radio"]:checked + label {
   gap: 8px;
   width: 100%;
   min-width: 300px;
-  max-width: 500px;
 }
 
 .company_logo_name_links {
   display: flex;
   justify-content: space-between;
-  max-width: 500px;
   width: 100%;
 }
 
