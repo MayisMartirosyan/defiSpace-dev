@@ -73,12 +73,12 @@
 .companies_list_settings_div {
   display: flex;
   padding: 12px;
+  margin: 0 24px 20px 24px;
   justify-content: space-between;
   align-items: center;
   border-radius: 36px;
   border: 1px solid var(--DeFi-Space-Grey, #c4c6ca);
   background: var(--DeFi-Space-White, #fff);
-  margin-bottom: 20px;
 }
 
 .companies_list_settings_option_div {
