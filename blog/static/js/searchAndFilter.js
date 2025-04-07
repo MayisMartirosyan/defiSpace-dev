@@ -1,6 +1,6 @@
 const loadSearchFilterInputs = () => {
   const device = document.getElementById("content").getAttribute("data-device");
-  const filterInputs = getUrlParams();
+  const filterInputs = getUrlParams() || {};
 
   if (Object.keys(filterInputs).length > 0) {
     // Load search inputs
@@ -9,7 +9,7 @@ const loadSearchFilterInputs = () => {
       `timeline_search_input_${device}`
     );
 
-    searchInput.value = filterInputs.q || "";
+    searchInput.value = filterInputs.q ?? "";
 
     // Load checked checkboxes
     const TagPostsList = document
