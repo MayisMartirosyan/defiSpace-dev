@@ -1,6 +1,6 @@
 const loadSearchFilterInputs = () => {
   const device = document.getElementById("content").getAttribute("data-device");
-  const filterInputs = getUrlParams();
+  const filterInputs = getUrlParams() || {};
 
   if (Object.keys(filterInputs).length > 0) {
     // Load search inputs
@@ -9,7 +9,7 @@ const loadSearchFilterInputs = () => {
       `timeline_search_input_${device}`
     );
 
-    searchInput.value = filterInputs.q || "";
+    searchInput.value = filterInputs.q ?? "";
 
     // Load checked checkboxes
     const TagPostsList = document
@@ -136,12 +136,17 @@ const handleSubmit = () => {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("timeline_search_input_desktop");
+  const device = document.getElementById("content").getAttribute("data-device");
+  const searchInput = document.getElementById(
+    `timeline_search_input_${device}`
+  );
 
-  searchInput.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      handleSubmit();
-    }
-  });
+  if (searchInput) {
+    searchInput.addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        handleSubmit();
+      }
+    });
+  }
 });

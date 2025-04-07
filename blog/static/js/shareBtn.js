@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }  
 });
 
-function openShare(event, id) {
-  event.preventDefault();
+function openShare(event,id) {
+  // event.preventDefault();
   event.stopPropagation();
   const allDropdowns = document.querySelectorAll(".share_dropdown_div");
 

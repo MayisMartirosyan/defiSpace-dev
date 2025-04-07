@@ -62,9 +62,9 @@ const dropdownFilterTypes = [
       {
         name: "Liquidity",
         checked: true,
-      }
-    ]
-  }
+      },
+    ],
+  },
 ];
 
 function FilterDropdownOpenClose() {
@@ -75,7 +75,6 @@ function FilterDropdownOpenClose() {
 }
 
 function FilterDropdown(event, bool) {
-
   cmp_det_comment_filter_current.innerText = event.target.innerText.trim();
 
   for (let i = 0; i < dropdownFilterTypes.length; i++) {
@@ -121,7 +120,7 @@ function FilterDropdown(event, bool) {
     img.setAttribute("id", "company_detail_filter_checkbox");
     img.setAttribute("alt", "companies_radio_icon");
 
-    if(!currentTypes[i].checked){
+    if (!currentTypes[i].checked) {
       newDiv.classList.add("cmp_filter_checked_checkbox_div");
       img.style.display = "none";
     }
@@ -139,12 +138,14 @@ function FilterDropdown(event, bool) {
     cmp_det_comment_filter_dropdown_types.appendChild(newDiv);
   }
 
-  if(bool){
+  if (bool) {
     FilterDropdownOpenClose();
   }
 }
 
-cmp_det_comment_filter_dropdown.addEventListener(
-  "click",
-  FilterDropdownOpenClose
-);
+if (cmp_det_comment_filter_dropdown) {
+  cmp_det_comment_filter_dropdown.addEventListener(
+    "click",
+    FilterDropdownOpenClose
+  );
+}
