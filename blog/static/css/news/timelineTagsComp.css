@@ -277,12 +277,13 @@
   flex-direction: column;
   width: 100%;
   padding-bottom: 24px;
-  overflow: auto;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar {
   width: 40px;
-  height: 18px;
+  height: 16px;
   border-radius: 16px;
 }
 
@@ -293,24 +294,28 @@
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb {
   background: var(--Dark-Grey, #3c3c3c);
   border-radius: 16px;
-  border: 6px solid transparent;
+  border: 3.5px solid transparent;
   background-clip: content-box;
   cursor: pointer;
   outline: 1px solid rgba(60, 60, 60, 0.5); 
-  transition: all 0.3ms ease-in-out;
+  transition: all 0.3s ease-in-out;
+  width: 48px !important;
+}
+
+.timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb:horizontal {
+  min-width: 48px !important;
+  max-width: 48px !important;
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb:hover {
   border-radius: 16px;
   box-shadow: none !important;
   outline: 1px solid rgba(254, 106, 37, 1);
-  transition: all 0.3ms ease-in-out;
-  
+  transition: all 0.3s ease-in-out;
 }
 
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb:active {
-  border-radius: 16px;
-  
+  border-radius: 16px; 
 }
 
 .timeline_categories_projects_tags_flex {
@@ -319,13 +324,10 @@
   align-items: flex-start;
   align-content: flex-start;
   gap: 12px;
-  /* max-width: 400px; */
   width: 100vw;
   height: 135px;
-  /* overflow-y:visible; */
   overflow-x: auto;
   overflow-y: hidden;
-  /* overflow-x: hidden; */
 }
 
 .timeline_categories_projects_tags_div {

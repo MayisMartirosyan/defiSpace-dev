@@ -85,12 +85,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let nav_routes = document.getElementById("nav_routes");
   let btns = nav_routes.getElementsByClassName("nav_item");
 
-  ticker.style.width = "0px";
-  header.style.width = "auto";
+  if (currentScrollPos > 10) {
+    ticker.style.width = "0px";
+    header.style.width = "auto";
 
-  for (let i = 0; i < btns.length; i++) {
-    if (btns[i].className !== "nav_item nav_active") {
-      btns[i].style.display = "none";
+    for (let i = 0; i < btns.length; i++) {
+      if (btns[i].className !== "nav_item nav_active") {
+        btns[i].style.display = "none";
+      }
     }
   }
 });
