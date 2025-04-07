@@ -542,3 +542,11 @@ input[type="radio"]:checked + label {
   width: 100%;
   max-width: 450px;
 }
+
+.line_line {
+  position: absolute;
+  top: 220px;
+  width: 100%;
+  height: 1px;
+  background: rgba(60, 60, 60, 0.5);
+}

@@ -302,7 +302,7 @@
   width: 48px !important;
 }
 
-.scroll-timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb:horizontal {
+.timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb:horizontal {
   min-width: 48px !important;
   max-width: 48px !important;
 }
