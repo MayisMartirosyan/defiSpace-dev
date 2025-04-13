@@ -14,11 +14,8 @@ const timeline_tags_filter_div_desktop = document.getElementById(
 );
 const tag_post_list_desktop = document.getElementById("tag_post_list_desktop");
 const tag_rating_list_desktop = document.getElementById("tag_rating_list_desktop");
-// const timeline_dropdown_div_desktop = document.getElementById("timeline_dropdown_div_desktop");
-// const timeline_dropdown_div_mobile = document.getElementById("timeline_dropdown_div_mobile");
 
 let shevronBool = false;
-let shevronBoolMobile = false;
 
 function closeFilterModal() {
   shevron_div.style.background = "#F8F8F8";
@@ -74,16 +71,6 @@ document.addEventListener("click", (event) => {
 });
 
 
-// Close modal on clicking outside
-// document.addEventListener("click", (event) => {
-//   if (
-//     shevronBoolMobile && // Modal is open
-//     !tags_sidebar_aside.contains(event.target) && // Click is outside modal
-//     !shevron_div.contains(event.target) // Click is outside toggle button
-//   ) {
-//     closeFilterModal();
-//   }
-// });
 
 
 window.addEventListener("urlChange", () => {

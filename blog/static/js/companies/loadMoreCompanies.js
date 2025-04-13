@@ -1,10 +1,7 @@
 document.addEventListener("DOMContentLoaded",()=> {
-
     const btn = document.getElementById("cmp-load-more-button")
     const total = document.getElementById("all_posts_total").innerText
     const alreadyLoaded = document.querySelectorAll("#company_card_wrapper").length
-
-    console.log(total,alreadyLoaded,'qweqewqw');
     
 
     if(Number(total) === Number(alreadyLoaded)){
