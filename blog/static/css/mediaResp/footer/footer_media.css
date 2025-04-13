@@ -33,7 +33,16 @@
    }
 
    .footer_nav_item {
-      max-width: 200px;
+      max-width: 180px;
       width: 100%;
+      padding: 5px 10px;
+   }
+
+   .footer_logo_description_p{
+      font-size: 14px;
+   }
+
+   .footer_nav_item_text{
+      font-size: 17px;
    }
 }

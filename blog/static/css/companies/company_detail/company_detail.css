@@ -141,7 +141,6 @@
 .cmp_det_description_total_score_text_div {
   display: flex;
   gap: 4px;
-  align-items: center;
 }
 
 .cmp_det_description_total_score_num_div {
@@ -436,7 +435,7 @@ circle {
   align-items: center;
   padding: 0 20px;
   position: absolute;
-  top: 0;
+  top: -0.5px;
   left: 0;
   transform: translate(0%, 50%);
   width: 100%;

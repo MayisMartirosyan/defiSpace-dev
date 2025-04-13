@@ -70,8 +70,13 @@
    }
 
    .post_detail_share_icon_img {
-      width: 10px;
-      height: 10px;
+      width: 12px;
+      height: 11px;
+   }
+
+   .post_detail_share_btn_div:hover .post_detail_share_icon_img{
+      width: 12px;
+      height: 11px;
    }
 
    .post_detail_share_p {

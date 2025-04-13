@@ -68,7 +68,7 @@
 .post_detail_share_btn_div {
    display: flex;
    padding: 5px 10px;
-   align-items: flex-start;
+   align-items: center;
    gap: 4px;
    border-radius: 16px;
    border: 1px solid #3c3c3c;
@@ -102,6 +102,7 @@
    background-image: url("../../img/post_detail/post_share_icon.svg");
    background-repeat: no-repeat;
    background-position: center;
+   background-size: cover;
 }
 
 .post_detail_share_btn_div:hover .post_detail_share_icon_img {
