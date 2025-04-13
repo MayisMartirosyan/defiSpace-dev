@@ -6,7 +6,7 @@ class TagPosts(models.Model):
         return self.name
 
 class TagRating(models.Model):
-    name = models.CharField(max_length=50, null=True, blank=True)
+    name = models.CharField(max_length=50)
     def __str__(self):
         return self.name
 
