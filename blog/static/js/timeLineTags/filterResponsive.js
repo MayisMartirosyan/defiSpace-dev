@@ -18,16 +18,14 @@ function handlePopupOpenClose() {
 }
 
 function handePopupClose() {
-  if (filter_bool) {
-    filter_fixed_popup_div.style.display = "none";
-  }
+
+  filter_fixed_popup_div.style.display = "none";
   filter_bool = false;
+
 }
 
 filter_btn.addEventListener("click", () => handlePopupOpenClose());
-timeline_tags_apply_button.addEventListener("click", () =>
-  handlePopupOpenClose()
-);
+
 filter_fixed_popup_div.addEventListener("click", (event) => {
   if (event.target === filter_fixed_popup_div) {
     filter_fixed_popup_div.style.display = "none";
