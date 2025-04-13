@@ -126,6 +126,7 @@
 .marquee_routes_div{
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .marquee {

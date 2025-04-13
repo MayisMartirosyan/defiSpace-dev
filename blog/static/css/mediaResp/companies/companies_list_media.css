@@ -30,6 +30,10 @@
     max-width: none;
     gap: 6px;
   }
+
+  .company_right_part_item_div{
+    width: 38%;
+  }
 }
 
 @media (max-width: 900px) {
@@ -74,8 +78,10 @@
   }
 
   .company_right_part_div {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+    /* display: grid; */
+    /* grid-template-columns: repeat(2, 1fr); */
     gap: 10px;
     min-width: auto;
     margin-right: 0px;
@@ -96,11 +102,20 @@
   }
 
   #company_left_param_text {
-    text-align: left;
+    text-align: center;
   }
 
-  #company_right_param_text {
-    text-align: right;
+  /* .company_score_param_div{
+    display: flex;
+  } */
+
+  /* #company_right_param_text { */
+    /* text-align: right; */
+  /* } */
+
+  .company_right_part_triangle_overall_ratings {
+    justify-content: space-between;
+    width: 100%;
   }
 
   .company_star_overall_tps {
@@ -111,10 +126,6 @@
 @media (max-width: 500px) {
   .company_item_list {
     padding: 24px 0;
-  }
-
-  .company_right_part_triangle_overall_ratings {
-    justify-content: space-between;
   }
 
   .company_item_total_score_text {
