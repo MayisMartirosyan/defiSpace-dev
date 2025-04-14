@@ -3,6 +3,7 @@ new Glider(document.querySelector('.glider'), {
   slidesToShow: 3,
   slidesToScroll: 1,
   scrollLock: true,
+  draggable: false,
   dots: '#resp-dots',
   decoration:"none",
     arrows: {
@@ -43,3 +44,30 @@ new Glider(document.querySelector('.glider'), {
     }
   ]
 });
+
+let isScrollingEditor = false;
+const scrollThresholdEditor = 10;
+
+gliderElement.addEventListener('wheel', (event) => {
+  const totalSlidesEditor = glider.slides.length;
+  const currentSlideEditor = glider.getCurrentSlide();
+  const deltaXEditor = event.deltaX;
+
+  if (isScrollingEditor) return;
+
+  if (Math.abs(deltaX) > scrollThreshold) {
+    event.preventDefault();
+
+    if (deltaXEditor > 100 && currentSlideEditor < totalSlidesEditor - 1) {
+      isScrollingEditor = true;
+      glider.scrollItem(currentSlideEditor + 1);
+    } else if (deltaXEditor < 100 && currentSlideEditor > 100) {
+      isScrollingEditor = true;
+      glider.scrollItem(currentSlideEditor - 1);
+    }
+
+    setTimeout(() => {
+      isScrollingEditor = false;
+    }, 3000);
+  }
+}, { passive: false });

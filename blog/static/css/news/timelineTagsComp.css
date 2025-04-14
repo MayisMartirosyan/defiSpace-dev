@@ -294,7 +294,7 @@
 .timeline_categories_projects_tags_div_flex::-webkit-scrollbar-thumb {
   background: var(--Dark-Grey, #3c3c3c);
   border-radius: 16px;
-  border: 3.5px solid transparent;
+  border: 4px solid transparent;
   background-clip: content-box;
   cursor: pointer;
   outline: 1px solid rgba(60, 60, 60, 0.5); 
@@ -326,8 +326,7 @@
   gap: 12px;
   width: 100vw;
   height: 135px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .timeline_categories_projects_tags_div {

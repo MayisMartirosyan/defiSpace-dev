@@ -133,6 +133,7 @@
   }
   .company_ratings_card_stat_rating_name_icon_param {
     padding: 0 14px;
+    top: 0.5px;
   }
   .company_ratings_card_stat_rating_name {
     font-size: 12px;

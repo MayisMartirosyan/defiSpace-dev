@@ -13,6 +13,7 @@
 
   #header_filter_btn_div {
     display: flex !important;
+    visibility: hidden;
   }
 
   #header_filter_btn {

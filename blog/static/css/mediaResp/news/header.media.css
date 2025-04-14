@@ -58,7 +58,7 @@
   }
 
   .nav_item_text {
-    font-size: 9px !important;
+    font-size: 11px !important;
     padding: 2px 4px;
   }
 
@@ -69,6 +69,7 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
   }
 
   #header_filter_btn {

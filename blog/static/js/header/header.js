@@ -5,15 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "#header_filter_btn_div, #tags_selector_div_mobile"
   );
 
-  if (
-    window.location.pathname == "/" ||
-    window.location.pathname == "/companies/"
-  ) {
-    filter_btn.style.visibility = "visible";
-  } else {
-    filter_btn.style.visibility = "hidden";
-  }
-
   ////////////////// Active route //////////////////
 
   let nav_routes = document.getElementById("nav_routes");
@@ -53,26 +44,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (currentScrollPos > 10) {
       ticker.style.width = "0px";
-      // ticker.style.transition = "all 0.2s linear";
       header.style.width = "auto";
-      // header.style.transition = "all 0.2s linear";
+
+      if (
+        window.location.pathname == "/" ||
+        window.location.pathname == "/companies/"
+      ) {
+        filter_btn.style.visibility = "visible";
+      } else {
+        filter_btn.style.visibility = "hidden";
+      }
 
       for (let i = 0; i < btns.length; i++) {
         if (btns[i].className !== "nav_item nav_active") {
           btns[i].style.display = "none";
-          // btns[i].style.transition = "all 0.2s linear";
         }
       }
     } else {
       ticker.style.width = "100%";
-      // ticker.style.transition = "all 0.2s linear";
       header.style.width = "100%";
-      // header.style.transition = "all 0.2s linear";
+
+      filter_btn.style.visibility = "hidden";
 
       for (let i = 0; i < btns.length; i++) {
         if (btns[i].className !== "nav_item nav_active") {
           btns[i].style.display = "flex";
-          // btns[i].style.transition = "all 0.2s linear";
         }
       }
     }
@@ -88,6 +84,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (currentScrollPos > 10) {
     ticker.style.width = "0px";
     header.style.width = "auto";
+
+    if (
+      window.location.pathname == "/" ||
+      window.location.pathname == "/companies/"
+    ) {
+      filter_btn.style.visibility = "visible";
+    } else {
+      filter_btn.style.visibility = "hidden";
+    }
 
     for (let i = 0; i < btns.length; i++) {
       if (btns[i].className !== "nav_item nav_active") {

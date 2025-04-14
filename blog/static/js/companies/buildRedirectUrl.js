@@ -5,7 +5,6 @@ const handle_build_redirect_url = (e, id) => {
 
   let buildedUrl = "/?q=";
   for (const element of tagsDiv) {
-    console.log(element,'qweqwqewqewewasdzc');
     buildedUrl += `&tag_rating=${element.id}`;
   }
 

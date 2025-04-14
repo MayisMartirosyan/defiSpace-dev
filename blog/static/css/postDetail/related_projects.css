@@ -109,7 +109,6 @@
 
 .post_detail_related_project_item_points_div {
    display: flex;
-   align-items: center;
    gap: 4px;
 }
 
