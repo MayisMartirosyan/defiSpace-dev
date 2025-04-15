@@ -58,7 +58,7 @@ const handleFilterSubmit = () => {
   const filterInputs = getUrlParams();
   url += `?sort_by=${
     !filterInputs.sort_by ? "totalScore" : filterInputs.sort_by
-  }&sort_order=${!filterInputs.sort_order ? "asc" : filterInputs.sort_order}`;
+  }&sort_order=${!filterInputs.sort_order ? "desc" : filterInputs.sort_order}`;
 
   const checkedTagRatings = document
     .getElementById(`tag_rating_list`)

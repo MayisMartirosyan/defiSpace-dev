@@ -165,11 +165,10 @@ def company_ratings(request):
     all_tag_ratings = TagRating.objects.all() 
     
     sort_by = request.GET.getlist('sort_by')
-    sort_order = request.GET.get('sort_order', 'asc')  # Default to "desc"
+    sort_order = request.GET.get('sort_order', 'desc')  # Default to "desc"
     query_tag_rating = request.GET.getlist('tag_rating')
-    order_prefix = "" if sort_order == "desc" else "-"  # "-" for descending order
-    
-    print(sort_order,'asdasadssd')
+    order_prefix = "" if sort_order == "asc" else "-"  # "-" for descending order
+
     companies = companies.annotate(
     security_score=Coalesce(F('security_scores__total_score'), Value(1)),
     team_score=Coalesce(F('team_scores__total_score'), Value(1)),
