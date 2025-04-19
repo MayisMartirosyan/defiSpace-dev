@@ -84,7 +84,8 @@
                 {{company.description}}
             </p>
             <p class="cmp_det_description_launched_date">
-                Launched: {{company.date_added|date:"M Y"}}
+                {% comment %} Launched: {{company.date_added|date:"M Y"}} {% endcomment %}
+                Launched: {{company.published_at|date:"M Y"}}
             </p>
             <div class="cmp_det_full_description_tags_div" id="comp_inner_tags{{ company.id }}">
                 {% for tag in company.tag_rating.all %}
@@ -185,6 +186,35 @@
                                 />
                             </div>
                             <span class="company_ratings_card_stat_rating_score">{{company.team_score_obj.performace_score}}</span>
+                        </div>
+
+
+                    </div>
+                    <div class="company_ratings_card_stats_comment">
+                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    </div>
+                </div>
+                <div class="company_ratings_card_stats">
+                    <div class="company_ratings_card_stat_rating_div">
+
+                        {% if company.team_score_obj.exposure_score > 10 %}
+                            <div class="company_ratings_card_stat_rating" style="width: calc({{company.team_score_obj.exposure_score}}% + 1px);"></div>
+                        {% else %}
+                            <div class="company_ratings_card_stat_rating min_value_of_stats"></div>
+                        {% endif %}
+
+                        <div class="company_ratings_card_stat_rating_name_icon_param">
+                            <div class="company_ratings_card_stat_rating_name_icon_div">
+                                <span class="company_ratings_card_stat_rating_name">Exposure</span>
+                                <img
+                                    src="{% static 'img/company_detail/info_icon.svg' %}"
+                                    class="company_ratings_card_stat_rating_icon"
+                                    width="16px"
+                                    height="16px"
+                                    alt="info_icon"
+                                />
+                            </div>
+                            <span class="company_ratings_card_stat_rating_score">{{company.team_score_obj.exposure_score}}</span>
                         </div>
 
 

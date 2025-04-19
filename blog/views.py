@@ -165,9 +165,9 @@ def company_ratings(request):
     all_tag_ratings = TagRating.objects.all() 
     
     sort_by = request.GET.getlist('sort_by')
-    sort_order = request.GET.get('sort_order', 'desc')  # Default to "desc"
+    sort_order = request.GET.get('sort_order', 'desc')  
     query_tag_rating = request.GET.getlist('tag_rating')
-    order_prefix = "" if sort_order == "asc" else "-"  # "-" for descending order
+    order_prefix = "" if sort_order == "asc" else "-" 
 
     companies = companies.annotate(
     security_score=Coalesce(F('security_scores__total_score'), Value(1)),
@@ -175,25 +175,14 @@ def company_ratings(request):
     product_score=Coalesce(F('product_scores__total_score'), Value(1))
 )
     
-    # if 'launched' in sort_by:
-    #     companies = companies.order_by(f'{order_prefix}date_added')
-        
-    # if 'security' in sort_by:
-    #     companies = companies.order_by(f'{order_prefix}security_scores__total_score')
-    # if 'team' in sort_by:
-    #     companies = companies.order_by(f'{order_prefix}team_scores__total_score')
-        
-    # if 'product' in sort_by:
-    #     companies = companies.order_by(f'{order_prefix}product_scores__total_score')
-        
     if 'launched' in sort_by:
-        companies = companies.order_by(f'{order_prefix}date_added')
+        companies = companies.order_by(f'{order_prefix}published_at')
     elif 'security' in sort_by:
-        companies = companies.order_by(f'{order_prefix}security_score')  # Using annotated field
+        companies = companies.order_by(f'{order_prefix}security_score')  
     elif 'team' in sort_by:
-        companies = companies.order_by(f'{order_prefix}team_score')  # Using annotated field
+        companies = companies.order_by(f'{order_prefix}team_score')  
     elif 'product' in sort_by:
-        companies = companies.order_by(f'{order_prefix}product_score')  # Using annotated field
+        companies = companies.order_by(f'{order_prefix}product_score') 
         
     if 'totalScore' in sort_by or not sort_by: 
         companies = companies.annotate(
@@ -275,7 +264,6 @@ def company_detail(request, company_id):
     company.security_score_obj = company.security_scores.first()
     handle_add_company_fields(company=company)
     
-    
     related_posts = company.related_posts.all() 
     related_posts_queryset = related_posts.values('id','title', 'pub_date')
     main_comments = Comment.objects.filter(company=company, parent__isnull=True).order_by('-created_at')
@@ -317,11 +305,6 @@ def company_detail(request, company_id):
             ]
         }
         comments_data.append(comment_data)
-    print(comments_data,'asdasdasdasdasdad')
-
-    # if request.headers.get('X-Requested-With') == 'XMLHttpRequest':  # AJAX Request
-    #     return JsonResponse(comments_data, safe=False)
-    
 
     return render(request, 'blog/company_detail.html',
                   {'company': company, 

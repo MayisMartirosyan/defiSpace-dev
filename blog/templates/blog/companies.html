@@ -366,7 +366,8 @@
           <div class="company_right_part_div">
             <div class="company_right_part_item_div">
               <p class="company_right_part_date_p" id="company_left_param_text">
-                {{ company.date_added|date:"M Y" }}
+                {% comment %} {{ company.date_added|date:"M Y" }} {% endcomment %}
+                {{ company.published_at|date:"M Y" }}
               </p>
             </div>
 

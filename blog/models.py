@@ -20,10 +20,10 @@ class Company(models.Model):
     name = models.CharField(max_length=200)
     ticker = models.CharField(max_length=200)
     description = models.CharField(max_length=1000)
-    rating = models.FloatField(default=0)
     tag_rating = models.ManyToManyField('TagRating')
     image = models.ImageField(upload_to='company_images/', null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    published_at = models.DateField(null=True, blank=True)
     link = models.CharField(max_length=200, null=True, blank=True)
     github = models.CharField(max_length=200, null=True, blank=True)
     mark = models.BooleanField('Отображать на главной в Projects Scoring', default=False, null=True)
@@ -47,10 +47,11 @@ class TeamScore(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='team_scores')
     decentralized_score = models.IntegerField(default=1)
     performace_score = models.IntegerField(default=1)
+    exposure_score = models.IntegerField(default=1)
     total_score = models.IntegerField(default=1)
 
     def save(self, *args, **kwargs):
-        self.total_score = (self.decentralized_score + self.performace_score) / 2
+        self.total_score = (self.decentralized_score + self.performace_score + self.exposure_score) / 3
         super().save(*args, **kwargs)
 
 class SecurityScore(models.Model):

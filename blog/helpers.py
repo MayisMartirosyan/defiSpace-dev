@@ -3,7 +3,7 @@ def handle_add_company_fields(company):
     product_scores = company.product_scores.first() 
     team_scores = company.team_scores.first()  
     security_scores = company.security_scores.first() 
-        
+    
 
     product_score_total = product_scores.total_score if product_scores else 1
     team_score_total = team_scores.total_score if team_scores else 1
@@ -24,29 +24,3 @@ def handle_add_company_fields(company):
     company.team_score_formatted_2  = 437 - company.team_score * 1.6
     company.security_score_formatted_2  = 437 - company.security_score * 1.6
     
-    
-def calculate_total_score_product(company):
-    product_scores = company.product_scores.first()
-    performace_score = product_scores.performace_score
-    apy_1yr_score = product_scores.apy_1yr_score
-    apy_5yr_score = product_scores.apy_5yr_score
-    total_score = (performace_score + apy_1yr_score + apy_5yr_score) / 3
-    product_scores.total_score = total_score
-    product_scores.save()
-
-def calculate_total_score_team(company):
-    team_scores = company.team_scores.first()
-    decentralized_score = team_scores.decentralized_score
-    performace_score = team_scores.performace_score
-    total_score = (decentralized_score + performace_score) / 2
-    team_scores.total_score = total_score
-    team_scores.save()
-
-def calculate_total_score_scurity(company):
-    security_scores = company.security_scores.first()
-    asset_secured_score = security_scores.asset_secured_score
-    emission_limit_score = security_scores.emission_limit_score
-    liquidity_score = security_scores.liquidity_score
-    total_score = (asset_secured_score + emission_limit_score + liquidity_score) / 3
-    security_scores.total_score = total_score
-    security_scores.save()
