@@ -3,15 +3,11 @@ const loadSearchFilterInputs = () => {
   const filterInputs = getUrlParams() || {};
 
   if (Object.keys(filterInputs).length > 0) {
-    // Load search inputs
-
     const searchInput = document.getElementById(
       `timeline_search_input_${device}`
     );
-
     searchInput.value = filterInputs.q ?? "";
 
-    // Load checked checkboxes
     const TagPostsList = document
       .getElementById(`tag_post_list_${device}`)
       .querySelectorAll('.big_tag_item input[type="checkbox"]');
@@ -40,6 +36,7 @@ const loadSearchFilterInputs = () => {
         if (typeof filterInputs.tag_rating === "string") {
           filterInputs.tag_rating = filterInputs.tag_rating.split(",");
         }
+
         filterInputs.tag_rating.forEach((selectedTag) => {
           if (tag.id === `tag_rating${selectedTag}_${device}`) {
             tag.checked = true;
@@ -76,6 +73,7 @@ const handleSubmit = () => {
   const checkedTagPosts = document
     .getElementById(`tag_post_list_${device}`)
     .querySelectorAll('.big_tag_item input[type="checkbox"]:checked');
+
   const checkedTagRatings = document
     .getElementById(`tag_rating_list_${device}`)
     .querySelectorAll('.big_tag_item input[type="checkbox"]:checked');
@@ -88,14 +86,14 @@ const handleSubmit = () => {
     `timeline_calendar_selected_button_${device}`
   ).innerText;
 
-  url += searchInput.value;
+  url += encodeURIComponent(searchInput.value);
 
   checkedTagPosts.forEach((checkbox) => {
-    url += `&tag_posts=${checkbox.value}`;
+    url += `&tag_posts=${encodeURIComponent(checkbox.value)}`;
   });
 
   checkedTagRatings.forEach((checkbox) => {
-    url += `&tag_rating=${checkbox.value}`;
+    url += `&tag_rating=${encodeURIComponent(checkbox.value)}`;
   });
 
   const dateOptions = {
@@ -109,6 +107,7 @@ const handleSubmit = () => {
   if (dateOptions.hasOwnProperty(SelectedDate)) {
     url += `&period=${dateOptions[SelectedDate]}`;
   }
+
   url += `&page=1`;
 
   window.history.pushState({}, "", url);
@@ -126,11 +125,16 @@ const handleSubmit = () => {
     .then((data) => {
       const parser = new DOMParser();
       const doc = parser.parseFromString(data, "text/html");
-
       const newContent = doc.getElementsByClassName("projects_section")[0];
-
       document.getElementsByClassName("projects_section")[0].outerHTML =
         newContent.outerHTML;
+
+      setTimeout(() => {
+        const scrollTarget = document.getElementById("timeline_tags_article");
+        if (scrollTarget) {
+          scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100); 
     })
     .catch((error) => console.error("Error fetching data:", error));
 };
