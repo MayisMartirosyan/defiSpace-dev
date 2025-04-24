@@ -44,7 +44,7 @@ def post_list(request):
     tags_posts = TagPosts.objects.all() 
     tags_rating = TagRating.objects.all() 
     edit_pick = Post.objects.filter(pin=True) 
-    companies = Company.objects.filter(mark=True)
+    companies = Company.objects.filter(mark=True)[:3]
     
 
 

@@ -628,6 +628,7 @@
 }
 
 .news_project_description_text {
+  max-width: 491px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;

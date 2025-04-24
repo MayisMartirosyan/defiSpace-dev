@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btns[i].children[0].children[0].style.color = "white";
     }
   }
+
   let newsBtn = document.getElementById("nav_item_link_news");
 
   if (currentUrl.includes("/post")) {
@@ -37,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
     newsBtn.children[0].style.color = "white";
   }
 
-  ////////////////// Scroll event //////////////////
+  ////////////////// Scroll handler //////////////////
 
-  document.addEventListener("scroll", () => {
+  const applyScrollHeaderLogic = () => {
     let currentScrollPos = window.pageYOffset;
 
     if (currentScrollPos > 10) {
@@ -72,32 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     }
+  };
 
-    prevScrollPos = currentScrollPos;
-  });
-});
+  
+  document.addEventListener("scroll", applyScrollHeaderLogic);
 
-document.addEventListener("DOMContentLoaded", () => {
-  let nav_routes = document.getElementById("nav_routes");
-  let btns = nav_routes.getElementsByClassName("nav_item");
-
-  if (currentScrollPos > 10) {
-    ticker.style.width = "0px";
-    header.style.width = "auto";
-
-    if (
-      window.location.pathname == "/" ||
-      window.location.pathname == "/companies/"
-    ) {
-      filter_btn.style.visibility = "visible";
-    } else {
-      filter_btn.style.visibility = "hidden";
-    }
-
-    for (let i = 0; i < btns.length; i++) {
-      if (btns[i].className !== "nav_item nav_active") {
-        btns[i].style.display = "none";
-      }
-    }
-  }
+  setTimeout(applyScrollHeaderLogic, 10);
 });
