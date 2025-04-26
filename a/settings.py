@@ -24,8 +24,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DJANGO_ENV = env_vars['DJANGO_ENV']
 
-print(DJANGO_ENV,env_vars['HTTP_HOST'],env_vars['POSTGRES_DB'])
-
 
 LOGGING = {
     'version': 1,
