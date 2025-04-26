@@ -1,15 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Company, Advantage, Review, Guides, About, TagRating, TagPosts,Comment
+from .models import Post, Company, Advantage, Review, Guides, About, TagRating, TagPosts,Comment, Category
 from django.db.models import F, Sum,  Q, Value
 from .forms import SearchForm
 from django import forms
 from django.db.models.functions import TruncDate,Coalesce
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count,OuterRef,Subquery
 from collections import defaultdict
 from datetime import datetime, timedelta
 from django.forms.models import model_to_dict
 from .helpers import handle_add_company_fields
 from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 
 
@@ -244,149 +248,201 @@ def post_create(request):
     else:
         return render(request, 'blog/post_create.html')
 
-def add_comment(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        content = request.POST.get('content')
-        if name and content:
-            comment = Comment(post=post, name=name, content=content)
-            comment.save()
-    return redirect('post_detail', pk=post_id)
 
 
 def company_detail(request, company_id):
-    
     company = get_object_or_404(Company, pk=company_id)
-
     company.product_score_obj = company.product_scores.first()
     company.team_score_obj = company.team_scores.first()
     company.security_score_obj = company.security_scores.first()
     handle_add_company_fields(company=company)
-    
-    related_posts = company.related_posts.all() 
-    related_posts_queryset = related_posts.values('id','title', 'pub_date')
-    main_comments = Comment.objects.filter(company=company, parent__isnull=True).order_by('-created_at')
-   
+
+    related_posts = company.related_posts.all().values('id', 'title', 'pub_date')
     sublists = []
-    comments_data = []
-    
-    for sub_post in related_posts_queryset:
-        sub_post_tags = TagPosts.objects.filter(post__id=sub_post['id']).values('id', 'name')
-        sub_post['tag_posts'] = list(sub_post_tags)
+    for post in related_posts:
+        post['tag_posts'] = list(TagPosts.objects.filter(post=post['id']).values('id', 'name'))
         if not sublists or len(sublists[-1]) == 3:
-            sublists.append([sub_post])
+            sublists.append([post])
         else:
-            sublists[-1].append(sub_post)
-    
-    for comment in main_comments:
+            sublists[-1].append(post)
+
+    filter_param = request.GET.get('filter', '')
+    subcategory_filters = [f.strip() for f in filter_param.split(',') if f.strip()]
+    comment_queryset = Comment.objects.filter(company=company, parent__isnull=True)
+    if subcategory_filters:
+        q = Q()
+        for sub in subcategory_filters:
+            q |= Q(subcategory__icontains=sub)
+        comment_queryset = comment_queryset.filter(q)
+    comment_queryset = comment_queryset.order_by('-created_at')
+
+   
+    page = request.GET.get('page', 1)
+    try:
+        current_page = int(page)
+        if current_page < 1:
+            current_page = 1
+    except (ValueError, TypeError):
+        current_page = 1
         
+    paginator = Paginator(comment_queryset, 10)
+
+    
+    all_comments = []
+    for page_num in range(1, current_page + 1):
+        try:
+            page = paginator.page(page_num)
+            all_comments.extend(page.object_list)
+        except:
+            break
+
+    
+    comments_data = []
+    for comment in all_comments:
         replies = comment.replies.all().order_by('-created_at')
-        comment_data = {
+        comments_data.append({
             'id': comment.id,
             'name': comment.name,
-            'description': comment.description,  # Fixed field name
-            'category': comment.category if comment.category else None,
-            'subcategory': comment.subcategory if comment.subcategory else None ,
+            'description': comment.description,
+            'category': comment.category or None,
+            'subcategory': comment.subcategory,
             'likes': comment.likes,
             'dislikes': comment.dislikes,
             'created_at': comment.created_at.strftime('%d %b %Y, %H:%M %p'),
-            'replies': [
-                {
-                    'id': reply.id,
-                    'name': reply.name,
-                    'description': reply.description,
-                    'category': reply.category.name if reply.category else None,
-                    'subcategory': reply.subcategory,
-                    'likes': reply.likes,
-                    'dislikes': reply.dislikes,
-                    'created_at': reply.created_at.strftime('%d %b %Y, %H:%M %p'),
-                } for reply in replies
-            ]
-        }
-        comments_data.append(comment_data)
+            'replies': [{
+                'id': r.id,
+                'name': r.name,
+                'description': r.description,
+                'category': r.category or None,
+                'subcategory': r.subcategory,
+                'likes': r.likes,
+                'dislikes': r.dislikes,
+                'created_at': r.created_at.strftime('%d %b %Y, %H:%M %p'),
+            } for r in replies]
+        })
 
-    return render(request, 'blog/company_detail.html',
-                  {'company': company, 
-                   'related_posts':sublists,
-                   'main_comments':comments_data
-                   })
+    return render(request, 'blog/company_detail.html', {
+        'company': company,
+        'related_posts': sublists,
+        'main_comments': comments_data,
+        'next_page_number': current_page + 1 if paginator.num_pages > current_page else None,
+        'filter_param': filter_param,
+    })
     
-    
-def add_comment(request, company_id):
-    """ Saves a new comment or reply for a specific company """
-    company = get_object_or_404(Company, id=company_id)
 
+
+
+
+@csrf_exempt
+def add_comment(request):
     if request.method == 'POST':
-        name = request.POST.get('name', '').strip()
-        comment_text = request.POST.get('comment', '').strip()
-        rating = request.POST.get('rating')
-        parent_id = request.POST.get('parent_id')  # Parent comment ID for replies
+        data = json.loads(request.body)
 
-        if not name or not comment_text:
-            return JsonResponse({'error': 'Name and comment are required!'}, status=400)
+        comment = Comment(
+            name=data.get('name'),
+            description=data.get('description'),
+            company_id=data.get('company_id'),
+            category=data.get('category'), 
+            subcategory=data.get('subcategory'),
+            parent_id=data.get('parent_id', None)
+        )
+        comment.save()
 
-        rating = True if rating == 'positive' else False
-        parent_comment = Comment.objects.filter(id=parent_id).first() if parent_id else None
-        new_comment = Comment.objects.create(company=company, name=name, comment=comment_text, rating=rating, parent=parent_comment)
+        return JsonResponse({'status': 'success', 'message': 'Comment added successfully'})
 
-        return JsonResponse({
-            'message': 'Comment added successfully!',
-            'comment': {
-                'name': new_comment.name,
-                'comment': new_comment.comment,
-                'rating': 'Positive' if new_comment.rating else 'Negative',
-                'created_at': new_comment.created_at.strftime('%d %b %Y, %H:%M %p')
-            }
-        }, status=201)
 
+
+@csrf_exempt
+@require_POST
+def submit_reply(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        parent_comment_id = data.get('parent_comment_id')
+        reply_text = data.get('reply_text')
+        company_id = data.get('company_id')
+ 
+        parent_comment = Comment.objects.get(id=parent_comment_id)
+        
+        reply_comment = Comment(
+            name=request.user.username,  
+            description=reply_text,
+            category=parent_comment.category,  
+            subcategory=parent_comment.subcategory, 
+            company_id=company_id,
+            parent=parent_comment 
+        )
+        reply_comment.save()
+
+        return JsonResponse({'success': True, 'reply_id': reply_comment.id})
+    return JsonResponse({'success': False, 'error': 'Invalid request'}, status=400)
+
+
+
+@csrf_exempt
+@require_POST
+def like_comment(request, comment_id):
+    if request.method == "POST":
+        comment = Comment.objects.get(id=comment_id)
+        comment.likes += 1
+        comment.save()
+        return JsonResponse({'likes': comment.likes, 'dislikes': comment.dislikes})
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
-def add_advantage(request, company_id):
-    company = get_object_or_404(Company, pk=company_id)
-    if request.method == 'POST':
-        position = request.POST.get('position')
-        advantage = request.POST.get('advantage')
-        mark = request.POST.get('mark')
-        count = 1
-        if mark == 'positive':
-            mark = True
-        elif mark == 'negative':
-            mark = False
-        if advantage and position:
-            advantage = Advantage.objects.create(
-                company=company,
-                position=position,
-                advantage=advantage,
-                mark=mark,
-                count=count)
-            advantage.save()
-    return redirect('company_detail', company_id=company_id)
+@csrf_exempt
+@require_POST
+def dislike_comment(request, comment_id):
+    if request.method == "POST":
+        comment = Comment.objects.get(id=comment_id)
+        comment.dislikes += 1
+        comment.save()
+        return JsonResponse({'likes': comment.likes, 'dislikes': comment.dislikes})
+    return JsonResponse({'error': 'Invalid request'}, status=400)
 
-def increment_advantage(request, advantage_id):
-    advantage = get_object_or_404(Advantage, pk=advantage_id)
 
-    if request.method == 'POST':
-        if advantage.position == 1 or advantage.position == 2 or advantage.position == 3:
-            advantage.count += 1
-            advantage.save()
-            advantages = Advantage.objects.filter(company=advantage.company, position=advantage.position)
-            total_count = advantages.aggregate(total_count=Sum('count'))['total_count']
-            if total_count > 100:
-                advantages.update(count=F('count') * 100 / total_count)
-                total_count = 100
-            remaining_percent = 100 - total_count
-            remaining_advantages = advantages.exclude(id=advantage.id)
-            remaining_count = remaining_advantages.count()
-            if remaining_count > 0:
-                remaining_percent_per_advantage = remaining_percent / remaining_count
-                for adv in remaining_advantages:
-                    adv.count += remaining_percent_per_advantage
-                    adv.save()
-            total_count = advantages.aggregate(total_count=Sum('count'))['total_count']
-            if total_count < 100:
-                remaining_percent = 100 - total_count
-                advantage.count += remaining_percent
-                advantage.save()
+@csrf_exempt
+@require_POST
+def remove_like_comment(request, comment_id):
+    if request.method == "POST":
+        comment = Comment.objects.get(id=comment_id)
+        if comment.likes > 0:
+            comment.likes -= 1
+        comment.save()
+        return JsonResponse({'likes': comment.likes, 'dislikes': comment.dislikes})
+    return JsonResponse({'error': 'Invalid request'}, status=400)
 
-    return redirect('company_detail_old_version', company_id=advantage.company.id)
+@csrf_exempt
+@require_POST
+def remove_dislike_comment(request, comment_id):
+    if request.method == "POST":
+        comment = Comment.objects.get(id=comment_id)
+        if comment.dislikes > 0:
+            comment.dislikes -= 1
+        comment.save()
+        return JsonResponse({'likes': comment.likes, 'dislikes': comment.dislikes})
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+
+
+@csrf_exempt
+@require_POST
+def switch_to_like_comment(request, comment_id):
+    if request.method == "POST":
+        comment = Comment.objects.get(id=comment_id)
+        if comment.dislikes > 0:
+            comment.dislikes -= 1
+        comment.likes += 1
+        comment.save()
+        return JsonResponse({'likes': comment.likes, 'dislikes': comment.dislikes})
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+
+@csrf_exempt
+@require_POST
+def switch_to_dislike_comment(request, comment_id):
+    if request.method == "POST":
+        comment = Comment.objects.get(id=comment_id)
+        if comment.likes > 0:
+            comment.likes -= 1
+        comment.dislikes += 1
+        comment.save()
+        return JsonResponse({'likes': comment.likes, 'dislikes': comment.dislikes})
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+

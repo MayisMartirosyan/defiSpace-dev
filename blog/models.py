@@ -100,7 +100,7 @@ class Author(models.Model):
 class Comment(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='comments', null=True, blank=True) 
     name = models.CharField(max_length=255)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='comments', null=True)
+    category = models.CharField(max_length=255, null=True)
     subcategory = models.CharField(max_length=255, null=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

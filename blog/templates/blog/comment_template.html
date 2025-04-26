@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="cmp_det_comment">
+<div class="cmp_det_comment" data-comment-id="{{ comment.id }}">
     <img 
         src="{% static 'img/default_image.webp' %}"
         class="cmp_det_comment_profile_picture"
@@ -10,7 +10,7 @@
         <div class="cmp_det_comment_author_name_div">
             <div class="cmp_det_comment_author_name">
                 <span class="cmp_det_comment_author">{{ comment.author }}</span>
-                <span class="cmp_det_comment_author_create_date">{{ comment.date }}</span>
+                <span class="cmp_det_comment_author_create_date">{{ comment.created_at }}</span>
             </div>
             <div class="cmp_det_comment_author_name_category_div">
                 <span class="cmp_det_comment_about_fix">About</span>
@@ -23,9 +23,6 @@
             {{ comment.description }}
         </div>
         <div class="cmp_det_comment_author_react_div">
-            <div class="cmp_det_comment_author_reply_comment">
-                <span class="cmp_det_comment_author_reply_comment_span">Reply</span>
-            </div>
             <div class="cmp_det_comment_author_react_like_count_div">
                 <img 
                     src="{% static 'img/company_detail/like_icon.svg' %}"

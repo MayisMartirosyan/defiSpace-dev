@@ -1,74 +1,121 @@
-const like_button = document.getElementById(
-  "cmp_det_comment_author_react_like_count_div"
-);
-const dislike_button = document.getElementById(
-  "cmp_det_comment_author_react_dislike_count_div"
+const commentDivs = document.querySelectorAll(
+  ".cmp_det_comment[data-comment-id], .cmp_det_comment_for_reply[data-comment-id]"
 );
 
-let likeBoolean = false;
-let dislikeBoolean = false;
+commentDivs.forEach((commentDiv) => {
+  const commentId = commentDiv.getAttribute("data-comment-id");
 
-function handleLikeButton() {
-  if (dislikeBoolean) {
-    handleDislikeButton();
-    dislikeBoolean = false;
-  }
-  like_button.style.opacity = likeBoolean ? 0.5 : 1;
-  likeBoolean = !likeBoolean;
-}
-
-function handleDislikeButton() {
-  if (likeBoolean) {
-    handleLikeButton();
-    likeBoolean = false;
-  }
-  dislike_button.style.opacity = dislikeBoolean ? 0.5 : 1;
-  dislikeBoolean = !dislikeBoolean;
-}
-
-if (like_button) {
-  like_button.addEventListener("click", () =>
-    handleLikeButton(like_button, likeBoolean)
+  const likeButton = commentDiv.querySelector(
+    ".cmp_det_comment_author_react_like_count_div"
   );
-}
-
-if (dislike_button) {
-  dislike_button.addEventListener("click", () =>
-    handleDislikeButton(dislike_button, dislikeBoolean)
+  const dislikeButton = commentDiv.querySelector(
+    ".cmp_det_comment_author_react_dislike_count_div"
   );
-}
 
-// Alternative solution
+  if (!likeButton || !dislikeButton) {
+    return;
+  }
 
-// const first_btn = document.getElementById("first_btn")
-// const second_btn = document.getElementById("second_btn")
+  const likeCountSpan = likeButton.querySelector(
+    ".cmp_det_comment_author_react_like_count"
+  );
+  const dislikeCountSpan = dislikeButton.querySelector(
+    ".cmp_det_comment_author_react_dislike_count"
+  );
 
-// const booleanObj = {
-//   first: false,
-//   second: false,
-// }
+  const storageKey = `comment_${commentId}_reaction`;
 
-// function checkColor() {
-//   first_btn.style.background = booleanObj.first ? "darkorange" : "darkgreen"
-//   second_btn.style.background = booleanObj.second ? "darkorange" : "darkgreen"
-// }
+  let currentReaction = localStorage.getItem(storageKey);
 
-// function handleChange(type) {
-//   if (type === "like") {
-//     if (booleanObj.second) {
-//       booleanObj.second = !booleanObj.second
-//     }
-//     booleanObj.first = !booleanObj.first
-//     first_btn.style.background = booleanObj.first ? "darkorange" : "darkgreen"
-//   } else if (type === "dislike") {
-//     if (booleanObj.first) {
-//       booleanObj.first = !booleanObj.first
-//     }
-//     booleanObj.second = !booleanObj.second
-//     second_btn.style.background = booleanObj.second ? "darkorange" : "darkgreen"
-//   }
-//   checkColor()
-// }
+  updateUI(currentReaction);
 
-// first_btn.addEventListener("click", () => handleChange("like"))
-// second_btn.addEventListener("click", () => handleChange("dislike"))
+  likeButton.addEventListener("click", () => {
+    if (currentReaction === "like") {
+      sendReaction("remove_like", commentId);
+      currentReaction = null;
+      likeCountSpan.innerText = parseInt(likeCountSpan.innerText) - 1;
+      updateUI(currentReaction);
+      localStorage.removeItem(storageKey);
+    } else if (currentReaction === "dislike") {
+      sendReaction("switch_to_like", commentId);
+      currentReaction = "like";
+      dislikeCountSpan.innerText = parseInt(dislikeCountSpan.innerText) - 1;
+      likeCountSpan.innerText = parseInt(likeCountSpan.innerText) + 1;
+      updateUI(currentReaction);
+      localStorage.setItem(storageKey, "like");
+    } else {
+      sendReaction("like", commentId);
+      currentReaction = "like";
+      likeCountSpan.innerText = parseInt(likeCountSpan.innerText) + 1;
+      updateUI(currentReaction);
+      localStorage.setItem(storageKey, "like");
+    }
+  });
+
+  dislikeButton.addEventListener("click", () => {
+    if (currentReaction === "dislike") {
+      sendReaction("remove_dislike", commentId);
+      currentReaction = null;
+      dislikeCountSpan.innerText = parseInt(dislikeCountSpan.innerText) - 1;
+      updateUI(currentReaction);
+      localStorage.removeItem(storageKey);
+    } else if (currentReaction === "like") {
+      sendReaction("switch_to_dislike", commentId);
+      currentReaction = "dislike";
+      likeCountSpan.innerText = parseInt(likeCountSpan.innerText) - 1;
+      dislikeCountSpan.innerText = parseInt(dislikeCountSpan.innerText) + 1;
+      updateUI(currentReaction);
+      localStorage.setItem(storageKey, "dislike");
+    } else {
+      sendReaction("dislike", commentId);
+      currentReaction = "dislike";
+      dislikeCountSpan.innerText = parseInt(dislikeCountSpan.innerText) + 1;
+      updateUI(currentReaction);
+      localStorage.setItem(storageKey, "dislike");
+    }
+  });
+
+  function updateUI(reaction) {
+    if (reaction === "like") {
+      likeButton.style.opacity = 1;
+      dislikeButton.style.opacity = 0.5;
+    } else if (reaction === "dislike") {
+      dislikeButton.style.opacity = 1;
+      likeButton.style.opacity = 0.5;
+    } else {
+      likeButton.style.opacity = 0.5;
+      dislikeButton.style.opacity = 0.5;
+    }
+  }
+
+  function sendReaction(action, commentId) {
+    let url = `/comments/${commentId}/${action}/`;
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCSRFToken(),
+      },
+      body: JSON.stringify({}),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Server confirmed:", data);
+      })
+      .catch((error) => {
+        console.error("Error sending reaction:", error);
+      });
+  }
+
+  function getCSRFToken() {
+    const cookies = document.cookie.split(";");
+    for (let cookie of cookies) {
+      const [name, value] = cookie.trim().split("=");
+      if (name === "csrftoken") {
+        return decodeURIComponent(value);
+      }
+    }
+    return "";
+  }
+});

@@ -1,18 +1,3 @@
-const cmp_det_comment_filter_dropdown_list = document.getElementById(
-  "cmp_det_comment_filter_dropdown_list"
-);
-const cmp_det_comment_filter_dropdown = document.getElementById(
-  "cmp_det_comment_filter_dropdown"
-);
-const cmp_det_comment_filter_current = document.getElementById(
-  "cmp_det_comment_filter_current"
-);
-const cmp_det_comment_filter_dropdown_types = document.getElementById(
-  "cmp_det_comment_filter_dropdown_types"
-);
-
-let currentTypes = [];
-let filterDropdownBoolean = true;
 const dropdownFilterTypes = [
   {
     type: "All comments",
@@ -20,132 +5,148 @@ const dropdownFilterTypes = [
   },
   {
     type: "Team",
-    items: [
-      {
-        name: "Decentralization",
-        checked: true,
-      },
-      {
-        name: "Activity",
-        checked: true,
-      },
-    ],
+    items: ["Decentralization", "Activity"],
   },
   {
     type: "Product",
-    items: [
-      {
-        name: "Monthly active users",
-        checked: true,
-      },
-      {
-        name: "APY 1 year",
-        checked: true,
-      },
-      {
-        name: "APY 5 years",
-        checked: true,
-      },
-    ],
+    items: ["Monthly active users", "APY 1 year", "APY 5 years"],
   },
   {
     type: "Security",
-    items: [
-      {
-        name: "Asset secured",
-        checked: true,
-      },
-      {
-        name: "Max supply",
-        checked: true,
-      },
-      {
-        name: "Liquidity",
-        checked: true,
-      },
-    ],
+    items: ["Asset secured", "Max supply", "Liquidity"],
   },
 ];
 
-function FilterDropdownOpenClose() {
-  cmp_det_comment_filter_dropdown_list.style.display = filterDropdownBoolean
-    ? "block"
-    : "none";
-  filterDropdownBoolean = !filterDropdownBoolean;
+const cmp_det_comment_filter_dropdown = document.getElementById("cmp_det_comment_filter_dropdown");
+const cmp_det_comment_filter_current = document.getElementById("cmp_det_comment_filter_current");
+const cmp_det_comment_filter_dropdown_list = document.getElementById("cmp_det_comment_filter_dropdown_list");
+const cmp_det_comment_filter_dropdown_types = document.getElementById("cmp_det_comment_filter_dropdown_types");
+
+let currentTypeGroup = null;
+let selectedSubcategories = new Set();
+let dropdownOpen = false;
+
+function updateURLFromSet() {
+  const baseUrl = window.location.pathname;
+  const filters = Array.from(selectedSubcategories).map(encodeURIComponent).join(',');
+  const newUrl = filters ? `${baseUrl}?filter=${filters}` : baseUrl;
+  window.history.replaceState({}, '', newUrl);
 }
 
-function FilterDropdown(event, bool) {
-  cmp_det_comment_filter_current.innerText = event.target.innerText.trim();
+function reloadIfNeeded() {
+  location.reload();
+}
 
-  for (let i = 0; i < dropdownFilterTypes.length; i++) {
-    if (event.target.innerText === dropdownFilterTypes[i].type) {
-      currentTypes = dropdownFilterTypes[i].items;
-    }
-  }
+cmp_det_comment_filter_dropdown.addEventListener("click", (event) => {
+  event.stopPropagation();
+  dropdownOpen = !dropdownOpen;
+  cmp_det_comment_filter_dropdown_list.style.display = dropdownOpen ? "block" : "none";
+});
 
+function renderSubcategoryCheckboxes(items) {
   cmp_det_comment_filter_dropdown_types.innerHTML = "";
 
-  for (let i = 0; i < currentTypes.length; i++) {
-    const newDiv = document.createElement("div");
-    newDiv.className = "cmp_filter_checkbox_div";
+  items.forEach((name) => {
+    const div = document.createElement("div");
+    div.className = "cmp_filter_checkbox_div";
 
-    const currentWindowWidth =
-      window.innerWidth ||
-      document.documentElement.clientWidth ||
-      document.body.clientWidth;
-
-    if (!i && currentWindowWidth < 1200) {
-      newDiv.style.marginTop = "12px";
-    }
-
-    // Create the label element
     const label = document.createElement("label");
-    label.setAttribute("for", "team");
-    label.textContent = currentTypes[i].name; // Label text
+    label.innerText = name;
 
-    // Create the input radio element
-    const checkInput = document.createElement("input");
-    checkInput.setAttribute("type", "checkbox");
-    checkInput.setAttribute("id", "team");
-    checkInput.setAttribute("name", "status");
-    checkInput.setAttribute("value", "team");
-    checkInput.setAttribute("checked", currentTypes[i].checked);
-    checkInput.style.cursor = "pointer";
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = selectedSubcategories.has(name);
+    checkbox.style.cursor = "pointer";
 
-    // Create the img element
-    const img = document.createElement("img");
-    img.setAttribute("src", "/static/img/company_detail/checked_icon.svg");
-    img.setAttribute("width", "16px");
-    img.setAttribute("height", "16px");
-    img.setAttribute("id", "company_detail_filter_checkbox");
-    img.setAttribute("alt", "companies_radio_icon");
-
-    if (!currentTypes[i].checked) {
-      newDiv.classList.add("cmp_filter_checked_checkbox_div");
-      img.style.display = "none";
-    }
-
-    // Append the elements in the right order
-    newDiv.appendChild(label);
-    newDiv.appendChild(checkInput);
-    newDiv.appendChild(img);
-
-    checkInput.addEventListener("click", () => {
-      currentTypes[i].checked = !currentTypes[i].checked;
-      return FilterDropdown(event, false);
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        selectedSubcategories.add(name);
+      } else {
+        selectedSubcategories.delete(name);
+      }
+      updateURLFromSet();
+      reloadIfNeeded();
     });
 
-    cmp_det_comment_filter_dropdown_types.appendChild(newDiv);
-  }
+    const img = document.createElement("img");
+    img.src = "/static/img/company_detail/checked_icon.svg";
+    img.width = 16;
+    img.height = 16;
+    img.alt = "check";
+    img.style.display = checkbox.checked ? "inline" : "none";
 
-  if (bool) {
-    FilterDropdownOpenClose();
-  }
+    checkbox.addEventListener("change", () => {
+      img.style.display = checkbox.checked ? "inline" : "none";
+    });
+
+    div.appendChild(label);
+    div.appendChild(checkbox);
+    div.appendChild(img);
+    cmp_det_comment_filter_dropdown_types.appendChild(div);
+  });
 }
 
-if (cmp_det_comment_filter_dropdown) {
-  cmp_det_comment_filter_dropdown.addEventListener(
-    "click",
-    FilterDropdownOpenClose
+dropdownFilterTypes.forEach((group) => {
+  const groupBtn = document.getElementById(`filter-btn-${group.type.replace(/\s/g, "-")}`);
+  if (groupBtn) {
+    groupBtn.addEventListener("click", () => {
+      cmp_det_comment_filter_current.innerText = group.type;
+
+      if (group.type === "All comments") {
+        selectedSubcategories.clear();
+        updateURLFromSet();
+        reloadIfNeeded();
+        return;
+      }
+
+      currentTypeGroup = group;
+      renderSubcategoryCheckboxes(group.items);
+
+      dropdownOpen = false;
+      cmp_det_comment_filter_dropdown_list.style.display = "none";
+    });
+  }
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const filters = urlParams.get("filter");
+  if (filters) {
+    filters.split(',').forEach((f) => selectedSubcategories.add(decodeURIComponent(f)));
+  }
+
+  const match = dropdownFilterTypes.find((group) =>
+    group.items?.some((item) => selectedSubcategories.has(item))
   );
-}
+
+  if (match) {
+    currentTypeGroup = match;
+    cmp_det_comment_filter_current.innerText = match.type;
+    renderSubcategoryCheckboxes(match.items);
+  } else {
+    cmp_det_comment_filter_current.innerText = "All comments";
+  }
+});
+
+document.getElementById('show_more_comments_btn')?.addEventListener('click', function () {
+  const url = new URL(window.location.href);
+  const currentPage = parseInt(url.searchParams.get('page') || '1', 10); 
+  url.searchParams.set('page', currentPage + 1);
+  window.location.href = url.toString();
+});
+
+window.addEventListener('beforeunload', function () {
+  const commentsSection = document.getElementById('comments_section');
+  if (commentsSection) {
+    const offset = commentsSection.getBoundingClientRect().top + window.scrollY;
+    sessionStorage.setItem('scroll_position', offset);
+  }
+});
+
+window.addEventListener('load', function () {
+  const scrollY = sessionStorage.getItem('scroll_position');
+  if (scrollY !== null) {
+    window.scrollTo({ top: parseInt(scrollY), behavior: 'instant' });
+    sessionStorage.removeItem('scroll_position');
+  }
+});
