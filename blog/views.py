@@ -199,6 +199,15 @@ def company_ratings(request):
         companies = companies.order_by(f'{order_prefix}average_score')
         
     
+    search_form = SearchForm(request.GET)
+    if search_form.is_valid():
+        q = search_form.cleaned_data.get('q')
+        
+        if q:
+            companies = companies.filter(
+            Q(name__icontains=q) | Q(description__icontains=q)
+        )
+        
     if query_tag_rating:
         companies = companies.filter(tag_rating__in=query_tag_rating)
 

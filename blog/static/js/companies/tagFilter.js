@@ -25,7 +25,15 @@ document.addEventListener("DOMContentLoaded", () => {
 const loadTagFilterInputs = () => {
   const filterInputs = getUrlParams();
 
+
   if (Object.keys(filterInputs).length > 0) {
+
+    const searchInput = document.getElementById(
+      `cmp_search_input`
+    );
+    
+    searchInput.value = filterInputs.q ?? "";
+  
     const TagRatingsList = document
       .getElementById(`tag_rating_list`)
       .querySelectorAll('.big_tag_item input[type="checkbox"]');
@@ -54,9 +62,16 @@ document.addEventListener("DOMContentLoaded", loadTagFilterInputs);
 
 
 const handleFilterSubmit = () => {
-  let url = "";
+  let url = "?q=";
   const filterInputs = getUrlParams();
-  url += `?sort_by=${
+  const searchInput = document.getElementById(
+    `cmp_search_input`
+  );
+
+
+  url += encodeURIComponent(searchInput.value);
+
+  url += `&sort_by=${
     !filterInputs.sort_by ? "totalScore" : filterInputs.sort_by
   }&sort_order=${!filterInputs.sort_order ? "desc" : filterInputs.sort_order}`;
 
