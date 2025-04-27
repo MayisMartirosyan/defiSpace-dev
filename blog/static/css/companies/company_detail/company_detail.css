@@ -175,6 +175,7 @@
   border: 1px #9e9e9e solid;
   border-radius: 36px;
   max-width: 1440px;
+  position: relative;
 }
 
 .cmp_det_add_comment_asset_secured {
@@ -215,6 +216,7 @@
   background-color: #edf3fc;
   width: fit-content;
   position: absolute;
+  bottom: 67px;
   z-index: 100;
 }
 
@@ -548,6 +550,7 @@ circle {
   position: absolute;
   top: 56px;
   left: 8px;
+  z-index: 100;
 }
 
 .cmp_det_comment_filter_dropdown_item {
@@ -732,6 +735,7 @@ circle {
   display: flex;
   gap: 16px;
   align-items: center;
+  user-select: none;
 }
 
 .cmp_det_comment_author_reply_comment_span {
