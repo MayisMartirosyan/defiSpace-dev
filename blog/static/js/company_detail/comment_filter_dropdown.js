@@ -242,21 +242,21 @@ document.querySelectorAll('.company_ratings_card_stats_comment').forEach((elemen
 
 
 
-// --- Save Scroll Position ---
-window.addEventListener('beforeunload', function () {
-  const commentsSection = document.getElementById('comments_section');
-  if (commentsSection) {
-    const offset = commentsSection.getBoundingClientRect().top + window.scrollY;
-    sessionStorage.setItem('scroll_position', offset);
-  }
-});
+// // --- Save Scroll Position ---
+// window.addEventListener('beforeunload', function () {
+//   const commentsSection = document.getElementById('comments_section');
+//   if (commentsSection) {
+//     const offset = commentsSection.getBoundingClientRect().top + window.scrollY;
+//     sessionStorage.setItem('scroll_position', offset);
+//   }
+// });
 
-// --- Restore Scroll Position ---
-window.addEventListener('load', function () {
-  const scrollY = sessionStorage.getItem('scroll_position');
-  if (scrollY !== null) {
-    window.scrollTo({ top: parseInt(scrollY), behavior: 'instant' });
-    sessionStorage.removeItem('scroll_position');
-  }
-});
+// // --- Restore Scroll Position ---
+// window.addEventListener('load', function () {
+//   const scrollY = sessionStorage.getItem('scroll_position');
+//   if (scrollY !== null) {
+//     window.scrollTo({ top: parseInt(scrollY), behavior: 'instant' });
+//     sessionStorage.removeItem('scroll_position');
+//   }
+// });
 

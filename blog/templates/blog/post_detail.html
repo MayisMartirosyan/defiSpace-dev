@@ -1,4 +1,4 @@
-{% extends 'blog/base.html' %} {% load static %} {% block content %}
+{% extends 'blog/base.html' %} {% load static %} {% block content %} {% load blog_extras %}
 
 <head>
    <link rel="stylesheet" type="text/css" href="{% static 'css/postDetail/post_detail.css' %}">
@@ -85,7 +85,7 @@
                <div class="post_detail_story_highlights_ul_div">
 
                   <code class="post_detail_story_highlights_li">
-                     {{post.story}}
+                     {{post.story|convert_markdown|safe}}
                   </code>
                
                   </div>
@@ -109,10 +109,8 @@
          </div>
 
          <div class="post_detail_description_div">
-            <div>
-               <p class="post_detail_description_text">
-                {{post.content}} 
-               </p>
+            <div class="post_detail_description_text">
+                  {{post.content|convert_markdown|safe}}
             </div>
          </div>
 

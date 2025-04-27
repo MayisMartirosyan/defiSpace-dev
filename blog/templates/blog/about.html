@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 {% block content %}
+{% load blog_extras %}
 
 <head>
   <link rel="stylesheet" type="text/css" href="{% static 'css/about/about.css' %}">
@@ -10,7 +11,7 @@
   <div class="about">
     <h1 class="about-title">{{ about.title }}</h1>
 
-    <div class="about-desc">{{ about.content|linebreaksbr }}</div>
+    <div class="about-desc">{{ about.content|convert_markdown|safe }}</div>
   </div>
 </div>
 {% endblock %}
