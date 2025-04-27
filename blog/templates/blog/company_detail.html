@@ -113,7 +113,7 @@
     </div>
 
     <div class="company_ratings">
-        {% comment %} 1 {% endcomment %}
+      
         <div class="company_ratings_card">
             <div class="company_ratings_card_title_score_div">
                 <div class="company_ratings_card_title_div">
@@ -161,8 +161,8 @@
                             <span class="company_ratings_card_stat_rating_score">{{company.team_score_obj.decentralized_score}}</span>
                         </div>
                     </div>
-                    <div class="company_ratings_card_stats_comment">
-                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    <div class="company_ratings_card_stats_comment" data-subcategory="Decentralization">
+                        <span class="company_ratings_card_stats_comment_text">{{company.team_decentralization_comment_count}} comments</span>
                     </div>
                 </div>
                 <div class="company_ratings_card_stats">
@@ -190,8 +190,8 @@
 
 
                     </div>
-                    <div class="company_ratings_card_stats_comment">
-                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    <div class="company_ratings_card_stats_comment" data-subcategory="Activity">
+                        <span class="company_ratings_card_stats_comment_text">{{ company.team_activity_comment_count }} comments</span>
                     </div>
                 </div>
                 <div class="company_ratings_card_stats">
@@ -219,8 +219,8 @@
 
 
                     </div>
-                    <div class="company_ratings_card_stats_comment">
-                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    <div class="company_ratings_card_stats_comment" data-subcategory="Exposure">
+                        <span class="company_ratings_card_stats_comment_text">{{ company.team_exposure_comment_count }} comments</span>
                     </div>
                 </div>
             </div>
@@ -274,8 +274,8 @@
                             <span class="company_ratings_card_stat_rating_score">{{company.product_score_obj.performace_score}}</span>
                         </div>
                     </div>
-                    <div class="company_ratings_card_stats_comment">
-                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    <div class="company_ratings_card_stats_comment" data-subcategory="Monthly active users">
+                        <span class="company_ratings_card_stats_comment_text">{{company.product_monthly_active_users_comment_count}} comments</span>
                     </div>
                 </div>
                 <div class="company_ratings_card_stats">
@@ -302,8 +302,8 @@
                             <span class="company_ratings_card_stat_rating_score">{{company.product_score_obj.apy_1yr_score}}</span>
                         </div>
                     </div>
-                    <div class="company_ratings_card_stats_comment">
-                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    <div class="company_ratings_card_stats_comment" data-subcategory="APY 1 year">
+                        <span class="company_ratings_card_stats_comment_text">{{company.product_apy_1_year_comment_count}} comments</span>
                     </div>
                 </div>
                 <div class="company_ratings_card_stats">
@@ -329,8 +329,8 @@
                             <span class="company_ratings_card_stat_rating_score">{{company.product_score_obj.apy_5yr_score}}</span>
                         </div>
                     </div>
-                    <div class="company_ratings_card_stats_comment">
-                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    <div class="company_ratings_card_stats_comment" data-subcategory="APY 5 years">
+                        <span class="company_ratings_card_stats_comment_text">{{company.product_apy_5_years_comment_count}} comments</span>
                     </div>
                 </div>
             </div>
@@ -382,8 +382,8 @@
                             <span class="company_ratings_card_stat_rating_score">{{company.security_score_obj.asset_secured_score}}</span>
                         </div>
                     </div>
-                    <div class="company_ratings_card_stats_comment">
-                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    <div class="company_ratings_card_stats_comment" data-subcategory="Asset secured">
+                        <span class="company_ratings_card_stats_comment_text">{{company.security_asset_secured_comment_count}} comments</span>
                     </div>
                 </div>
                 <div class="company_ratings_card_stats">
@@ -409,8 +409,8 @@
                             <span class="company_ratings_card_stat_rating_score">{{company.security_score_obj.emission_limit_score}}</span>
                         </div>
                     </div>
-                    <div class="company_ratings_card_stats_comment">
-                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    <div class="company_ratings_card_stats_comment" data-subcategory="Max supply">
+                        <span class="company_ratings_card_stats_comment_text">{{company.security_max_supply_comment_count}} comments</span>
                     </div>
                 </div>
                 <div class="company_ratings_card_stats">
@@ -436,8 +436,8 @@
                             <span class="company_ratings_card_stat_rating_score">{{company.security_score_obj.liquidity_score}}</span>
                         </div>
                     </div>
-                    <div class="company_ratings_card_stats_comment">
-                        <span class="company_ratings_card_stats_comment_text">78 comments</span>
+                    <div class="company_ratings_card_stats_comment" data-subcategory="Liquidity">
+                        <span class="company_ratings_card_stats_comment_text">{{company.security_liquidity_comment_count}} comments</span>
                     </div>
                 </div>
             </div>

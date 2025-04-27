@@ -477,8 +477,19 @@ circle {
   padding: 4px 0;
   border-bottom: 1px dashed #3c3c3c;
   color: #3c3c3c;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
+
 }
 
+.company_ratings_card_stats_comment_text:hover {
+  
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
+  
+}
 /* Comment section */
 
 .cmp_det_comment_slider_section_div {

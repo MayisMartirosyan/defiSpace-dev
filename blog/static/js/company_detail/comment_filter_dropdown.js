@@ -5,7 +5,7 @@ const dropdownFilterTypes = [
   },
   {
     type: "Team",
-    items: ["Decentralization", "Activity"],
+    items: ["Decentralization", "Activity","Exposure"],
   },
   {
     type: "Product",
@@ -26,6 +26,8 @@ let currentTypeGroup = null;
 let selectedSubcategories = new Set();
 let dropdownOpen = false;
 
+// --- Helper Functions ---
+
 function updateURLFromSet() {
   const baseUrl = window.location.pathname;
   const filters = Array.from(selectedSubcategories).map(encodeURIComponent).join(',');
@@ -33,15 +35,40 @@ function updateURLFromSet() {
   window.history.replaceState({}, '', newUrl);
 }
 
-function reloadIfNeeded() {
-  location.reload();
+function reloadComments() {
+  const url = window.location.href;
+
+  fetch(url, {
+    headers: {
+      "X-Requested-With": "XMLHttpRequest",
+    },
+  })
+    .then((response) => response.text())
+    .then((html) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const newCommentsSection = doc.getElementById("comments_section");
+
+      if (newCommentsSection) {
+        const currentCommentsSection = document.getElementById("comments_section");
+        currentCommentsSection.innerHTML = newCommentsSection.innerHTML;
+
+        const newShowMoreDiv = doc.querySelector(".cmp_det_show_more_comments_div");
+        const currentShowMoreDiv = document.querySelector(".cmp_det_show_more_comments_div");
+
+        if (newShowMoreDiv && currentShowMoreDiv) {
+          currentShowMoreDiv.innerHTML = newShowMoreDiv.innerHTML;
+        } else if (!newShowMoreDiv && currentShowMoreDiv) {
+          currentShowMoreDiv.remove();
+        }
+      }
+    })
+    .catch((error) => {
+      console.error('Error fetching comments:', error);
+    });
 }
 
-cmp_det_comment_filter_dropdown.addEventListener("click", (event) => {
-  event.stopPropagation();
-  dropdownOpen = !dropdownOpen;
-  cmp_det_comment_filter_dropdown_list.style.display = dropdownOpen ? "block" : "none";
-});
+
 
 function renderSubcategoryCheckboxes(items) {
   cmp_det_comment_filter_dropdown_types.innerHTML = "";
@@ -58,16 +85,6 @@ function renderSubcategoryCheckboxes(items) {
     checkbox.checked = selectedSubcategories.has(name);
     checkbox.style.cursor = "pointer";
 
-    checkbox.addEventListener("change", () => {
-      if (checkbox.checked) {
-        selectedSubcategories.add(name);
-      } else {
-        selectedSubcategories.delete(name);
-      }
-      updateURLFromSet();
-      reloadIfNeeded();
-    });
-
     const img = document.createElement("img");
     img.src = "/static/img/company_detail/checked_icon.svg";
     img.width = 16;
@@ -76,7 +93,20 @@ function renderSubcategoryCheckboxes(items) {
     img.style.display = checkbox.checked ? "inline" : "none";
 
     checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        selectedSubcategories.add(name);
+      } else {
+        selectedSubcategories.delete(name);
+      }
+
       img.style.display = checkbox.checked ? "inline" : "none";
+
+      if (selectedSubcategories.size === 0) {
+        window.history.replaceState({}, '', window.location.pathname);
+      } else {
+        updateURLFromSet();
+      }
+      reloadComments();
     });
 
     div.appendChild(label);
@@ -86,29 +116,7 @@ function renderSubcategoryCheckboxes(items) {
   });
 }
 
-dropdownFilterTypes.forEach((group) => {
-  const groupBtn = document.getElementById(`filter-btn-${group.type.replace(/\s/g, "-")}`);
-  if (groupBtn) {
-    groupBtn.addEventListener("click", () => {
-      cmp_det_comment_filter_current.innerText = group.type;
-
-      if (group.type === "All comments") {
-        selectedSubcategories.clear();
-        updateURLFromSet();
-        reloadIfNeeded();
-        return;
-      }
-
-      currentTypeGroup = group;
-      renderSubcategoryCheckboxes(group.items);
-
-      dropdownOpen = false;
-      cmp_det_comment_filter_dropdown_list.style.display = "none";
-    });
-  }
-});
-
-window.addEventListener("DOMContentLoaded", () => {
+const redrawFiltration = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const filters = urlParams.get("filter");
   if (filters) {
@@ -126,15 +134,115 @@ window.addEventListener("DOMContentLoaded", () => {
   } else {
     cmp_det_comment_filter_current.innerText = "All comments";
   }
+}
+
+// --- Event Listeners ---
+
+cmp_det_comment_filter_dropdown.addEventListener("click", (event) => {
+  event.stopPropagation();
+  dropdownOpen = !dropdownOpen;
+  cmp_det_comment_filter_dropdown_list.style.display = dropdownOpen ? "block" : "none";
 });
 
+dropdownFilterTypes.forEach((group) => {
+  const groupBtn = document.getElementById(`filter-btn-${group.type.replace(/\s/g, "-")}`);
+  if (groupBtn) {
+    groupBtn.addEventListener("click", () => {
+      cmp_det_comment_filter_current.innerText = group.type;
+
+      if (group.type === "All comments") {
+        selectedSubcategories.clear();
+        updateURLFromSet();
+        reloadComments();
+        cmp_det_comment_filter_dropdown_types.innerHTML = "";
+        return;
+      }
+
+      // auto-select all subcategories immediately
+      selectedSubcategories = new Set(group.items);
+
+      currentTypeGroup = group;
+      renderSubcategoryCheckboxes(group.items);
+
+      updateURLFromSet();
+      reloadComments();
+
+      dropdownOpen = false;
+      cmp_det_comment_filter_dropdown_list.style.display = "none";
+    });
+  }
+});
+
+
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  redrawFiltration()
+});
+
+// --- Show more comments (pagination) ---
 document.getElementById('show_more_comments_btn')?.addEventListener('click', function () {
   const url = new URL(window.location.href);
   const currentPage = parseInt(url.searchParams.get('page') || '1', 10); 
   url.searchParams.set('page', currentPage + 1);
-  window.location.href = url.toString();
+
+  fetch(url.toString(), {
+    headers: {
+      "X-Requested-With": "XMLHttpRequest",
+    },
+  })
+    .then((response) => response.text())
+    .then((html) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const newCommentsSection = doc.getElementById("comments_section");
+
+      if (newCommentsSection) {
+        const currentCommentsSection = document.getElementById("comments_section");
+        currentCommentsSection.innerHTML += newCommentsSection.innerHTML;
+      }
+
+      const newShowMoreDiv = doc.querySelector(".cmp_det_show_more_comments_div");
+      const currentShowMoreDiv = document.querySelector(".cmp_det_show_more_comments_div");
+
+      if (newShowMoreDiv && currentShowMoreDiv) {
+        currentShowMoreDiv.innerHTML = newShowMoreDiv.innerHTML;
+      } else if (!newShowMoreDiv && currentShowMoreDiv) {
+        currentShowMoreDiv.remove();
+      }
+    })
+    .catch((error) => {
+      console.error('Error fetching more comments:', error);
+    });
 });
 
+// --- Click subcategory stats to filter ---
+document.querySelectorAll('.company_ratings_card_stats_comment').forEach((element) => {
+  element.addEventListener('click', (event) => {
+    event.stopPropagation();
+
+    const subcategoryText = element.getAttribute('data-subcategory');
+    if (!subcategoryText) {
+      console.error('No subcategory found on clicked element');
+      return;
+    }
+
+    selectedSubcategories = new Set([subcategoryText]);
+
+    updateURLFromSet();
+    reloadComments();
+    redrawFiltration()
+
+    const commentsSection = document.getElementById('comments_section');
+    if (commentsSection) {
+      commentsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+
+
+// --- Save Scroll Position ---
 window.addEventListener('beforeunload', function () {
   const commentsSection = document.getElementById('comments_section');
   if (commentsSection) {
@@ -143,6 +251,7 @@ window.addEventListener('beforeunload', function () {
   }
 });
 
+// --- Restore Scroll Position ---
 window.addEventListener('load', function () {
   const scrollY = sessionStorage.getItem('scroll_position');
   if (scrollY !== null) {
@@ -150,3 +259,4 @@ window.addEventListener('load', function () {
     sessionStorage.removeItem('scroll_position');
   }
 });
+

@@ -255,6 +255,7 @@ def company_detail(request, company_id):
     company.product_score_obj = company.product_scores.first()
     company.team_score_obj = company.team_scores.first()
     company.security_score_obj = company.security_scores.first()
+        
     handle_add_company_fields(company=company)
 
     related_posts = company.related_posts.all().values('id', 'title', 'pub_date')

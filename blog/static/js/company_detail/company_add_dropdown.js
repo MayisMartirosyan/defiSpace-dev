@@ -69,6 +69,7 @@ async function sendComment() {
 
     const result = await response.json();
     if (result.status === "success") {
+      window.history.replaceState(null, "", window.location.pathname);
       location.reload();
     } else {
       console.log(result.message);
@@ -135,6 +136,7 @@ async function submitReply(button) {
     const data = await response.json();
     if (data.success) {
       replyTextarea.value = "";
+      window.history.replaceState(null, "", window.location.pathname);
       location.reload();
     }
   } catch (error) {
