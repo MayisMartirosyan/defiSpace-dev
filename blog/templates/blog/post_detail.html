@@ -412,7 +412,7 @@
                <div class="glider-contain">
                   <div class="glider-post-detail-sidebar-slider" id="glider-post-detail-sidebar-slider">
                      {% for related_group in related_sidebar %}
-                     <div class="post_detail_related_news_slider_items_flex">
+                     <div class="post_detail_related_news_slider_items_flex" id="post_detail_related_news_slider_items_flex">
                        
                            {% for related_post_sidebar in related_group  %}
                            <div class="post_detail_related_news_slider_item" id="related_new{{ related_post_sidebar.id }}" onclick="openInnerPost('{{ related_post_sidebar.id }}')">

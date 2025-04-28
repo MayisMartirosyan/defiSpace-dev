@@ -1,31 +1,38 @@
 const post_detail_slider_buttons_div = document.getElementById("post_detail_slider_buttons_div");
 const post_detail_related_news_slider_items_flex = document.getElementById("post_detail_related_news_slider_items_flex");
 
-
 document.addEventListener("DOMContentLoaded", function () {
   const company_slider_content = document.getElementById("glider-company-detail-sidebar-slider");
 
-  if(company_slider_content?.children[0].children.length === 1 && company_slider_content?.children[0].children[0].children.length === 1){
-    company_slider_content.children[0].children[0].children[0].style.marginBottom = "170px"
+  if(company_slider_content?.children[0].children.length === 1){
+    company_slider_content.children[0].style.marginBottom = "170px";
   }
 
-  for(let i = 0; i < company_slider_content?.children[0].children.length; i++){
-    const slideContentList = company_slider_content.children[0].children[i];
-    slideContentList.children[0].children[1].children[1].children[0].style.top = "30px";
+  for(let j = 0; j < company_slider_content.children.length; j++){
+    for(let i = 0; i < company_slider_content.children[0].children.length; i++){
+      if(i % 3 === 0){
+        const slideContentList = company_slider_content.children[j].children[i];
+        slideContentList.children[1].children[1].children[0].style.top = "30px";
+      }
+    }
   }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
   const post_slider_content = document.getElementById("glider-post-detail-sidebar-slider");
 
-  if(post_slider_content?.children[0].children.length === 1 && post_slider_content?.children[0].children[0].children.length === 1){
-    post_slider_content.children[0].children[0].children[0].style.marginBottom = "170px"
+  if(post_slider_content?.children[0].children.length === 1){
+    post_slider_content.children[0].style.marginBottom = "170px";
   }
 
-  for(let i = 0; i < post_slider_content?.children[0].children.length; i++){
-    const slideContentList = post_slider_content.children[0].children[i];
-    slideContentList.children[0].children[1].children[1].children[0].style.top = "30px";
-  }  
+  for(let j = 0; j < post_slider_content.children.length; j++){
+    for(let i = 0; i < post_slider_content.children[0].children.length; i++){
+      if(i % 3 === 0){
+        const slideContentList = post_slider_content.children[j].children[i];
+        slideContentList.children[1].children[1].children[0].style.top = "30px";
+      }
+    }
+  }
 });
 
 function openShare(event,id) {
