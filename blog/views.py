@@ -205,7 +205,7 @@ def company_ratings(request):
         
         if q:
             companies = companies.filter(
-            Q(name__icontains=q) | Q(description__icontains=q)
+             Q(name__icontains=q) | Q(description__icontains=q) | Q(ticker__icontains=q)
         )
         
     if query_tag_rating:

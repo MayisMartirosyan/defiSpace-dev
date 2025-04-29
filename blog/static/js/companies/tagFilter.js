@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const filter_btn_cmp = document.getElementById(`tags_selector_div_mobile`);
-  const filter_btn_cmp_desk = document.getElementById(`tags_selector_div_desktop`);
-  const filter_fixed_popup_div_cmp = document.getElementById("comp_filter_fixed_popup_div");
-  const timeline_tags_div_cmp = document.getElementById("cmp_timeline_tags_div");
+  const filter_btn_cmp_desk = document.getElementById(
+    `tags_selector_div_desktop`
+  );
+  const filter_fixed_popup_div_cmp = document.getElementById(
+    "comp_filter_fixed_popup_div"
+  );
+  const timeline_tags_div_cmp = document.getElementById(
+    "cmp_timeline_tags_div"
+  );
 
   filter_btn_cmp?.addEventListener("click", () => {
     filter_fixed_popup_div_cmp.style.display = "flex";
@@ -21,19 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
 const loadTagFilterInputs = () => {
   const filterInputs = getUrlParams();
 
-
+  const searchInput = document.getElementById(`cmp_search_input`);
   if (Object.keys(filterInputs).length > 0) {
-
-    const searchInput = document.getElementById(
-      `cmp_search_input`
-    );
-    
     searchInput.value = filterInputs.q ?? "";
-  
+
     const TagRatingsList = document
       .getElementById(`tag_rating_list`)
       .querySelectorAll('.big_tag_item input[type="checkbox"]');
@@ -52,22 +52,24 @@ const loadTagFilterInputs = () => {
       }
     });
   }
+
+  if (searchInput) {
+    searchInput.addEventListener("keypress", function (event) {
+      console.log("mtav");
+      if (event.key === "Enter") {
+        event.preventDefault();
+        handleFilterSubmit();
+      }
+    });
+  }
 };
 
-
-
 document.addEventListener("DOMContentLoaded", loadTagFilterInputs);
-
-
-
 
 const handleFilterSubmit = () => {
   let url = "?q=";
   const filterInputs = getUrlParams();
-  const searchInput = document.getElementById(
-    `cmp_search_input`
-  );
-
+  const searchInput = document.getElementById(`cmp_search_input`);
 
   url += encodeURIComponent(searchInput.value);
 

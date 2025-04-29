@@ -68,6 +68,10 @@
   width: 100%;
 }
 
+.cmp-filter-div{
+  padding: 24px !important;
+}
+
 .timeline_calendar_search_div {
   display: flex;
   align-items: center;
