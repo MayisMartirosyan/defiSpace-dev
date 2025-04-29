@@ -60,7 +60,7 @@
 
 .timeline_tags_filter_div {
   display: flex;
-  padding: 24px;
+  padding: 24px 2px 24px 24px;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;

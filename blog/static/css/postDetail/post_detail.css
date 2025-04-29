@@ -4,7 +4,7 @@
 
 .post_detail_flex {
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    gap: 40px;
 }
 
@@ -200,6 +200,15 @@
     list-style-type: decimal !important;
 }
 
+.post_detail_story_highlights_li ul li {
+   list-style-type: disc !important;
+}
+
+.post_detail_story_highlights_li ol li {
+  list-style-type: decimal !important;
+}
+
+
 .post_detail_story_highlights_li table {
     border-collapse: collapse;
     width: 100%;
@@ -277,6 +286,16 @@
     margin-bottom: 1em;
     list-style-type: decimal !important;
 }
+
+.post_detail_description_text ul li {
+   list-style-type: disc !important;
+}
+
+.post_detail_description_text ol li {
+   list-style-type: decimal !important;
+}
+
+
 
 .post_detail_description_text table {
     border-collapse: collapse;
