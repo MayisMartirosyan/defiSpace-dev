@@ -118,20 +118,19 @@ function toggleReplyForm(replyButton) {
       return;
     }
     if (foundMainComment && div.getAttribute("data-comment-id") === commentId) {
-      replyFormDiv = div.querySelector(
-        ".cmp_det_comment_for_reply_textarea_div"
-      );
+      replyFormDiv = div.querySelector(".cmp_det_comment_for_reply_textarea_div");
       return;
     }
   });
 
   if (replyFormDiv) {
-    replyFormDiv.style.display =
-      replyFormDiv.style.display === "none" || replyFormDiv.style.display === ""
-        ? "block"
-        : "none";
+    const isVisible = replyFormDiv.style.display === "block";
+    replyFormDiv.style.display = isVisible ? "none" : "block";
+    if (!isVisible) {
+      replyFormDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
   } else {
-    console.error("Reply form not found.");
+    console.warn("Reply form not found.");
   }
 }
 
