@@ -1,10 +1,11 @@
 .post_detail_container {
-   margin-top: 60px;/
+   margin-top: 32px;
+ 
 }
 
 .post_detail_flex {
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
    gap: 40px;
 }
 
@@ -15,7 +16,7 @@
    flex-direction: column;
    gap: 60px;
    min-width: 260px;
-   max-width: 900px;
+   max-width: 1000px;
    width: 100%;
 }
 
@@ -178,7 +179,6 @@
 
 .post_detail_story_highlights_li a {
    margin-bottom: 1em;
-   color: #5656ec !important;
    opacity: 1;
    transition: opacity 0.2s ease-in-out;
 }
@@ -200,13 +200,6 @@
     list-style-type: decimal !important;
 }
 
-.post_detail_story_highlights_li ul li {
-   list-style-type: disc !important;
-}
-
-.post_detail_story_highlights_li ol li {
-  list-style-type: decimal !important;
-}
 
 
 .post_detail_story_highlights_li table {
@@ -256,6 +249,7 @@
 .post_detail_description_text h2,
 .post_detail_description_text h3 {
     margin-top: 1.5em;
+    line-height: 40px;
     margin-bottom: 0.5em;
 }
 
@@ -266,6 +260,7 @@
 .post_detail_description_text a {
    margin-bottom: 1em;
    color: #fe6a25 !important;
+   text-decoration: underline;
    opacity: 1;
    transition: opacity 0.2s ease-in-out;
 }
@@ -305,7 +300,6 @@
 
 
 .post_detail_description_text blockquote {
-   background: #f7f8fa;
    border-left: 3px solid #d3d6db;
    margin: 24px 0;
    padding: 16px 20px;
@@ -319,7 +313,7 @@
 .post_detail_description_text blockquote span {
    line-height: 1.5;
    font-size: 16px;
-   color: #666;
+   color: #141919;
    font-style: italic;
    margin-bottom: unset !important;
 }

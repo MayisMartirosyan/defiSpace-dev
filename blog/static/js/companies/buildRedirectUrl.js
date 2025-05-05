@@ -13,7 +13,11 @@ const handle_build_redirect_url = (e, id) => {
 };
 
 const handle_build_company_inner_url = (e, id) => {
-  let buildedUrl = `/companies/${id}`;
+  let buildedUrl = `/invest/${id}`;
+  if (e.button === 1 || e.metaKey || e.ctrlKey) {
+    window.open(buildedUrl, '_blank');
+    return;
+  }
   window.location.href = buildedUrl;
 };
 

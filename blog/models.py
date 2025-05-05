@@ -67,6 +67,7 @@ class SecurityScore(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
+    short_description = models.TextField(default='', blank=True)
     content = models.TextField()
     story = models.TextField(default='', blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)

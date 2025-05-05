@@ -95,7 +95,7 @@ def post_list(request):
     posts_by_day = latest_paginated_posts.annotate(
     date=TruncDate('pub_date')
     ).values(
-    'date', 'title', 'content', 'pub_date','id',"image"
+    'date', 'title', 'content', 'pub_date','id',"image", 'short_description'
     ).annotate(
     count=Count('id'),
     tag_posts=Subquery(tag_posts_subquery)
@@ -108,13 +108,14 @@ def post_list(request):
         post_date = post['date']
         title = post['title']
         content = post['content']
+        short_description = post['short_description']
         pub_datetime = post['pub_date']
         image = post['image']
         tags = list(
         TagPosts.objects.filter(post=post['id']).values_list('name', flat=True)
         )
        
-        posts_by_date[post_date].append({'id':id,'title': title,'time_published': pub_datetime,'content':content,'tags':tags,'image':image,'local_id':local_id})
+        posts_by_date[post_date].append({'id':id,'title': title,'time_published': pub_datetime,'content':content, 'short_description': short_description, 'tags':tags,'image':image,'local_id':local_id})
 
     grouped_posts = [{'date': date, 'posts': posts} for date, posts in posts_by_date.items()]
     
@@ -308,7 +309,9 @@ def company_detail(request, company_id):
 
     
     comments_data = []
+
     for comment in all_comments:
+      
         replies = comment.replies.all().order_by('-created_at')
         comments_data.append({
             'id': comment.id,
@@ -370,11 +373,12 @@ def submit_reply(request):
         parent_comment_id = data.get('parent_comment_id')
         reply_text = data.get('reply_text')
         company_id = data.get('company_id')
+        name = data.get('name')
  
         parent_comment = Comment.objects.get(id=parent_comment_id)
         
         reply_comment = Comment(
-            name=request.user.username,  
+            name=name,  
             description=reply_text,
             category=parent_comment.category,  
             subcategory=parent_comment.subcategory, 

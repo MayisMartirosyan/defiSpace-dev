@@ -1,6 +1,12 @@
-const add_comment_asset_secured_p = document.getElementById("cmp_det_add_comment_asset_secured_p");
-const cmp_det_add_comment_asset_secured = document.getElementById("cmp_det_add_comment_asset_secured");
-const cmp_det_list_sub_criterion = document.getElementById("cmp_det_list_sub_criterion");
+const add_comment_asset_secured_p = document.getElementById(
+  "cmp_det_add_comment_asset_secured_p"
+);
+const cmp_det_add_comment_asset_secured = document.getElementById(
+  "cmp_det_add_comment_asset_secured"
+);
+const cmp_det_list_sub_criterion = document.getElementById(
+  "cmp_det_list_sub_criterion"
+);
 
 let subCriterionBool = true;
 let dynamicCategory = "Security";
@@ -16,21 +22,35 @@ function makeActiveCategory(event) {
   dynamicCategory = event.target.getElementsByTagName("span")[0].innerText;
   dynamicCategory = dynamicCategory.split("/")[0].trim();
   dynamicSubCategory = event.target.getElementsByTagName("span")[1].innerText;
-  add_comment_asset_secured_p.innerText = dynamicSubCategory;
+
+  console.log(event.target.getElementsByTagName("span"), "qweqwew");
+  add_comment_asset_secured_p.innerText =
+    event.target.getElementsByTagName("span")[0].innerText +
+    event.target.getElementsByTagName("span")[1].innerText;
   OpenCloseSubCriterion();
 }
 
 if (cmp_det_add_comment_asset_secured) {
-  cmp_det_add_comment_asset_secured.addEventListener("click", () => OpenCloseSubCriterion());
+  cmp_det_add_comment_asset_secured.addEventListener("click", () =>
+    OpenCloseSubCriterion()
+  );
 }
 
 const sendBtn = document.querySelector(".cmp_det_comment_btn");
 const textarea = document.querySelector(".cmp_det_comment_textarea");
+const nameInput = document.querySelector(".cmp_det_comment_input");
 
-if (sendBtn && textarea) {
+if (sendBtn && textarea && nameInput) {
   sendBtn.addEventListener("click", async () => await sendComment());
 
   textarea.addEventListener("keydown", async (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      await sendComment();
+    }
+  });
+
+  nameInput.addEventListener("keydown", async (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
       await sendComment();
@@ -43,7 +63,7 @@ async function sendComment() {
   const category = dynamicCategory;
   const subcategory = dynamicSubCategory;
   const companyId = window.location.pathname.split("/")[2];
-  const name = "Anonymous";
+  const name = nameInput.value.trim();
   const parentId = null;
 
   if (!description) return;
@@ -80,57 +100,73 @@ async function sendComment() {
 }
 
 function toggleReplyForm(replyButton) {
-  const commentDiv = replyButton.closest('.cmp_det_comment');
-  const commentId = commentDiv.getAttribute('data-comment-id');
+  const commentDiv = replyButton.closest(".cmp_det_comment");
+  const commentId = commentDiv.getAttribute("data-comment-id");
 
   if (!commentId) {
-      console.error('Comment ID not found.');
-      return;
+    console.error("Comment ID not found.");
+    return;
   }
 
-  const allComments = document.querySelectorAll('.cmp_det_comment');
+  const allComments = document.querySelectorAll(".cmp_det_comment");
   let foundMainComment = false;
   let replyFormDiv = null;
 
   allComments.forEach((div) => {
-      if (div === commentDiv) {
-          foundMainComment = true;
-          return;
-      }
-      if (foundMainComment && div.getAttribute('data-comment-id') === commentId) {
-          replyFormDiv = div.querySelector('.cmp_det_comment_for_reply_textarea_div');
-          return;
-      }
+    if (div === commentDiv) {
+      foundMainComment = true;
+      return;
+    }
+    if (foundMainComment && div.getAttribute("data-comment-id") === commentId) {
+      replyFormDiv = div.querySelector(
+        ".cmp_det_comment_for_reply_textarea_div"
+      );
+      return;
+    }
   });
 
   if (replyFormDiv) {
-      replyFormDiv.style.display = (replyFormDiv.style.display === 'none' || replyFormDiv.style.display === '') ? 'block' : 'none';
+    replyFormDiv.style.display =
+      replyFormDiv.style.display === "none" || replyFormDiv.style.display === ""
+        ? "block"
+        : "none";
   } else {
-      console.error('Reply form not found.');
+    console.error("Reply form not found.");
   }
 }
 
 async function submitReply(button) {
-  const replyTextarea = button.previousElementSibling;
+
+  const wrapperDiv = button.closest(".cmp_det_comment_for_reply_textarea_div");
+
+  const replyTextarea = wrapperDiv.querySelector(
+    ".cmp_det_comment_for_reply_textarea"
+  );
+  const nameInput = wrapperDiv.querySelector(".cmp_det_reply_nameInp");
+
   const replyText = replyTextarea.value.trim();
+  const userName = nameInput.value.trim();
 
-  if (!replyText) return;
+  if (!replyText || !userName) return;
 
-  const parentCommentId = button.closest('.cmp_det_comment').getAttribute('data-comment-id');
+  const parentCommentId = button
+    .closest(".cmp_det_comment")
+    .getAttribute("data-comment-id");
   const companyId = window.location.pathname.split("/")[2];
 
   try {
-    const response = await fetch('/submit-reply/', {
-      method: 'POST',
+    const response = await fetch("/submit-reply/", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': getCookie("csrftoken")
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCookie("csrftoken"),
       },
       body: JSON.stringify({
         company_id: companyId,
         parent_comment_id: parentCommentId,
-        reply_text: replyText
-      })
+        reply_text: replyText,
+        name: userName,
+      }),
     });
 
     const data = await response.json();
@@ -140,20 +176,22 @@ async function submitReply(button) {
       location.reload();
     }
   } catch (error) {
-    console.error('Error submitting reply:', error);
-    alert('There was an error submitting your reply.');
+    console.error("Error submitting reply:", error);
+    alert("There was an error submitting your reply.");
   }
 }
 
-document.querySelectorAll(".cmp_det_comment_for_reply_textarea").forEach(textarea => {
-  textarea.addEventListener("keydown", function(event) {
-    if (event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault();
-      const sendButton = this.nextElementSibling;
-      submitReply(sendButton);
-    }
+document
+  .querySelectorAll(".cmp_det_comment_for_reply_textarea")
+  .forEach((textarea) => {
+    textarea.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        const sendButton = this.nextElementSibling;
+        submitReply(sendButton);
+      }
+    });
   });
-});
 
 function getCookie(name) {
   let cookieValue = null;

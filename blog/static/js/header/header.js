@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (
       btns[i].textContent.includes("Invest") &&
-      currentUrl.includes("/companies")
+      currentUrl.includes("/invest")
     ) {
       btns[i].classList.add("nav_active");
       btns[i].children[0].children[0].style.color = "white";
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (
         window.location.pathname == "/" ||
-        window.location.pathname == "/companies/"
+        window.location.pathname == "/invest/"
       ) {
         filter_btn.style.visibility = "visible";
       } else {

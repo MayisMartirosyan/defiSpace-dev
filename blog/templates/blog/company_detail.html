@@ -535,12 +535,19 @@
                                 </div>
                             {% endif %}
 
-                            <div class="cmp_det_comment" data-comment-id="{{ comment.id }}">
+                            <div class="cmp_det_comment" data-comment-id="{{ comment.id }}" data-author-name="{{ comment.name }}">
                                 <div class="cmp_det_comment_for_reply_textarea_div" style="display:none;">
                                     <textarea class="cmp_det_comment_for_reply_textarea" placeholder="Write a reply..."></textarea>
-                                    <button class="cmp_det_comment_for_reply_textarea_btn" onclick="submitReply(this)">
-                                        <span class="cmp_det_comment_for_reply_textarea_btn_span">Send</span>
-                                    </button>
+
+                                    <div class='cmp_det_nameInp_sumbit_wrapper'>
+
+                                        <input class='cmp_det_reply_nameInp' placeholder="Your name" />
+                                        
+                                        <button class="cmp_det_comment_for_reply_textarea_btn" onclick="submitReply(this)">
+                                            <span class="cmp_det_comment_for_reply_textarea_btn_span">Send</span>
+                                        </button>
+                                    </div>
+                                   
                                 </div>
                             </div>
                         {% endfor %}
@@ -569,71 +576,80 @@
                 </div>
                 {% endif %}
 
+
+
+                <div class="cmp-filter-commnet-wrapper">
+                    <div>
+
+                        <h3 class="cmp-comment-h3">Your comment to the criterion</h3>
+    
+                    </div>
+                    <div class='cmp-filter-wrapper'>
+                        <div class="cmp_det_add_comment_asset_secured" id="cmp_det_add_comment_asset_secured">
+                            <span class="cmp_det_add_comment_asset_secured_p" id="cmp_det_add_comment_asset_secured_p">Security / Asset secured</span>
+                            <div class="cmp_det_add_comment_asset_secured_icon_div">
+                                <img 
+                                    src="{% static 'img/company_detail/dropdown_icon.svg' %}" 
+                                    width="12px" 
+                                    height="6px" 
+                                    alt="comment_dropdown_icon"
+                                />
+                            </div>
+                        </div>
+    
+                        <div class="cmp_det_list_sub_criterion" id="cmp_det_list_sub_criterion">
+                            <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
+                                <span class="cmp_det_sub_criterion_group_span">Team / </span>
+                                <span class="cmp_det_sub_criterion_span">Decentralization</span>
+                            </div>
+                            <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
+                                <span class="cmp_det_sub_criterion_group_span">Team / </span>
+                                <span class="cmp_det_sub_criterion_span">Activity</span>
+                            </div>
+                            <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
+                                <span class="cmp_det_sub_criterion_group_span">Team / </span>
+                                <span class="cmp_det_sub_criterion_span">Exposure</span>
+                            </div>
+        
+                            <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
+                                <span class="cmp_det_sub_criterion_group_span">Product / </span>
+                                <span class="cmp_det_sub_criterion_span">Monthly active users</span>
+                            </div>
+                            <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
+                                <span class="cmp_det_sub_criterion_group_span">Security / </span>
+                                <span class="cmp_det_sub_criterion_span">APY 1 year</span>
+                            </div>
+                            <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
+                                <span class="cmp_det_sub_criterion_group_span">Security / </span>
+                                <span class="cmp_det_sub_criterion_span">APY 5 years</span>
+                            </div>
+        
+                            <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
+                                <span class="cmp_det_sub_criterion_group_span">Security / </span>
+                                <span class="cmp_det_sub_criterion_span">Asset secured</span>
+                            </div>
+                            <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
+                                <span class="cmp_det_sub_criterion_group_span">Product / </span>
+                                <span class="cmp_det_sub_criterion_span">Max supply</span>
+                            </div>
+                            <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
+                                <span class="cmp_det_sub_criterion_group_span">Product / </span>
+                                <span class="cmp_det_sub_criterion_span">Liquidity</span>
+                            </div>
+                            
+                        </div>
+        
+                   </div>
+                </div>
+
+               
+
                 <div class="cmp_det_add_comment_form">
 
-                    <div class="cmp_det_list_sub_criterion" id="cmp_det_list_sub_criterion">
-                        <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
-                            <span class="cmp_det_sub_criterion_group_span">Team / </span>
-                            <span class="cmp_det_sub_criterion_span">Decentralization</span>
-                        </div>
-                        <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
-                            <span class="cmp_det_sub_criterion_group_span">Team / </span>
-                            <span class="cmp_det_sub_criterion_span">Activity</span>
-                        </div>
-                        <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
-                            <span class="cmp_det_sub_criterion_group_span">Team / </span>
-                            <span class="cmp_det_sub_criterion_span">Exposure</span>
-                        </div>
-    
-                        <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
-                            <span class="cmp_det_sub_criterion_group_span">Product / </span>
-                            <span class="cmp_det_sub_criterion_span">Monthly active users</span>
-                        </div>
-                        <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
-                            <span class="cmp_det_sub_criterion_group_span">Security / </span>
-                            <span class="cmp_det_sub_criterion_span">APY 1 year</span>
-                        </div>
-                        <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
-                            <span class="cmp_det_sub_criterion_group_span">Security / </span>
-                            <span class="cmp_det_sub_criterion_span">APY 5 years</span>
-                        </div>
-    
-                        <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
-                            <span class="cmp_det_sub_criterion_group_span">Security / </span>
-                            <span class="cmp_det_sub_criterion_span">Asset secured</span>
-                        </div>
-                        <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
-                            <span class="cmp_det_sub_criterion_group_span">Product / </span>
-                            <span class="cmp_det_sub_criterion_span">Max supply</span>
-                        </div>
-                        <div class="cmp_det_sub_criterion" onclick="makeActiveCategory(event)">
-                            <span class="cmp_det_sub_criterion_group_span">Product / </span>
-                            <span class="cmp_det_sub_criterion_span">Liquidity</span>
-                        </div>
-                        
-                    </div>
 
-
-
-                    <div class="cmp_det_add_comment_asset_secured" id="cmp_det_add_comment_asset_secured">
-                        <span class="cmp_det_add_comment_asset_secured_p" id="cmp_det_add_comment_asset_secured_p">Asset secured</span>
-                        <div class="cmp_det_add_comment_asset_secured_icon_div">
-                            <img 
-                                src="{% static 'img/company_detail/dropdown_icon.svg' %}" 
-                                width="12px" 
-                                height="6px" 
-                                alt="comment_dropdown_icon"
-                            />
-                        </div>
-                    </div>
                     <div class="cmp_det_comment_input_div_for_responsive">
                         <div class="cmp_det_comment_input_div">
-                            <img 
-                                src="{% static 'img/company_detail/comment_icon.svg' %}" 
-                                width="20px" 
-                                height="20px" 
-                                alt="comment_icon" 
-                            />
+                           
                             <textarea 
                                 type="text" 
                                 class="cmp_det_comment_textarea"
@@ -642,13 +658,35 @@
                                 oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
                             ></textarea>
                         </div>       
-                        <div class="cmp_det_add_comment_btn_div">
-                            <button class="cmp_det_comment_btn">
-                                <span class="cmp_det_comment_btn_span">Send</span>
-                            </button>
-                        </div>
+                        
                     </div>
+
+                   
                 </div>
+
+                <div class='cmp_det_comment_name_input_div_wrapper'>
+
+                    <div class="cmp_det_comment_name_input_div">
+                           
+                        <input 
+                            type="text" 
+                            class="cmp_det_comment_input"
+                            cols="1"
+                            placeholder="Your name"
+                            oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'
+                        />
+                    </div>   
+
+
+                    <div class="cmp_det_add_comment_btn_div">
+                    <button class="cmp_det_comment_btn">
+                        <span class="cmp_det_comment_btn_span">Send</span>
+                    </button>
+                </div>
+            </div>
+
+
+                
               
             </div> 
 
@@ -691,7 +729,7 @@
                                     <div class="share_icon_style related_news_silder_sidebar_item_style" onclick="openShare(event, 'related_new{{ related_post_company.id }}')">
                                         <div class="share_dropdown_div" id="share_dropdown_div">
                                           <div class="share_dropdown_item">
-                                            <a href="/companies/{{ related_post_company.id }}" onclick="copyToClipboard(event, '{{ main_url }}companies/{{ related_post_company.id }}')"> 
+                                            <a href="/invest/{{ related_post_company.id }}" onclick="copyToClipboard(event, '{{ main_url }}companies/{{ related_post_company.id }}')"> 
                                               <img src="{% static 'img/share/copy_link.svg' %}" alt="link_icon" />
                                               <p class="share_dropdown_item_text">Copy link</p>
                                             </a>

@@ -55,7 +55,6 @@ const loadTagFilterInputs = () => {
 
   if (searchInput) {
     searchInput.addEventListener("keypress", function (event) {
-      console.log("mtav");
       if (event.key === "Enter") {
         event.preventDefault();
         handleFilterSubmit();

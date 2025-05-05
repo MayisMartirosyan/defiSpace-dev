@@ -59,8 +59,6 @@ gliderElementEditorPick.addEventListener(
     const currentSlideEditor = glider.getCurrentSlide();
     const deltaXEditor = event.deltaX;
 
-    console.log("totalSlidesEditor", totalSlidesEditor);
-
     if (isScrollingEditor) return;
 
     if (Math.abs(deltaX) > scrollThreshold) {
