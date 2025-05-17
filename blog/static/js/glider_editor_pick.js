@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const gliderElementEditorPick = document.querySelector(".glider-editor-pick");
 
-  if (!gliderElementEditorPick) return; // prevent errors if element isn't found
 
   const glider = new Glider(gliderElementEditorPick, {
     slidesToShow: 3,
@@ -16,14 +15,14 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     responsive: [
       {
-        breakpoint: 320,
+        breakpoint: 310,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 700,
+        breakpoint: 775,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -32,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         breakpoint: 1100,
         settings: {
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
